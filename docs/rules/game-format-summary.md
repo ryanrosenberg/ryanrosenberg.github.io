@@ -1,4 +1,5 @@
 ---
+layout: default
 parent: PACE NSC Rules
 nav_order: 1
 ---
