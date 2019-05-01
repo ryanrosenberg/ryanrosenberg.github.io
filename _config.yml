@@ -1,0 +1,21 @@
+# ----------- CONFIGURABLE START -----------
+title:            2019 PACE NSC
+description:      The official website of the 2019 National Scholastic Championship.
+logo:             pace.png
+url:              https://pacensc.github.io
+remote_theme:     pmarsceill/just-the-docs
+#color_scheme:     "dark"
+aux_links:
+  "PACE Website":
+    - "//pace-nsc.org"
+# ------------ CONFIGURABLE END ------------
+
+permalink:        /posts/:title
+markdown: kramdown
+ 
+kramdown:
+  toc_levels: 1..2
+defaults:
+  - values:
+      layout: "default"
+
