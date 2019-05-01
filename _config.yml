@@ -12,7 +12,7 @@ aux_links:
 
 permalink:        /posts/:title
 markdown: kramdown
- 
+
 defaults:
   - values:
       layout: "default"
