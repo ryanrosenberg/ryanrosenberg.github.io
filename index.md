@@ -1,7 +1,6 @@
 ---
 layout: default
-title: 2019 PACE NSC
-nav_order: 4
+title: Home
 nav_exclude: true
 ---
 ![](pace.png)
