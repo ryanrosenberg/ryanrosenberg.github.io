@@ -12,17 +12,9 @@ Dulles, Silver Line, etc.
 
 # Hotel Map
 
-## Entry Level
+## Second Floor
 
-![](./images/hyatt-entry-level.png)
-
-## Lobby Level
-
-![](./images/hyatt-lobby-level.png)
-
-## International Level
-
-![](./images/hyatt-international-level.png)
+![](./images/hyatt-reston-second-floor.png)
 
 # Restaurant Guide  
 
