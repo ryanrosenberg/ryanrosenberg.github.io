@@ -35,7 +35,7 @@ social_username: rbmrosenberg
 
 # Set theme color here
 # Choose from: black (default), blue, gray, magenta, orange, red, white, and yellow.
-theme_color: acf
+theme_color: blue
 
 # Build settings
 markdown: kramdown
