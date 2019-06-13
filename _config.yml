@@ -23,7 +23,8 @@ url: "acf-quizbowl.com" # the base hostname & protocol for your site, e.g. http:
 github_repo: ryanrosenberg.github.io # the GitHub repo name for your project
 github_username: ryanrosenberg
 
-plugins: jekyll-include-cache
+plugins: 
+  - jekyll-swiss
 
 remote_theme: broccolini/swiss
 
