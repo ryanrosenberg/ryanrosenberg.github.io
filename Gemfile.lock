@@ -1,5 +1,4 @@
 GEM
-  remote: http://rubygems.org/
   specs:
     activesupport (4.2.11.1)
       i18n (~> 0.7)
@@ -245,4 +244,4 @@ DEPENDENCIES
   github-pages
 
 BUNDLED WITH
-   1.17.2
+   2.0.1
