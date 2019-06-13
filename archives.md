@@ -5,8 +5,9 @@ permalink: /archives/
 nav_order: 7
 ---
 
-# ACF Eligibility Rules
-These are the [official ACF eligibility rules](https://acf-quizbowl.com/official-acf-eligibility-rules/) for all ACF tournaments. If you believe you are in a situation not covered by these rules, please write to [ACF’s eligibility committee](mailto:eligibility@acf-quizbowl.com).
+<div class="container mx-auto px-2 py-4">
+  {% for post in site.posts  %}
+    {% include post_block.html %}
+  {% endfor %}
+</div>
 
-# ACF Gameplay Rules
-These are [the official rules for gameplay at ACF tournaments](https://acf-quizbowl.com/official-acf-gameplay-rules/).

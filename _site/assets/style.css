@@ -86,19 +86,21 @@ code { color: #4279C1; font-size: 16px; padding: 1px 0px; }
 /* Theme color utilities */
 .header-background { background-color: #fff; }
 
-.header-border { border-color: #4279C1; }
+.header-border { border-color: #023B7F; }
 
 .header-title { color: #023B7F; }
 
-.header-text { color: #4279C1; }
+.header-text { color: #023B7F; }
 
-.header-social { fill: #4279C1; }
+.header-social { fill: #023B7F; }
 
 .header-social-accent { fill: #7EB7FD; }
 
 .header-link:hover { color: #7EB7FD !important; }
 
-.text-accent { color: #4279C1; }
+.text-accent { color: #7EB7FD; }
+
+a.active { color: #7EB7FD; }
 
 /* Layout utilities */
 .container { max-width: 64em; }

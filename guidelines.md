@@ -5,8 +5,11 @@ permalink: /guidelines/
 nav_order: 6
 ---
 
-# ACF Eligibility Rules
-These are the [official ACF eligibility rules](https://acf-quizbowl.com/official-acf-eligibility-rules/) for all ACF tournaments. If you believe you are in a situation not covered by these rules, please write to [ACF’s eligibility committee](mailto:eligibility@acf-quizbowl.com).
+# Hosting Guidelines
+These are [hosting guidelines](https://acf-quizbowl.com/documents/hosting-guidelines/) for ACF tournaments. Please refer to them for help hosting and reach out to the [ACF Mirror Coordinator](mailto:hosting@acf-quizbowl.com) if you have any questions.
 
-# ACF Gameplay Rules
-These are [the official rules for gameplay at ACF tournaments](https://acf-quizbowl.com/official-acf-gameplay-rules/).
+# Packet Submission Guidelines
+For ACF tournaments where your team is submitting a packet, please refer to the [ACF Packet Submission Guidelines](https://acf-quizbowl.com/tournaments/packet-submission-guidelines/).
+
+# Question Writing Guidelines
+ACF member Jerry Vinokurov wrote the following [guide to writing questions](https://acf-quizbowl.com/documents/question-writing-guidelines/), which may be of use for new -- or old! -- writers.
