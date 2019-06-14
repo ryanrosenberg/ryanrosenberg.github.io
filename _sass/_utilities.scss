@@ -39,9 +39,7 @@
 
 
 /* Theme color utilities */
-.header-background { background-color: $color-background;
-                     background-image: url(/nats19editors_5.jpg);
-                     background-size:cover; }
+.header-background { background-color: $color-background; }
 .header-border { border-color: $color-foreground; }
 .header-title { color: $color-title; }
 .header-text { color: $color-foreground; }
