@@ -6,7 +6,7 @@
  {% assign pagelist = site.pages | sort: 'nav_order' %}
     <ul class="list-reset mt-lg-1 mb-lg-1">
       {% for my_page in pagelist %}
-        {% if my_page.title %}
+        {% if my_page.nav_order %}
         <li class="inline-block">
           <a class="align-middle link-primary mr-2 mr-lg-0 ml-lg-2 {% if my_page.url == page.url %}active{% endif %}" href="{{ my_page.url | prepend: site.baseurl }}">
             {{ my_page.title }}

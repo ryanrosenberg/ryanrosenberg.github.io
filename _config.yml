@@ -21,7 +21,7 @@ thumbnail: /thumbnail_logo.png
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "ryanrosenberg.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 github_repo: ryanrosenberg.github.io # the GitHub repo name for your project
-github_username: ryanrosenberg
+github_username: acf-quizbowl
 
 plugins: 
   - jekyll-swiss

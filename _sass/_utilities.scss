@@ -30,6 +30,8 @@
   padding-left: 0;
 }
 
+ol ol { list-style-type: lower-alpha; }
+
 /* Border utilities */
 .border-bottom-thick { border-bottom: 2px solid; border-color: currentColor; }
 .border-bottom-thin { border-bottom: 1px solid; border-color: currentColor; }
@@ -45,6 +47,7 @@
 .header-text { color: $color-foreground; }
 .header-social { fill: $color-foreground; }
 .header-social-accent { fill: $color-dot-accent; }
+.header-social-dark { fill: $color-code; }
 .header-link:hover { color: $color-nav-link !important; } // used for navigation links on homepage
 .text-accent { color: $color-text-accent; } // used for date in post list and home link
 a.active { color: $color-text-accent; } 

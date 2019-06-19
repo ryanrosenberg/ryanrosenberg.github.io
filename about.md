@@ -6,7 +6,7 @@ nav_order: 1
 ---
 
 ## Quick Links
-- [ACF Bylaws](https://acf-quizbowl.com/constitution/)
+- [ACF Constitution](https://acf-quizbowl.com/constitution/)
 - [ACF Officers](https://acf-quizbowl.com/officers/)
 - [ACF Rules](https://acf-quizbowl.com/rules/)
 

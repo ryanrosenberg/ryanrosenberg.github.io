@@ -72,6 +72,8 @@ code { color: #4279C1; font-size: 16px; padding: 1px 0px; }
 
 .list-reset { list-style: none; padding-left: 0; }
 
+ol ol { list-style-type: lower-alpha; }
+
 /* Border utilities */
 .border-bottom-thick { border-bottom: 2px solid; border-color: currentColor; }
 
@@ -95,6 +97,8 @@ code { color: #4279C1; font-size: 16px; padding: 1px 0px; }
 .header-social { fill: #023B7F; }
 
 .header-social-accent { fill: #7EB7FD; }
+
+.header-social-dark { fill: #4279C1; }
 
 .header-link:hover { color: #7EB7FD !important; }
 
