@@ -4,8 +4,41 @@ title: Members
 permalink: /members/
 nav_order: 1.2
 ---
+## Officers
+<!--gt table start-->
+<table style="font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;display:table;border-collapse:collapse;margin-left:auto;margin-right:auto;color:#000000;font-size:16px;background-color:#FFFFFF;width:100%;border-top-style:solid;border-top-width:2px;border-top-color:#A8A8A8;">
+<tr>
+<th style="color:#000000;background-color:#FFFFFF;font-size:16px;font-weight:initial;vertical-align:middle;padding:10px;margin:10px;text-align:left;" rowspan='1' colspan='1'><b>Officer</b></th>
+<th style="color:#000000;background-color:#FFFFFF;font-size:16px;font-weight:initial;vertical-align:middle;padding:10px;margin:10px;text-align:left;" rowspan='1' colspan='1'><b>Contact</b></th>
+</tr>
+<tbody style="border-top-style:solid;border-top-width:2px;border-top-color:#A8A8A8;border-bottom-style:solid;border-bottom-width:2px;border-bottom-color:#A8A8A8;">
+<tr>
+<td style="padding:10px;margin:10px;vertical-align:middle;text-align:left;">Billy Busse, <i>President</i></td>
+<td style="padding:10px;margin:10px;vertical-align:middle;text-align:left;"><a href='mailto:wtbusse@gmail.com'>wtbusse@gmail.com</a></td>
+</tr>
+<tr>
+<td style="background-color:#f2f2f2;padding:10px;margin:10px;vertical-align:middle;text-align:left;">Matt Bollinger, <i>Communications</i></td>
+<td style="background-color:#f2f2f2;padding:10px;margin:10px;vertical-align:middle;text-align:left;"><a href='mailto:mlybollinger@gmail.com'>mlybollinger@gmail.com</a></td>
+</tr>
+<tr>
+<td style="padding:10px;margin:10px;vertical-align:middle;text-align:left;">Alex Damisch, <i>Mirror Coordinator</i></td>
+<td style="padding:10px;margin:10px;vertical-align:middle;text-align:left;"><a href='mailto:alexandra.damisch@gmail.com'>alexandra.damisch@gmail.com</a></td>
+</tr>
+<tr>
+<td style="background-color:#f2f2f2;padding:10px;margin:10px;vertical-align:middle;text-align:left;">Andrew Feist, <i>Treasurer</i></td>
+<td style="background-color:#f2f2f2;padding:10px;margin:10px;vertical-align:middle;text-align:left;"><a href='mailto:tabstopva@gmail.com'>tabstopva@gmail.com</a></td>
+</tr>
+<tr>
+<td style="padding:10px;margin:10px;vertical-align:middle;text-align:left;">Ryan Rosenberg, <i>Webmaster</i></td>
+<td style="padding:10px;margin:10px;vertical-align:middle;text-align:left;"><a href='mailto:ryanr345@gmail.com'>ryanr345@gmail.com</a></td>
+</tr>
+</tbody>
+</table>
+<!--gt table end-->
+
+
 ## Full Members
-<table style="font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;display:table;border-collapse:collapse;margin-left:auto;margin-right:auto;color:#000000;font-size:16px;background-color:#FFFFFF;width:auto;border-top-style:solid;border-top-width:2px;border-top-color:#A8A8A8;">
+<table style="font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;display:table;border-collapse:collapse;margin-left:auto;margin-right:auto;color:#000000;font-size:16px;background-color:#FFFFFF;width:100%;border-top-style:solid;border-top-width:2px;border-top-color:#A8A8A8;">
 <tr>
 <th style="color:#000000;background-color:#FFFFFF;font-size:16px;font-weight:initial;vertical-align:middle;padding:10px;margin:10px;font-weight:bold;">Name</th>
 <th style="color:#000000;background-color:#FFFFFF;font-size:16px;font-weight:initial;vertical-align:middle;padding:10px;margin:10px;font-weight:bold;">Affiliation</th>
@@ -148,7 +181,7 @@ nav_order: 1.2
 
 ## Provisional Members
 <!--gt table start-->
-<table style="font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;display:table;border-collapse:collapse;margin-left:auto;margin-right:auto;color:#000000;font-size:16px;background-color:#FFFFFF;width:auto;border-top-style:solid;border-top-width:2px;border-top-color:#A8A8A8;">
+<table style="font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;display:table;border-collapse:collapse;margin-left:auto;margin-right:auto;color:#000000;font-size:16px;background-color:#FFFFFF;width:100%;border-top-style:solid;border-top-width:2px;border-top-color:#A8A8A8;">
 <tr>
 <th style="color:#000000;background-color:#FFFFFF;font-size:16px;font-weight:initial;vertical-align:middle;padding:10px;margin:10px;font-weight:bold;">Name</th>
 <th style="color:#000000;background-color:#FFFFFF;font-size:16px;font-weight:initial;vertical-align:middle;padding:10px;margin:10px;font-weight:bold;">Affiliation</th>
@@ -222,7 +255,7 @@ nav_order: 1.2
 ## Emeritus Members
 
 <!--gt table start-->
-<table style="font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;display:table;border-collapse:collapse;margin-left:auto;margin-right:auto;color:#000000;font-size:16px;background-color:#FFFFFF;width:auto;border-top-style:solid;border-top-width:2px;border-top-color:#A8A8A8;">
+<table style="font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;display:table;border-collapse:collapse;margin-left:auto;margin-right:auto;color:#000000;font-size:16px;background-color:#FFFFFF;width:100%;border-top-style:solid;border-top-width:2px;border-top-color:#A8A8A8;">
 <tr>
 <th style="color:#000000;background-color:#FFFFFF;font-size:16px;font-weight:initial;vertical-align:middle;padding:10px;margin:10px;font-weight:bold;">Name</th>
 <th style="color:#000000;background-color:#FFFFFF;font-size:16px;font-weight:initial;vertical-align:middle;padding:10px;margin:10px;font-weight:bold;">Affiliation</th>

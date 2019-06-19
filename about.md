@@ -5,13 +5,18 @@ permalink: /about/
 nav_order: 1
 ---
 
+## Quick Links
+- [ACF Bylaws](https://acf-quizbowl.com/constitution/)
+- [ACF Officers](https://acf-quizbowl.com/officers/)
+- [ACF Rules](https://acf-quizbowl.com/rules/)
+
 ## So what’s ACF all about then?
 **Academic Competition Federation** (ACF) is a non-incorporated, non-profit organization dedicated to providing high-quality quiz tournaments. We are entirely student and volunteer run. We pride ourselves on the highest standard of academic question writing and we keep the amount of pop culture (a.k.a. trash) or semi-academic questions to a minimum.
 
 We offer three tournaments throughout the academic year:
 
 - **ACF Fall** is an introductory-level event that is held in early November.
-- **ACF Regionals** is a “regular difficult” event that is held in January/February.  It serves as a qualifier for ACF Nationals.
+- **ACF Regionals** is a “regular difficulty” event that is held in January/February.  It serves as a qualifier for ACF Nationals.
 - **ACF Nationals** is the premier collegiate championship event. It is held in April. To participate in ACF Nationals, teams must qualify through their performance at ACF Regionals, or may apply for wildcard bids.
 
 ## Who can play in ACF tournaments?
