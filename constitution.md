@@ -3,6 +3,10 @@ layout: page
 title: ACF Constitution
 permalink: /constitution/
 ---
+# Table of Contents
+{: .no_toc}
+* A markdown unordered list which will be replaced with the ToC, excluding the "Contents header" from above
+{:toc}
 
 ## Article 1. Name of Organization
 1. The name of the organization shall be the Academic Competition Federation.

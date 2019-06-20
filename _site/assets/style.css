@@ -74,6 +74,8 @@ code { color: #4279C1; font-size: 16px; padding: 1px 0px; }
 
 ol ol { list-style-type: lower-alpha; }
 
+ol ol ol { list-style-type: lower-roman; }
+
 /* Border utilities */
 .border-bottom-thick { border-bottom: 2px solid; border-color: currentColor; }
 
