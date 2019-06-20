@@ -4,7 +4,6 @@ title: About
 permalink: /about/
 nav_order: 1
 ---
-
 ## Quick Links
 - [ACF Constitution](/constitution/)
 - [ACF Officers](/members/)
