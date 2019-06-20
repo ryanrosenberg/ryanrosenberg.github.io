@@ -31,7 +31,7 @@ ACF does not expect you to lose money by allowing a team into your tournament. I
 
 
 ## Financial viability
-Based on past tournaments, you can expect the average ACF event to attract 8 to 12 teams and bring in a gross amount of $1500. You should expect to spend about $200 on prizes and other logistical costs of your tournament (the trophy costs will be handed by ACF).
+Based on past tournaments, you can expect the average ACF event to attract 8 to 12 teams and bring in a gross amount of $1500. You should expect to spend about $200 on prizes and other logistical costs of your tournament.
 
 You should expect $650 to go to the editors, and about $650 as your team’s profit. Obviously, these numbers can vary significantly in any direction depending on the circumstances of your particular tournament and are not a guarantee, but generally teams have found hosting ACF events to be a positive contribution to quizbowl as well as a good way to raise money for their own tournament-attendance schedule.
 
