@@ -5,11 +5,11 @@ library(kableExtra)
 library(clipr)
 
 tribble(~Officer, ~Contact,
-        "Billy Busse, President", "wtbusse@gmail.com",
-        "Matt Bollinger, Communications", "mlybollinger@gmail.com",
-        "Alex Damisch, Mirror Coordinator", "alexandra.damisch@gmail.com",
-        "Andrew Feist, Treasurer", "tabstopva@gmail.com",
-        "Ryan Rosenberg, Webmaster", "ryanr345@gmail.com") %>% 
+        "Billy Busse, President", "president@acf-quizbowl.com",
+        "Matt Bollinger, Communications", "communications@acf-quizbowl.com",
+        "Alex Damisch, Mirror Coordinator", "alexandra.damisch@acf-quizbowl.com",
+        "Andrew Feist, Treasurer", "tabstopva@acf-quizbowl.com",
+        "Ryan Rosenberg, Webmaster", "ryanr345@acf-quizbowl.com") %>% 
   gt() %>% 
   as_raw_html() %>% 
   write_clip()

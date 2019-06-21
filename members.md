@@ -36,6 +36,7 @@ nav_order: 1.2
 
 
 ## Full Members
+Full members are ACF's editors, officers, and tournament directors. They vote in all ACF elections and on all constitutional amendments.
 <table style="font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;display:table;border-collapse:collapse;margin-left:auto;margin-right:auto;color:#000000;font-size:16px;background-color:#FFFFFF;width:100%;border-top-style:solid;border-top-width:2px;border-top-color:#A8A8A8;">
 <tr>
 <th style="color:#000000;background-color:#FFFFFF;font-size:16px;font-weight:initial;vertical-align:middle;padding:10px;margin:10px;font-weight:bold;">Name</th>
@@ -46,7 +47,7 @@ nav_order: 1.2
 <tr>
 <td style="padding:10px;margin:10px;vertical-align:middle;text-align:left;">Matt Bollinger</td>
 <td style="padding:10px;margin:10px;vertical-align:middle;text-align:left;">Alumnus, University of Virginia</td>
-<td style="padding:10px;margin:10px;vertical-align:middle;text-align:left;">Communications Officer, 2019-2020<br/>ACF Nationals 2019 Editor<br/>ACF Nationals 2017 Head Editor<br/>ACF Fall 2012 Head Editor<br/>ACF Fall 2011 Editor</td>
+<td style="padding:10px;margin:10px;vertical-align:middle;text-align:left;">Communications Officer, 2019 – 2020<br/>ACF Nationals 2019 Editor<br/>ACF Nationals 2017 Head Editor<br/>ACF Fall 2012 Head Editor<br/>ACF Fall 2011 Editor</td>
 </tr>
 <tr>
 <td style="background-color:#f2f2f2;padding:10px;margin:10px;vertical-align:middle;text-align:left;">Jordan Brownstein</td>
@@ -56,7 +57,7 @@ nav_order: 1.2
 <tr>
 <td style="padding:10px;margin:10px;vertical-align:middle;text-align:left;">Billy Busse</td>
 <td style="padding:10px;margin:10px;vertical-align:middle;text-align:left;">Alumnus, University of Illinois, Urbana-Champaign</td>
-<td style="padding:10px;margin:10px;vertical-align:middle;text-align:left;">President, 2019-2020<br/>Meeting Chair, 2018-2019<br/>ACF Nationals 2016 Editor<br/>ACF Nationals 2015 Editor</td>
+<td style="padding:10px;margin:10px;vertical-align:middle;text-align:left;">President, 2019 – 2020<br/>Meeting Chair, 2018 – 2019<br/>ACF Nationals 2016 Editor<br/>ACF Nationals 2015 Editor</td>
 </tr>
 <tr>
 <td style="background-color:#f2f2f2;padding:10px;margin:10px;vertical-align:middle;text-align:left;">Rob Carson</td>
@@ -71,17 +72,17 @@ nav_order: 1.2
 <tr>
 <td style="background-color:#f2f2f2;padding:10px;margin:10px;vertical-align:middle;text-align:left;">Alex Damisch</td>
 <td style="background-color:#f2f2f2;padding:10px;margin:10px;vertical-align:middle;text-align:left;">M.S., DePaul University<br/>Alumna, Lawrence University</td>
-<td style="background-color:#f2f2f2;padding:10px;margin:10px;vertical-align:middle;text-align:left;">Mirror Coordinator, 2019-2020<br/>Treasurer, 2018-2019<br/>ACF Nationals 2019 Editor<br/>ACF Nationals 2018 Logistics</td>
+<td style="background-color:#f2f2f2;padding:10px;margin:10px;vertical-align:middle;text-align:left;">Mirror Coordinator, 2019 – 2020<br/>Treasurer, 2018 – 2019<br/>ACF Nationals 2019 Editor<br/>ACF Nationals 2018 Logistics</td>
 </tr>
 <tr>
 <td style="padding:10px;margin:10px;vertical-align:middle;text-align:left;">Stephen Eltinge</td>
 <td style="padding:10px;margin:10px;vertical-align:middle;text-align:left;">Ph.D Candidate, Yale University<br/>Alumnus, Massachusetts Institute of Technology</td>
-<td style="padding:10px;margin:10px;vertical-align:middle;text-align:left;">ACF Regionals 2018 Editor<br/>Communications Officer, 2014-2017<br/>ACF Fall 2013 Editor</td>
+<td style="padding:10px;margin:10px;vertical-align:middle;text-align:left;">ACF Regionals 2018 Editor<br/>Communications Officer, 2014 – 2017<br/>ACF Fall 2013 Editor</td>
 </tr>
 <tr>
 <td style="background-color:#f2f2f2;padding:10px;margin:10px;vertical-align:middle;text-align:left;">Andrew Feist</td>
 <td style="background-color:#f2f2f2;padding:10px;margin:10px;vertical-align:middle;text-align:left;">A.M. and PhD, Duke University<br/>Alumnus, University of Central Missouri</td>
-<td style="background-color:#f2f2f2;padding:10px;margin:10px;vertical-align:middle;text-align:left;">Treasurer, 2019-2020<br/>ACF Nationals 2019 Stats Director<br/>ACF Nationals 2018 Stats Director</td>
+<td style="background-color:#f2f2f2;padding:10px;margin:10px;vertical-align:middle;text-align:left;">Treasurer, 2019 – 2020<br/>ACF Nationals 2019 Stats Director<br/>ACF Nationals 2018 Stats Director</td>
 </tr>
 <tr>
 <td style="padding:10px;margin:10px;vertical-align:middle;text-align:left;">Carsten Gehring</td>
@@ -96,7 +97,7 @@ nav_order: 1.2
 <tr>
 <td style="padding:10px;margin:10px;vertical-align:middle;text-align:left;">Andrew Hart</td>
 <td style="padding:10px;margin:10px;vertical-align:middle;text-align:left;">J.D., University of Minnesota Law School<br/>Alumnus, University of Minnesota</td>
-<td style="padding:10px;margin:10px;vertical-align:middle;text-align:left;">ACF Nationals 2019 Editor<br/>ACF Nationals 2018 Head Editor<br/>ACF Regionals 2017 Head Editor<br/>Meeting Chair, 2010-2015<br/>ACF Fall 2013 Editor<br/>ACF Winter 2010 Head Editor<br/>ACF Fall 2008 Head Editor<br/>ACF Fall 2007 Editor</td>
+<td style="padding:10px;margin:10px;vertical-align:middle;text-align:left;">ACF Nationals 2019 Editor<br/>ACF Nationals 2018 Head Editor<br/>ACF Regionals 2017 Head Editor<br/>Meeting Chair, 2010 – 2015<br/>ACF Fall 2013 Editor<br/>ACF Winter 2010 Head Editor<br/>ACF Fall 2008 Head Editor<br/>ACF Fall 2007 Editor</td>
 </tr>
 <tr>
 <td style="background-color:#f2f2f2;padding:10px;margin:10px;vertical-align:middle;text-align:left;">Will Holub-Moorman</td>
@@ -131,7 +132,7 @@ nav_order: 1.2
 <tr>
 <td style="background-color:#f2f2f2;padding:10px;margin:10px;vertical-align:middle;text-align:left;">Sarah Angelo Luongo</td>
 <td style="background-color:#f2f2f2;padding:10px;margin:10px;vertical-align:middle;text-align:left;">Alumna, Virginia Commonwealth University School of Education<br/>Alumna, University of Virginia</td>
-<td style="background-color:#f2f2f2;padding:10px;margin:10px;vertical-align:middle;text-align:left;">Webmaster, 2018-2019<br/>Meeting Chair, 2017-2018<br/>ACF Nationals 2018 Tournament Director<br/>ACF Regionals 2015 Editor and Logistics Coordinator<br/>ACF Fall 2011 Editor</td>
+<td style="background-color:#f2f2f2;padding:10px;margin:10px;vertical-align:middle;text-align:left;">Webmaster, 2018 – 2019<br/>Meeting Chair, 2017 – 2018<br/>ACF Nationals 2018 Tournament Director<br/>ACF Regionals 2015 Editor and Logistics Coordinator<br/>ACF Fall 2011 Editor</td>
 </tr>
 <tr>
 <td style="padding:10px;margin:10px;vertical-align:middle;text-align:left;">Jonathan Magin</td>
@@ -146,7 +147,7 @@ nav_order: 1.2
 <tr>
 <td style="padding:10px;margin:10px;vertical-align:middle;text-align:left;">Ryan Rosenberg</td>
 <td style="padding:10px;margin:10px;vertical-align:middle;text-align:left;">Alumnus, University of North Carolina at Chapel Hill</td>
-<td style="padding:10px;margin:10px;vertical-align:middle;text-align:left;">Webmaster, 2019-2020<br/>ACF Nationals 2019 Tournament Director<br/>ACF Nationals 2018 Assistant Tournament Director<br/>ACF Fall 2017 Editor<br/>ACF Fall 2015 Editor</td>
+<td style="padding:10px;margin:10px;vertical-align:middle;text-align:left;">Webmaster, 2019 – 2020<br/>ACF Nationals 2019 Tournament Director<br/>ACF Nationals 2018 Assistant Tournament Director<br/>ACF Fall 2017 Editor<br/>ACF Fall 2015 Editor</td>
 </tr>
 <tr>
 <td style="background-color:#f2f2f2;padding:10px;margin:10px;vertical-align:middle;text-align:left;">Bernadette Spencer</td>
@@ -178,7 +179,7 @@ nav_order: 1.2
 
 
 ## Provisional Members
-<!--gt table start-->
+Provisional members are community members who have ably assisted ACF in the past and may be invited to apply for full membership if they so do again in the future.
 <table style="font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;display:table;border-collapse:collapse;margin-left:auto;margin-right:auto;color:#000000;font-size:16px;background-color:#FFFFFF;width:100%;border-top-style:solid;border-top-width:2px;border-top-color:#A8A8A8;">
 <tr>
 <th style="color:#000000;background-color:#FFFFFF;font-size:16px;font-weight:initial;vertical-align:middle;padding:10px;margin:10px;font-weight:bold;">Name</th>
@@ -219,7 +220,7 @@ nav_order: 1.2
 <tr>
 <td style="padding:10px;margin:10px;vertical-align:middle;text-align:left;">Ashwin Ramaswami</td>
 <td style="padding:10px;margin:10px;vertical-align:middle;text-align:left;">Stanford University</td>
-<td style="padding:10px;margin:10px;vertical-align:middle;text-align:left;">Communications Officer, 2018-2019<br>ACF Fall 2018 Editor<br>ACF Fall 2017 Editor</td>
+<td style="padding:10px;margin:10px;vertical-align:middle;text-align:left;">Communications Officer, 2018 – 2019<br>ACF Fall 2018 Editor<br>ACF Fall 2017 Editor</td>
 </tr>
 <tr>
 <td style="background-color:#f2f2f2;padding:10px;margin:10px;vertical-align:middle;text-align:left;">Nitin Rao</td>
@@ -248,11 +249,9 @@ nav_order: 1.2
 </tr>
 </tbody>
 </table>
-<!--gt table end-->
 
 ## Emeritus Members
-
-<!--gt table start-->
+Emeritus members are former ACF full members who have decided to take a step back from active involvement in ACF.
 <table style="font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;display:table;border-collapse:collapse;margin-left:auto;margin-right:auto;color:#000000;font-size:16px;background-color:#FFFFFF;width:100%;border-top-style:solid;border-top-width:2px;border-top-color:#A8A8A8;">
 <tr>
 <th style="color:#000000;background-color:#FFFFFF;font-size:16px;font-weight:initial;vertical-align:middle;padding:10px;margin:10px;font-weight:bold;">Name</th>
@@ -288,7 +287,7 @@ nav_order: 1.2
 <tr>
 <td style="background-color:#f2f2f2;padding:10px;margin:10px;vertical-align:middle;text-align:left;">Susan Ferrari</td>
 <td style="background-color:#f2f2f2;padding:10px;margin:10px;vertical-align:middle;text-align:left;">Ph.D., Cancer Biology, University of Chicago<br/>Alumna, University of Chicago</td>
-<td style="background-color:#f2f2f2;padding:10px;margin:10px;vertical-align:middle;text-align:left;">Communications Officer, 2011-2014<br/>ACF Nationals Editor 2012<br/>ACF Nationals Editor 2011<br/>ACF Nationals Editor 2010</td>
+<td style="background-color:#f2f2f2;padding:10px;margin:10px;vertical-align:middle;text-align:left;">Communications Officer, 2011 – 2014<br/>ACF Nationals Editor 2012<br/>ACF Nationals Editor 2011<br/>ACF Nationals Editor 2010</td>
 </tr>
 <tr>
 <td style="padding:10px;margin:10px;vertical-align:middle;text-align:left;">Ted Gioia</td>
@@ -318,7 +317,7 @@ nav_order: 1.2
 <tr>
 <td style="background-color:#f2f2f2;padding:10px;margin:10px;vertical-align:middle;text-align:left;">Gautam Kandlikar</td>
 <td style="background-color:#f2f2f2;padding:10px;margin:10px;vertical-align:middle;text-align:left;">Alumnus, University of Minnesota</td>
-<td style="background-color:#f2f2f2;padding:10px;margin:10px;vertical-align:middle;text-align:left;">Treasurer 2015-2017<br/>ACF Fall 2014 co-Head Editor<br/>ACF Fall 2009 Head Editor<br/>ACF Fall 2008 Editor</td>
+<td style="background-color:#f2f2f2;padding:10px;margin:10px;vertical-align:middle;text-align:left;">Treasurer 2015 – 2017<br/>ACF Fall 2014 co-Head Editor<br/>ACF Fall 2009 Head Editor<br/>ACF Fall 2008 Editor</td>
 </tr>
 <tr>
 <td style="padding:10px;margin:10px;vertical-align:middle;text-align:left;">Matt Keller</td>
@@ -418,7 +417,7 @@ nav_order: 1.2
 <tr>
 <td style="background-color:#f2f2f2;padding:10px;margin:10px;vertical-align:middle;text-align:left;">Andrew Yaphe</td>
 <td style="background-color:#f2f2f2;padding:10px;margin:10px;vertical-align:middle;text-align:left;">J.D., Stanford University Law School<br/>University of Chicago<br/>Alumnus, University of Virginia</td>
-<td style="background-color:#f2f2f2;padding:10px;margin:10px;vertical-align:middle;text-align:left;">ACF Nationals Head Editor, 2005-07<br/>ACF Regionals Head Editor, 2000, 2005<br/>ACF Fall 2007 Head Editor<br/>ACF Nationals 2001 Editor</td>
+<td style="background-color:#f2f2f2;padding:10px;margin:10px;vertical-align:middle;text-align:left;">ACF Nationals Head Editor, 2005 – 07<br/>ACF Regionals Head Editor, 2000, 2005<br/>ACF Fall 2007 Head Editor<br/>ACF Nationals 2001 Editor</td>
 </tr>
 <tr>
 <td style="padding:10px;margin:10px;vertical-align:middle;text-align:left;">Richard Yu</td>

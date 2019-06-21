@@ -56,8 +56,8 @@ code { color: #4279C1; font-size: 16px; padding: 1px 0px; }
 .prose table tr th { border-top: 2px solid #023B7F; border-bottom: 2px solid #023B7F; }
 
 /* Type utilities */
-.h0 { font-size: 64px; line-height: 1.0125; margin-top: 0.85em; word-wrap: break-word; }
-@media (min-width: 52em) { .h0 { font-size: 128px; } }
+.h0 { font-size: 48px; line-height: 1.0125; margin-top: 0.85em; word-wrap: break-word; }
+@media (min-width: 52em) { .h0 { font-size: 96px; } }
 
 .text-right { text-align: right; }
 
@@ -72,7 +72,7 @@ code { color: #4279C1; font-size: 16px; padding: 1px 0px; }
 
 .list-reset { list-style: none; padding-left: 0; }
 
-ol ol { list-style-type: lower-alpha; }
+ol ol { list-style-type: upper-alpha; }
 
 ol ol ol { list-style-type: lower-roman; }
 

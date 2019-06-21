@@ -9,8 +9,9 @@ nav_order: 4
 
 
 ## ACF Nationals 2020
-ACF Nationals 2020 will be held on the weekend of **April 18, 2020**. Ryan Westbrook, alumnus of the University of Michigan and Wayne State University, will be head editor.
+ACF Nationals 2020 will be held on the weekend of **April 18th, 2020**. Ryan Westbrook, alumnus of the University of Michigan and Wayne State University, will be head editor.
 
+## Apply to host
 ACF is currently soliciting bids to host ACF Nationals 2020. To bid, please fill out [this form](https://docs.google.com/forms/d/17cCm6UsNtuu0UBkbxzJJCo7mnMy-CfC1DSElk-3SjOM/viewform). For any questions, please contact [the ACF Mirror Coordinator](mailto:hosting@acf-quizbowl.com).
 
 
