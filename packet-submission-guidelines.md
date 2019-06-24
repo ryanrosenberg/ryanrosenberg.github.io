@@ -10,7 +10,7 @@ permalink: /packet-submission-guidelines/
 {:toc}
 
 ## Who needs to submit packets?
-Any team with at least one person (two people for ACF Fall) on it who played a regular, collegiate, academic quizbowl tournament (either as a college student or as a high school student) the the academic year two years prior to the current year, that school must submit a packet (e.g. any team with a player [two players for ACF Fall] who played prior to September 1 2015 must submit a packet to compete in ACF tournaments in the 2016-2017 academic year.)
+Any team with at least one person (two people for ACF Fall) on it who played a regular, collegiate, academic quizbowl tournament (either as a college student or as a high school student) the the academic year two years prior to the current year, that school must submit a packet (e.g. any team with a player [two players for ACF Fall] who played prior to September 1 2018 must submit a packet to compete in ACF tournaments in the 2019-2020 academic year.)
 
 ## What counts as a “regular, collegiate, academic quizbowl tournament”?
 All ACF tournaments, NAQT Division I or Division II SCT, NAQT ICT, and typical academic invitationals and summer opens count as regular collegiate academic tournaments. Novice collegiate events with strict eligiblity requirements do not count as regular collegiate academic tournaments in determining packet requirement.
