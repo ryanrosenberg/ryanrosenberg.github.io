@@ -19,3 +19,8 @@ To apply to become a subject editor for ACF Regionals 2020, please fill out [thi
 ## Apply to host
 ACF will be soliciting host bids for ACF Regionals over the summer and fall. For any questions, please contact [the ACF Mirror Coordinator](mailto:hosting@acf-quizbowl.com).
 
+## Past tournaments
+For a sample of questions from previous ACF Regionals, please visit the [Collegiate Quizbowl Packet Archive](http://hsquizbowl.org/db/questionsets/search/?name=ACF+Regionals&col=1&season=&archived=y).
+
+
+

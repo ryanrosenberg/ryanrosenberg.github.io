@@ -22,5 +22,5 @@ If you have any questions about the application process for Fall editors or anyt
 ACF will be soliciting host bids for ACF Fall over the summer. For any questions, please contact [the ACF Mirror Coordinator](mailto:hosting@acf-quizbowl.com).
 
 ## Past tournaments
-For a sample of questions from previous ACF Fall tournaments, please visit the [Collegiate Quizbowl Packet Archive](collegiate.quizbowlpackets.com).
+For a sample of questions from previous ACF Fall tournaments, please visit the [Collegiate Quizbowl Packet Archive](http://hsquizbowl.org/db/questionsets/search/?name=ACF+Fall&col=1&season=&archived=y).
 
