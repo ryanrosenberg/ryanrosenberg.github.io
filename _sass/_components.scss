@@ -133,6 +133,8 @@ code {
     tr th {
       border-top: 2px solid $color-body-text;
       border-bottom: 2px solid $color-body-text;
+      position: sticky; 
+      top: 0;
     }
   }
 
