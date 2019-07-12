@@ -1,0 +1,34 @@
+---
+layout: post
+title: Visualizations
+permalink: "/stats/visualizations.html"
+---
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Vega-Lite Bar Chart</title>
+    <meta charset="utf-8" />
+
+    <script src="https://cdn.jsdelivr.net/npm/vega@5.4.0/build/vega.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-lite@3.3.0/build/vega-lite.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-embed@4.2.0/build/vega-embed.js"></script>
+
+    <style media="screen">
+      /* Add space between Vega-Embed links  */
+      .vega-actions a {
+        margin-right: 5px;
+      }
+    </style>
+  </head>
+
+<body><center><div id="vl0c498783" class="vldiv"></div></center>
+    <script>
+    var spec_vl0c498783 = JSON.parse('{"description":"","data":{"values":[{"tournament":"ACF Nationals 2019","team":"Amherst","PPB":"13.49","PPG":"232.14"},{"tournament":"ACF Nationals 2019","team":"Auburn","PPB":" 6.81","PPG":" 79.29"},{"tournament":"ACF Nationals 2019","team":"Berkeley A","PPB":"16.63","PPG":"278.33"},{"tournament":"ACF Nationals 2019","team":"Berkeley B","PPB":"13.79","PPG":"214.33"},{"tournament":"ACF Nationals 2019","team":"Caltech A","PPB":" 5.31","PPG":" 54.62"},{"tournament":"ACF Nationals 2019","team":"Carnegie Mellon","PPB":"11.35","PPG":"146.07"},{"tournament":"ACF Nationals 2019","team":"Central Florida","PPB":"10.67","PPG":"126.79"},{"tournament":"ACF Nationals 2019","team":"Chicago A","PPB":"18.41","PPG":"321.67"},{"tournament":"ACF Nationals 2019","team":"Chicago B","PPB":"13.64","PPG":"213.57"},{"tournament":"ACF Nationals 2019","team":"Chicago C","PPB":"13.83","PPG":"183.21"},{"tournament":"ACF Nationals 2019","team":"Columbia A","PPB":"17.63","PPG":"300.59"},{"tournament":"ACF Nationals 2019","team":"Delaware","PPB":"13.02","PPG":"183.21"},{"tournament":"ACF Nationals 2019","team":"Florida A","PPB":"15.11","PPG":"236.43"},{"tournament":"ACF Nationals 2019","team":"Florida B","PPB":" 9.76","PPG":"108.21"},{"tournament":"ACF Nationals 2019","team":"Gettysburg","PPB":"10.46","PPG":"120.36"},{"tournament":"ACF Nationals 2019","team":"Harvard A","PPB":"12.88","PPG":"197.14"},{"tournament":"ACF Nationals 2019","team":"Harvard B","PPB":"11.71","PPG":"156.00"},{"tournament":"ACF Nationals 2019","team":"Illinois A","PPB":"13.75","PPG":"203.57"},{"tournament":"ACF Nationals 2019","team":"Illinois B","PPB":"11.13","PPG":"147.50"},{"tournament":"ACF Nationals 2019","team":"Iowa","PPB":" 7.69","PPG":" 88.93"},{"tournament":"ACF Nationals 2019","team":"Johns Hopkins","PPB":"12.89","PPG":"207.33"},{"tournament":"ACF Nationals 2019","team":"Maryland A","PPB":"17.30","PPG":"276.79"},{"tournament":"ACF Nationals 2019","team":"Maryland B","PPB":"11.84","PPG":"181.43"},{"tournament":"ACF Nationals 2019","team":"McGill","PPB":"15.79","PPG":"249.29"},{"tournament":"ACF Nationals 2019","team":"Michigan A","PPB":"10.74","PPG":"133.21"},{"tournament":"ACF Nationals 2019","team":"Michigan State","PPB":"15.00","PPG":"253.67"},{"tournament":"ACF Nationals 2019","team":"Minnesota A","PPB":"18.13","PPG":"300.36"},{"tournament":"ACF Nationals 2019","team":"Minnesota B","PPB":"10.27","PPG":"139.67"},{"tournament":"ACF Nationals 2019","team":"MIT A","PPB":"11.98","PPG":"161.07"},{"tournament":"ACF Nationals 2019","team":"New College of Florida","PPB":"10.38","PPG":"109.29"},{"tournament":"ACF Nationals 2019","team":"North Carolina","PPB":"13.00","PPG":"204.64"},{"tournament":"ACF Nationals 2019","team":"NYU","PPB":"10.19","PPG":"150.36"},{"tournament":"ACF Nationals 2019","team":"Ohio State","PPB":"16.40","PPG":"271.43"},{"tournament":"ACF Nationals 2019","team":"Oklahoma","PPB":"10.11","PPG":"119.29"},{"tournament":"ACF Nationals 2019","team":"Oxford A","PPB":"12.81","PPG":"212.14"},{"tournament":"ACF Nationals 2019","team":"Penn A","PPB":"15.44","PPG":"226.88"},{"tournament":"ACF Nationals 2019","team":"Penn State","PPB":"12.14","PPG":"124.29"},{"tournament":"ACF Nationals 2019","team":"Rutgers","PPB":"11.62","PPG":"151.79"},{"tournament":"ACF Nationals 2019","team":"Stanford A","PPB":"14.79","PPG":"211.56"},{"tournament":"ACF Nationals 2019","team":"Stanford B","PPB":" 9.32","PPG":" 88.57"},{"tournament":"ACF Nationals 2019","team":"Texas","PPB":"13.42","PPG":"185.36"},{"tournament":"ACF Nationals 2019","team":"Toronto A","PPB":"14.21","PPG":"206.79"},{"tournament":"ACF Nationals 2019","team":"UCLA","PPB":"12.86","PPG":"178.93"},{"tournament":"ACF Nationals 2019","team":"Virginia A","PPB":"14.44","PPG":"243.00"},{"tournament":"ACF Nationals 2019","team":"Wright State","PPB":" 9.86","PPG":"105.77"},{"tournament":"ACF Nationals 2019","team":"WUSTL","PPB":"12.34","PPG":"215.00"},{"tournament":"ACF Nationals 2019","team":"Yale A","PPB":"15.68","PPG":"228.00"},{"tournament":"ACF Nationals 2019","team":"Yale B","PPB":"11.42","PPG":"153.21"}]},"mark":"point","encoding":{"x":{"field":"PPG","type":"quantitative"},"y":{"field":"PPB","type":"quantitative"},"detail":{"field":"team","type":"nominal"}},"transform":[],"config":{"view":{"width":400,"height":400,"clip":false}}}');
+
+    var embedSpec_vl0c498783 = JSON.parse('{"mode":["vega-lite"],"renderer":["svg"],"actions":{"export":[false],"source":[false],"editor":[false]}}');
+
+    vegaEmbed("#vl0c498783", spec_vl0c498783, embedSpec_vl0c498783).then(function(result) {
+        vegaTooltip.vegaLite(result.view, spec_vl0c498783);
+    }).catch(console.error);
+    </script></body>
+</html>
