@@ -19,10 +19,11 @@ code {
 .prose {
 
   a {
-    text-decoration: underline dotted;
+    color: black;
+    text-decoration: underline;
 
     &:hover {
-      text-decoration: underline;
+      text-decoration: none;
     }
   }
 
@@ -133,8 +134,6 @@ code {
     tr th {
       border-top: 2px solid $color-body-text;
       border-bottom: 2px solid $color-body-text;
-      position: sticky; 
-      top: 0;
     }
   }
 

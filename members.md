@@ -91,7 +91,7 @@ Full members are ACF's editors, officers, and tournament directors. They vote in
 </tr>
 <tr>
 <td style="background-color:#f2f2f2;padding:10px;margin:10px;vertical-align:middle;text-align:left;">Auroni Gupta</td>
-<td style="background-color:#f2f2f2;padding:10px;margin:10px;vertical-align:middle;text-align:left;">Ph.D Student, University of Illinois Urbana-Champaign <br/> MPH, University of Michigan School of Public Health<br/>Alumnus, University of California, San Diego</td>
+<td style="background-color:#f2f2f2;padding:10px;margin:10px;vertical-align:middle;text-align:left;">Ph.D Student, University of Illinois Urbana-Champaign<br/>MPH, University of Michigan School of Public Health<br/>Alumnus, University of California, San Diego</td>
 <td style="background-color:#f2f2f2;padding:10px;margin:10px;vertical-align:middle;text-align:left;">ACF Nationals 2019 Head Editor<br/>ACF Regionals 2018 Head Editor<br/>ACF Nationals 2014 Editor<br/>ACF Regionals 2012 Editor<br/>ACF Fall 2009 Editor</td>
 </tr>
 <tr>
@@ -153,6 +153,19 @@ Full members are ACF's editors, officers, and tournament directors. They vote in
 <td style="background-color:#f2f2f2;padding:10px;margin:10px;vertical-align:middle;text-align:left;">Bernadette Spencer</td>
 <td style="background-color:#f2f2f2;padding:10px;margin:10px;vertical-align:middle;text-align:left;">Minnesota</td>
 <td style="background-color:#f2f2f2;padding:10px;margin:10px;vertical-align:middle;text-align:left;">ACF Nationals 2019 Travel Logistics<br/>ACF Nationals 2018 Travel Logistics</td>
+</tr>
+<tr>
+<td style="padding:10px;margin:10px;vertical-align:middle;text-align:left;">Jerry Vinokurov</td>
+<td style="padding:10px;margin:10px;vertical-align:middle;text-align:left;">Alumnus, University of California - Berkeley<br/>
+Ph.D, Brown University</td>
+<td style="padding:10px;margin:10px;vertical-align:middle;text-align:left;">ACF Nationals Tournament Director, 2015-2017<br/>
+Treasurer 2010-2015<br/>
+ACF Nationals 2014 Head Editor<br/>
+ACF Nationals 2012 Editor<br/>
+ACF Nationals 2011 Head Editor / Tournament Director<br/>
+ACF Regionals 2010 Head Editor<br/>
+ACF Winter 2009 Head Editor<br/>
+ACF Regionals 2007 Editor</td>
 </tr>
 <tr>
 <td style="padding:10px;margin:10px;vertical-align:middle;text-align:left;">Cody Voight</td>
@@ -322,7 +335,7 @@ Emeritus members are former ACF full members who have decided to take a step bac
 <tr>
 <td style="padding:10px;margin:10px;vertical-align:middle;text-align:left;">Matt Keller</td>
 <td style="padding:10px;margin:10px;vertical-align:middle;text-align:left;">Alumnus, Vanderbilt University</td>
-<td style="padding:10px;margin:10px;vertical-align:middle;text-align:left;">NA</td>
+<td style="padding:10px;margin:10px;vertical-align:middle;text-align:left;">ACF Regionals 2008 Editor</td>
 </tr>
 <tr>
 <td style="background-color:#f2f2f2;padding:10px;margin:10px;vertical-align:middle;text-align:left;">Eddie Kim</td>
@@ -352,7 +365,7 @@ Emeritus members are former ACF full members who have decided to take a step bac
 <tr>
 <td style="padding:10px;margin:10px;vertical-align:middle;text-align:left;">Wesley Matthews</td>
 <td style="padding:10px;margin:10px;vertical-align:middle;text-align:left;">Alumnus, Indiana University</td>
-<td style="padding:10px;margin:10px;vertical-align:middle;text-align:left;">NA</td>
+<td style="padding:10px;margin:10px;vertical-align:middle;text-align:left;">ACF Nationals 2008 Editor</td>
 </tr>
 <tr>
 <td style="background-color:#f2f2f2;padding:10px;margin:10px;vertical-align:middle;text-align:left;">Trygve Meade</td>
@@ -377,7 +390,7 @@ Emeritus members are former ACF full members who have decided to take a step bac
 <tr>
 <td style="background-color:#f2f2f2;padding:10px;margin:10px;vertical-align:middle;text-align:left;">Matt Reece</td>
 <td style="background-color:#f2f2f2;padding:10px;margin:10px;vertical-align:middle;text-align:left;">Ph.D., Theoretical Physics, Cornell University<br/>Alumnus, University of Chicago</td>
-<td style="background-color:#f2f2f2;padding:10px;margin:10px;vertical-align:middle;text-align:left;">NA</td>
+<td style="background-color:#f2f2f2;padding:10px;margin:10px;vertical-align:middle;text-align:left;">ACF Nationals 2010 Editor</td>
 </tr>
 <tr>
 <td style="padding:10px;margin:10px;vertical-align:middle;text-align:left;">Max Schindler</td>
