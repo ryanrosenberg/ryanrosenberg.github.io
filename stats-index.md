@@ -1,7 +1,8 @@
 ---
 layout: page
-title: ACF Statistics Database
+title: Statistics
 permalink: /stats/
+nav_order: 6.5
 ---
 <head> 
 <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>

@@ -140,6 +140,8 @@ a.active { color: #7EB7FD; }
 
 .inline-block { display: inline-block !important; }
 
+.inline-block-top { display: inline-block !important; vertical-align: top !important; }
+
 .table { display: table !important; }
 
 .left { float: left; }

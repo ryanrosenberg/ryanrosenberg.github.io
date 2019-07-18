@@ -75,6 +75,7 @@ a.active { color: $color-text-accent; }
 
 .block        { display: block !important; }
 .inline-block { display: inline-block !important; }
+.inline-block-top { display: inline-block !important; vertical-align:top !important; }
 
 .table { display: table !important; }
 
