@@ -615,7 +615,6 @@ Welcome to the ACF Statistics Database! This database contains team and individu
 <option value="players/jim-baker">Jim Baker (South Florida)</option>
 <option value="players/jimmy-ready">Jimmy Ready (Chicago B, Chicago C)</option>
 <option value="players/jinah-kim">JinAh Kim (Penn A, Penn B)</option>
-<option value="players/jinah-kim">Jinah Kim (Penn A)</option>
 <option value="players/joanna-barnett">Joanna Barnett (Columbia B)</option>
 <option value="players/joe-athens-state">Joe (Penn A, Missouri, Athens State A)</option>
 <option value="players/joe-missouri">Joe (Penn A, Missouri, Athens State A)</option>
@@ -1024,7 +1023,7 @@ Welcome to the ACF Statistics Database! This database contains team and individu
 <option value="players/vimal-konduri">Vimal Konduri (Harvard A)</option>
 <option value="players/vincent-du">Vincent Du (North Carolina)</option>
 <option value="players/vishal-puppala">Vishal Puppala (WUSTL)</option>
-<option value="players/vishwa-shamugam">Vishwa Shamugam (Maryland B)</option>
+<option value="players/vishwa-shanmugam">Vishwa Shanmugam (Maryland B)</option>
 <option value="players/vivek-bhave">Vivek Bhave (Berkeley B, UCSD A)</option>
 <option value="players/vivek-malhotra">Vivek Malhotra (South Carolina)</option>
 <option value="players/walt-young">Walt Young (Pittsburgh)</option>
