@@ -33,8 +33,8 @@ pre { border-left: 8px solid #ddd; margin: 32px 0; padding-left: 16px; width: 75
 
 code { color: #4279C1; font-size: 16px; padding: 1px 0px; }
 
-.prose a { color: black; text-decoration: underline; }
-.prose a:hover { text-decoration: none; }
+.prose a { color: #4279C1; font-weight: bold; }
+.prose a:hover { text-decoration: underline; }
 .prose p, .prose ol, .prose ul { font-size: 20px; margin-bottom: 1em; width: 100%; }
 @media (min-width: 52em) { .prose p, .prose ol, .prose ul { width: 83.3333333333%; } }
 .prose ul, .prose ol { padding-left: 40px; }
@@ -49,11 +49,20 @@ code { color: #4279C1; font-size: 16px; padding: 1px 0px; }
 .prose hr { color: #023B7F; border-style: solid; border-width: thin; margin-top: 0.5em; margin-bottom: 0.5em; }
 .prose dt { font-weight: bold; font-style: italic; line-height: 1.25; }
 .prose dd { font-style: italic; margin-bottom: 0.5em; }
-.prose table { border-collapse: collapse; display: block; width: 100%; margin-bottom: 1.5em; overflow: auto; word-break: normal; word-break: keep-all; }
-.prose table th { font-weight: bold; text-align: left; }
-.prose table th, .prose table td { padding: 16px 32px 16px 2px; border-top: 1px solid #023B7F; border-bottom: 1px solid #023B7F; }
+.prose table { border-collapse: collapse; display: inline-block; width: 100%; margin-bottom: 1.5em; overflow: auto; word-break: normal; word-break: keep-all; }
+.prose table thead tr th { border-bottom: 5px solid #7EB7FD; color: #fff; background-color: #023B7F; font-size: 20px; padding: 5px 5px 5px 5px; }
+.prose table th, .prose table td { border-top: 1px solid #023B7F; }
+.prose table td { padding: 5px; }
 .prose table tr { background-color: #fff; border-top: 1px solid #023B7F; }
-.prose table tr th { border-top: 2px solid #023B7F; border-bottom: 2px solid #023B7F; }
+.prose table tbody tr:nth-child(even) { background-color: #eee; }
+.prose .game-box { display: grid; grid-template-columns: repeat(7, 1fr); grid-gap: 10px; grid-auto-rows: minmax(100px, auto); }
+.prose .game-winning-team { grid-column-start: 2; grid-column-end: 4; grid-row-start: 1; grid-row-end: 2; }
+.prose .game-winning-team > * { font-weight: bold; font-size: 24px; }
+.prose .game-losing-team { grid-column-start: 4; grid-column-end: 6; grid-row-start: 1; grid-row-end: 2; }
+.prose .game-losing-team > * { font-weight: bold; font-size: 24px; }
+.prose .game-winning-players { grid-column-start: 2; grid-column-end: 4; grid-row-start: 2; grid-row-end: 3; }
+.prose .game-losing-players { grid-column-start: 4; grid-column-end: 6; grid-row-start: 2; grid-row-end: 3; }
+.prose .game-bonuses { grid-column-start: 2; grid-column-end: 6; grid-row-start: 3; grid-row-end: 4; }
 
 /* Type utilities */
 .h0 { font-size: 48px; line-height: 1.0125; margin-top: 0.85em; word-wrap: break-word; }

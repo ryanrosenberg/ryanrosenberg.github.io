@@ -19,11 +19,11 @@ code {
 .prose {
 
   a {
-    color: black;
-    text-decoration: underline;
+    color: $blue;
+    font-weight: bold;
 
     &:hover {
-      text-decoration: none;
+    text-decoration: underline;
     }
   }
 
@@ -106,7 +106,7 @@ code {
   // Markdown tables
   table {
     border-collapse: collapse;
-    display: block;
+    display: inline-block;
     width: 100%;
     margin-bottom: 1.5em;
     overflow: auto;
@@ -114,16 +114,21 @@ code {
     word-break: normal;
     word-break: keep-all;
 
-    th {
-      font-weight: bold;
-      text-align: left;
+    thead tr th {
+      border-bottom: 5px solid $blue-light;
+      color: $white;
+      background-color: $blue-dark;
+      font-size: 20px;
+      padding: 5px 5px 5px 5px;
     }
 
     th,
     td {
-      padding: $spacer-2 $spacer-3 $spacer-2 2px;
       border-top: 1px solid $color-body-text;
-      border-bottom: 1px solid $color-body-text;
+    }
+
+    td {
+      padding: 5px;
     }
 
     tr {
@@ -131,10 +136,64 @@ code {
       border-top: 1px solid $color-body-text;
     }
 
-    tr th {
-      border-top: 2px solid $color-body-text;
-      border-bottom: 2px solid $color-body-text;
+    tbody tr:nth-child(even) {
+      background-color: #eee;
     }
   }
+
+  // Flexboxes
+  .game-box {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      grid-gap: 10px;
+      grid-auto-rows: minmax(100px, auto);
+    }
+
+  .game-winning-team {
+      grid-column-start: 2; 
+      grid-column-end: 4; 
+      grid-row-start: 1; 
+      grid-row-end: 2; 
+    }
+
+   .game-winning-team > * {
+      font-weight: bold;
+      font-size: 24px;
+    }
+
+   .game-losing-team {
+      grid-column-start: 4; 
+      grid-column-end: 6; 
+      grid-row-start: 1; 
+      grid-row-end: 2; 
+    }
+
+   .game-losing-team > * {
+      font-weight: bold;
+      font-size: 24px;
+    }
+
+    .game-winning-players {
+      grid-column-start: 2; 
+      grid-column-end: 4; 
+      grid-row-start: 2; 
+      grid-row-end: 3; 
+    }
+
+   .game-losing-players {
+      grid-column-start: 4; 
+      grid-column-end: 6; 
+      grid-row-start: 2; 
+      grid-row-end: 3; 
+    }
+
+    .game-bonuses {
+      grid-column-start: 2; 
+      grid-column-end: 6; 
+      grid-row-start: 3; 
+      grid-row-end: 4; 
+    }
+     
+
 
 }

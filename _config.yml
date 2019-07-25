@@ -39,3 +39,4 @@ theme_color: acf
 
 # Build settings
 markdown: kramdown
+incremental: true
