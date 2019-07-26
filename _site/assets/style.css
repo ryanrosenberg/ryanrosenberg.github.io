@@ -63,6 +63,9 @@ code { color: #4279C1; font-size: 16px; padding: 1px 0px; }
 .prose .game-winning-players { grid-column-start: 2; grid-column-end: 4; grid-row-start: 2; grid-row-end: 3; }
 .prose .game-losing-players { grid-column-start: 4; grid-column-end: 6; grid-row-start: 2; grid-row-end: 3; }
 .prose .game-bonuses { grid-column-start: 2; grid-column-end: 6; grid-row-start: 3; grid-row-end: 4; }
+.prose .record-grid { display: grid; grid-template-columns: repeat(4, 4fr); grid-gap: 10px; grid-auto-rows: minmax(100px, auto); }
+.prose .record-table { grid-column-start: 1; grid-column-end: 3; grid-row-start: 1; grid-row-end: 2; }
+.prose .record-graph { grid-column-start: 3; grid-column-end: 5; grid-row-start: 1; grid-row-end: 2; }
 
 /* Type utilities */
 .h0 { font-size: 48px; line-height: 1.0125; margin-top: 0.85em; word-wrap: break-word; }
