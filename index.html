@@ -1,5 +1,8 @@
 ---
-layout: home
+layout: default
 ---
-
-<!-- Set title and description in config.yml -->
+<ul>
+	{% for post in site.posts %}
+	<li><a href="{{  post.url }}" title="{{ post.title }}"><img src="/assets/img/file.ico" title="{{ post.title }}" />{{ post.title }}</a></li>
+	{% endfor %}
+</ul>
