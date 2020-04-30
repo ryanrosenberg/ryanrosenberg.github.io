@@ -1,25 +1,21 @@
-permalink: /:year:month:day/:title
-url: #Your url here
-baseurl: /
+# Setup
+title:               Collegiate Quizbowl Packets
+tagline:             ''
+description:         'Collegiate Quizbowl Packets'
+url:                 http://collegiatequizbowlpackets.com
+baseurl:             ''
+paginate:            5
+permalink:           pretty
 
-# variables
-name: Ryan Rosenberg
-description: site under development
-google_verification: null
+# About/contact
+author:
+  name:              Ryan Rosenberg
+  url:               https://twitter.com/rosenbergry
+  email:             ryanr345@gmail.com
 
+# Gems
+plugins:
+  - jekyll-paginate
 
-# File management
-include: [".htaccess"]
-exclude: ["README.md", "LICENSE"]
-
-# Sass
-sass:
-  style: :compressed
-  sass_dir: _sass
-
-# Markdown
-markdown: kramdown
-kramdown:
-  input: GFM
-  syntax_highlighter_opts:
-    disable : true
+# Custom vars
+google_analytics_id: #UA-XXXX-Y
