@@ -2,8 +2,8 @@
 title:               Collegiate Quizbowl Packets
 tagline:             ''
 description:         'Collegiate Quizbowl Packets'
-url:                 http://collegiatequizbowlpackets.com
-baseurl:             ''
+url:                 http://ryanrosenberg.github.io
+baseurl:             'http://ryanrosenberg.github.io'
 paginate:            5
 permalink:           pretty
 
