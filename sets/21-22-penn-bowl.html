@@ -1,0 +1,1274 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>Penn Bowl | College Quizbowl Stats</title>
+
+<script src="libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="libs/navigation-1.1/tabsets.js"></script>
+<link href="libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="libs/highlightjs-9.12.0/highlight.js"></script>
+<script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script>
+<link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
+<script src="libs/datatables-binding-0.24/datatables.js"></script>
+<link href="libs/dt-core-1.11.3/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="libs/dt-core-1.11.3/css/jquery.dataTables.extra.css" rel="stylesheet" />
+<script src="libs/dt-core-1.11.3/js/jquery.dataTables.min.js"></script>
+<link href="libs/crosstalk-1.1.1/css/crosstalk.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.1.1/js/crosstalk.min.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Alegreya+Sans&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inconsolata&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+<script src="https://twitter.github.io/typeahead.js/releases/latest/typeahead.bundle.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.7/handlebars.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-sidebar/3.3.1/jquery.sticky-sidebar.min.js" integrity="sha512-iVhJqV0j477IrAkkzsn/tVJWXYsEqAj4PSS7AG+z1F7eD6uLKQxYBg09x13viaJ1Z5yYhlpyx0zLAUUErdHM6A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<!-- add after bootstrap.min.css -->
+<link rel="stylesheet" href="https://cdn.rawgit.com/afeld/bootstrap-toc/v0.4.1/dist/bootstrap-toc.min.css">
+<!-- add after bootstrap.min.js -->
+<script src="https://cdn.rawgit.com/afeld/bootstrap-toc/v0.4.1/dist/bootstrap-toc.min.js"></script>
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+      .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+
+
+<link rel="stylesheet" href="../css/style.css" type="text/css" />
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+
+<nav class = 'top-nav'>
+  <ul>
+    <li><p class = "site-title"><a href="/index.html">College Quizbowl Stats</a></p>
+    </li>
+    <li><a class = "navbar-link" href="/seasons/">Seasons</a></li>
+    <li><a class = "navbar-link" href="/sets/">Sets</a></li>
+    <li><a class = "navbar-link" href="/circuits/">Circuits</a></li>
+    <li><a class = "navbar-link" href="/records.html">Records</a></li>
+    <li><a class = "navbar-link" href="/about.html">About</a></li>
+
+<div id="custom-templates">
+  <input class="typeahead" type="text" placeholder="Player/Team Search">
+</div>
+  </ul>
+</nav>
+
+<div id="header">
+
+
+
+
+</div>
+
+
+<div class = 'main-flex'>
+<div class="toc-div col-sm-2">
+<nav class="side-nav" id="toc">
+</nav>
+</div>
+<div class = 'main-content col-sm-10'>
+<p class="page-title">
+21-22 Penn Bowl
+</p>
+<p class="page-subtitle">
+Head Editor: Nitin Rao
+</p>
+<hr>
+<div id="editors" class="section level2">
+<h2>Editors</h2>
+<div id="wmaqwqsfbn" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>html {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+}
+
+#wmaqwqsfbn .gt_table {
+  display: table;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#wmaqwqsfbn .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#wmaqwqsfbn .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 1px;
+  padding-bottom: 1px;
+  padding-left: 6px;
+  padding-right: 6px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#wmaqwqsfbn .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 0;
+  padding-bottom: 3px;
+  padding-left: 6px;
+  padding-right: 6px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#wmaqwqsfbn .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#wmaqwqsfbn .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#wmaqwqsfbn .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 1.25px;
+  padding-bottom: 2.25px;
+  padding-left: 6px;
+  padding-right: 6px;
+  overflow-x: hidden;
+}
+
+#wmaqwqsfbn .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#wmaqwqsfbn .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#wmaqwqsfbn .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#wmaqwqsfbn .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 1.25px;
+  padding-bottom: 1.25px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#wmaqwqsfbn .gt_group_heading {
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-left: 6px;
+  padding-right: 6px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#wmaqwqsfbn .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#wmaqwqsfbn .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#wmaqwqsfbn .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#wmaqwqsfbn .gt_row {
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-left: 6px;
+  padding-right: 6px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#wmaqwqsfbn .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 6px;
+  padding-right: 6px;
+}
+
+#wmaqwqsfbn .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 6px;
+  padding-right: 6px;
+  vertical-align: top;
+}
+
+#wmaqwqsfbn .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#wmaqwqsfbn .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-left: 6px;
+  padding-right: 6px;
+}
+
+#wmaqwqsfbn .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#wmaqwqsfbn .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#wmaqwqsfbn .gt_last_summary_row {
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-left: 6px;
+  padding-right: 6px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#wmaqwqsfbn .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-left: 6px;
+  padding-right: 6px;
+}
+
+#wmaqwqsfbn .gt_first_grand_summary_row {
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-left: 6px;
+  padding-right: 6px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#wmaqwqsfbn .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#wmaqwqsfbn .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#wmaqwqsfbn .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#wmaqwqsfbn .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-left: 1px;
+  padding-right: 1px;
+  padding-left: 6px;
+  padding-right: 6px;
+}
+
+#wmaqwqsfbn .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#wmaqwqsfbn .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 1px;
+  padding-bottom: 1px;
+  padding-left: 6px;
+  padding-right: 6px;
+}
+
+#wmaqwqsfbn .gt_left {
+  text-align: left;
+}
+
+#wmaqwqsfbn .gt_center {
+  text-align: center;
+}
+
+#wmaqwqsfbn .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#wmaqwqsfbn .gt_font_normal {
+  font-weight: normal;
+}
+
+#wmaqwqsfbn .gt_font_bold {
+  font-weight: bold;
+}
+
+#wmaqwqsfbn .gt_font_italic {
+  font-style: italic;
+}
+
+#wmaqwqsfbn .gt_super {
+  font-size: 65%;
+}
+
+#wmaqwqsfbn .gt_two_val_uncert {
+  display: inline-block;
+  line-height: 1em;
+  text-align: right;
+  font-size: 60%;
+  vertical-align: -0.25em;
+  margin-left: 0.1em;
+}
+
+#wmaqwqsfbn .gt_footnote_marks {
+  font-style: italic;
+  font-weight: normal;
+  font-size: 75%;
+  vertical-align: 0.4em;
+}
+
+#wmaqwqsfbn .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#wmaqwqsfbn .gt_slash_mark {
+  font-size: 0.7em;
+  line-height: 0.7em;
+  vertical-align: 0.15em;
+}
+
+#wmaqwqsfbn .gt_fraction_numerator {
+  font-size: 0.6em;
+  line-height: 0.6em;
+  vertical-align: 0.45em;
+}
+
+#wmaqwqsfbn .gt_fraction_denominator {
+  font-size: 0.6em;
+  line-height: 0.6em;
+  vertical-align: -0.05em;
+}
+</style>
+<table class="gt_table">
+  
+  <thead class="gt_col_headings">
+    <tr>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;">Subcategory</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1">Editors</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr class="gt_group_heading_row">
+      <td colspan="2" class="gt_group_heading">Literature</td>
+    </tr>
+    <tr class="gt_row_group_first"><td class="gt_row gt_left" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;">American Literature</td>
+<td class="gt_row gt_left"><a href = "../players/taylor-harvey.html">Taylor Harvey</a></td></tr>
+    <tr><td class="gt_row gt_left gt_striped" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;">British Literature, European Literature</td>
+<td class="gt_row gt_left gt_striped"><a href = "../players/margaret-tebbe.html">Margaret Tebbe</a></td></tr>
+    <tr><td class="gt_row gt_left" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;">World Literature</td>
+<td class="gt_row gt_left"><a href = "../players/jordan-brownstein.html">Jordan Brownstein</a></td></tr>
+    <tr class="gt_group_heading_row">
+      <td colspan="2" class="gt_group_heading">History</td>
+    </tr>
+    <tr class="gt_row_group_first"><td class="gt_row gt_left gt_striped" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;">American History, World History</td>
+<td class="gt_row gt_left gt_striped"><a href = "../players/emmett-laurie.html">Emmett Laurie</a></td></tr>
+    <tr><td class="gt_row gt_left" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;">European History, Other History</td>
+<td class="gt_row gt_left"><a href = "../players/tracy-mirkin.html">Tracy Mirkin</a></td></tr>
+    <tr class="gt_group_heading_row">
+      <td colspan="2" class="gt_group_heading">Science</td>
+    </tr>
+    <tr class="gt_row_group_first"><td class="gt_row gt_left gt_striped" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;">Biology, Other Science</td>
+<td class="gt_row gt_left gt_striped"><a href = "../players/shan-kothari.html">Shan Kothari</a></td></tr>
+    <tr><td class="gt_row gt_left" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;">Chemistry</td>
+<td class="gt_row gt_left"><a href = "../players/paul-lee.html">Paul Lee</a></td></tr>
+    <tr><td class="gt_row gt_left gt_striped" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;">Physics</td>
+<td class="gt_row gt_left gt_striped"><a href = "../players/jonathen-settle.html">Jonathen Settle</a></td></tr>
+    <tr class="gt_group_heading_row">
+      <td colspan="2" class="gt_group_heading">Arts</td>
+    </tr>
+    <tr class="gt_row_group_first"><td class="gt_row gt_left" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;">Auditory Arts</td>
+<td class="gt_row gt_left"><a href = "../players/michael-yue.html">Michael Yue</a></td></tr>
+    <tr><td class="gt_row gt_left gt_striped" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;">Other Arts</td>
+<td class="gt_row gt_left gt_striped"><a href = "../players/aseem-keyal.html">Aseem Keyal</a>, <a href = "../players/michael-yue.html">Michael Yue</a>, <a href = "../players/taylor-harvey.html">Taylor Harvey</a></td></tr>
+    <tr><td class="gt_row gt_left" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;">Visual Arts</td>
+<td class="gt_row gt_left"><a href = "../players/aseem-keyal.html">Aseem Keyal</a></td></tr>
+    <tr class="gt_group_heading_row">
+      <td colspan="2" class="gt_group_heading">Beliefs</td>
+    </tr>
+    <tr class="gt_row_group_first"><td class="gt_row gt_left gt_striped" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;">Mythology, Religion</td>
+<td class="gt_row gt_left gt_striped"><a href = "../players/noureddine-hijazi.html">NourEddine Hijazi</a></td></tr>
+    <tr class="gt_group_heading_row">
+      <td colspan="2" class="gt_group_heading">Thought</td>
+    </tr>
+    <tr class="gt_row_group_first"><td class="gt_row gt_left" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;">Philosophy</td>
+<td class="gt_row gt_left"><a href = "../players/jordan-brownstein.html">Jordan Brownstein</a></td></tr>
+    <tr><td class="gt_row gt_left gt_striped" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;">Social Science</td>
+<td class="gt_row gt_left gt_striped"><a href = "../players/harris-bunker.html">Harris Bunker</a></td></tr>
+    <tr class="gt_group_heading_row">
+      <td colspan="2" class="gt_group_heading">Other</td>
+    </tr>
+    <tr class="gt_row_group_first"><td class="gt_row gt_left" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;">Other</td>
+<td class="gt_row gt_left"><a href = "../players/nitin-rao.html">Nitin Rao</a></td></tr>
+  </tbody>
+  
+  
+</table>
+</div>
+<hr>
+</div>
+<div id="tournaments" class="section level2">
+<h2>Tournaments</h2>
+<div id="cpltyhbcne" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>html {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+}
+
+#cpltyhbcne .gt_table {
+  display: table;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#cpltyhbcne .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#cpltyhbcne .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 1px;
+  padding-bottom: 1px;
+  padding-left: 6px;
+  padding-right: 6px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#cpltyhbcne .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 0;
+  padding-bottom: 3px;
+  padding-left: 6px;
+  padding-right: 6px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#cpltyhbcne .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#cpltyhbcne .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#cpltyhbcne .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 1.25px;
+  padding-bottom: 2.25px;
+  padding-left: 6px;
+  padding-right: 6px;
+  overflow-x: hidden;
+}
+
+#cpltyhbcne .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#cpltyhbcne .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#cpltyhbcne .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#cpltyhbcne .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 1.25px;
+  padding-bottom: 1.25px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#cpltyhbcne .gt_group_heading {
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-left: 6px;
+  padding-right: 6px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#cpltyhbcne .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#cpltyhbcne .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#cpltyhbcne .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#cpltyhbcne .gt_row {
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-left: 6px;
+  padding-right: 6px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#cpltyhbcne .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 6px;
+  padding-right: 6px;
+}
+
+#cpltyhbcne .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 6px;
+  padding-right: 6px;
+  vertical-align: top;
+}
+
+#cpltyhbcne .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#cpltyhbcne .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-left: 6px;
+  padding-right: 6px;
+}
+
+#cpltyhbcne .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#cpltyhbcne .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#cpltyhbcne .gt_last_summary_row {
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-left: 6px;
+  padding-right: 6px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#cpltyhbcne .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-left: 6px;
+  padding-right: 6px;
+}
+
+#cpltyhbcne .gt_first_grand_summary_row {
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-left: 6px;
+  padding-right: 6px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#cpltyhbcne .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#cpltyhbcne .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#cpltyhbcne .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#cpltyhbcne .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-left: 1px;
+  padding-right: 1px;
+  padding-left: 6px;
+  padding-right: 6px;
+}
+
+#cpltyhbcne .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#cpltyhbcne .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 1px;
+  padding-bottom: 1px;
+  padding-left: 6px;
+  padding-right: 6px;
+}
+
+#cpltyhbcne .gt_left {
+  text-align: left;
+}
+
+#cpltyhbcne .gt_center {
+  text-align: center;
+}
+
+#cpltyhbcne .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#cpltyhbcne .gt_font_normal {
+  font-weight: normal;
+}
+
+#cpltyhbcne .gt_font_bold {
+  font-weight: bold;
+}
+
+#cpltyhbcne .gt_font_italic {
+  font-style: italic;
+}
+
+#cpltyhbcne .gt_super {
+  font-size: 65%;
+}
+
+#cpltyhbcne .gt_two_val_uncert {
+  display: inline-block;
+  line-height: 1em;
+  text-align: right;
+  font-size: 60%;
+  vertical-align: -0.25em;
+  margin-left: 0.1em;
+}
+
+#cpltyhbcne .gt_footnote_marks {
+  font-style: italic;
+  font-weight: normal;
+  font-size: 75%;
+  vertical-align: 0.4em;
+}
+
+#cpltyhbcne .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#cpltyhbcne .gt_slash_mark {
+  font-size: 0.7em;
+  line-height: 0.7em;
+  vertical-align: 0.15em;
+}
+
+#cpltyhbcne .gt_fraction_numerator {
+  font-size: 0.6em;
+  line-height: 0.6em;
+  vertical-align: 0.45em;
+}
+
+#cpltyhbcne .gt_fraction_denominator {
+  font-size: 0.6em;
+  line-height: 0.6em;
+  vertical-align: -0.05em;
+}
+</style>
+<table class="gt_table">
+  
+  <thead class="gt_col_headings">
+    <tr>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;">Site</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">Teams</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;">Schools</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">15%</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;">Conv%</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">PPB</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr class="gt_group_heading_row">
+      <td colspan="6" class="gt_group_heading">2021-10-23</td>
+    </tr>
+    <tr class="gt_row_group_first"><td class="gt_row gt_left" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;"><a href = "../tournaments/21-22-penn-bowl-cambridge">Cambridge</a></td>
+<td class="gt_row gt_right" style="font-family: var(--table-font); font-size: 110%;">9</td>
+<td class="gt_row gt_right" style="font-family: var(--table-font); font-size: 110%; border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;">6</td>
+<td class="gt_row gt_right" style="font-family: var(--table-font); font-size: 110%;">0.078</td>
+<td class="gt_row gt_right" style="font-family: var(--table-font); font-size: 110%; border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;">0.907</td>
+<td class="gt_row gt_right" style="font-family: var(--table-font); font-size: 110%;">15.64</td></tr>
+    <tr><td class="gt_row gt_left gt_striped" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;"><a href = "../tournaments/21-22-penn-bowl-florida">Florida</a></td>
+<td class="gt_row gt_right gt_striped" style="font-family: var(--table-font); font-size: 110%;">8</td>
+<td class="gt_row gt_right gt_striped" style="font-family: var(--table-font); font-size: 110%; border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;">4</td>
+<td class="gt_row gt_right gt_striped" style="font-family: var(--table-font); font-size: 110%;">0.065</td>
+<td class="gt_row gt_right gt_striped" style="font-family: var(--table-font); font-size: 110%; border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;">0.915</td>
+<td class="gt_row gt_right gt_striped" style="font-family: var(--table-font); font-size: 110%;">13.84</td></tr>
+    <tr><td class="gt_row gt_left" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;"><a href = "../tournaments/21-22-penn-bowl-penn">Penn</a></td>
+<td class="gt_row gt_right" style="font-family: var(--table-font); font-size: 110%;">15</td>
+<td class="gt_row gt_right" style="font-family: var(--table-font); font-size: 110%; border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;">9</td>
+<td class="gt_row gt_right" style="font-family: var(--table-font); font-size: 110%;">0.090</td>
+<td class="gt_row gt_right" style="font-family: var(--table-font); font-size: 110%; border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;">0.937</td>
+<td class="gt_row gt_right" style="font-family: var(--table-font); font-size: 110%;">16.09</td></tr>
+    <tr><td class="gt_row gt_left gt_striped" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;"><a href = "../tournaments/21-22-penn-bowl-pitt">Pitt</a></td>
+<td class="gt_row gt_right gt_striped" style="font-family: var(--table-font); font-size: 110%;">11</td>
+<td class="gt_row gt_right gt_striped" style="font-family: var(--table-font); font-size: 110%; border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;">10</td>
+<td class="gt_row gt_right gt_striped" style="font-family: var(--table-font); font-size: 110%;">0.088</td>
+<td class="gt_row gt_right gt_striped" style="font-family: var(--table-font); font-size: 110%; border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;">0.943</td>
+<td class="gt_row gt_right gt_striped" style="font-family: var(--table-font); font-size: 110%;">16.11</td></tr>
+    <tr class="gt_group_heading_row">
+      <td colspan="6" class="gt_group_heading">2021-10-30</td>
+    </tr>
+    <tr class="gt_row_group_first"><td class="gt_row gt_left" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;"><a href = "../tournaments/21-22-penn-bowl-chicago">Chicago</a></td>
+<td class="gt_row gt_right" style="font-family: var(--table-font); font-size: 110%;">10</td>
+<td class="gt_row gt_right" style="font-family: var(--table-font); font-size: 110%; border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;">6</td>
+<td class="gt_row gt_right" style="font-family: var(--table-font); font-size: 110%;">0.086</td>
+<td class="gt_row gt_right" style="font-family: var(--table-font); font-size: 110%; border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;">0.925</td>
+<td class="gt_row gt_right" style="font-family: var(--table-font); font-size: 110%;">16.45</td></tr>
+    <tr><td class="gt_row gt_left gt_striped" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;"><a href = "../tournaments/21-22-penn-bowl-texas">Texas</a></td>
+<td class="gt_row gt_right gt_striped" style="font-family: var(--table-font); font-size: 110%;">4</td>
+<td class="gt_row gt_right gt_striped" style="font-family: var(--table-font); font-size: 110%; border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;">2</td>
+<td class="gt_row gt_right gt_striped" style="font-family: var(--table-font); font-size: 110%;">0.104</td>
+<td class="gt_row gt_right gt_striped" style="font-family: var(--table-font); font-size: 110%; border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;">0.939</td>
+<td class="gt_row gt_right gt_striped" style="font-family: var(--table-font); font-size: 110%;">17.28</td></tr>
+    <tr><td class="gt_row gt_left" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;"><a href = "../tournaments/21-22-penn-bowl-virginia-tech">Virginia Tech</a></td>
+<td class="gt_row gt_right" style="font-family: var(--table-font); font-size: 110%;">9</td>
+<td class="gt_row gt_right" style="font-family: var(--table-font); font-size: 110%; border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;">5</td>
+<td class="gt_row gt_right" style="font-family: var(--table-font); font-size: 110%;">0.058</td>
+<td class="gt_row gt_right" style="font-family: var(--table-font); font-size: 110%; border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;">0.850</td>
+<td class="gt_row gt_right" style="font-family: var(--table-font); font-size: 110%;">14.08</td></tr>
+  </tbody>
+  
+  
+</table>
+</div>
+<hr>
+</div>
+<div id="teams" class="section level2">
+<h2>Teams</h2>
+<div id="htmlwidget-5bbb732b9f8b147d2c4a" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-5bbb732b9f8b147d2c4a">{"x":{"filter":"none","vertical":false,"data":[["<a href = \"../tournaments/21-22-penn-bowl-penn#virginia-a\">Virginia A<\/a>","<a href = \"../tournaments/21-22-penn-bowl-cambridge#oxford-a\">Oxford A<\/a>","<a href = \"../tournaments/21-22-penn-bowl-penn#maryland-a\">Maryland A<\/a>","<a href = \"../tournaments/21-22-penn-bowl-texas#texas-a\">Texas A<\/a>","<a href = \"../tournaments/21-22-penn-bowl-pitt#stanford-a\">Stanford A<\/a>","<a href = \"../tournaments/21-22-penn-bowl-cambridge#cambridge-a\">Cambridge A<\/a>","<a href = \"../tournaments/21-22-penn-bowl-pitt#ohio-state-a\">Ohio State A<\/a>","<a href = \"../tournaments/21-22-penn-bowl-virginia-tech#north-carolina-a\">North Carolina A<\/a>","<a href = \"../tournaments/21-22-penn-bowl-chicago#chicago-a\">Chicago A<\/a>","<a href = \"../tournaments/21-22-penn-bowl-texas#texas-b\">Texas B<\/a>","<a href = \"../tournaments/21-22-penn-bowl-chicago#northwestern-a\">Northwestern A<\/a>","<a href = \"../tournaments/21-22-penn-bowl-chicago#wustl-a\">WUSTL A<\/a>","<a href = \"../tournaments/21-22-penn-bowl-chicago#chicago-b\">Chicago B<\/a>","<a href = \"../tournaments/21-22-penn-bowl-penn#columbia-a\">Columbia A<\/a>","<a href = \"../tournaments/21-22-penn-bowl-penn#johns-hopkins-a\">Johns Hopkins A<\/a>","<a href = \"../tournaments/21-22-penn-bowl-chicago#illinois-a\">Illinois A<\/a>","<a href = \"../tournaments/21-22-penn-bowl-florida#florida-a\">Florida A<\/a>","<a href = \"../tournaments/21-22-penn-bowl-cambridge#oxford-b\">Oxford B<\/a>","<a href = \"../tournaments/21-22-penn-bowl-penn#rutgers-a\">Rutgers A<\/a>","<a href = \"../tournaments/21-22-penn-bowl-penn#cornell-a\">Cornell A<\/a>","<a href = \"../tournaments/21-22-penn-bowl-florida#georgia-tech-a\">Georgia Tech A<\/a>","<a href = \"../tournaments/21-22-penn-bowl-pitt#penn-state-a\">Penn State A<\/a>","<a href = \"../tournaments/21-22-penn-bowl-pitt#cornell-a\">Cornell A<\/a>","<a href = \"../tournaments/21-22-penn-bowl-pitt#ohio-state-b\">Ohio State B<\/a>","<a href = \"../tournaments/21-22-penn-bowl-chicago#chicago-c\">Chicago C<\/a>","<a href = \"../tournaments/21-22-penn-bowl-virginia-tech#duke-a\">Duke A<\/a>","<a href = \"../tournaments/21-22-penn-bowl-florida#georgia-tech-b\">Georgia Tech B<\/a>","<a href = \"../tournaments/21-22-penn-bowl-pitt#uc-berkeley-a\">UC Berkeley A<\/a>","<a href = \"../tournaments/21-22-penn-bowl-cambridge#warwick-a\">Warwick A<\/a>","<a href = \"../tournaments/21-22-penn-bowl-virginia-tech#north-carolina-b\">North Carolina B<\/a>","<a href = \"../tournaments/21-22-penn-bowl-texas#texas-c\">Texas C<\/a>","<a href = \"../tournaments/21-22-penn-bowl-pitt#kenyon-a\">Kenyon A<\/a>","<a href = \"../tournaments/21-22-penn-bowl-chicago#iowa-a\">Iowa A<\/a>","<a href = \"../tournaments/21-22-penn-bowl-pitt#case-western-a\">Case Western A<\/a>","<a href = \"../tournaments/21-22-penn-bowl-pitt#kentucky-a\">Kentucky A<\/a>","<a href = \"../tournaments/21-22-penn-bowl-penn#columbia-b\">Columbia B<\/a>","<a href = \"../tournaments/21-22-penn-bowl-cambridge#oxford-c\">Oxford C<\/a>","<a href = \"../tournaments/21-22-penn-bowl-penn#princeton-a\">Princeton A<\/a>","<a href = \"../tournaments/21-22-penn-bowl-virginia-tech#north-carolina-c\">North Carolina C<\/a>","<a href = \"../tournaments/21-22-penn-bowl-penn#maryland-b\">Maryland B<\/a>","<a href = \"../tournaments/21-22-penn-bowl-florida#florida-b\">Florida B<\/a>","<a href = \"../tournaments/21-22-penn-bowl-florida#florida-c\">Florida C<\/a>","<a href = \"../tournaments/21-22-penn-bowl-penn#johns-hopkins-b\">Johns Hopkins B<\/a>","<a href = \"../tournaments/21-22-penn-bowl-penn#carnegie-mellon-a\">Carnegie Mellon A<\/a>","<a href = \"../tournaments/21-22-penn-bowl-penn#rutgers-b\">Rutgers B<\/a>","<a href = \"../tournaments/21-22-penn-bowl-penn#princeton-b\">Princeton B<\/a>","<a href = \"../tournaments/21-22-penn-bowl-cambridge#bristol-a\">Bristol A<\/a>","<a href = \"../tournaments/21-22-penn-bowl-cambridge#durham-a\">Durham A<\/a>","<a href = \"../tournaments/21-22-penn-bowl-florida#north-florida-a\">North Florida A<\/a>","<a href = \"../tournaments/21-22-penn-bowl-pitt#washington-a\">Washington A<\/a>","<a href = \"../tournaments/21-22-penn-bowl-chicago#wisconsin-a\">Wisconsin A<\/a>","<a href = \"../tournaments/21-22-penn-bowl-chicago#chicago-d\">Chicago D<\/a>","<a href = \"../tournaments/21-22-penn-bowl-penn#swarthmore-a\">Swarthmore A<\/a>","<a href = \"../tournaments/21-22-penn-bowl-virginia-tech#liberty-a\">Liberty A<\/a>","<a href = \"../tournaments/21-22-penn-bowl-pitt#michigan-state-a\">Michigan State A<\/a>","<a href = \"../tournaments/21-22-penn-bowl-virginia-tech#virginia-b\">Virginia B<\/a>","<a href = \"../tournaments/21-22-penn-bowl-florida#ncf-b\">NCF B<\/a>","<a href = \"../tournaments/21-22-penn-bowl-cambridge#imperial-a\">Imperial A<\/a>","<a href = \"../tournaments/21-22-penn-bowl-virginia-tech#etsu-a\">ETSU A<\/a>","<a href = \"../tournaments/21-22-penn-bowl-florida#ncf-a\">NCF A<\/a>","<a href = \"../tournaments/21-22-penn-bowl-texas#ut-dallas-a\">UT Dallas A<\/a>","<a href = \"../tournaments/21-22-penn-bowl-penn#swarthmore-b\">Swarthmore B<\/a>","<a href = \"../tournaments/21-22-penn-bowl-virginia-tech#liberty-b\">Liberty B<\/a>","<a href = \"../tournaments/21-22-penn-bowl-chicago#wisconsin-b\">Wisconsin B<\/a>","<a href = \"../tournaments/21-22-penn-bowl-cambridge#oxford-d\">Oxford D<\/a>","<a href = \"../tournaments/21-22-penn-bowl-virginia-tech#liberty-c\">Liberty C<\/a>"],["<a href = \"../tournaments/21-22-penn-bowl-penn\">Penn<\/a>","<a href = \"../tournaments/21-22-penn-bowl-cambridge\">Cambridge<\/a>","<a href = \"../tournaments/21-22-penn-bowl-penn\">Penn<\/a>","<a href = \"../tournaments/21-22-penn-bowl-texas\">Texas<\/a>","<a href = \"../tournaments/21-22-penn-bowl-pitt\">Pitt<\/a>","<a href = \"../tournaments/21-22-penn-bowl-cambridge\">Cambridge<\/a>","<a href = \"../tournaments/21-22-penn-bowl-pitt\">Pitt<\/a>","<a href = \"../tournaments/21-22-penn-bowl-virginia-tech\">Virginia Tech<\/a>","<a href = \"../tournaments/21-22-penn-bowl-chicago\">Chicago<\/a>","<a href = \"../tournaments/21-22-penn-bowl-texas\">Texas<\/a>","<a href = \"../tournaments/21-22-penn-bowl-chicago\">Chicago<\/a>","<a href = \"../tournaments/21-22-penn-bowl-chicago\">Chicago<\/a>","<a href = \"../tournaments/21-22-penn-bowl-chicago\">Chicago<\/a>","<a href = \"../tournaments/21-22-penn-bowl-penn\">Penn<\/a>","<a href = \"../tournaments/21-22-penn-bowl-penn\">Penn<\/a>","<a href = \"../tournaments/21-22-penn-bowl-chicago\">Chicago<\/a>","<a href = \"../tournaments/21-22-penn-bowl-florida\">Florida<\/a>","<a href = \"../tournaments/21-22-penn-bowl-cambridge\">Cambridge<\/a>","<a href = \"../tournaments/21-22-penn-bowl-penn\">Penn<\/a>","<a href = \"../tournaments/21-22-penn-bowl-penn\">Penn<\/a>","<a href = \"../tournaments/21-22-penn-bowl-florida\">Florida<\/a>","<a href = \"../tournaments/21-22-penn-bowl-pitt\">Pitt<\/a>","<a href = \"../tournaments/21-22-penn-bowl-pitt\">Pitt<\/a>","<a href = \"../tournaments/21-22-penn-bowl-pitt\">Pitt<\/a>","<a href = \"../tournaments/21-22-penn-bowl-chicago\">Chicago<\/a>","<a href = \"../tournaments/21-22-penn-bowl-virginia-tech\">Virginia Tech<\/a>","<a href = \"../tournaments/21-22-penn-bowl-florida\">Florida<\/a>","<a href = \"../tournaments/21-22-penn-bowl-pitt\">Pitt<\/a>","<a href = \"../tournaments/21-22-penn-bowl-cambridge\">Cambridge<\/a>","<a href = \"../tournaments/21-22-penn-bowl-virginia-tech\">Virginia Tech<\/a>","<a href = \"../tournaments/21-22-penn-bowl-texas\">Texas<\/a>","<a href = \"../tournaments/21-22-penn-bowl-pitt\">Pitt<\/a>","<a href = \"../tournaments/21-22-penn-bowl-chicago\">Chicago<\/a>","<a href = \"../tournaments/21-22-penn-bowl-pitt\">Pitt<\/a>","<a href = \"../tournaments/21-22-penn-bowl-pitt\">Pitt<\/a>","<a href = \"../tournaments/21-22-penn-bowl-penn\">Penn<\/a>","<a href = \"../tournaments/21-22-penn-bowl-cambridge\">Cambridge<\/a>","<a href = \"../tournaments/21-22-penn-bowl-penn\">Penn<\/a>","<a href = \"../tournaments/21-22-penn-bowl-virginia-tech\">Virginia Tech<\/a>","<a href = \"../tournaments/21-22-penn-bowl-penn\">Penn<\/a>","<a href = \"../tournaments/21-22-penn-bowl-florida\">Florida<\/a>","<a href = \"../tournaments/21-22-penn-bowl-florida\">Florida<\/a>","<a href = \"../tournaments/21-22-penn-bowl-penn\">Penn<\/a>","<a href = \"../tournaments/21-22-penn-bowl-penn\">Penn<\/a>","<a href = \"../tournaments/21-22-penn-bowl-penn\">Penn<\/a>","<a href = \"../tournaments/21-22-penn-bowl-penn\">Penn<\/a>","<a href = \"../tournaments/21-22-penn-bowl-cambridge\">Cambridge<\/a>","<a href = \"../tournaments/21-22-penn-bowl-cambridge\">Cambridge<\/a>","<a href = \"../tournaments/21-22-penn-bowl-florida\">Florida<\/a>","<a href = \"../tournaments/21-22-penn-bowl-pitt\">Pitt<\/a>","<a href = \"../tournaments/21-22-penn-bowl-chicago\">Chicago<\/a>","<a href = \"../tournaments/21-22-penn-bowl-chicago\">Chicago<\/a>","<a href = \"../tournaments/21-22-penn-bowl-penn\">Penn<\/a>","<a href = \"../tournaments/21-22-penn-bowl-virginia-tech\">Virginia Tech<\/a>","<a href = \"../tournaments/21-22-penn-bowl-pitt\">Pitt<\/a>","<a href = \"../tournaments/21-22-penn-bowl-virginia-tech\">Virginia Tech<\/a>","<a href = \"../tournaments/21-22-penn-bowl-florida\">Florida<\/a>","<a href = \"../tournaments/21-22-penn-bowl-cambridge\">Cambridge<\/a>","<a href = \"../tournaments/21-22-penn-bowl-virginia-tech\">Virginia Tech<\/a>","<a href = \"../tournaments/21-22-penn-bowl-florida\">Florida<\/a>","<a href = \"../tournaments/21-22-penn-bowl-texas\">Texas<\/a>","<a href = \"../tournaments/21-22-penn-bowl-penn\">Penn<\/a>","<a href = \"../tournaments/21-22-penn-bowl-virginia-tech\">Virginia Tech<\/a>","<a href = \"../tournaments/21-22-penn-bowl-chicago\">Chicago<\/a>","<a href = \"../tournaments/21-22-penn-bowl-cambridge\">Cambridge<\/a>","<a href = \"../tournaments/21-22-penn-bowl-virginia-tech\">Virginia Tech<\/a>"],[12,10,12,9,10,10,10,10,10,9,10,9,9,10,10,9,10,10,11,10,10,10,10,10,9,10,10,10,10,10,9,10,9,10,10,10,10,10,10,10,10,10,9,9,10,11,10,10,10,10,9,9,9,10,10,10,10,10,9,10,9,7,9,9,10,8],["12-0","10-0","10-2","9-0","9-1","8-2","10-0","10-0","9-1","6-3","8-2","6-3","6-3","7-3","6-4","6-3","10-0","5-5","6-5","7-3","7-3","7-3","6-4","6-4","4-5","8-2","6-4","5-5","7-3","6-4","3-6","6-4","4-5","2-8","3-7","4-6","5-5","4-6","6-4","7-3","5-5","5-5","2-7","1-8","4-6","3-8","5-5","3-7","5-5","0-10","2-7","1-8","2-7","5-5","1-9","3-7","1-9","2-8","3-6","1-9","0-9","0-7","1-8","0-9","0-10","1-7"],[240,200,240,180,200,200,200,200,200,180,200,180,180,200,200,180,201,200,220,200,200,200,200,200,180,200,201,200,200,200,180,200,180,200,200,200,200,200,200,200,200,200,180,180,200,220,200,200,200,200,180,180,180,200,200,200,200,200,180,200,180,140,180,180,200,160],[62,36,44,44,36,32,29,35,27,25,20,26,22,24,20,25,29,14,20,31,18,14,16,14,14,17,13,24,17,12,6,13,10,18,10,13,11,12,13,11,12,14,7,7,2,6,6,13,10,15,4,7,9,8,5,4,5,5,5,3,0,3,3,4,6,3],[99,110,113,79,96,91,102,110,86,80,99,82,80,85,84,76,95,87,88,66,94,86,83,87,75,93,90,72,84,94,72,76,73,65,72,76,79,84,79,87,87,68,64,65,74,71,79,65,77,52,50,51,51,74,52,75,61,52,51,57,32,27,33,20,29,22],[37,18,27,22,24,13,25,30,27,21,26,16,24,21,26,34,24,17,37,28,42,17,22,24,31,28,21,38,24,30,21,14,14,39,16,26,15,34,19,24,25,14,14,25,38,7,7,37,27,39,6,17,22,19,5,14,15,24,20,18,11,13,7,7,20,11],[5.17,3.6,3.67,4.89,3.6,3.2,2.9,3.5,2.7,2.78,2,2.89,2.44,2.4,2,2.78,2.9,1.4,1.82,3.1,1.8,1.4,1.6,1.4,1.56,1.7,1.3,2.4,1.7,1.2,0.67,1.3,1.11,1.8,1,1.3,1.1,1.2,1.3,1.1,1.2,1.4,0.78,0.78,0.2,0.55,0.6,1.3,1,1.5,0.44,0.78,1,0.8,0.5,0.4,0.5,0.5,0.56,0.3,0,0.43,0.33,0.44,0.6,0.38],[8.25,11,9.42,8.78,9.6,9.1,10.2,11,8.6,8.89,9.9,9.11,8.89,8.5,8.4,8.44,9.5,8.7,8,6.6,9.4,8.6,8.3,8.7,8.33,9.3,9,7.2,8.4,9.4,8,7.6,8.11,6.5,7.2,7.6,7.9,8.4,7.9,8.7,8.7,6.8,7.11,7.22,7.4,6.45,7.9,6.5,7.7,5.2,5.56,5.67,5.67,7.4,5.2,7.5,6.1,5.2,5.67,5.7,3.56,3.86,3.67,2.22,2.9,2.75],[3.08,1.8,2.25,2.44,2.4,1.3,2.5,3,2.7,2.33,2.6,1.78,2.67,2.1,2.6,3.78,2.4,1.7,3.36,2.8,4.2,1.7,2.2,2.4,3.44,2.8,2.1,3.8,2.4,3,2.33,1.4,1.56,3.9,1.6,2.6,1.5,3.4,1.9,2.4,2.5,1.4,1.56,2.78,3.8,0.64,0.7,3.7,2.7,3.9,0.67,1.89,2.44,1.9,0.5,1.4,1.5,2.4,2.22,1.8,1.22,1.86,0.78,0.78,2,1.38],[0.670833333333333,0.73,0.654166666666667,0.683333333333333,0.66,0.615,0.655,0.725,0.565,0.583333333333333,0.595,0.6,0.566666666666667,0.545,0.52,0.561111111111111,0.616915422885572,0.505,0.490909090909091,0.485,0.56,0.5,0.495,0.505,0.494444444444444,0.55,0.512437810945274,0.48,0.505,0.53,0.433333333333333,0.445,0.461111111111111,0.415,0.41,0.445,0.45,0.48,0.46,0.49,0.495,0.41,0.394444444444444,0.4,0.38,0.35,0.425,0.39,0.435,0.335,0.3,0.322222222222222,0.333333333333333,0.41,0.285,0.395,0.33,0.285,0.311111111111111,0.3,0.177777777777778,0.214285714285714,0.2,0.133333333333333,0.175,0.15625],[416.25,420,389.58,423.33,413,385.5,403,431.5,330.5,333.33,325,335.56,321.11,299,299,310.56,314.5,255.5,269.55,258.5,289,263.5,251,247,246.11,271.5,256.5,238,263.5,254,202.78,215.5,206.67,190.5,188,205,195,222,217,223.5,232.5,186,180.56,176.67,163,167.73,203.5,175,187.5,141,140.56,133.33,132.78,164.5,123,160,127,118.5,123.89,113.5,65,74.29,71.11,55,58,58.75],[20.25,18.15,19.24,20.08,20.83,20.57,20.61,19.59,19.25,18.38,17.56,17.5,18.43,17.29,19.04,18.12,15.16,15.45,18.24,16.49,16.88,16.5,15.66,14.95,15.84,15.18,15.29,15.52,16.44,14.81,14.36,14.27,12.65,14.22,13.29,13.76,11.89,14.27,13.91,13.47,14.14,12.68,13.38,13.33,13.82,14.03,14,13.97,12.53,12.84,13.61,11.55,11,10.73,11.58,10.89,10,12.46,11.25,10.17,10,9,8.33,11.25,8.57,10.4],[458,449.35,434.09,423.88,417.3,408.83,408.54,375.61,353.59,351.73,350.34,337.3,326.42,324.7,322.62,317.11,305.55,293.95,285.12,284.88,274.64,273.37,265.34,258.03,256.33,255.41,254.21,250.28,250.13,242.08,230.73,227.4,217.39,202.11,199.68,196.24,194.73,193.69,193.47,192.92,191.45,190.89,187.96,185.66,181.05,180.57,178.46,172.61,156.23,150.44,146.57,142.35,139.8,134.62,131.29,124.09,110.54,109.71,104.09,99.13,79.49,72.7,59.26,58.7,54.7,51.68]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>Team<\/th>\n      <th>Site<\/th>\n      <th>GP<\/th>\n      <th>W-L<\/th>\n      <th>TUH<\/th>\n      <th>15<\/th>\n      <th>10<\/th>\n      <th>-5<\/th>\n      <th>15/G<\/th>\n      <th>10/G<\/th>\n      <th>-5/G<\/th>\n      <th>TU%<\/th>\n      <th>PPG<\/th>\n      <th>PPB<\/th>\n      <th>A-Value<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"dom":"tp","rowCallback":"function(row, data){\n  for(var i=0; i<data.length; i++){\n    if(data[i] === null){\n      $('td:eq('+(i)+')', row).html('-')\n        .css({'font-style': 'italic', 'text-align': 'center'});\n    }\n  }\nvar value=data[2]; $(this.api().cell(row, 2).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[3]; $(this.api().cell(row, 3).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[4]; $(this.api().cell(row, 4).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[5]; $(this.api().cell(row, 5).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[6]; $(this.api().cell(row, 6).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[7]; $(this.api().cell(row, 7).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[8]; $(this.api().cell(row, 8).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[9]; $(this.api().cell(row, 9).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[10]; $(this.api().cell(row, 10).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[11]; $(this.api().cell(row, 11).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[12]; $(this.api().cell(row, 12).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[13]; $(this.api().cell(row, 13).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[14]; $(this.api().cell(row, 14).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[3]; $(this.api().cell(row, 3).node()).css({'text-align':'right'});\nvar value=data[0]; $(this.api().cell(row, 0).node()).css({'border-right':'2px solid #d3d3d3'});\nvar value=data[1]; $(this.api().cell(row, 1).node()).css({'border-right':'2px solid #d3d3d3'});\nvar value=data[3]; $(this.api().cell(row, 3).node()).css({'border-right':'2px solid #d3d3d3'});\nvar value=data[4]; $(this.api().cell(row, 4).node()).css({'border-right':'2px solid #d3d3d3'});\nvar value=data[7]; $(this.api().cell(row, 7).node()).css({'border-right':'2px solid #d3d3d3'});\nvar value=data[10]; $(this.api().cell(row, 10).node()).css({'border-right':'2px solid #d3d3d3'});\nvar value=data[11]; $(this.api().cell(row, 11).node()).css({'border-right':'2px solid #d3d3d3'});\n}","columnDefs":[{"targets":8,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 2, 3, \",\", \".\", null);\n  }"},{"targets":9,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 2, 3, \",\", \".\", null);\n  }"},{"targets":10,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 2, 3, \",\", \".\", null);\n  }"},{"targets":12,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 2, 3, \",\", \".\", null);\n  }"},{"targets":13,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 2, 3, \",\", \".\", null);\n  }"},{"targets":14,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 2, 3, \",\", \".\", null);\n  }"},{"targets":11,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatPercentage(data, 0, 3, \",\", \".\", null);\n  }"},{"className":"dt-right","targets":[2,4,5,6,7,8,9,10,11,12,13,14]}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":["options.rowCallback","options.columnDefs.0.render","options.columnDefs.1.render","options.columnDefs.2.render","options.columnDefs.3.render","options.columnDefs.4.render","options.columnDefs.5.render","options.columnDefs.6.render"],"jsHooks":[]}</script>
+<hr>
+</div>
+<div id="players" class="section level2">
+<h2>Players</h2>
+<div id="htmlwidget-494430eec1a3362bc0e7" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-494430eec1a3362bc0e7">{"x":{"filter":"none","vertical":false,"data":[["<a href = \"../players/itamar-naveh-benjamin.html\">Itamar Naveh-Benjamin<\/a>","<a href = \"../players/joseph-krol.html\">Joseph Krol<\/a>","<a href = \"../players/charles-hang.html\">Charles Hang<\/a>","<a href = \"../players/sean-farrell.html\">Sean Farrell<\/a>","<a href = \"../players/natan-holtzman.html\">Natan Holtzman<\/a>","<a href = \"../players/caleb-kendrick.html\">Caleb Kendrick<\/a>","<a href = \"../players/tegan-kapadia.html\">Tegan Kapadia<\/a>","<a href = \"../players/hari-parameswaran.html\">Hari Parameswaran<\/a>","<a href = \"../players/william-golden.html\">William Golden<\/a>","<a href = \"../players/seoan-webb.html\">Seoan Webb<\/a>","<a href = \"../players/jj-tsai.html\">JJ Tsai<\/a>","<a href = \"../players/tim-morrison.html\">Tim Morrison<\/a>","<a href = \"../players/vincent-du.html\">Vincent Du<\/a>","<a href = \"../players/vishwa-shanmugam.html\">Vishwa Shanmugam<\/a>","<a href = \"../players/ashwath-seetharaman.html\">Ashwath Seetharaman<\/a>","<a href = \"../players/raymond-wang.html\">Raymond Wang<\/a>","<a href = \"../players/clark-smith.html\">Clark Smith<\/a>","<a href = \"../players/oli-clarke.html\">Oli Clarke<\/a>","<a href = \"../players/chris-ray.html\">Chris Ray<\/a>","<a href = \"../players/chris-sims.html\">Chris Sims<\/a>","<a href = \"../players/vikshar-athreya.html\">Vikshar Athreya<\/a>","<a href = \"../players/mateo-acosta.html\">Mateo Acosta<\/a>","<a href = \"../players/karan-gurazada.html\">Karan Gurazada<\/a>","<a href = \"../players/alex-schmidt.html\">Alex Schmidt<\/a>","<a href = \"../players/shahar-schwartz.html\">Shahar Schwartz<\/a>","<a href = \"../players/eric-bobrow.html\">Eric Bobrow<\/a>","<a href = \"../players/ashish-subramanian.html\">Ashish Subramanian<\/a>","<a href = \"../players/nathan-clack.html\">Nathan Clack<\/a>","<a href = \"../players/robert-condron.html\">Robert Condron<\/a>","<a href = \"../players/colin-whisler.html\">Colin Whisler<\/a>","<a href = \"../players/jacob-mclaughlin.html\">Jacob McLaughlin<\/a>","<a href = \"../players/cory-smith.html\">Cory Smith<\/a>","<a href = \"../players/eddy-liu.html\">Eddy Liu<\/a>","<a href = \"../players/ned-tagtmeier.html\">Ned Tagtmeier<\/a>","<a href = \"../players/qingyu-zhang.html\">Qingyu Zhang<\/a>","<a href = \"../players/jonathan-shauf.html\">Jonathan Shauf<\/a>","<a href = \"../players/dylan-bowman.html\">Dylan Bowman<\/a>","<a href = \"../players/geoffrey-chen.html\">Geoffrey Chen<\/a>","<a href = \"../players/jonathan-lau.html\">Jonathan Lau<\/a>","<a href = \"../players/vivek-sasse.html\">Vivek Sasse<\/a>","<a href = \"../players/henry-greentree.html\">Henry Greentree<\/a>","<a href = \"../players/andrew-salij.html\">Andrew Salij<\/a>","<a href = \"../players/leo-law.html\">Leo Law<\/a>","<a href = \"../players/chris-danko.html\">Chris Danko<\/a>","<a href = \"../players/william-groger.html\">William Groger<\/a>","<a href = \"../players/daniel-xue.html\">Daniel Xue<\/a>","<a href = \"../players/maddie-lay.html\">Maddie Lay<\/a>","<a href = \"../players/chinmay-murthy.html\">Chinmay Murthy<\/a>","<a href = \"../players/collin-ace.html\">Collin Ace<\/a>","<a href = \"../players/kevin-thomas.html\">Kevin Thomas<\/a>","<a href = \"../players/bradley-mclain.html\">Bradley McLain<\/a>","<a href = \"../players/leah-honsinger.html\">Leah Honsinger<\/a>","<a href = \"../players/conrad-freidson.html\">Conrad Freidson<\/a>","<a href = \"../players/jacob-egol.html\">Jacob Egol<\/a>","<a href = \"../players/william-rauschenberg.html\">William Rauschenberg<\/a>","<a href = \"../players/henry-goff.html\">Henry Goff<\/a>","<a href = \"../players/jim-fan.html\">Jim Fan<\/a>","<a href = \"../players/austin-smith.html\">Austin Smith<\/a>","<a href = \"../players/peter-devlin.html\">Peter Devlin<\/a>","<a href = \"../players/claire-jones.html\">Claire Jones<\/a>","<a href = \"../players/hayden-toftner.html\">Hayden Toftner<\/a>","<a href = \"../players/eric-gunter.html\">Eric Gunter<\/a>","<a href = \"../players/justin-whitmar.html\">Justin Whitmar<\/a>","<a href = \"../players/walter-zhao.html\">Walter Zhao<\/a>","<a href = \"../players/amogh-kulkarni.html\">Amogh Kulkarni<\/a>","<a href = \"../players/geoffrey-wu.html\">Geoffrey Wu<\/a>","<a href = \"../players/noah-sheidlower.html\">Noah Sheidlower<\/a>","<a href = \"../players/harry-scully.html\">Harry Scully<\/a>","<a href = \"../players/nathan-zhang.html\">Nathan Zhang<\/a>","<a href = \"../players/martin-rakowszczyk.html\">Martin Rakowszczyk<\/a>","<a href = \"../players/biniam-alaro.html\">Biniam Alaro<\/a>","<a href = \"../players/jack-paganelli.html\">Jack Paganelli<\/a>","<a href = \"../players/gareth-thorlakson.html\">Gareth Thorlakson<\/a>","<a href = \"../players/michael-bucknall.html\">Michael Bucknall<\/a>","<a href = \"../players/brendan-mcmahon.html\">Brendan McMahon<\/a>","<a href = \"../players/abdullah-akbar.html\">Abdullah Akbar<\/a>","<a href = \"../players/sophie-lockwood.html\">Sophie Lockwood<\/a>","<a href = \"../players/tony-cosimini.html\">Tony Cosimini<\/a>","<a href = \"../players/arnav-sood.html\">Arnav Sood<\/a>","<a href = \"../players/matthew-lloyd.html\">Matthew Lloyd<\/a>","<a href = \"../players/chase-chiang.html\">Chase Chiang<\/a>","<a href = \"../players/rasheeq-azad.html\">Rasheeq Azad<\/a>","<a href = \"../players/tiffany-zhou.html\">Tiffany Zhou<\/a>","<a href = \"../players/ali-izzatdust.html\">Ali Izzatdust<\/a>","<a href = \"../players/albert-zhang.html\">Albert Zhang<\/a>","<a href = \"../players/arpith-phillips.html\">Arpith Phillips<\/a>","<a href = \"../players/bill-zhao.html\">Bill Zhao<\/a>","<a href = \"../players/lexi-terman.html\">Lexi Terman<\/a>","<a href = \"../players/mitch-mccullar.html\">Mitch McCullar<\/a>","<a href = \"../players/isaiah-silvers.html\">Isaiah Silvers<\/a>","<a href = \"../players/rodrigo-rose.html\">Rodrigo Rose<\/a>","<a href = \"../players/alex-gunasekera.html\">Alex Gunasekera<\/a>","<a href = \"../players/john-ferrante.html\">John Ferrante<\/a>","<a href = \"../players/rahim-dina.html\">Rahim Dina<\/a>","<a href = \"../players/seth-ebner.html\">Seth Ebner<\/a>","<a href = \"../players/aaron-dantzler.html\">Aaron Dantzler<\/a>","<a href = \"../players/perry-o'connor.html\">Perry O'Connor<\/a>","<a href = \"../players/jaskaran-singh.html\">Jaskaran Singh<\/a>","<a href = \"../players/kenny-powell.html\">Kenny Powell<\/a>","<a href = \"../players/gabriel-chuang.html\">Gabriel Chuang<\/a>","<a href = \"../players/connor-hofeditz.html\">Connor Hofeditz<\/a>","<a href = \"../players/jupiter-ding.html\">Jupiter Ding<\/a>","<a href = \"../players/henry-cafaro.html\">Henry Cafaro<\/a>","<a href = \"../players/montagu-james.html\">Montagu James<\/a>","<a href = \"../players/darren-petrosino.html\">Darren Petrosino<\/a>","<a href = \"../players/jisoo-yoo.html\">Jisoo Yoo<\/a>","<a href = \"../players/oliver-hargrave.html\">Oliver Hargrave<\/a>","<a href = \"../players/beni-keown.html\">Beni Keown<\/a>","<a href = \"../players/john-marvin-sipp.html\">John Marvin Sipp<\/a>","<a href = \"../players/john-john-groger.html\">John John Groger<\/a>","<a href = \"../players/ani-perumalla.html\">Ani Perumalla<\/a>","<a href = \"../players/shehryar-qazi.html\">Shehryar Qazi<\/a>","<a href = \"../players/eric-yin.html\">Eric Yin<\/a>","<a href = \"../players/ryan-humphrey.html\">Ryan Humphrey<\/a>","<a href = \"../players/thomas-hart.html\">Thomas Hart<\/a>","<a href = \"../players/thomas-kralik.html\">Thomas Kralik<\/a>","<a href = \"../players/vinu-harihar.html\">Vinu Harihar<\/a>","<a href = \"../players/aidan-jones.html\">Aidan Jones<\/a>","<a href = \"../players/ridge-ren.html\">Ridge Ren<\/a>","<a href = \"../players/ella-warde.html\">Ella Warde<\/a>","<a href = \"../players/justin-posner.html\">Justin Posner<\/a>","<a href = \"../players/anthony-delgado.html\">Anthony Delgado<\/a>","<a href = \"../players/delia-cropper.html\">Delia Cropper<\/a>","<a href = \"../players/daniel-yang.html\">Daniel Yang<\/a>","<a href = \"../players/elena-lee.html\">Elena Lee<\/a>","<a href = \"../players/quentin-mot.html\">Quentin Mot<\/a>","<a href = \"../players/rohan-shelke.html\">Rohan Shelke<\/a>","<a href = \"../players/ben-rothko.html\">Ben Rothko<\/a>","<a href = \"../players/max-niebur.html\">Max Niebur<\/a>","<a href = \"../players/wonyoung-jang.html\">Wonyoung Jang<\/a>","<a href = \"../players/joseph-noonan.html\">Joseph Noonan<\/a>","<a href = \"../players/dylan-cox.html\">Dylan Cox<\/a>","<a href = \"../players/sage-kanemaru.html\">Sage Kanemaru<\/a>","<a href = \"../players/ethan-bonnell.html\">Ethan Bonnell<\/a>","<a href = \"../players/kevin-ye.html\">Kevin Ye<\/a>","<a href = \"../players/buduka-ogonor.html\">Buduka Ogonor<\/a>","<a href = \"../players/eliza-dean.html\">Eliza Dean<\/a>","<a href = \"../players/carlos-gonzalez.html\">Carlos Gonzalez<\/a>","<a href = \"../players/caroline-corban.html\">Caroline Corban<\/a>","<a href = \"../players/izaya-garrett-miles.html\">Izaya Garrett Miles<\/a>","<a href = \"../players/rosa-xia.html\">Rosa Xia<\/a>","<a href = \"../players/charlotte-goeb.html\">Charlotte Goeb<\/a>","<a href = \"../players/liam-starnes.html\">Liam Starnes<\/a>","<a href = \"../players/alejandro-ortega.html\">Alejandro Ortega<\/a>","<a href = \"../players/maya-spencer.html\">Maya Spencer<\/a>","<a href = \"../players/joelle-smart.html\">Joelle Smart<\/a>","<a href = \"../players/david-bass.html\">David Bass<\/a>","<a href = \"../players/adam-klein.html\">Adam Klein<\/a>","<a href = \"../players/jason-shi.html\">Jason Shi<\/a>","<a href = \"../players/mahta-gooya.html\">Mahta Gooya<\/a>","<a href = \"../players/ryan-zhang.html\">Ryan Zhang<\/a>","<a href = \"../players/kuleen-sasse.html\">Kuleen Sasse<\/a>","<a href = \"../players/richard-pollard.html\">Richard Pollard<\/a>","<a href = \"../players/nima-razavi.html\">Nima Razavi<\/a>","<a href = \"../players/vittal-bhat.html\">Vittal Bhat<\/a>","<a href = \"../players/david-neiman.html\">David Neiman<\/a>","<a href = \"../players/s.-a.-shenoy.html\">S. A. Shenoy<\/a>","<a href = \"../players/max-hodes.html\">Max Hodes<\/a>","<a href = \"../players/richard-niu.html\">Richard Niu<\/a>","<a href = \"../players/raul-passement.html\">Raul Passement<\/a>","<a href = \"../players/justin-lee.html\">Justin Lee<\/a>","<a href = \"../players/konstantinos-adamopoulos.html\">Konstantinos Adamopoulos<\/a>","<a href = \"../players/jeremy-cummings.html\">Jeremy Cummings<\/a>","<a href = \"../players/jackson-moxley.html\">Jackson Moxley<\/a>","<a href = \"../players/liam-hughes.html\">Liam Hughes<\/a>","<a href = \"../players/kevin-zhang.html\">Kevin Zhang<\/a>","<a href = \"../players/anna-brian.html\">Anna Brian<\/a>","<a href = \"../players/harry-regan.html\">Harry Regan<\/a>","<a href = \"../players/james-hadley.html\">James Hadley<\/a>","<a href = \"../players/fatima-ammar.html\">Fatima Ammar<\/a>","<a href = \"../players/jonah-mcdonald.html\">Jonah McDonald<\/a>","<a href = \"../players/rachel-mattson.html\">Rachel Mattson<\/a>","<a href = \"../players/zac-bennett.html\">Zac Bennett<\/a>","<a href = \"../players/ellie-james.html\">Ellie James<\/a>","<a href = \"../players/hayden-prather.html\">Hayden Prather<\/a>","<a href = \"../players/munir-siddiqui.html\">Munir Siddiqui<\/a>","<a href = \"../players/boyang-hou.html\">Boyang Hou<\/a>","<a href = \"../players/jeya-iyadurai.html\">Jeya Iyadurai<\/a>","<a href = \"../players/daniel-mousavi.html\">Daniel Mousavi<\/a>","<a href = \"../players/noah-bigger.html\">Noah Bigger<\/a>","<a href = \"../players/keaton-dowdy.html\">Keaton Dowdy<\/a>","<a href = \"../players/kevin-flanagan.html\">Kevin Flanagan<\/a>","<a href = \"../players/colin-lyman.html\">Colin Lyman<\/a>","<a href = \"../players/charlie-saunders.html\">Charlie Saunders<\/a>","<a href = \"../players/adrienne-hill.html\">Adrienne Hill<\/a>","<a href = \"../players/micah-kienzle.html\">Micah Kienzle<\/a>","<a href = \"../players/abraham-porschet.html\">Abraham Porschet<\/a>","<a href = \"../players/alana-dickey.html\">Alana Dickey<\/a>","<a href = \"../players/harry-yeung.html\">Harry Yeung<\/a>","<a href = \"../players/mark-bailey.html\">Mark Bailey<\/a>","<a href = \"../players/pranav-sivaram.html\">Pranav Sivaram<\/a>","<a href = \"../players/seiyoung-jang.html\">Seiyoung Jang<\/a>","<a href = \"../players/ted-gan.html\">Ted Gan<\/a>","<a href = \"../players/orlando-grant.html\">Orlando Grant<\/a>","<a href = \"../players/eli-hiton.html\">Eli Hiton<\/a>","<a href = \"../players/jaden-rupolo.html\">Jaden Rupolo<\/a>","<a href = \"../players/nick-warmington.html\">Nick Warmington<\/a>","<a href = \"../players/dan-ni.html\">Dan Ni<\/a>","<a href = \"../players/connor-mayers.html\">Connor Mayers<\/a>","<a href = \"../players/gideon-riches.html\">Gideon Riches<\/a>","<a href = \"../players/ben-erickson.html\">Ben Erickson<\/a>","<a href = \"../players/tony-wang.html\">Tony Wang<\/a>","<a href = \"../players/andrew-lien.html\">Andrew Lien<\/a>","<a href = \"../players/yohhan-kumarasinghe.html\">Yohhan Kumarasinghe<\/a>","<a href = \"../players/chandler-bowman.html\">Chandler Bowman<\/a>","<a href = \"../players/jasmine-bao.html\">Jasmine Bao<\/a>","<a href = \"../players/alex-radcliffe.html\">Alex Radcliffe<\/a>","<a href = \"../players/sendhil-sridhar.html\">Sendhil Sridhar<\/a>","<a href = \"../players/adam-craven.html\">Adam Craven<\/a>","<a href = \"../players/solenne-scholefield.html\">Solenne Scholefield<\/a>","<a href = \"../players/mia-bloss.html\">Mia Bloss<\/a>","<a href = \"../players/ciarán-drinnon.html\">Ciarán Drinnon<\/a>","<a href = \"../players/alex-suponya.html\">Alex Suponya<\/a>","<a href = \"../players/samuel-miller.html\">Samuel Miller<\/a>","<a href = \"../players/justin-abel.html\">Justin Abel<\/a>","<a href = \"../players/shripad-kher.html\">Shripad Kher<\/a>","<a href = \"../players/william-huang.html\">William Huang<\/a>","<a href = \"../players/saad-ansari.html\">Saad Ansari<\/a>","<a href = \"../players/kai-madgwick.html\">Kai Madgwick<\/a>","<a href = \"../players/roxanne-tang.html\">Roxanne Tang<\/a>","<a href = \"../players/shea-munnikhuysen.html\">Shea Munnikhuysen<\/a>","<a href = \"../players/matthew-cseh.html\">Matthew Cseh<\/a>","<a href = \"../players/kenny-zhang.html\">Kenny Zhang<\/a>","<a href = \"../players/luke-van-de-weghe.html\">Luke Van De Weghe<\/a>","<a href = \"../players/valerie-ogonor.html\">Valerie Ogonor<\/a>","<a href = \"../players/siddharth-srinivasan.html\">Siddharth Srinivasan<\/a>","<a href = \"../players/jasmine-w.html\">Jasmine W<\/a>","<a href = \"../players/daniel-sun.html\">Daniel Sun<\/a>","<a href = \"../players/krishnan-mulholland.html\">Krishnan Mulholland<\/a>","<a href = \"../players/shiv-seshan.html\">Shiv Seshan<\/a>","<a href = \"../players/ameya-phadnis.html\">Ameya Phadnis<\/a>","<a href = \"../players/kelvin-lien.html\">Kelvin Lien<\/a>","<a href = \"../players/andres-villalba.html\">Andres Villalba<\/a>","<a href = \"../players/emily-kerimian.html\">Emily Kerimian<\/a>","<a href = \"../players/aryan-deorah.html\">Aryan Deorah<\/a>","<a href = \"../players/jacob-bailey.html\">Jacob Bailey<\/a>","<a href = \"../players/david-popovici.html\">David Popovici<\/a>","<a href = \"../players/femi-agabalogun.html\">Femi Agabalogun<\/a>","<a href = \"../players/cole-humble.html\">Cole Humble<\/a>","<a href = \"../players/quinn-meece.html\">Quinn Meece<\/a>","<a href = \"../players/edwyn-wilson-verrall.html\">Edwyn Wilson-Verrall<\/a>","<a href = \"../players/alex-skeldon.html\">Alex Skeldon<\/a>","<a href = \"../players/zeynep-emanet.html\">Zeynep Emanet<\/a>","<a href = \"../players/kathryn-purdy.html\">Kathryn Purdy<\/a>"],["<a href = \"../tournaments/21-22-penn-bowl-penn#virginia-a\">Virginia A<\/a>","<a href = \"../tournaments/21-22-penn-bowl-cambridge#cambridge-a\">Cambridge A<\/a>","<a href = \"../tournaments/21-22-penn-bowl-chicago#wustl-a\">WUSTL A<\/a>","<a href = \"../tournaments/21-22-penn-bowl-florida#north-florida-a\">North Florida A<\/a>","<a href = \"../tournaments/21-22-penn-bowl-pitt#stanford-a\">Stanford A<\/a>","<a href = \"../tournaments/21-22-penn-bowl-penn#maryland-a\">Maryland A<\/a>","<a href = \"../tournaments/21-22-penn-bowl-florida#georgia-tech-b\">Georgia Tech B<\/a>","<a href = \"../tournaments/21-22-penn-bowl-florida#georgia-tech-a\">Georgia Tech A<\/a>","<a href = \"../tournaments/21-22-penn-bowl-texas#texas-a\">Texas A<\/a>","<a href = \"../tournaments/21-22-penn-bowl-cambridge#oxford-a\">Oxford A<\/a>","<a href = \"../tournaments/21-22-penn-bowl-penn#maryland-b\">Maryland B<\/a>","<a href = \"../tournaments/21-22-penn-bowl-pitt#stanford-a\">Stanford A<\/a>","<a href = \"../tournaments/21-22-penn-bowl-virginia-tech#north-carolina-a\">North Carolina A<\/a>","<a href = \"../tournaments/21-22-penn-bowl-penn#maryland-a\">Maryland A<\/a>","<a href = \"../tournaments/21-22-penn-bowl-texas#texas-c\">Texas C<\/a>","<a href = \"../tournaments/21-22-penn-bowl-pitt#cornell-a\">Cornell A<\/a>","<a href = \"../tournaments/21-22-penn-bowl-pitt#ohio-state-a\">Ohio State A<\/a>","<a href = \"../tournaments/21-22-penn-bowl-cambridge#oxford-a\">Oxford A<\/a>","<a href = \"../tournaments/21-22-penn-bowl-pitt#ohio-state-a\">Ohio State A<\/a>","<a href = \"../tournaments/21-22-penn-bowl-chicago#northwestern-a\">Northwestern A<\/a>","<a href = \"../tournaments/21-22-penn-bowl-pitt#washington-a\">Washington A<\/a>","<a href = \"../tournaments/21-22-penn-bowl-florida#florida-b\">Florida B<\/a>","<a href = \"../tournaments/21-22-penn-bowl-texas#texas-b\">Texas B<\/a>","<a href = \"../tournaments/21-22-penn-bowl-pitt#penn-state-a\">Penn State A<\/a>","<a href = \"../tournaments/21-22-penn-bowl-pitt#uc-berkeley-a\">UC Berkeley A<\/a>","<a href = \"../tournaments/21-22-penn-bowl-penn#johns-hopkins-a\">Johns Hopkins A<\/a>","<a href = \"../tournaments/21-22-penn-bowl-virginia-tech#duke-a\">Duke A<\/a>","<a href = \"../tournaments/21-22-penn-bowl-chicago#iowa-a\">Iowa A<\/a>","<a href = \"../tournaments/21-22-penn-bowl-chicago#chicago-c\">Chicago C<\/a>","<a href = \"../tournaments/21-22-penn-bowl-chicago#wisconsin-a\">Wisconsin A<\/a>","<a href = \"../tournaments/21-22-penn-bowl-cambridge#bristol-a\">Bristol A<\/a>","<a href = \"../tournaments/21-22-penn-bowl-pitt#kentucky-a\">Kentucky A<\/a>","<a href = \"../tournaments/21-22-penn-bowl-pitt#ohio-state-b\">Ohio State B<\/a>","<a href = \"../tournaments/21-22-penn-bowl-chicago#chicago-b\">Chicago B<\/a>","<a href = \"../tournaments/21-22-penn-bowl-florida#florida-c\">Florida C<\/a>","<a href = \"../tournaments/21-22-penn-bowl-virginia-tech#north-carolina-c\">North Carolina C<\/a>","<a href = \"../tournaments/21-22-penn-bowl-chicago#illinois-a\">Illinois A<\/a>","<a href = \"../tournaments/21-22-penn-bowl-penn#cornell-a\">Cornell A<\/a>","<a href = \"../tournaments/21-22-penn-bowl-penn#johns-hopkins-b\">Johns Hopkins B<\/a>","<a href = \"../tournaments/21-22-penn-bowl-chicago#chicago-a\">Chicago A<\/a>","<a href = \"../tournaments/21-22-penn-bowl-pitt#case-western-a\">Case Western A<\/a>","<a href = \"../tournaments/21-22-penn-bowl-chicago#northwestern-a\">Northwestern A<\/a>","<a href = \"../tournaments/21-22-penn-bowl-florida#florida-a\">Florida A<\/a>","<a href = \"../tournaments/21-22-penn-bowl-pitt#michigan-state-a\">Michigan State A<\/a>","<a href = \"../tournaments/21-22-penn-bowl-penn#columbia-b\">Columbia B<\/a>","<a href = \"../tournaments/21-22-penn-bowl-virginia-tech#virginia-b\">Virginia B<\/a>","<a href = \"../tournaments/21-22-penn-bowl-cambridge#oxford-c\">Oxford C<\/a>","<a href = \"../tournaments/21-22-penn-bowl-texas#texas-b\">Texas B<\/a>","<a href = \"../tournaments/21-22-penn-bowl-penn#rutgers-b\">Rutgers B<\/a>","<a href = \"../tournaments/21-22-penn-bowl-virginia-tech#north-carolina-a\">North Carolina A<\/a>","<a href = \"../tournaments/21-22-penn-bowl-texas#texas-a\">Texas A<\/a>","<a href = \"../tournaments/21-22-penn-bowl-florida#florida-a\">Florida A<\/a>","<a href = \"../tournaments/21-22-penn-bowl-cambridge#warwick-a\">Warwick A<\/a>","<a href = \"../tournaments/21-22-penn-bowl-virginia-tech#duke-a\">Duke A<\/a>","<a href = \"../tournaments/21-22-penn-bowl-pitt#ohio-state-b\">Ohio State B<\/a>","<a href = \"../tournaments/21-22-penn-bowl-virginia-tech#north-carolina-a\">North Carolina A<\/a>","<a href = \"../tournaments/21-22-penn-bowl-virginia-tech#north-carolina-b\">North Carolina B<\/a>","<a href = \"../tournaments/21-22-penn-bowl-pitt#kentucky-a\">Kentucky A<\/a>","<a href = \"../tournaments/21-22-penn-bowl-cambridge#oxford-b\">Oxford B<\/a>","<a href = \"../tournaments/21-22-penn-bowl-chicago#chicago-a\">Chicago A<\/a>","<a href = \"../tournaments/21-22-penn-bowl-pitt#kenyon-a\">Kenyon A<\/a>","<a href = \"../tournaments/21-22-penn-bowl-virginia-tech#north-carolina-b\">North Carolina B<\/a>","<a href = \"../tournaments/21-22-penn-bowl-chicago#illinois-a\">Illinois A<\/a>","<a href = \"../tournaments/21-22-penn-bowl-pitt#case-western-a\">Case Western A<\/a>","<a href = \"../tournaments/21-22-penn-bowl-chicago#chicago-b\">Chicago B<\/a>","<a href = \"../tournaments/21-22-penn-bowl-penn#columbia-b\">Columbia B<\/a>","<a href = \"../tournaments/21-22-penn-bowl-penn#columbia-a\">Columbia A<\/a>","<a href = \"../tournaments/21-22-penn-bowl-cambridge#durham-a\">Durham A<\/a>","<a href = \"../tournaments/21-22-penn-bowl-penn#cornell-a\">Cornell A<\/a>","<a href = \"../tournaments/21-22-penn-bowl-penn#swarthmore-a\">Swarthmore A<\/a>","<a href = \"../tournaments/21-22-penn-bowl-florida#florida-a\">Florida A<\/a>","<a href = \"../tournaments/21-22-penn-bowl-pitt#kenyon-a\">Kenyon A<\/a>","<a href = \"../tournaments/21-22-penn-bowl-penn#columbia-a\">Columbia A<\/a>","<a href = \"../tournaments/21-22-penn-bowl-virginia-tech#north-carolina-b\">North Carolina B<\/a>","<a href = \"../tournaments/21-22-penn-bowl-florida#ncf-b\">NCF B<\/a>","<a href = \"../tournaments/21-22-penn-bowl-texas#ut-dallas-a\">UT Dallas A<\/a>","<a href = \"../tournaments/21-22-penn-bowl-penn#princeton-b\">Princeton B<\/a>","<a href = \"../tournaments/21-22-penn-bowl-chicago#iowa-a\">Iowa A<\/a>","<a href = \"../tournaments/21-22-penn-bowl-penn#carnegie-mellon-a\">Carnegie Mellon A<\/a>","<a href = \"../tournaments/21-22-penn-bowl-cambridge#oxford-c\">Oxford C<\/a>","<a href = \"../tournaments/21-22-penn-bowl-penn#princeton-a\">Princeton A<\/a>","<a href = \"../tournaments/21-22-penn-bowl-virginia-tech#north-carolina-c\">North Carolina C<\/a>","<a href = \"../tournaments/21-22-penn-bowl-florida#florida-b\">Florida B<\/a>","<a href = \"../tournaments/21-22-penn-bowl-cambridge#oxford-b\">Oxford B<\/a>","<a href = \"../tournaments/21-22-penn-bowl-penn#columbia-a\">Columbia A<\/a>","<a href = \"../tournaments/21-22-penn-bowl-cambridge#warwick-a\">Warwick A<\/a>","<a href = \"../tournaments/21-22-penn-bowl-florida#florida-c\">Florida C<\/a>","<a href = \"../tournaments/21-22-penn-bowl-penn#rutgers-a\">Rutgers A<\/a>","<a href = \"../tournaments/21-22-penn-bowl-chicago#illinois-a\">Illinois A<\/a>","<a href = \"../tournaments/21-22-penn-bowl-cambridge#durham-a\">Durham A<\/a>","<a href = \"../tournaments/21-22-penn-bowl-florida#georgia-tech-b\">Georgia Tech B<\/a>","<a href = \"../tournaments/21-22-penn-bowl-cambridge#oxford-a\">Oxford A<\/a>","<a href = \"../tournaments/21-22-penn-bowl-penn#rutgers-a\">Rutgers A<\/a>","<a href = \"../tournaments/21-22-penn-bowl-cambridge#imperial-a\">Imperial A<\/a>","<a href = \"../tournaments/21-22-penn-bowl-penn#johns-hopkins-a\">Johns Hopkins A<\/a>","<a href = \"../tournaments/21-22-penn-bowl-penn#princeton-a\">Princeton A<\/a>","<a href = \"../tournaments/21-22-penn-bowl-virginia-tech#liberty-a\">Liberty A<\/a>","<a href = \"../tournaments/21-22-penn-bowl-texas#texas-a\">Texas A<\/a>","<a href = \"../tournaments/21-22-penn-bowl-virginia-tech#liberty-a\">Liberty A<\/a>","<a href = \"../tournaments/21-22-penn-bowl-penn#carnegie-mellon-a\">Carnegie Mellon A<\/a>","<a href = \"../tournaments/21-22-penn-bowl-virginia-tech#etsu-a\">ETSU A<\/a>","<a href = \"../tournaments/21-22-penn-bowl-penn#princeton-b\">Princeton B<\/a>","<a href = \"../tournaments/21-22-penn-bowl-chicago#chicago-c\">Chicago C<\/a>","<a href = \"../tournaments/21-22-penn-bowl-penn#princeton-a\">Princeton A<\/a>","<a href = \"../tournaments/21-22-penn-bowl-penn#rutgers-a\">Rutgers A<\/a>","<a href = \"../tournaments/21-22-penn-bowl-texas#texas-b\">Texas B<\/a>","<a href = \"../tournaments/21-22-penn-bowl-cambridge#oxford-b\">Oxford B<\/a>","<a href = \"../tournaments/21-22-penn-bowl-chicago#northwestern-a\">Northwestern A<\/a>","<a href = \"../tournaments/21-22-penn-bowl-chicago#chicago-a\">Chicago A<\/a>","<a href = \"../tournaments/21-22-penn-bowl-penn#columbia-a\">Columbia A<\/a>","<a href = \"../tournaments/21-22-penn-bowl-pitt#penn-state-a\">Penn State A<\/a>","<a href = \"../tournaments/21-22-penn-bowl-pitt#cornell-a\">Cornell A<\/a>","<a href = \"../tournaments/21-22-penn-bowl-chicago#wustl-a\">WUSTL A<\/a>","<a href = \"../tournaments/21-22-penn-bowl-texas#texas-a\">Texas A<\/a>","<a href = \"../tournaments/21-22-penn-bowl-cambridge#warwick-a\">Warwick A<\/a>","<a href = \"../tournaments/21-22-penn-bowl-chicago#chicago-d\">Chicago D<\/a>","<a href = \"../tournaments/21-22-penn-bowl-penn#johns-hopkins-a\">Johns Hopkins A<\/a>","<a href = \"../tournaments/21-22-penn-bowl-virginia-tech#liberty-a\">Liberty A<\/a>","<a href = \"../tournaments/21-22-penn-bowl-virginia-tech#duke-a\">Duke A<\/a>","<a href = \"../tournaments/21-22-penn-bowl-cambridge#oxford-c\">Oxford C<\/a>","<a href = \"../tournaments/21-22-penn-bowl-chicago#chicago-c\">Chicago C<\/a>","<a href = \"../tournaments/21-22-penn-bowl-florida#florida-a\">Florida A<\/a>","<a href = \"../tournaments/21-22-penn-bowl-cambridge#cambridge-a\">Cambridge A<\/a>","<a href = \"../tournaments/21-22-penn-bowl-chicago#chicago-b\">Chicago B<\/a>","<a href = \"../tournaments/21-22-penn-bowl-penn#swarthmore-a\">Swarthmore A<\/a>","<a href = \"../tournaments/21-22-penn-bowl-florida#georgia-tech-a\">Georgia Tech A<\/a>","<a href = \"../tournaments/21-22-penn-bowl-pitt#uc-berkeley-a\">UC Berkeley A<\/a>","<a href = \"../tournaments/21-22-penn-bowl-penn#swarthmore-b\">Swarthmore B<\/a>","<a href = \"../tournaments/21-22-penn-bowl-penn#johns-hopkins-b\">Johns Hopkins B<\/a>","<a href = \"../tournaments/21-22-penn-bowl-chicago#chicago-a\">Chicago A<\/a>","<a href = \"../tournaments/21-22-penn-bowl-pitt#michigan-state-a\">Michigan State A<\/a>","<a href = \"../tournaments/21-22-penn-bowl-virginia-tech#etsu-a\">ETSU A<\/a>","<a href = \"../tournaments/21-22-penn-bowl-penn#princeton-b\">Princeton B<\/a>","<a href = \"../tournaments/21-22-penn-bowl-pitt#kenyon-a\">Kenyon A<\/a>","<a href = \"../tournaments/21-22-penn-bowl-pitt#uc-berkeley-a\">UC Berkeley A<\/a>","<a href = \"../tournaments/21-22-penn-bowl-chicago#chicago-d\">Chicago D<\/a>","<a href = \"../tournaments/21-22-penn-bowl-cambridge#oxford-b\">Oxford B<\/a>","<a href = \"../tournaments/21-22-penn-bowl-florida#ncf-a\">NCF A<\/a>","<a href = \"../tournaments/21-22-penn-bowl-florida#ncf-b\">NCF B<\/a>","<a href = \"../tournaments/21-22-penn-bowl-florida#ncf-a\">NCF A<\/a>","<a href = \"../tournaments/21-22-penn-bowl-penn#cornell-a\">Cornell A<\/a>","<a href = \"../tournaments/21-22-penn-bowl-virginia-tech#virginia-b\">Virginia B<\/a>","<a href = \"../tournaments/21-22-penn-bowl-chicago#chicago-c\">Chicago C<\/a>","<a href = \"../tournaments/21-22-penn-bowl-cambridge#bristol-a\">Bristol A<\/a>","<a href = \"../tournaments/21-22-penn-bowl-virginia-tech#north-carolina-c\">North Carolina C<\/a>","<a href = \"../tournaments/21-22-penn-bowl-penn#rutgers-a\">Rutgers A<\/a>","<a href = \"../tournaments/21-22-penn-bowl-penn#virginia-a\">Virginia A<\/a>","<a href = \"../tournaments/21-22-penn-bowl-chicago#chicago-b\">Chicago B<\/a>","<a href = \"../tournaments/21-22-penn-bowl-texas#texas-b\">Texas B<\/a>","<a href = \"../tournaments/21-22-penn-bowl-penn#maryland-b\">Maryland B<\/a>","<a href = \"../tournaments/21-22-penn-bowl-pitt#penn-state-a\">Penn State A<\/a>","<a href = \"../tournaments/21-22-penn-bowl-penn#johns-hopkins-b\">Johns Hopkins B<\/a>","<a href = \"../tournaments/21-22-penn-bowl-cambridge#warwick-a\">Warwick A<\/a>","<a href = \"../tournaments/21-22-penn-bowl-virginia-tech#virginia-b\">Virginia B<\/a>","<a href = \"../tournaments/21-22-penn-bowl-virginia-tech#north-carolina-a\">North Carolina A<\/a>","<a href = \"../tournaments/21-22-penn-bowl-penn#carnegie-mellon-a\">Carnegie Mellon A<\/a>","<a href = \"../tournaments/21-22-penn-bowl-florida#georgia-tech-a\">Georgia Tech A<\/a>","<a href = \"../tournaments/21-22-penn-bowl-chicago#chicago-d\">Chicago D<\/a>","<a href = \"../tournaments/21-22-penn-bowl-pitt#cornell-a\">Cornell A<\/a>","<a href = \"../tournaments/21-22-penn-bowl-texas#texas-c\">Texas C<\/a>","<a href = \"../tournaments/21-22-penn-bowl-cambridge#imperial-a\">Imperial A<\/a>","<a href = \"../tournaments/21-22-penn-bowl-cambridge#oxford-c\">Oxford C<\/a>","<a href = \"../tournaments/21-22-penn-bowl-chicago#wustl-a\">WUSTL A<\/a>","<a href = \"../tournaments/21-22-penn-bowl-virginia-tech#liberty-b\">Liberty B<\/a>","<a href = \"../tournaments/21-22-penn-bowl-cambridge#cambridge-a\">Cambridge A<\/a>","<a href = \"../tournaments/21-22-penn-bowl-penn#columbia-b\">Columbia B<\/a>","<a href = \"../tournaments/21-22-penn-bowl-cambridge#bristol-a\">Bristol A<\/a>","<a href = \"../tournaments/21-22-penn-bowl-cambridge#durham-a\">Durham A<\/a>","<a href = \"../tournaments/21-22-penn-bowl-penn#rutgers-b\">Rutgers B<\/a>","<a href = \"../tournaments/21-22-penn-bowl-cambridge#oxford-d\">Oxford D<\/a>","<a href = \"../tournaments/21-22-penn-bowl-cambridge#imperial-a\">Imperial A<\/a>","<a href = \"../tournaments/21-22-penn-bowl-chicago#iowa-a\">Iowa A<\/a>","<a href = \"../tournaments/21-22-penn-bowl-pitt#ohio-state-b\">Ohio State B<\/a>","<a href = \"../tournaments/21-22-penn-bowl-virginia-tech#liberty-b\">Liberty B<\/a>","<a href = \"../tournaments/21-22-penn-bowl-florida#florida-c\">Florida C<\/a>","<a href = \"../tournaments/21-22-penn-bowl-penn#maryland-b\">Maryland B<\/a>","<a href = \"../tournaments/21-22-penn-bowl-cambridge#cambridge-a\">Cambridge A<\/a>","<a href = \"../tournaments/21-22-penn-bowl-florida#florida-b\">Florida B<\/a>","<a href = \"../tournaments/21-22-penn-bowl-penn#johns-hopkins-b\">Johns Hopkins B<\/a>","<a href = \"../tournaments/21-22-penn-bowl-pitt#ohio-state-b\">Ohio State B<\/a>","<a href = \"../tournaments/21-22-penn-bowl-virginia-tech#liberty-c\">Liberty C<\/a>","<a href = \"../tournaments/21-22-penn-bowl-cambridge#bristol-a\">Bristol A<\/a>","<a href = \"../tournaments/21-22-penn-bowl-cambridge#oxford-d\">Oxford D<\/a>","<a href = \"../tournaments/21-22-penn-bowl-chicago#wisconsin-b\">Wisconsin B<\/a>","<a href = \"../tournaments/21-22-penn-bowl-florida#ncf-a\">NCF A<\/a>","<a href = \"../tournaments/21-22-penn-bowl-florida#ncf-b\">NCF B<\/a>","<a href = \"../tournaments/21-22-penn-bowl-penn#swarthmore-b\">Swarthmore B<\/a>","<a href = \"../tournaments/21-22-penn-bowl-penn#virginia-a\">Virginia A<\/a>","<a href = \"../tournaments/21-22-penn-bowl-penn#swarthmore-a\">Swarthmore A<\/a>","<a href = \"../tournaments/21-22-penn-bowl-penn#virginia-a\">Virginia A<\/a>","<a href = \"../tournaments/21-22-penn-bowl-pitt#ohio-state-a\">Ohio State A<\/a>","<a href = \"../tournaments/21-22-penn-bowl-penn#princeton-a\">Princeton A<\/a>","<a href = \"../tournaments/21-22-penn-bowl-pitt#penn-state-a\">Penn State A<\/a>","<a href = \"../tournaments/21-22-penn-bowl-cambridge#oxford-d\">Oxford D<\/a>","<a href = \"../tournaments/21-22-penn-bowl-pitt#kenyon-a\">Kenyon A<\/a>","<a href = \"../tournaments/21-22-penn-bowl-virginia-tech#liberty-c\">Liberty C<\/a>","<a href = \"../tournaments/21-22-penn-bowl-florida#ncf-a\">NCF A<\/a>","<a href = \"../tournaments/21-22-penn-bowl-penn#cornell-a\">Cornell A<\/a>","<a href = \"../tournaments/21-22-penn-bowl-penn#maryland-a\">Maryland A<\/a>","<a href = \"../tournaments/21-22-penn-bowl-virginia-tech#liberty-b\">Liberty B<\/a>","<a href = \"../tournaments/21-22-penn-bowl-virginia-tech#liberty-a\">Liberty A<\/a>","<a href = \"../tournaments/21-22-penn-bowl-cambridge#imperial-a\">Imperial A<\/a>","<a href = \"../tournaments/21-22-penn-bowl-chicago#wisconsin-a\">Wisconsin A<\/a>","<a href = \"../tournaments/21-22-penn-bowl-chicago#chicago-d\">Chicago D<\/a>","<a href = \"../tournaments/21-22-penn-bowl-virginia-tech#etsu-a\">ETSU A<\/a>","<a href = \"../tournaments/21-22-penn-bowl-penn#swarthmore-b\">Swarthmore B<\/a>","<a href = \"../tournaments/21-22-penn-bowl-cambridge#durham-a\">Durham A<\/a>","<a href = \"../tournaments/21-22-penn-bowl-texas#texas-c\">Texas C<\/a>","<a href = \"../tournaments/21-22-penn-bowl-chicago#wisconsin-b\">Wisconsin B<\/a>","<a href = \"../tournaments/21-22-penn-bowl-cambridge#oxford-a\">Oxford A<\/a>","<a href = \"../tournaments/21-22-penn-bowl-chicago#wustl-a\">WUSTL A<\/a>","<a href = \"../tournaments/21-22-penn-bowl-virginia-tech#etsu-a\">ETSU A<\/a>","<a href = \"../tournaments/21-22-penn-bowl-penn#rutgers-b\">Rutgers B<\/a>","<a href = \"../tournaments/21-22-penn-bowl-virginia-tech#liberty-c\">Liberty C<\/a>","<a href = \"../tournaments/21-22-penn-bowl-chicago#illinois-a\">Illinois A<\/a>","<a href = \"../tournaments/21-22-penn-bowl-chicago#wisconsin-b\">Wisconsin B<\/a>","<a href = \"../tournaments/21-22-penn-bowl-chicago#wisconsin-a\">Wisconsin A<\/a>","<a href = \"../tournaments/21-22-penn-bowl-penn#johns-hopkins-a\">Johns Hopkins A<\/a>","<a href = \"../tournaments/21-22-penn-bowl-cambridge#durham-a\">Durham A<\/a>","<a href = \"../tournaments/21-22-penn-bowl-pitt#ohio-state-a\">Ohio State A<\/a>","<a href = \"../tournaments/21-22-penn-bowl-virginia-tech#liberty-b\">Liberty B<\/a>","<a href = \"../tournaments/21-22-penn-bowl-florida#ncf-b\">NCF B<\/a>","<a href = \"../tournaments/21-22-penn-bowl-virginia-tech#virginia-b\">Virginia B<\/a>","<a href = \"../tournaments/21-22-penn-bowl-pitt#ohio-state-b\">Ohio State B<\/a>","<a href = \"../tournaments/21-22-penn-bowl-florida#georgia-tech-b\">Georgia Tech B<\/a>","<a href = \"../tournaments/21-22-penn-bowl-penn#carnegie-mellon-a\">Carnegie Mellon A<\/a>","<a href = \"../tournaments/21-22-penn-bowl-pitt#stanford-a\">Stanford A<\/a>","<a href = \"../tournaments/21-22-penn-bowl-pitt#stanford-a\">Stanford A<\/a>","<a href = \"../tournaments/21-22-penn-bowl-cambridge#cambridge-a\">Cambridge A<\/a>","<a href = \"../tournaments/21-22-penn-bowl-chicago#chicago-c\">Chicago C<\/a>","<a href = \"../tournaments/21-22-penn-bowl-penn#rutgers-b\">Rutgers B<\/a>","<a href = \"../tournaments/21-22-penn-bowl-chicago#wisconsin-b\">Wisconsin B<\/a>","<a href = \"../tournaments/21-22-penn-bowl-penn#swarthmore-a\">Swarthmore A<\/a>","<a href = \"../tournaments/21-22-penn-bowl-penn#swarthmore-b\">Swarthmore B<\/a>","<a href = \"../tournaments/21-22-penn-bowl-pitt#uc-berkeley-a\">UC Berkeley A<\/a>","<a href = \"../tournaments/21-22-penn-bowl-cambridge#imperial-a\">Imperial A<\/a>","<a href = \"../tournaments/21-22-penn-bowl-florida#georgia-tech-b\">Georgia Tech B<\/a>","<a href = \"../tournaments/21-22-penn-bowl-penn#johns-hopkins-b\">Johns Hopkins B<\/a>","<a href = \"../tournaments/21-22-penn-bowl-virginia-tech#liberty-c\">Liberty C<\/a>","<a href = \"../tournaments/21-22-penn-bowl-chicago#wisconsin-a\">Wisconsin A<\/a>","<a href = \"../tournaments/21-22-penn-bowl-cambridge#oxford-d\">Oxford D<\/a>","<a href = \"../tournaments/21-22-penn-bowl-penn#swarthmore-a\">Swarthmore A<\/a>","<a href = \"../tournaments/21-22-penn-bowl-penn#swarthmore-b\">Swarthmore B<\/a>","<a href = \"../tournaments/21-22-penn-bowl-virginia-tech#liberty-c\">Liberty C<\/a>"],["<a href = \"../tournaments/21-22-Penn Bowl-penn\">Penn<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-cambridge\">Cambridge<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-chicago\">Chicago<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-florida\">Florida<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-pitt\">Pitt<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-penn\">Penn<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-florida\">Florida<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-florida\">Florida<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-texas\">Texas<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-cambridge\">Cambridge<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-penn\">Penn<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-pitt\">Pitt<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-virginia-tech\">Virginia Tech<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-penn\">Penn<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-texas\">Texas<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-pitt\">Pitt<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-pitt\">Pitt<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-cambridge\">Cambridge<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-pitt\">Pitt<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-chicago\">Chicago<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-pitt\">Pitt<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-florida\">Florida<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-texas\">Texas<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-pitt\">Pitt<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-pitt\">Pitt<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-penn\">Penn<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-virginia-tech\">Virginia Tech<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-chicago\">Chicago<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-chicago\">Chicago<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-chicago\">Chicago<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-cambridge\">Cambridge<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-pitt\">Pitt<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-pitt\">Pitt<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-chicago\">Chicago<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-florida\">Florida<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-virginia-tech\">Virginia Tech<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-chicago\">Chicago<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-penn\">Penn<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-penn\">Penn<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-chicago\">Chicago<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-pitt\">Pitt<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-chicago\">Chicago<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-florida\">Florida<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-pitt\">Pitt<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-penn\">Penn<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-virginia-tech\">Virginia Tech<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-cambridge\">Cambridge<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-texas\">Texas<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-penn\">Penn<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-virginia-tech\">Virginia Tech<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-texas\">Texas<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-florida\">Florida<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-cambridge\">Cambridge<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-virginia-tech\">Virginia Tech<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-pitt\">Pitt<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-virginia-tech\">Virginia Tech<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-virginia-tech\">Virginia Tech<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-pitt\">Pitt<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-cambridge\">Cambridge<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-chicago\">Chicago<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-pitt\">Pitt<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-virginia-tech\">Virginia Tech<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-chicago\">Chicago<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-pitt\">Pitt<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-chicago\">Chicago<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-penn\">Penn<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-penn\">Penn<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-cambridge\">Cambridge<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-penn\">Penn<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-penn\">Penn<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-florida\">Florida<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-pitt\">Pitt<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-penn\">Penn<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-virginia-tech\">Virginia Tech<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-florida\">Florida<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-texas\">Texas<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-penn\">Penn<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-chicago\">Chicago<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-penn\">Penn<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-cambridge\">Cambridge<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-penn\">Penn<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-virginia-tech\">Virginia Tech<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-florida\">Florida<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-cambridge\">Cambridge<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-penn\">Penn<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-cambridge\">Cambridge<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-florida\">Florida<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-penn\">Penn<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-chicago\">Chicago<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-cambridge\">Cambridge<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-florida\">Florida<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-cambridge\">Cambridge<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-penn\">Penn<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-cambridge\">Cambridge<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-penn\">Penn<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-penn\">Penn<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-virginia-tech\">Virginia Tech<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-texas\">Texas<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-virginia-tech\">Virginia Tech<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-penn\">Penn<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-virginia-tech\">Virginia Tech<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-penn\">Penn<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-chicago\">Chicago<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-penn\">Penn<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-penn\">Penn<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-texas\">Texas<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-cambridge\">Cambridge<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-chicago\">Chicago<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-chicago\">Chicago<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-penn\">Penn<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-pitt\">Pitt<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-pitt\">Pitt<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-chicago\">Chicago<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-texas\">Texas<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-cambridge\">Cambridge<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-chicago\">Chicago<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-penn\">Penn<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-virginia-tech\">Virginia Tech<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-virginia-tech\">Virginia Tech<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-cambridge\">Cambridge<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-chicago\">Chicago<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-florida\">Florida<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-cambridge\">Cambridge<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-chicago\">Chicago<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-penn\">Penn<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-florida\">Florida<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-pitt\">Pitt<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-penn\">Penn<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-penn\">Penn<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-chicago\">Chicago<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-pitt\">Pitt<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-virginia-tech\">Virginia Tech<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-penn\">Penn<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-pitt\">Pitt<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-pitt\">Pitt<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-chicago\">Chicago<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-cambridge\">Cambridge<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-florida\">Florida<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-florida\">Florida<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-florida\">Florida<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-penn\">Penn<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-virginia-tech\">Virginia Tech<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-chicago\">Chicago<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-cambridge\">Cambridge<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-virginia-tech\">Virginia Tech<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-penn\">Penn<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-penn\">Penn<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-chicago\">Chicago<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-texas\">Texas<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-penn\">Penn<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-pitt\">Pitt<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-penn\">Penn<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-cambridge\">Cambridge<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-virginia-tech\">Virginia Tech<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-virginia-tech\">Virginia Tech<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-penn\">Penn<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-florida\">Florida<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-chicago\">Chicago<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-pitt\">Pitt<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-texas\">Texas<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-cambridge\">Cambridge<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-cambridge\">Cambridge<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-chicago\">Chicago<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-virginia-tech\">Virginia Tech<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-cambridge\">Cambridge<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-penn\">Penn<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-cambridge\">Cambridge<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-cambridge\">Cambridge<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-penn\">Penn<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-cambridge\">Cambridge<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-cambridge\">Cambridge<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-chicago\">Chicago<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-pitt\">Pitt<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-virginia-tech\">Virginia Tech<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-florida\">Florida<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-penn\">Penn<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-cambridge\">Cambridge<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-florida\">Florida<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-penn\">Penn<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-pitt\">Pitt<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-virginia-tech\">Virginia Tech<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-cambridge\">Cambridge<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-cambridge\">Cambridge<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-chicago\">Chicago<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-florida\">Florida<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-florida\">Florida<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-penn\">Penn<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-penn\">Penn<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-penn\">Penn<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-penn\">Penn<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-pitt\">Pitt<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-penn\">Penn<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-pitt\">Pitt<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-cambridge\">Cambridge<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-pitt\">Pitt<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-virginia-tech\">Virginia Tech<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-florida\">Florida<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-penn\">Penn<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-penn\">Penn<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-virginia-tech\">Virginia Tech<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-virginia-tech\">Virginia Tech<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-cambridge\">Cambridge<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-chicago\">Chicago<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-chicago\">Chicago<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-virginia-tech\">Virginia Tech<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-penn\">Penn<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-cambridge\">Cambridge<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-texas\">Texas<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-chicago\">Chicago<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-cambridge\">Cambridge<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-chicago\">Chicago<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-virginia-tech\">Virginia Tech<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-penn\">Penn<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-virginia-tech\">Virginia Tech<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-chicago\">Chicago<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-chicago\">Chicago<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-chicago\">Chicago<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-penn\">Penn<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-cambridge\">Cambridge<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-pitt\">Pitt<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-virginia-tech\">Virginia Tech<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-florida\">Florida<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-virginia-tech\">Virginia Tech<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-pitt\">Pitt<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-florida\">Florida<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-penn\">Penn<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-pitt\">Pitt<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-pitt\">Pitt<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-cambridge\">Cambridge<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-chicago\">Chicago<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-penn\">Penn<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-chicago\">Chicago<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-penn\">Penn<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-penn\">Penn<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-pitt\">Pitt<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-cambridge\">Cambridge<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-florida\">Florida<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-penn\">Penn<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-virginia-tech\">Virginia Tech<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-chicago\">Chicago<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-cambridge\">Cambridge<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-penn\">Penn<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-penn\">Penn<\/a>","<a href = \"../tournaments/21-22-Penn Bowl-virginia-tech\">Virginia Tech<\/a>"],[12,10,9,10,10,12,10,10,9,10,10,10,10,12,9,10,10,10,10,10,10,10,9,10,10,10,10,9,9,9,10,10,10,9,10,10,9,10,9,10,10,10,10,10,10,10,7,7,10,10,9,10,10,10,10,10,10,10,10,10,10,10,9,10,9,10,10,6,10,9,10,10,10,10,10,9,11,9,9,10,10,10,10,10,10,10,10,11,9,10,10,10,11,8,10,10,10,9,10,9,9,11,8,10,11,9,10,10,10,10,10,10,9,9,10,9,10,10,10,10,1,10,10,9,8,10,10,7,7,10,10,9,11,10,10,9,10,10,10,10,10,10,9,10,10,11,12,9,9,10,10,6,10,10,10,9,10,9,10,9,8,10,9,9,10,10,10,10,10,8,8,9,6,9,10,10,4,10,7,7,8,10,10,9,10,10,6,12,8,12,10,10,10,9,8,8,10,10,12,9,10,8,9,9,9,7,10,5,9,10,9,9,10,8,9,9,9,10,4,10,9,10,10,7,10,9,9,10,6,5,10,9,9,5,10,8,10,7,7,9,1,9,4,7],[240,200,180,200,200,240,201,200,180,200,200,200,200,240,180,200,200,200,200,200,200,200,180,200,200,200,200,180,180,180,200,200,200,180,200,200,180,200,180,200,200,200,201,200,200,200,140,140,200,200,180,201,200,200,200,200,200,200,200,200,200,200,180,200,180,200,200,116,200,180,201,200,200,200,200,180,220,180,180,200,200,200,200,200,200,200,200,220,180,200,201,200,220,160,200,200,200,180,200,180,180,220,160,200,220,180,200,200,200,200,200,200,180,180,200,180,200,200,200,200,20,201,200,180,160,200,200,140,140,200,200,180,220,200,200,180,200,200,200,200,200,200,180,200,200,220,240,180,180,200,200,120,200,200,200,180,200,180,200,180,160,200,180,180,200,200,200,200,200,160,160,180,120,180,200,200,80,200,140,140,160,200,200,180,200,200,120,240,160,240,200,200,200,180,160,160,200,200,240,180,200,160,180,180,180,140,200,100,180,200,180,180,200,160,180,180,180,200,80,200,180,200,200,140,201,180,180,200,120,100,200,180,180,100,200,160,201,140,140,180,20,180,80,140],[47,22,15,10,20,18,7,13,22,7,9,15,19,26,4,13,15,21,12,12,15,8,13,6,14,10,9,6,8,2,3,5,7,9,8,4,12,20,3,12,9,5,11,2,5,2,5,5,0,5,8,8,7,5,6,6,2,5,6,7,4,5,6,9,6,6,7,2,4,3,9,4,10,5,3,0,0,3,3,4,2,7,2,2,4,9,4,3,7,5,6,7,7,1,5,1,3,10,2,3,2,4,3,5,7,5,4,3,5,3,4,3,7,4,0,2,5,2,3,1,0,1,7,2,4,5,6,2,2,3,3,1,2,3,4,2,2,2,0,0,5,1,3,2,2,3,6,5,2,2,3,2,1,1,5,0,0,1,0,2,3,1,4,0,3,2,1,3,0,3,0,1,0,2,2,0,0,2,0,0,1,0,2,2,0,2,1,3,0,6,1,4,1,1,2,1,1,2,0,1,1,1,1,2,1,0,3,0,0,1,0,1,1,1,0,1,1,0,0,1,0,0,0,1,0,1,0,1,0,0,1,1,0,0,0,0,0,0,0,0,0,2,0,0],[72,63,58,77,44,61,64,62,28,58,56,44,39,40,55,49,39,29,45,41,52,48,30,43,43,39,42,41,37,40,42,40,43,31,36,44,28,17,34,24,40,38,27,38,34,38,21,22,43,33,25,25,32,32,26,30,42,32,27,25,28,27,24,25,24,28,24,17,30,30,21,28,17,25,27,32,33,23,27,25,32,21,30,28,26,17,22,33,18,24,19,17,20,20,19,25,24,10,22,18,22,20,15,20,17,16,17,20,22,18,20,20,11,16,22,17,18,20,19,19,3,22,12,17,10,14,10,15,10,15,14,20,18,15,13,16,15,17,19,19,10,16,14,15,14,18,14,8,12,19,14,8,13,14,8,14,18,13,14,10,11,14,7,12,8,14,11,12,15,7,11,9,7,8,10,12,5,9,11,8,8,11,8,9,12,9,5,8,8,5,12,7,9,14,5,9,9,9,12,6,8,8,5,5,5,6,10,7,6,6,6,4,10,4,6,4,4,8,2,6,7,6,7,3,4,6,5,3,3,6,6,1,2,1,6,2,3,1,1,1,0,1,0,0],[25,4,7,27,11,12,14,29,2,8,11,8,11,11,12,15,2,4,11,8,39,13,6,1,27,8,12,11,10,4,2,4,18,9,8,12,15,11,4,4,27,13,9,4,7,6,4,7,12,7,8,1,14,10,2,10,22,12,6,5,2,3,7,12,8,10,5,2,9,13,7,7,4,5,4,11,2,3,11,5,13,6,10,7,10,8,3,17,10,11,4,4,5,3,3,4,8,6,3,4,9,2,3,10,6,7,2,5,15,2,9,6,5,6,2,3,10,5,6,1,2,7,6,5,1,5,0,10,0,3,1,11,3,4,3,7,2,6,4,4,1,1,7,3,1,9,7,2,1,12,5,3,0,2,2,2,8,4,1,2,10,5,3,1,0,9,1,9,6,4,3,0,0,1,3,1,1,2,7,1,2,1,2,6,4,4,1,1,0,4,7,7,2,14,1,7,4,7,4,0,3,7,0,3,0,2,15,7,0,2,1,0,11,2,2,1,1,5,0,5,5,3,5,3,0,8,3,2,2,9,9,0,0,0,8,1,3,0,0,1,0,8,0,0],[3.92,2.2,1.67,1,2,1.5,0.7,1.3,2.44,0.7,0.9,1.5,1.9,2.17,0.44,1.3,1.5,2.1,1.2,1.2,1.5,0.8,1.44,0.6,1.4,1,0.9,0.67,0.89,0.22,0.3,0.5,0.7,1,0.8,0.4,1.33,2,0.33,1.2,0.9,0.5,1.1,0.2,0.5,0.2,0.71,0.71,0,0.5,0.89,0.8,0.7,0.5,0.6,0.6,0.2,0.5,0.6,0.7,0.4,0.5,0.67,0.9,0.67,0.6,0.7,0.33,0.4,0.33,0.9,0.4,1,0.5,0.3,0,0,0.33,0.33,0.4,0.2,0.7,0.2,0.2,0.4,0.9,0.4,0.27,0.78,0.5,0.6,0.7,0.64,0.13,0.5,0.1,0.3,1.11,0.2,0.33,0.22,0.36,0.38,0.5,0.64,0.56,0.4,0.3,0.5,0.3,0.4,0.3,0.78,0.44,0,0.22,0.5,0.2,0.3,0.1,0,0.1,0.7,0.22,0.5,0.5,0.6,0.29,0.29,0.3,0.3,0.11,0.18,0.3,0.4,0.22,0.2,0.2,0,0,0.5,0.1,0.33,0.2,0.2,0.27,0.5,0.56,0.22,0.2,0.3,0.33,0.1,0.1,0.5,0,0,0.11,0,0.22,0.38,0.1,0.44,0,0.3,0.2,0.1,0.3,0,0.38,0,0.11,0,0.22,0.2,0,0,0.2,0,0,0.13,0,0.2,0.22,0,0.2,0.17,0.25,0,0.5,0.1,0.4,0.1,0.11,0.25,0.13,0.1,0.2,0,0.11,0.1,0.13,0.11,0.22,0.11,0,0.3,0,0,0.1,0,0.11,0.1,0.13,0,0.11,0.11,0,0,0.1,0,0,0,0.14,0,0.11,0,0.1,0,0,0.1,0.11,0,0,0,0,0,0,0,0,0,0.22,0,0],[6,6.3,6.44,7.7,4.4,5.08,6.4,6.2,3.11,5.8,5.6,4.4,3.9,3.33,6.11,4.9,3.9,2.9,4.5,4.1,5.2,4.8,3.33,4.3,4.3,3.9,4.2,4.56,4.11,4.44,4.2,4,4.3,3.44,3.6,4.4,3.11,1.7,3.78,2.4,4,3.8,2.7,3.8,3.4,3.8,3,3.14,4.3,3.3,2.78,2.5,3.2,3.2,2.6,3,4.2,3.2,2.7,2.5,2.8,2.7,2.67,2.5,2.67,2.8,2.4,2.83,3,3.33,2.1,2.8,1.7,2.5,2.7,3.56,3,2.56,3,2.5,3.2,2.1,3,2.8,2.6,1.7,2.2,3,2,2.4,1.9,1.7,1.82,2.5,1.9,2.5,2.4,1.11,2.2,2,2.44,1.82,1.88,2,1.55,1.78,1.7,2,2.2,1.8,2,2,1.22,1.78,2.2,1.89,1.8,2,1.9,1.9,3,2.2,1.2,1.89,1.25,1.4,1,2.14,1.43,1.5,1.4,2.22,1.64,1.5,1.3,1.78,1.5,1.7,1.9,1.9,1,1.6,1.56,1.5,1.4,1.64,1.17,0.89,1.33,1.9,1.4,1.33,1.3,1.4,0.8,1.56,1.8,1.44,1.4,1.11,1.38,1.4,0.78,1.33,0.8,1.4,1.1,1.2,1.5,0.88,1.38,1,1.17,0.89,1,1.2,1.25,0.9,1.57,1.14,1,1.1,0.8,1,1.2,0.9,0.83,0.67,1,0.42,1.2,0.7,0.9,1.56,0.63,1.13,0.9,0.9,1,0.67,0.8,1,0.56,0.56,0.56,0.86,1,1.4,0.67,0.6,0.67,0.44,1,0.5,0.67,0.44,0.44,0.8,0.5,0.6,0.78,0.6,0.7,0.43,0.4,0.67,0.56,0.3,0.5,1.2,0.6,0.11,0.22,0.2,0.6,0.25,0.3,0.14,0.14,0.11,0,0.11,0,0],[2.08,0.4,0.78,2.7,1.1,1,1.4,2.9,0.22,0.8,1.1,0.8,1.1,0.92,1.33,1.5,0.2,0.4,1.1,0.8,3.9,1.3,0.67,0.1,2.7,0.8,1.2,1.22,1.11,0.44,0.2,0.4,1.8,1,0.8,1.2,1.67,1.1,0.44,0.4,2.7,1.3,0.9,0.4,0.7,0.6,0.57,1,1.2,0.7,0.89,0.1,1.4,1,0.2,1,2.2,1.2,0.6,0.5,0.2,0.3,0.78,1.2,0.89,1,0.5,0.33,0.9,1.44,0.7,0.7,0.4,0.5,0.4,1.22,0.18,0.33,1.22,0.5,1.3,0.6,1,0.7,1,0.8,0.3,1.55,1.11,1.1,0.4,0.4,0.45,0.38,0.3,0.4,0.8,0.67,0.3,0.44,1,0.18,0.38,1,0.55,0.78,0.2,0.5,1.5,0.2,0.9,0.6,0.56,0.67,0.2,0.33,1,0.5,0.6,0.1,2,0.7,0.6,0.56,0.13,0.5,0,1.43,0,0.3,0.1,1.22,0.27,0.4,0.3,0.78,0.2,0.6,0.4,0.4,0.1,0.1,0.78,0.3,0.1,0.82,0.58,0.22,0.11,1.2,0.5,0.5,0,0.2,0.2,0.22,0.8,0.44,0.1,0.22,1.25,0.5,0.33,0.11,0,0.9,0.1,0.9,0.6,0.5,0.38,0,0,0.11,0.3,0.1,0.25,0.2,1,0.14,0.25,0.1,0.2,0.67,0.4,0.4,0.17,0.08,0,0.33,0.7,0.7,0.2,1.56,0.13,0.88,0.4,0.7,0.33,0,0.3,0.88,0,0.33,0,0.29,1.5,1.4,0,0.2,0.11,0,1.1,0.25,0.22,0.11,0.11,0.5,0,0.5,0.56,0.3,0.5,0.43,0,0.89,0.33,0.2,0.33,1.8,0.9,0,0,0,0.8,0.13,0.3,0,0,0.11,0,0.89,0,0],[1.88,5.5,2.14,0.37,1.82,1.5,0.5,0.45,11,0.88,0.82,1.88,1.73,2.36,0.33,0.87,7.5,5.25,1.09,1.5,0.38,0.62,2.17,6,0.52,1.25,0.75,0.55,0.8,0.5,1.5,1.25,0.39,1,1,0.33,0.8,1.82,0.75,3,0.33,0.38,1.22,0.5,0.71,0.33,1.25,0.71,0,0.71,1,8,0.5,0.5,3,0.6,0.09,0.42,1,1.4,2,1.67,0.86,0.75,0.75,0.6,1.4,1,0.44,0.23,1.29,0.57,2.5,1,0.75,0,0,1,0.27,0.8,0.15,1.17,0.2,0.29,0.4,1.13,1.33,0.18,0.7,0.45,1.5,1.75,1.4,0.33,1.67,0.25,0.38,1.67,0.67,0.75,0.22,2,1,0.5,1.17,0.71,2,0.6,0.33,1.5,0.44,0.5,1.4,0.67,0,0.67,0.5,0.4,0.5,1,0,0.14,1.17,0.4,4,1,null,0.2,null,1,3,0.09,0.67,0.75,1.33,0.29,1,0.33,0,0,5,1,0.43,0.67,2,0.33,0.86,2.5,2,0.17,0.6,0.67,null,0.5,2.5,0,0,0.25,0,1,0.3,0.2,1.33,0,null,0.22,1,0.33,0,0.75,0,null,null,2,0.67,0,0,1,0,0,0.5,0,1,0.33,0,0.5,1,3,null,1.5,0.14,0.57,0.5,0.07,2,0.14,0.25,0.29,0,null,0.33,0.14,null,0.67,null,0,0.2,0,null,0.5,0,null,0.09,0.5,0,1,1,0,null,0.2,0,0,0,0.33,null,0.13,0,0.5,0,0,0.11,null,null,null,0,0,0,null,null,0,null,0.25,null,null],[4.76,21.25,10.43,3.22,5.82,6.58,5.07,2.59,25,8.13,5.91,7.38,5.27,6,4.92,4.13,27,12.5,5.18,6.63,1.72,4.31,7.17,49,2.11,6.13,4.25,4.27,4.5,10.5,22.5,11.25,2.78,4.44,5.5,4,2.67,3.36,9.25,9,1.81,3.31,4.22,10,5.57,6.67,6.5,3.86,3.58,5.43,4.13,33,2.79,3.7,16,3.6,2,3.08,5.5,6.4,16,10.67,4.29,2.83,3.75,3.4,6.2,9.5,3.78,2.54,4.29,4.57,6.75,6,7.5,2.91,16.5,8.67,2.73,5.8,2.62,4.67,3.2,4.29,3,3.25,8.67,2.12,2.5,2.64,6.25,6,5.4,7,8,6.5,3.38,3.33,8,5.25,2.67,12,6,2.5,4,3,10.5,4.6,1.8,10.5,2.67,3.83,3.6,3.33,11,6.33,2.3,4.4,3.67,20,1.5,3.29,3.17,3.8,14,3.8,null,1.7,null,6,17,1.91,6.67,4.5,5.67,2.57,8.5,3.17,4.75,4.75,15,17,2.43,5.67,16,2.33,2.86,6.5,14,1.75,3.4,3.33,null,7.5,6.5,7,2.25,3.5,14,6,1.4,3,3.67,12,null,1.78,12,1.67,2.5,2.5,3.67,null,null,10,4,12,5,5.5,1.57,8,4.5,11,5,1.83,3,2.75,6,11,null,2.75,1.86,1.57,5,1.07,7,1.43,2.5,1.57,3,null,3,1.29,null,2.33,null,3,0.87,1,null,3.5,6,null,1,2.5,3,5,5,1.6,null,1.4,1.4,2,1.4,1.33,null,0.88,1.67,2,1.5,0.67,0.78,null,null,null,0.75,2,1,null,null,1,null,0.38,null,null],[108.33,94,85.56,78.5,68.5,68.33,67.5,67,66.67,64.5,64,62.5,62,61.25,61.11,61,60.5,58.5,57.5,55,55,53.5,51.67,51.5,50.5,50,49.5,49.44,48.89,45.56,45.5,45.5,44.5,44.44,44,44,42.78,41.5,40.56,40,40,39,39,39,38,38,37.86,37.14,37,37,36.67,36.5,35.5,34.5,34,34,34,33.5,33,33,33,33,32.78,32.5,32.22,32,32,31.67,31.5,31.11,31,30.5,30,30,29.5,29.44,29.09,28.89,28.89,28.5,28.5,28.5,28,27.5,27,26.5,26.5,26.36,26.11,26,26,25.5,25.45,25,25,24.5,24.5,24.44,23.5,22.78,22.78,22.73,22.5,22.5,22.27,22.22,22,22,22,21.5,21.5,21.5,21.11,21.11,21,20.56,20.5,20.5,20.5,20,20,20,19.5,19.44,19.38,19,19,18.57,18.57,18,18,17.78,17.73,17.5,17.5,17.22,17,17,17,17,17,17,16.67,16.5,16.5,16.36,16.25,16.11,16.11,16,16,15.83,14.5,14.5,14.5,14.44,14,13.89,13.5,13.33,13.13,13,12.78,12.78,12.5,12.5,12,12,12,11.88,11.88,11.67,11.67,11.67,11.5,11.5,11.25,11,10.71,10.71,10.63,10.5,10,10,10,10,10,10,10,10,10,9.5,9.5,9.44,9.38,8.75,8.5,8.5,8.33,8.33,8,7.5,7.22,7.22,7.22,7.14,7,7,6.67,6.5,6.11,6.11,6,5.63,5.56,5.56,5.56,5.5,5,5,5,4.5,4.5,4.29,4,3.89,3.89,3.5,3.33,3,3,2.78,2.22,2,2,1.88,1.5,1.43,1.43,0.56,0,0,0,0]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>Player<\/th>\n      <th>Team<\/th>\n      <th>Site<\/th>\n      <th>GP<\/th>\n      <th>TUH<\/th>\n      <th>15<\/th>\n      <th>10<\/th>\n      <th>-5<\/th>\n      <th>15/G<\/th>\n      <th>10/G<\/th>\n      <th>-5/G<\/th>\n      <th>P/N<\/th>\n      <th>G/N<\/th>\n      <th>PPG<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"dom":"tp","rowCallback":"function(row, data){\n  for(var i=0; i<data.length; i++){\n    if(data[i] === null){\n      $('td:eq('+(i)+')', row).html('-')\n        .css({'font-style': 'italic', 'text-align': 'center'});\n    }\n  }\nvar value=data[3]; $(this.api().cell(row, 3).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[4]; $(this.api().cell(row, 4).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[5]; $(this.api().cell(row, 5).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[6]; $(this.api().cell(row, 6).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[7]; $(this.api().cell(row, 7).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[8]; $(this.api().cell(row, 8).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[9]; $(this.api().cell(row, 9).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[10]; $(this.api().cell(row, 10).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[11]; $(this.api().cell(row, 11).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[12]; $(this.api().cell(row, 12).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[13]; $(this.api().cell(row, 13).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[0]; $(this.api().cell(row, 0).node()).css({'border-right':'2px solid #d3d3d3'});\nvar value=data[1]; $(this.api().cell(row, 1).node()).css({'border-right':'2px solid #d3d3d3'});\nvar value=data[2]; $(this.api().cell(row, 2).node()).css({'border-right':'2px solid #d3d3d3'});\nvar value=data[4]; $(this.api().cell(row, 4).node()).css({'border-right':'2px solid #d3d3d3'});\nvar value=data[7]; $(this.api().cell(row, 7).node()).css({'border-right':'2px solid #d3d3d3'});\nvar value=data[10]; $(this.api().cell(row, 10).node()).css({'border-right':'2px solid #d3d3d3'});\n}","columnDefs":[{"targets":8,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 2, 3, \",\", \".\", null);\n  }"},{"targets":9,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 2, 3, \",\", \".\", null);\n  }"},{"targets":10,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 2, 3, \",\", \".\", null);\n  }"},{"targets":13,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 2, 3, \",\", \".\", null);\n  }"},{"targets":11,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 2, 3, \",\", \".\", null);\n  }"},{"targets":12,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 2, 3, \",\", \".\", null);\n  }"},{"className":"dt-right","targets":[3,4,5,6,7,8,9,10,11,12,13]}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":["options.rowCallback","options.columnDefs.0.render","options.columnDefs.1.render","options.columnDefs.2.render","options.columnDefs.3.render","options.columnDefs.4.render","options.columnDefs.5.render"],"jsHooks":[]}</script>
+</div>
+
+
+<script>
+
+var source = new Bloodhound({
+  datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
+  queryTokenizer: Bloodhound.tokenizers.whitespace,
+  prefetch: {
+    url: '../test-index.json',
+    cache: false
+  }
+});
+
+source.initialize();
+
+$('#custom-templates .typeahead').typeahead(null, {
+  name: 'matched-links',
+  displayKey: 'name',
+  source: source.ttAdapter(),
+  templates: {
+    empty: [
+      '<div class="empty-message">',
+      'unable to find any search results that match the current query',
+      '</div>'
+    ].join('\n'),
+      suggestion: Handlebars.compile('<p><a href="{{id}}">{{name}}</a></p>')
+  }
+});
+</script>
+
+<script>
+  $(function() {
+  var navSelector = '#toc';
+  var $myNav = $(navSelector);
+  Toc.init($myNav);
+  $('body').scrollspy({
+    target: navSelector
+  });
+});
+</script>
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+
+</body>
+</html>

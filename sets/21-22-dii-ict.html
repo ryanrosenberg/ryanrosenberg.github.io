@@ -1,0 +1,1192 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>DII ICT | College Quizbowl Stats</title>
+
+<script src="libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="libs/navigation-1.1/tabsets.js"></script>
+<link href="libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="libs/highlightjs-9.12.0/highlight.js"></script>
+<script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script>
+<link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
+<script src="libs/datatables-binding-0.24/datatables.js"></script>
+<link href="libs/dt-core-1.11.3/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="libs/dt-core-1.11.3/css/jquery.dataTables.extra.css" rel="stylesheet" />
+<script src="libs/dt-core-1.11.3/js/jquery.dataTables.min.js"></script>
+<link href="libs/crosstalk-1.1.1/css/crosstalk.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.1.1/js/crosstalk.min.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Alegreya+Sans&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inconsolata&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+<script src="https://twitter.github.io/typeahead.js/releases/latest/typeahead.bundle.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.7/handlebars.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-sidebar/3.3.1/jquery.sticky-sidebar.min.js" integrity="sha512-iVhJqV0j477IrAkkzsn/tVJWXYsEqAj4PSS7AG+z1F7eD6uLKQxYBg09x13viaJ1Z5yYhlpyx0zLAUUErdHM6A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<!-- add after bootstrap.min.css -->
+<link rel="stylesheet" href="https://cdn.rawgit.com/afeld/bootstrap-toc/v0.4.1/dist/bootstrap-toc.min.css">
+<!-- add after bootstrap.min.js -->
+<script src="https://cdn.rawgit.com/afeld/bootstrap-toc/v0.4.1/dist/bootstrap-toc.min.js"></script>
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+      .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+
+
+<link rel="stylesheet" href="../css/style.css" type="text/css" />
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+
+<nav class = 'top-nav'>
+  <ul>
+    <li><p class = "site-title"><a href="/index.html">College Quizbowl Stats</a></p>
+    </li>
+    <li><a class = "navbar-link" href="/seasons/">Seasons</a></li>
+    <li><a class = "navbar-link" href="/sets/">Sets</a></li>
+    <li><a class = "navbar-link" href="/circuits/">Circuits</a></li>
+    <li><a class = "navbar-link" href="/records.html">Records</a></li>
+    <li><a class = "navbar-link" href="/about.html">About</a></li>
+
+<div id="custom-templates">
+  <input class="typeahead" type="text" placeholder="Player/Team Search">
+</div>
+  </ul>
+</nav>
+
+<div id="header">
+
+
+
+
+</div>
+
+
+<div class = 'main-flex'>
+<div class="toc-div col-sm-2">
+<nav class="side-nav" id="toc">
+</nav>
+</div>
+<div class = 'main-content col-sm-10'>
+<p class="page-title">
+21-22 DII ICT
+</p>
+<p class="page-subtitle">
+Head Editor: NAQT
+</p>
+<hr>
+<div id="editors" class="section level2">
+<h2>Editors</h2>
+<div id="yghvohuowp" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>html {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+}
+
+#yghvohuowp .gt_table {
+  display: table;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#yghvohuowp .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#yghvohuowp .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 1px;
+  padding-bottom: 1px;
+  padding-left: 6px;
+  padding-right: 6px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#yghvohuowp .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 0;
+  padding-bottom: 3px;
+  padding-left: 6px;
+  padding-right: 6px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#yghvohuowp .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#yghvohuowp .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#yghvohuowp .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 1.25px;
+  padding-bottom: 2.25px;
+  padding-left: 6px;
+  padding-right: 6px;
+  overflow-x: hidden;
+}
+
+#yghvohuowp .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#yghvohuowp .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#yghvohuowp .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#yghvohuowp .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 1.25px;
+  padding-bottom: 1.25px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#yghvohuowp .gt_group_heading {
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-left: 6px;
+  padding-right: 6px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#yghvohuowp .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#yghvohuowp .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#yghvohuowp .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#yghvohuowp .gt_row {
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-left: 6px;
+  padding-right: 6px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#yghvohuowp .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 6px;
+  padding-right: 6px;
+}
+
+#yghvohuowp .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 6px;
+  padding-right: 6px;
+  vertical-align: top;
+}
+
+#yghvohuowp .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#yghvohuowp .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-left: 6px;
+  padding-right: 6px;
+}
+
+#yghvohuowp .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#yghvohuowp .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#yghvohuowp .gt_last_summary_row {
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-left: 6px;
+  padding-right: 6px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#yghvohuowp .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-left: 6px;
+  padding-right: 6px;
+}
+
+#yghvohuowp .gt_first_grand_summary_row {
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-left: 6px;
+  padding-right: 6px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#yghvohuowp .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#yghvohuowp .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#yghvohuowp .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#yghvohuowp .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-left: 1px;
+  padding-right: 1px;
+  padding-left: 6px;
+  padding-right: 6px;
+}
+
+#yghvohuowp .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#yghvohuowp .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 1px;
+  padding-bottom: 1px;
+  padding-left: 6px;
+  padding-right: 6px;
+}
+
+#yghvohuowp .gt_left {
+  text-align: left;
+}
+
+#yghvohuowp .gt_center {
+  text-align: center;
+}
+
+#yghvohuowp .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#yghvohuowp .gt_font_normal {
+  font-weight: normal;
+}
+
+#yghvohuowp .gt_font_bold {
+  font-weight: bold;
+}
+
+#yghvohuowp .gt_font_italic {
+  font-style: italic;
+}
+
+#yghvohuowp .gt_super {
+  font-size: 65%;
+}
+
+#yghvohuowp .gt_two_val_uncert {
+  display: inline-block;
+  line-height: 1em;
+  text-align: right;
+  font-size: 60%;
+  vertical-align: -0.25em;
+  margin-left: 0.1em;
+}
+
+#yghvohuowp .gt_footnote_marks {
+  font-style: italic;
+  font-weight: normal;
+  font-size: 75%;
+  vertical-align: 0.4em;
+}
+
+#yghvohuowp .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#yghvohuowp .gt_slash_mark {
+  font-size: 0.7em;
+  line-height: 0.7em;
+  vertical-align: 0.15em;
+}
+
+#yghvohuowp .gt_fraction_numerator {
+  font-size: 0.6em;
+  line-height: 0.6em;
+  vertical-align: 0.45em;
+}
+
+#yghvohuowp .gt_fraction_denominator {
+  font-size: 0.6em;
+  line-height: 0.6em;
+  vertical-align: -0.05em;
+}
+</style>
+<table class="gt_table">
+  
+  <thead class="gt_col_headings">
+    <tr>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;">Subcategory</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1">Editors</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body"></tbody>
+  
+  
+</table>
+</div>
+<hr>
+</div>
+<div id="tournaments" class="section level2">
+<h2>Tournaments</h2>
+<div id="fznnjusyeo" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>html {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+}
+
+#fznnjusyeo .gt_table {
+  display: table;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#fznnjusyeo .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#fznnjusyeo .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 1px;
+  padding-bottom: 1px;
+  padding-left: 6px;
+  padding-right: 6px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#fznnjusyeo .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 0;
+  padding-bottom: 3px;
+  padding-left: 6px;
+  padding-right: 6px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#fznnjusyeo .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#fznnjusyeo .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#fznnjusyeo .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 1.25px;
+  padding-bottom: 2.25px;
+  padding-left: 6px;
+  padding-right: 6px;
+  overflow-x: hidden;
+}
+
+#fznnjusyeo .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#fznnjusyeo .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#fznnjusyeo .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#fznnjusyeo .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 1.25px;
+  padding-bottom: 1.25px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#fznnjusyeo .gt_group_heading {
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-left: 6px;
+  padding-right: 6px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#fznnjusyeo .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#fznnjusyeo .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#fznnjusyeo .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#fznnjusyeo .gt_row {
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-left: 6px;
+  padding-right: 6px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#fznnjusyeo .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 6px;
+  padding-right: 6px;
+}
+
+#fznnjusyeo .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 6px;
+  padding-right: 6px;
+  vertical-align: top;
+}
+
+#fznnjusyeo .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#fznnjusyeo .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-left: 6px;
+  padding-right: 6px;
+}
+
+#fznnjusyeo .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#fznnjusyeo .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#fznnjusyeo .gt_last_summary_row {
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-left: 6px;
+  padding-right: 6px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#fznnjusyeo .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-left: 6px;
+  padding-right: 6px;
+}
+
+#fznnjusyeo .gt_first_grand_summary_row {
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-left: 6px;
+  padding-right: 6px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#fznnjusyeo .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#fznnjusyeo .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#fznnjusyeo .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#fznnjusyeo .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-left: 1px;
+  padding-right: 1px;
+  padding-left: 6px;
+  padding-right: 6px;
+}
+
+#fznnjusyeo .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#fznnjusyeo .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 1px;
+  padding-bottom: 1px;
+  padding-left: 6px;
+  padding-right: 6px;
+}
+
+#fznnjusyeo .gt_left {
+  text-align: left;
+}
+
+#fznnjusyeo .gt_center {
+  text-align: center;
+}
+
+#fznnjusyeo .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#fznnjusyeo .gt_font_normal {
+  font-weight: normal;
+}
+
+#fznnjusyeo .gt_font_bold {
+  font-weight: bold;
+}
+
+#fznnjusyeo .gt_font_italic {
+  font-style: italic;
+}
+
+#fznnjusyeo .gt_super {
+  font-size: 65%;
+}
+
+#fznnjusyeo .gt_two_val_uncert {
+  display: inline-block;
+  line-height: 1em;
+  text-align: right;
+  font-size: 60%;
+  vertical-align: -0.25em;
+  margin-left: 0.1em;
+}
+
+#fznnjusyeo .gt_footnote_marks {
+  font-style: italic;
+  font-weight: normal;
+  font-size: 75%;
+  vertical-align: 0.4em;
+}
+
+#fznnjusyeo .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#fznnjusyeo .gt_slash_mark {
+  font-size: 0.7em;
+  line-height: 0.7em;
+  vertical-align: 0.15em;
+}
+
+#fznnjusyeo .gt_fraction_numerator {
+  font-size: 0.6em;
+  line-height: 0.6em;
+  vertical-align: 0.45em;
+}
+
+#fznnjusyeo .gt_fraction_denominator {
+  font-size: 0.6em;
+  line-height: 0.6em;
+  vertical-align: -0.05em;
+}
+</style>
+<table class="gt_table">
+  
+  <thead class="gt_col_headings">
+    <tr>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;">Site</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">Teams</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;">Schools</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">15%</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;">Conv%</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">PPB</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr class="gt_group_heading_row">
+      <td colspan="6" class="gt_group_heading">2022-04-02</td>
+    </tr>
+    <tr class="gt_row_group_first"><td class="gt_row gt_left" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;"><a href = "../tournaments/21-22-dii-ict-hyatt-regency-o'hare">Hyatt Regency O'Hare</a></td>
+<td class="gt_row gt_right" style="font-family: var(--table-font); font-size: 110%;">32</td>
+<td class="gt_row gt_right" style="font-family: var(--table-font); font-size: 110%; border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;">31</td>
+<td class="gt_row gt_right" style="font-family: var(--table-font); font-size: 110%;">0.099</td>
+<td class="gt_row gt_right" style="font-family: var(--table-font); font-size: 110%; border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;">0.899</td>
+<td class="gt_row gt_right" style="font-family: var(--table-font); font-size: 110%;">17.23</td></tr>
+    <tr class="gt_group_heading_row">
+      <td colspan="6" class="gt_group_heading">2022-08-20</td>
+    </tr>
+    <tr class="gt_row_group_first"><td class="gt_row gt_left gt_striped" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;"><a href = "../tournaments/21-22-dii-ict-ukqb">UKQB</a></td>
+<td class="gt_row gt_right gt_striped" style="font-family: var(--table-font); font-size: 110%;">10</td>
+<td class="gt_row gt_right gt_striped" style="font-family: var(--table-font); font-size: 110%; border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;">8</td>
+<td class="gt_row gt_right gt_striped" style="font-family: var(--table-font); font-size: 110%;">0.086</td>
+<td class="gt_row gt_right gt_striped" style="font-family: var(--table-font); font-size: 110%; border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;">0.836</td>
+<td class="gt_row gt_right gt_striped" style="font-family: var(--table-font); font-size: 110%;">18.04</td></tr>
+  </tbody>
+  
+  
+</table>
+</div>
+<hr>
+</div>
+<div id="teams" class="section level2">
+<h2>Teams</h2>
+<div id="htmlwidget-440c7425e49da1b4e17f" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-440c7425e49da1b4e17f">{"x":{"filter":"none","vertical":false,"data":[["<a href = \"../tournaments/21-22-dii-ict-hyatt-regency-o'hare#yale-b\">Yale B<\/a>","<a href = \"../tournaments/21-22-dii-ict-hyatt-regency-o'hare#minnesota-a\">Minnesota A<\/a>","<a href = \"../tournaments/21-22-dii-ict-hyatt-regency-o'hare#texas-c\">Texas C<\/a>","<a href = \"../tournaments/21-22-dii-ict-hyatt-regency-o'hare#chicago-d\">Chicago D<\/a>","<a href = \"../tournaments/21-22-dii-ict-ukqb#oxford-a\">Oxford A<\/a>","<a href = \"../tournaments/21-22-dii-ict-hyatt-regency-o'hare#toronto-a\">Toronto A<\/a>","<a href = \"../tournaments/21-22-dii-ict-hyatt-regency-o'hare#brown-b\">Brown B<\/a>","<a href = \"../tournaments/21-22-dii-ict-hyatt-regency-o'hare#cornell-b\">Cornell B<\/a>","<a href = \"../tournaments/21-22-dii-ict-hyatt-regency-o'hare#mcgill-b\">McGill B<\/a>","<a href = \"../tournaments/21-22-dii-ict-hyatt-regency-o'hare#harvard-b\">Harvard B<\/a>","<a href = \"../tournaments/21-22-dii-ict-ukqb#imperial-a\">Imperial A<\/a>","<a href = \"../tournaments/21-22-dii-ict-hyatt-regency-o'hare#mit-b\">MIT B<\/a>","<a href = \"../tournaments/21-22-dii-ict-hyatt-regency-o'hare#georgia-a\">Georgia A<\/a>","<a href = \"../tournaments/21-22-dii-ict-hyatt-regency-o'hare#stanford-b\">Stanford B<\/a>","<a href = \"../tournaments/21-22-dii-ict-ukqb#cambridge-a\">Cambridge A<\/a>","<a href = \"../tournaments/21-22-dii-ict-hyatt-regency-o'hare#columbia-c\">Columbia C<\/a>","<a href = \"../tournaments/21-22-dii-ict-hyatt-regency-o'hare#johns-hopkins-a\">Johns Hopkins A<\/a>","<a href = \"../tournaments/21-22-dii-ict-hyatt-regency-o'hare#wustl-b\">WUSTL B<\/a>","<a href = \"../tournaments/21-22-dii-ict-hyatt-regency-o'hare#william-&-mary-a\">William & Mary A<\/a>","<a href = \"../tournaments/21-22-dii-ict-ukqb#chimera-a\">Chimera A<\/a>","<a href = \"../tournaments/21-22-dii-ict-hyatt-regency-o'hare#george-washington-a\">George Washington A<\/a>","<a href = \"../tournaments/21-22-dii-ict-hyatt-regency-o'hare#purdue-a\">Purdue A<\/a>","<a href = \"../tournaments/21-22-dii-ict-hyatt-regency-o'hare#ucla-a\">UCLA A<\/a>","<a href = \"../tournaments/21-22-dii-ict-hyatt-regency-o'hare#vanderbilt-b\">Vanderbilt B<\/a>","<a href = \"../tournaments/21-22-dii-ict-ukqb#bristol-a\">Bristol A<\/a>","<a href = \"../tournaments/21-22-dii-ict-ukqb#warwick-a\">Warwick A<\/a>","<a href = \"../tournaments/21-22-dii-ict-hyatt-regency-o'hare#north-carolina-a\">North Carolina A<\/a>","<a href = \"../tournaments/21-22-dii-ict-hyatt-regency-o'hare#western-ontario-a\">Western Ontario A<\/a>","<a href = \"../tournaments/21-22-dii-ict-hyatt-regency-o'hare#penn-a\">Penn A<\/a>","<a href = \"../tournaments/21-22-dii-ict-hyatt-regency-o'hare#uc-berkeley-b\">UC Berkeley B<\/a>","<a href = \"../tournaments/21-22-dii-ict-ukqb#edinburgh-a\">Edinburgh A<\/a>","<a href = \"../tournaments/21-22-dii-ict-ukqb#imperial-b\">Imperial B<\/a>","<a href = \"../tournaments/21-22-dii-ict-hyatt-regency-o'hare#miami-ohio-a\">Miami-Ohio A<\/a>","<a href = \"../tournaments/21-22-dii-ict-hyatt-regency-o'hare#alabama-a\">Alabama A<\/a>","<a href = \"../tournaments/21-22-dii-ict-hyatt-regency-o'hare#lehigh-a\">Lehigh A<\/a>","<a href = \"../tournaments/21-22-dii-ict-ukqb#manchester-a\">Manchester A<\/a>","<a href = \"../tournaments/21-22-dii-ict-hyatt-regency-o'hare#notre-dame-a\">Notre Dame A<\/a>","<a href = \"../tournaments/21-22-dii-ict-hyatt-regency-o'hare#kentucky-b\">Kentucky B<\/a>","<a href = \"../tournaments/21-22-dii-ict-hyatt-regency-o'hare#minnesota-b\">Minnesota B<\/a>","<a href = \"../tournaments/21-22-dii-ict-ukqb#birmingham-a\">Birmingham A<\/a>","<a href = \"../tournaments/21-22-dii-ict-hyatt-regency-o'hare#jefferson-ctc-a\">Jefferson CTC A<\/a>","<a href = \"../tournaments/21-22-dii-ict-hyatt-regency-o'hare#chipola-a\">Chipola A<\/a>"],["<a href = \"../tournaments/21-22-dii-ict-hyatt-regency-o'hare\">Hyatt Regency O'Hare<\/a>","<a href = \"../tournaments/21-22-dii-ict-hyatt-regency-o'hare\">Hyatt Regency O'Hare<\/a>","<a href = \"../tournaments/21-22-dii-ict-hyatt-regency-o'hare\">Hyatt Regency O'Hare<\/a>","<a href = \"../tournaments/21-22-dii-ict-hyatt-regency-o'hare\">Hyatt Regency O'Hare<\/a>","<a href = \"../tournaments/21-22-dii-ict-ukqb\">UKQB<\/a>","<a href = \"../tournaments/21-22-dii-ict-hyatt-regency-o'hare\">Hyatt Regency O'Hare<\/a>","<a href = \"../tournaments/21-22-dii-ict-hyatt-regency-o'hare\">Hyatt Regency O'Hare<\/a>","<a href = \"../tournaments/21-22-dii-ict-hyatt-regency-o'hare\">Hyatt Regency O'Hare<\/a>","<a href = \"../tournaments/21-22-dii-ict-hyatt-regency-o'hare\">Hyatt Regency O'Hare<\/a>","<a href = \"../tournaments/21-22-dii-ict-hyatt-regency-o'hare\">Hyatt Regency O'Hare<\/a>","<a href = \"../tournaments/21-22-dii-ict-ukqb\">UKQB<\/a>","<a href = \"../tournaments/21-22-dii-ict-hyatt-regency-o'hare\">Hyatt Regency O'Hare<\/a>","<a href = \"../tournaments/21-22-dii-ict-hyatt-regency-o'hare\">Hyatt Regency O'Hare<\/a>","<a href = \"../tournaments/21-22-dii-ict-hyatt-regency-o'hare\">Hyatt Regency O'Hare<\/a>","<a href = \"../tournaments/21-22-dii-ict-ukqb\">UKQB<\/a>","<a href = \"../tournaments/21-22-dii-ict-hyatt-regency-o'hare\">Hyatt Regency O'Hare<\/a>","<a href = \"../tournaments/21-22-dii-ict-hyatt-regency-o'hare\">Hyatt Regency O'Hare<\/a>","<a href = \"../tournaments/21-22-dii-ict-hyatt-regency-o'hare\">Hyatt Regency O'Hare<\/a>","<a href = \"../tournaments/21-22-dii-ict-hyatt-regency-o'hare\">Hyatt Regency O'Hare<\/a>","<a href = \"../tournaments/21-22-dii-ict-ukqb\">UKQB<\/a>","<a href = \"../tournaments/21-22-dii-ict-hyatt-regency-o'hare\">Hyatt Regency O'Hare<\/a>","<a href = \"../tournaments/21-22-dii-ict-hyatt-regency-o'hare\">Hyatt Regency O'Hare<\/a>","<a href = \"../tournaments/21-22-dii-ict-hyatt-regency-o'hare\">Hyatt Regency O'Hare<\/a>","<a href = \"../tournaments/21-22-dii-ict-hyatt-regency-o'hare\">Hyatt Regency O'Hare<\/a>","<a href = \"../tournaments/21-22-dii-ict-ukqb\">UKQB<\/a>","<a href = \"../tournaments/21-22-dii-ict-ukqb\">UKQB<\/a>","<a href = \"../tournaments/21-22-dii-ict-hyatt-regency-o'hare\">Hyatt Regency O'Hare<\/a>","<a href = \"../tournaments/21-22-dii-ict-hyatt-regency-o'hare\">Hyatt Regency O'Hare<\/a>","<a href = \"../tournaments/21-22-dii-ict-hyatt-regency-o'hare\">Hyatt Regency O'Hare<\/a>","<a href = \"../tournaments/21-22-dii-ict-hyatt-regency-o'hare\">Hyatt Regency O'Hare<\/a>","<a href = \"../tournaments/21-22-dii-ict-ukqb\">UKQB<\/a>","<a href = \"../tournaments/21-22-dii-ict-ukqb\">UKQB<\/a>","<a href = \"../tournaments/21-22-dii-ict-hyatt-regency-o'hare\">Hyatt Regency O'Hare<\/a>","<a href = \"../tournaments/21-22-dii-ict-hyatt-regency-o'hare\">Hyatt Regency O'Hare<\/a>","<a href = \"../tournaments/21-22-dii-ict-hyatt-regency-o'hare\">Hyatt Regency O'Hare<\/a>","<a href = \"../tournaments/21-22-dii-ict-ukqb\">UKQB<\/a>","<a href = \"../tournaments/21-22-dii-ict-hyatt-regency-o'hare\">Hyatt Regency O'Hare<\/a>","<a href = \"../tournaments/21-22-dii-ict-hyatt-regency-o'hare\">Hyatt Regency O'Hare<\/a>","<a href = \"../tournaments/21-22-dii-ict-hyatt-regency-o'hare\">Hyatt Regency O'Hare<\/a>","<a href = \"../tournaments/21-22-dii-ict-ukqb\">UKQB<\/a>","<a href = \"../tournaments/21-22-dii-ict-hyatt-regency-o'hare\">Hyatt Regency O'Hare<\/a>","<a href = \"../tournaments/21-22-dii-ict-hyatt-regency-o'hare\">Hyatt Regency O'Hare<\/a>"],[14,14,16,13,10,14,14,13,14,13,10,13,13,13,10,13,14,14,13,10,13,13,14,13,10,10,13,13,15,14,10,10,13,14,13,10,14,13,13,10,13,13],["12-2","11-3","12-4","9-4","10-0","11-3","8-6","8-5","10-4","6-7","7-3","9-4","8-5","6-7","7-3","8-5","6-8","8-6","7-6","6-4","5-8","6-7","7-7","7-6","5-5","5-5","6-7","6-7","6-9","8-6","3-7","5-5","5-8","3-11","5-8","2-8","6-8","3-10","2-11","0-10","1-12","1-12"],[332,303,349,291,240,299,317,289,321,295,240,287,304,291,240,297,310,320,302,240,297,294,305,288,240,240,283,286,312,315,240,240,298,322,284,240,307,292,280,240,284,282],[67,51,54,52,38,40,34,52,44,30,23,43,26,25,22,30,29,32,21,32,22,29,24,25,19,16,24,20,26,38,20,19,22,16,10,11,16,24,24,6,6,2],[129,115,121,102,86,121,118,94,119,112,101,102,111,112,86,105,116,115,109,71,110,104,106,108,78,86,111,108,109,105,73,75,96,104,103,79,105,97,86,62,67,53],[43,43,35,39,19,32,35,40,47,24,25,31,25,29,11,39,28,32,14,30,24,27,23,21,21,24,35,27,21,28,24,17,29,25,32,14,28,32,39,13,21,22],[4.79,3.64,3.38,4,3.8,2.86,2.43,4,3.14,2.31,2.3,3.31,2,1.92,2.2,2.31,2.07,2.29,1.62,3.2,1.69,2.23,1.71,1.92,1.9,1.6,1.85,1.54,1.73,2.71,2,1.9,1.69,1.14,0.77,1.1,1.14,1.85,1.85,0.6,0.46,0.15],[9.21,8.21,7.56,7.85,8.6,8.64,8.43,7.23,8.5,8.62,10.1,7.85,8.54,8.62,8.6,8.08,8.29,8.21,8.38,7.1,8.46,8,7.57,8.31,7.8,8.6,8.54,8.31,7.27,7.5,7.3,7.5,7.38,7.43,7.92,7.9,7.5,7.46,6.62,6.2,5.15,4.08],[3.07,3.07,2.19,3,1.9,2.29,2.5,3.08,3.36,1.85,2.5,2.38,1.92,2.23,1.1,3,2,2.29,1.08,3,1.85,2.08,1.64,1.62,2.1,2.4,2.69,2.08,1.4,2,2.4,1.7,2.23,1.79,2.46,1.4,2,2.46,3,1.3,1.62,1.69],[0.590361445783133,0.547854785478548,0.501432664756447,0.529209621993127,0.516666666666667,0.538461538461538,0.479495268138801,0.505190311418685,0.507788161993769,0.48135593220339,0.516666666666667,0.505226480836237,0.450657894736842,0.470790378006873,0.45,0.454545454545455,0.467741935483871,0.459375,0.43046357615894,0.429166666666667,0.444444444444444,0.452380952380952,0.426229508196721,0.461805555555556,0.404166666666667,0.425,0.477031802120141,0.447552447552448,0.432692307692308,0.453968253968254,0.3875,0.391666666666667,0.395973154362416,0.372670807453416,0.397887323943662,0.375,0.39413680781759,0.414383561643836,0.392857142857143,0.283333333333333,0.257042253521127,0.195035460992908],[463.57,365,327.81,345,406.5,320,311.79,313.85,330.36,301.54,365,306.15,299.62,293.85,328.5,286.54,286.07,288.57,278.08,293,278.46,281.54,250.36,267.69,275,269,279.62,248.08,235.67,270,250,244,222.69,211.07,221.54,231.5,207.14,226.15,202.69,153.5,111.92,69.23],[22.5,20.54,19.43,18.7,22.02,17.58,18.75,17.53,18.47,17.39,19.52,17.03,18.39,18.03,19.91,17.93,17.59,17.48,17.54,18.35,17.5,17.44,16.92,16.02,18.45,16.76,17.33,15.47,16,16.08,17.1,15.85,14.83,15,16.46,15.89,14.46,14.63,14.64,13.09,10.96,8.18],[444.96,372.01,358.25,336.42,333.76,331.08,317.41,313.3,306.65,303.15,301.19,278.22,272.97,263.41,260,259.93,258.9,252.03,249.69,240.64,237.1,234.82,229.08,227.74,219.76,217.38,215.95,214.57,214.41,213.81,201.06,198.51,192.64,189.44,183.58,179.5,173.31,172.34,167.15,123.57,92.35,58.98]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>Team<\/th>\n      <th>Site<\/th>\n      <th>GP<\/th>\n      <th>W-L<\/th>\n      <th>TUH<\/th>\n      <th>15<\/th>\n      <th>10<\/th>\n      <th>-5<\/th>\n      <th>15/G<\/th>\n      <th>10/G<\/th>\n      <th>-5/G<\/th>\n      <th>TU%<\/th>\n      <th>PPG<\/th>\n      <th>PPB<\/th>\n      <th>A-Value<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"dom":"tp","rowCallback":"function(row, data){\n  for(var i=0; i<data.length; i++){\n    if(data[i] === null){\n      $('td:eq('+(i)+')', row).html('-')\n        .css({'font-style': 'italic', 'text-align': 'center'});\n    }\n  }\nvar value=data[2]; $(this.api().cell(row, 2).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[3]; $(this.api().cell(row, 3).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[4]; $(this.api().cell(row, 4).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[5]; $(this.api().cell(row, 5).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[6]; $(this.api().cell(row, 6).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[7]; $(this.api().cell(row, 7).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[8]; $(this.api().cell(row, 8).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[9]; $(this.api().cell(row, 9).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[10]; $(this.api().cell(row, 10).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[11]; $(this.api().cell(row, 11).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[12]; $(this.api().cell(row, 12).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[13]; $(this.api().cell(row, 13).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[14]; $(this.api().cell(row, 14).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[3]; $(this.api().cell(row, 3).node()).css({'text-align':'right'});\nvar value=data[0]; $(this.api().cell(row, 0).node()).css({'border-right':'2px solid #d3d3d3'});\nvar value=data[1]; $(this.api().cell(row, 1).node()).css({'border-right':'2px solid #d3d3d3'});\nvar value=data[3]; $(this.api().cell(row, 3).node()).css({'border-right':'2px solid #d3d3d3'});\nvar value=data[4]; $(this.api().cell(row, 4).node()).css({'border-right':'2px solid #d3d3d3'});\nvar value=data[7]; $(this.api().cell(row, 7).node()).css({'border-right':'2px solid #d3d3d3'});\nvar value=data[10]; $(this.api().cell(row, 10).node()).css({'border-right':'2px solid #d3d3d3'});\nvar value=data[11]; $(this.api().cell(row, 11).node()).css({'border-right':'2px solid #d3d3d3'});\n}","columnDefs":[{"targets":8,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 2, 3, \",\", \".\", null);\n  }"},{"targets":9,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 2, 3, \",\", \".\", null);\n  }"},{"targets":10,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 2, 3, \",\", \".\", null);\n  }"},{"targets":12,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 2, 3, \",\", \".\", null);\n  }"},{"targets":13,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 2, 3, \",\", \".\", null);\n  }"},{"targets":14,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 2, 3, \",\", \".\", null);\n  }"},{"targets":11,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatPercentage(data, 0, 3, \",\", \".\", null);\n  }"},{"className":"dt-right","targets":[2,4,5,6,7,8,9,10,11,12,13,14]}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":["options.rowCallback","options.columnDefs.0.render","options.columnDefs.1.render","options.columnDefs.2.render","options.columnDefs.3.render","options.columnDefs.4.render","options.columnDefs.5.render","options.columnDefs.6.render"],"jsHooks":[]}</script>
+<hr>
+</div>
+<div id="players" class="section level2">
+<h2>Players</h2>
+<div id="htmlwidget-12b44e7d5a829ef33e06" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-12b44e7d5a829ef33e06">{"x":{"filter":"none","vertical":false,"data":[["<a href = \"../players/arjun-nageswaran.html\">Arjun Nageswaran<\/a>","<a href = \"../players/freddy-leo.html\">Freddy Leo<\/a>","<a href = \"../players/nathan-sheffield.html\">Nathan Sheffield<\/a>","<a href = \"../players/liam-hughes.html\">Liam Hughes<\/a>","<a href = \"../players/ian-chow.html\">Ian Chow<\/a>","<a href = \"../players/joel-miles.html\">Joel Miles<\/a>","<a href = \"../players/ali-izzatdust.html\">Ali Izzatdust<\/a>","<a href = \"../players/josh-xu.html\">Josh Xu<\/a>","<a href = \"../players/tony-chen.html\">Tony Chen<\/a>","<a href = \"../players/brandon-jones.html\">Brandon Jones<\/a>","<a href = \"../players/karan-gurazada.html\">Karan Gurazada<\/a>","<a href = \"../players/kyle-hu.html\">Kyle Hu<\/a>","<a href = \"../players/eric-yin.html\">Eric Yin<\/a>","<a href = \"../players/cormac-beirne.html\">Cormac Beirne<\/a>","<a href = \"../players/bryanna-shao.html\">Bryanna Shao<\/a>","<a href = \"../players/jacob-mclaughlin.html\">Jacob McLaughlin<\/a>","<a href = \"../players/stan-melkumian.html\">Stan Melkumian<\/a>","<a href = \"../players/arthur-delot-vilain.html\">Arthur Delot-Vilain<\/a>","<a href = \"../players/fatima-sheriff.html\">Fatima Sheriff<\/a>","<a href = \"../players/michal-gerasimiuk.html\">Michal Gerasimiuk<\/a>","<a href = \"../players/niall-karunaratne.html\">Niall Karunaratne<\/a>","<a href = \"../players/justin-lee.html\">Justin Lee<\/a>","<a href = \"../players/jonathan-lau.html\">Jonathan Lau<\/a>","<a href = \"../players/andrew-amygdalos.html\">Andrew Amygdalos<\/a>","<a href = \"../players/trevor-wells.html\">Trevor Wells<\/a>","<a href = \"../players/rohan-shelke.html\">Rohan Shelke<\/a>","<a href = \"../players/harry-taylor.html\">Harry Taylor<\/a>","<a href = \"../players/michael-mays.html\">Michael Mays<\/a>","<a href = \"../players/richard-pollard.html\">Richard Pollard<\/a>","<a href = \"../players/justin-posner.html\">Justin Posner<\/a>","<a href = \"../players/ketan-pamurthy.html\">Ketan Pamurthy<\/a>","<a href = \"../players/aidan-leahy.html\">Aidan Leahy<\/a>","<a href = \"../players/ashrit-jada.html\">Ashrit Jada<\/a>","<a href = \"../players/allen-wang.html\">Allen Wang<\/a>","<a href = \"../players/jonathan-shauf.html\">Jonathan Shauf<\/a>","<a href = \"../players/louis-li.html\">Louis Li<\/a>","<a href = \"../players/will-yaeger.html\">Will Yaeger<\/a>","<a href = \"../players/william-culbertson.html\">William Culbertson<\/a>","<a href = \"../players/john-robinson.html\">John Robinson<\/a>","<a href = \"../players/keaton-martin.html\">Keaton Martin<\/a>","<a href = \"../players/liam-starnes.html\">Liam Starnes<\/a>","<a href = \"../players/benjamin-chapman.html\">Benjamin Chapman<\/a>","<a href = \"../players/matthew-siff.html\">Matthew Siff<\/a>","<a href = \"../players/william-groger.html\">William Groger<\/a>","<a href = \"../players/vinu-harihar.html\">Vinu Harihar<\/a>","<a href = \"../players/henry-cafaro.html\">Henry Cafaro<\/a>","<a href = \"../players/ethan-webb.html\">Ethan Webb<\/a>","<a href = \"../players/richard-mcnair.html\">Richard McNair<\/a>","<a href = \"../players/quynh-phung.html\">Quynh Phung<\/a>","<a href = \"../players/enoch-yuen.html\">Enoch Yuen<\/a>","<a href = \"../players/oliver-hargrave.html\">Oliver Hargrave<\/a>","<a href = \"../players/cerulean-ozarow.html\">Cerulean Ozarow<\/a>","<a href = \"../players/geoffrey-wu.html\">Geoffrey Wu<\/a>","<a href = \"../players/vishal-kanigicherla.html\">Vishal Kanigicherla<\/a>","<a href = \"../players/neal-joshi.html\">Neal Joshi<\/a>","<a href = \"../players/rosa-xia.html\">Rosa Xia<\/a>","<a href = \"../players/alex-howe.html\">Alex Howe<\/a>","<a href = \"../players/alex-delvecchio.html\">Alex DelVecchio<\/a>","<a href = \"../players/steven-yuan.html\">Steven Yuan<\/a>","<a href = \"../players/jake-schapiro.html\">Jake Schapiro<\/a>","<a href = \"../players/shr-hua-moore.html\">Shr-Hua Moore<\/a>","<a href = \"../players/jisoo-yoo.html\">Jisoo Yoo<\/a>","<a href = \"../players/joshua-you.html\">Joshua You<\/a>","<a href = \"../players/eddie-fuhrer.html\">Eddie Fuhrer<\/a>","<a href = \"../players/dan-ni.html\">Dan Ni<\/a>","<a href = \"../players/laura-cooper.html\">Laura Cooper<\/a>","<a href = \"../players/dan-hawkins.html\">Dan Hawkins<\/a>","<a href = \"../players/hayden-smith.html\">Hayden Smith<\/a>","<a href = \"../players/yadu-kukenthiran.html\">Yadu Kukenthiran<\/a>","<a href = \"../players/thomas-mercurio.html\">Thomas Mercurio<\/a>","<a href = \"../players/agnijo-banerjee.html\">Agnijo Banerjee<\/a>","<a href = \"../players/rasheeq-azad.html\">Rasheeq Azad<\/a>","<a href = \"../players/supeng-wu.html\">Supeng Wu<\/a>","<a href = \"../players/shardul-rao.html\">Shardul Rao<\/a>","<a href = \"../players/vishal-sivamani.html\">Vishal Sivamani<\/a>","<a href = \"../players/ben-gordon.html\">Ben Gordon<\/a>","<a href = \"../players/peter-devlin.html\">Peter Devlin<\/a>","<a href = \"../players/cece-shao.html\">Cece Shao<\/a>","<a href = \"../players/devan-greevy.html\">Devan Greevy<\/a>","<a href = \"../players/sonya-stacia.html\">Sonya Stacia<\/a>","<a href = \"../players/reuben-meredith-luthi.html\">Reuben Meredith-Luthi<\/a>","<a href = \"../players/brody-marshall.html\">Brody Marshall<\/a>","<a href = \"../players/alex-dennis.html\">Alex Dennis<\/a>","<a href = \"../players/leo-murphy.html\">Leo Murphy<\/a>","<a href = \"../players/oscar-o'flanagan.html\">Oscar O'Flanagan<\/a>","<a href = \"../players/jacob-dickson.html\">Jacob Dickson<\/a>","<a href = \"../players/jonah-mcdonald.html\">Jonah McDonald<\/a>","<a href = \"../players/brian-lin.html\">Brian Lin<\/a>","<a href = \"../players/justin-yu.html\">Justin Yu<\/a>","<a href = \"../players/morgan-bozeman.html\">Morgan Bozeman<\/a>","<a href = \"../players/judson-lam.html\">Judson Lam<\/a>","<a href = \"../players/robert-freedman.html\">Robert Freedman<\/a>","<a href = \"../players/minh-tuan-phung.html\">Minh-Tuan Phung<\/a>","<a href = \"../players/danny-han.html\">Danny Han<\/a>","<a href = \"../players/abhinav-karthikeyan.html\">Abhinav Karthikeyan<\/a>","<a href = \"../players/ivvone-zhou.html\">Ivvone Zhou<\/a>","<a href = \"../players/dillon-patel.html\">Dillon Patel<\/a>","<a href = \"../players/kais-jessa.html\">Kais Jessa<\/a>","<a href = \"../players/owen-hunter.html\">Owen Hunter<\/a>","<a href = \"../players/richard-niu.html\">Richard Niu<\/a>","<a href = \"../players/will-rogers.html\">Will Rogers<\/a>","<a href = \"../players/adam-jones.html\">Adam Jones<\/a>","<a href = \"../players/paige-crawley.html\">Paige Crawley<\/a>","<a href = \"../players/kiran-rachamallu.html\">Kiran Rachamallu<\/a>","<a href = \"../players/nathan-kim.html\">Nathan Kim<\/a>","<a href = \"../players/shreyank-kadadi.html\">Shreyank Kadadi<\/a>","<a href = \"../players/elijah-scheinson.html\">Elijah Scheinson<\/a>","<a href = \"../players/jackson-lamb.html\">Jackson Lamb<\/a>","<a href = \"../players/ben-weiner.html\">Ben Weiner<\/a>","<a href = \"../players/maxwell-ye.html\">Maxwell Ye<\/a>","<a href = \"../players/michael-eng.html\">Michael Eng<\/a>","<a href = \"../players/kevin-zhang.html\">Kevin Zhang<\/a>","<a href = \"../players/shehryar-qazi.html\">Shehryar Qazi<\/a>","<a href = \"../players/victor-li.html\">Victor Li<\/a>","<a href = \"../players/solenne-scholefield.html\">Solenne Scholefield<\/a>","<a href = \"../players/dennis-reppen.html\">Dennis Reppen<\/a>","<a href = \"../players/jonah-schwartz.html\">Jonah Schwartz<\/a>","<a href = \"../players/urbas-ekka.html\">Urbas Ekka<\/a>","<a href = \"../players/stephen-heritage.html\">Stephen Heritage<\/a>","<a href = \"../players/ted-warner.html\">Ted Warner<\/a>","<a href = \"../players/david-snoddon.html\">David Snoddon<\/a>","<a href = \"../players/curtis-dunn.html\">Curtis Dunn<\/a>","<a href = \"../players/brian-sachs.html\">Brian Sachs<\/a>","<a href = \"../players/jonathan-huang.html\">Jonathan Huang<\/a>","<a href = \"../players/taylor-young.html\">Taylor Young<\/a>","<a href = \"../players/oliver-church.html\">Oliver Church<\/a>","<a href = \"../players/rahim-dina.html\">Rahim Dina<\/a>","<a href = \"../players/bryan-wan.html\">Bryan Wan<\/a>","<a href = \"../players/chloey-ramsey.html\">Chloey Ramsey<\/a>","<a href = \"../players/ragulan-sivakumar.html\">Ragulan Sivakumar<\/a>","<a href = \"../players/anna-brian.html\">Anna Brian<\/a>","<a href = \"../players/tony-wang.html\">Tony Wang<\/a>","<a href = \"../players/nathan-maher.html\">Nathan Maher<\/a>","<a href = \"../players/pratham-soni.html\">Pratham Soni<\/a>","<a href = \"../players/william-cao.html\">William Cao<\/a>","<a href = \"../players/pranit-behara.html\">Pranit Behara<\/a>","<a href = \"../players/hannah-bowen.html\">Hannah Bowen<\/a>","<a href = \"../players/matthew-mcgovern.html\">Matthew McGovern<\/a>","<a href = \"../players/ben-biggs.html\">Ben Biggs<\/a>","<a href = \"../players/colby-williams.html\">Colby Williams<\/a>","<a href = \"../players/jon-golan.html\">Jon Golan<\/a>","<a href = \"../players/andrew-abner.html\">Andrew Abner<\/a>","<a href = \"../players/jacob-fisher.html\">Jacob Fisher<\/a>","<a href = \"../players/noah-owen.html\">Noah Owen<\/a>","<a href = \"../players/callum-garland.html\">Callum Garland<\/a>","<a href = \"../players/jon-proctor.html\">Jon Proctor<\/a>","<a href = \"../players/chris-wright.html\">Chris Wright<\/a>","<a href = \"../players/martin-profant.html\">Martin Profant<\/a>","<a href = \"../players/abby-akarapongpisakdi.html\">Abby Akarapongpisakdi<\/a>","<a href = \"../players/hiru-senehedheera.html\">Hiru Senehedheera<\/a>","<a href = \"../players/vinayak-singh-bhadoriya.html\">Vinayak Singh Bhadoriya<\/a>","<a href = \"../players/siddarth-kumar.html\">Siddarth Kumar<\/a>","<a href = \"../players/adam-borison.html\">Adam Borison<\/a>","<a href = \"../players/lauren-stoyles.html\">Lauren Stoyles<\/a>","<a href = \"../players/robert-merchant.html\">Robert Merchant<\/a>","<a href = \"../players/gregory-lin.html\">Gregory Lin<\/a>","<a href = \"../players/anders-lamb.html\">Anders Lamb<\/a>","<a href = \"../players/daphne-wolfe.html\">Daphne Wolfe<\/a>","<a href = \"../players/jordan-davidsen.html\">Jordan Davidsen<\/a>","<a href = \"../players/bob-gao.html\">Bob Gao<\/a>","<a href = \"../players/diana-shaipi.html\">Diana Shaipi<\/a>","<a href = \"../players/gavin-wagner.html\">Gavin Wagner<\/a>","<a href = \"../players/kevin-flanagan.html\">Kevin Flanagan<\/a>","<a href = \"../players/kevin-liu.html\">Kevin Liu<\/a>","<a href = \"../players/jack-connolly.html\">Jack Connolly<\/a>","<a href = \"../players/brina-ratangee.html\">Brina Ratangee<\/a>","<a href = \"../players/riley-bowling.html\">Riley Bowling<\/a>","<a href = \"../players/martin-alfaya.html\">Martin Alfaya<\/a>","<a href = \"../players/bryan-fok.html\">Bryan Fok<\/a>","<a href = \"../players/ben-hubner.html\">Ben Hubner<\/a>","<a href = \"../players/colin-suits.html\">Colin Suits<\/a>","<a href = \"../players/zander-schwartz.html\">Zander Schwartz<\/a>","<a href = \"../players/taylor-munroe.html\">Taylor Munroe<\/a>","<a href = \"../players/osamah-sufyan.html\">Osamah Sufyan<\/a>","<a href = \"../players/daniel-villani.html\">Daniel Villani<\/a>","<a href = \"../players/andrew-salazar.html\">Andrew Salazar<\/a>","<a href = \"../players/tom-watts.html\">Tom Watts<\/a>","<a href = \"../players/morgan-potts.html\">Morgan Potts<\/a>","<a href = \"../players/saad-ansari.html\">Saad Ansari<\/a>","<a href = \"../players/devrath-iyer.html\">Devrath Iyer<\/a>","<a href = \"../players/ksenia-riegle.html\">Ksenia Riegle<\/a>","<a href = \"../players/sameerah-munshi.html\">Sameerah Munshi<\/a>"],["<a href = \"../tournaments/21-22-dii-ict-hyatt-regency-o'hare#harvard-b\">Harvard B<\/a>","<a href = \"../tournaments/21-22-dii-ict-ukqb#chimera-a\">Chimera A<\/a>","<a href = \"../tournaments/21-22-dii-ict-hyatt-regency-o'hare#mit-b\">MIT B<\/a>","<a href = \"../tournaments/21-22-dii-ict-ukqb#cambridge-a\">Cambridge A<\/a>","<a href = \"../tournaments/21-22-dii-ict-hyatt-regency-o'hare#toronto-a\">Toronto A<\/a>","<a href = \"../tournaments/21-22-dii-ict-hyatt-regency-o'hare#minnesota-a\">Minnesota A<\/a>","<a href = \"../tournaments/21-22-dii-ict-ukqb#oxford-a\">Oxford A<\/a>","<a href = \"../tournaments/21-22-dii-ict-hyatt-regency-o'hare#ucla-a\">UCLA A<\/a>","<a href = \"../tournaments/21-22-dii-ict-hyatt-regency-o'hare#western-ontario-a\">Western Ontario A<\/a>","<a href = \"../tournaments/21-22-dii-ict-hyatt-regency-o'hare#alabama-a\">Alabama A<\/a>","<a href = \"../tournaments/21-22-dii-ict-hyatt-regency-o'hare#texas-c\">Texas C<\/a>","<a href = \"../tournaments/21-22-dii-ict-hyatt-regency-o'hare#stanford-b\">Stanford B<\/a>","<a href = \"../tournaments/21-22-dii-ict-hyatt-regency-o'hare#wustl-b\">WUSTL B<\/a>","<a href = \"../tournaments/21-22-dii-ict-hyatt-regency-o'hare#mcgill-b\">McGill B<\/a>","<a href = \"../tournaments/21-22-dii-ict-hyatt-regency-o'hare#vanderbilt-b\">Vanderbilt B<\/a>","<a href = \"../tournaments/21-22-dii-ict-ukqb#bristol-a\">Bristol A<\/a>","<a href = \"../tournaments/21-22-dii-ict-hyatt-regency-o'hare#purdue-a\">Purdue A<\/a>","<a href = \"../tournaments/21-22-dii-ict-hyatt-regency-o'hare#yale-b\">Yale B<\/a>","<a href = \"../tournaments/21-22-dii-ict-ukqb#imperial-b\">Imperial B<\/a>","<a href = \"../tournaments/21-22-dii-ict-hyatt-regency-o'hare#yale-b\">Yale B<\/a>","<a href = \"../tournaments/21-22-dii-ict-ukqb#edinburgh-a\">Edinburgh A<\/a>","<a href = \"../tournaments/21-22-dii-ict-ukqb#imperial-a\">Imperial A<\/a>","<a href = \"../tournaments/21-22-dii-ict-hyatt-regency-o'hare#johns-hopkins-a\">Johns Hopkins A<\/a>","<a href = \"../tournaments/21-22-dii-ict-hyatt-regency-o'hare#george-washington-a\">George Washington A<\/a>","<a href = \"../tournaments/21-22-dii-ict-hyatt-regency-o'hare#kentucky-b\">Kentucky B<\/a>","<a href = \"../tournaments/21-22-dii-ict-hyatt-regency-o'hare#uc-berkeley-b\">UC Berkeley B<\/a>","<a href = \"../tournaments/21-22-dii-ict-ukqb#manchester-a\">Manchester A<\/a>","<a href = \"../tournaments/21-22-dii-ict-ukqb#imperial-a\">Imperial A<\/a>","<a href = \"../tournaments/21-22-dii-ict-ukqb#warwick-a\">Warwick A<\/a>","<a href = \"../tournaments/21-22-dii-ict-hyatt-regency-o'hare#chicago-d\">Chicago D<\/a>","<a href = \"../tournaments/21-22-dii-ict-hyatt-regency-o'hare#brown-b\">Brown B<\/a>","<a href = \"../tournaments/21-22-dii-ict-hyatt-regency-o'hare#georgia-a\">Georgia A<\/a>","<a href = \"../tournaments/21-22-dii-ict-hyatt-regency-o'hare#georgia-a\">Georgia A<\/a>","<a href = \"../tournaments/21-22-dii-ict-hyatt-regency-o'hare#cornell-b\">Cornell B<\/a>","<a href = \"../tournaments/21-22-dii-ict-hyatt-regency-o'hare#north-carolina-a\">North Carolina A<\/a>","<a href = \"../tournaments/21-22-dii-ict-hyatt-regency-o'hare#brown-b\">Brown B<\/a>","<a href = \"../tournaments/21-22-dii-ict-hyatt-regency-o'hare#lehigh-a\">Lehigh A<\/a>","<a href = \"../tournaments/21-22-dii-ict-hyatt-regency-o'hare#miami-ohio-a\">Miami-Ohio A<\/a>","<a href = \"../tournaments/21-22-dii-ict-ukqb#birmingham-a\">Birmingham A<\/a>","<a href = \"../tournaments/21-22-dii-ict-hyatt-regency-o'hare#kentucky-b\">Kentucky B<\/a>","<a href = \"../tournaments/21-22-dii-ict-hyatt-regency-o'hare#chicago-d\">Chicago D<\/a>","<a href = \"../tournaments/21-22-dii-ict-hyatt-regency-o'hare#toronto-a\">Toronto A<\/a>","<a href = \"../tournaments/21-22-dii-ict-hyatt-regency-o'hare#yale-b\">Yale B<\/a>","<a href = \"../tournaments/21-22-dii-ict-hyatt-regency-o'hare#columbia-c\">Columbia C<\/a>","<a href = \"../tournaments/21-22-dii-ict-hyatt-regency-o'hare#johns-hopkins-a\">Johns Hopkins A<\/a>","<a href = \"../tournaments/21-22-dii-ict-hyatt-regency-o'hare#chicago-d\">Chicago D<\/a>","<a href = \"../tournaments/21-22-dii-ict-ukqb#warwick-a\">Warwick A<\/a>","<a href = \"../tournaments/21-22-dii-ict-ukqb#manchester-a\">Manchester A<\/a>","<a href = \"../tournaments/21-22-dii-ict-hyatt-regency-o'hare#purdue-a\">Purdue A<\/a>","<a href = \"../tournaments/21-22-dii-ict-ukqb#imperial-a\">Imperial A<\/a>","<a href = \"../tournaments/21-22-dii-ict-ukqb#oxford-a\">Oxford A<\/a>","<a href = \"../tournaments/21-22-dii-ict-hyatt-regency-o'hare#brown-b\">Brown B<\/a>","<a href = \"../tournaments/21-22-dii-ict-hyatt-regency-o'hare#columbia-c\">Columbia C<\/a>","<a href = \"../tournaments/21-22-dii-ict-hyatt-regency-o'hare#penn-a\">Penn A<\/a>","<a href = \"../tournaments/21-22-dii-ict-hyatt-regency-o'hare#wustl-b\">WUSTL B<\/a>","<a href = \"../tournaments/21-22-dii-ict-hyatt-regency-o'hare#cornell-b\">Cornell B<\/a>","<a href = \"../tournaments/21-22-dii-ict-hyatt-regency-o'hare#william-&-mary-a\">William & Mary A<\/a>","<a href = \"../tournaments/21-22-dii-ict-hyatt-regency-o'hare#notre-dame-a\">Notre Dame A<\/a>","<a href = \"../tournaments/21-22-dii-ict-hyatt-regency-o'hare#uc-berkeley-b\">UC Berkeley B<\/a>","<a href = \"../tournaments/21-22-dii-ict-hyatt-regency-o'hare#william-&-mary-a\">William & Mary A<\/a>","<a href = \"../tournaments/21-22-dii-ict-hyatt-regency-o'hare#miami-ohio-a\">Miami-Ohio A<\/a>","<a href = \"../tournaments/21-22-dii-ict-hyatt-regency-o'hare#texas-c\">Texas C<\/a>","<a href = \"../tournaments/21-22-dii-ict-hyatt-regency-o'hare#uc-berkeley-b\">UC Berkeley B<\/a>","<a href = \"../tournaments/21-22-dii-ict-hyatt-regency-o'hare#lehigh-a\">Lehigh A<\/a>","<a href = \"../tournaments/21-22-dii-ict-hyatt-regency-o'hare#cornell-b\">Cornell B<\/a>","<a href = \"../tournaments/21-22-dii-ict-ukqb#edinburgh-a\">Edinburgh A<\/a>","<a href = \"../tournaments/21-22-dii-ict-ukqb#bristol-a\">Bristol A<\/a>","<a href = \"../tournaments/21-22-dii-ict-hyatt-regency-o'hare#george-washington-a\">George Washington A<\/a>","<a href = \"../tournaments/21-22-dii-ict-hyatt-regency-o'hare#western-ontario-a\">Western Ontario A<\/a>","<a href = \"../tournaments/21-22-dii-ict-hyatt-regency-o'hare#notre-dame-a\">Notre Dame A<\/a>","<a href = \"../tournaments/21-22-dii-ict-ukqb#cambridge-a\">Cambridge A<\/a>","<a href = \"../tournaments/21-22-dii-ict-hyatt-regency-o'hare#north-carolina-a\">North Carolina A<\/a>","<a href = \"../tournaments/21-22-dii-ict-hyatt-regency-o'hare#vanderbilt-b\">Vanderbilt B<\/a>","<a href = \"../tournaments/21-22-dii-ict-hyatt-regency-o'hare#minnesota-a\">Minnesota A<\/a>","<a href = \"../tournaments/21-22-dii-ict-hyatt-regency-o'hare#johns-hopkins-a\">Johns Hopkins A<\/a>","<a href = \"../tournaments/21-22-dii-ict-hyatt-regency-o'hare#texas-c\">Texas C<\/a>","<a href = \"../tournaments/21-22-dii-ict-ukqb#oxford-a\">Oxford A<\/a>","<a href = \"../tournaments/21-22-dii-ict-hyatt-regency-o'hare#minnesota-b\">Minnesota B<\/a>","<a href = \"../tournaments/21-22-dii-ict-hyatt-regency-o'hare#mcgill-b\">McGill B<\/a>","<a href = \"../tournaments/21-22-dii-ict-hyatt-regency-o'hare#penn-a\">Penn A<\/a>","<a href = \"../tournaments/21-22-dii-ict-ukqb#edinburgh-a\">Edinburgh A<\/a>","<a href = \"../tournaments/21-22-dii-ict-hyatt-regency-o'hare#alabama-a\">Alabama A<\/a>","<a href = \"../tournaments/21-22-dii-ict-hyatt-regency-o'hare#jefferson-ctc-a\">Jefferson CTC A<\/a>","<a href = \"../tournaments/21-22-dii-ict-hyatt-regency-o'hare#william-&-mary-a\">William & Mary A<\/a>","<a href = \"../tournaments/21-22-dii-ict-ukqb#imperial-a\">Imperial A<\/a>","<a href = \"../tournaments/21-22-dii-ict-ukqb#edinburgh-a\">Edinburgh A<\/a>","<a href = \"../tournaments/21-22-dii-ict-ukqb#imperial-b\">Imperial B<\/a>","<a href = \"../tournaments/21-22-dii-ict-hyatt-regency-o'hare#stanford-b\">Stanford B<\/a>","<a href = \"../tournaments/21-22-dii-ict-hyatt-regency-o'hare#vanderbilt-b\">Vanderbilt B<\/a>","<a href = \"../tournaments/21-22-dii-ict-hyatt-regency-o'hare#minnesota-b\">Minnesota B<\/a>","<a href = \"../tournaments/21-22-dii-ict-hyatt-regency-o'hare#mit-b\">MIT B<\/a>","<a href = \"../tournaments/21-22-dii-ict-hyatt-regency-o'hare#georgia-a\">Georgia A<\/a>","<a href = \"../tournaments/21-22-dii-ict-hyatt-regency-o'hare#mcgill-b\">McGill B<\/a>","<a href = \"../tournaments/21-22-dii-ict-hyatt-regency-o'hare#penn-a\">Penn A<\/a>","<a href = \"../tournaments/21-22-dii-ict-hyatt-regency-o'hare#yale-b\">Yale B<\/a>","<a href = \"../tournaments/21-22-dii-ict-hyatt-regency-o'hare#north-carolina-a\">North Carolina A<\/a>","<a href = \"../tournaments/21-22-dii-ict-ukqb#warwick-a\">Warwick A<\/a>","<a href = \"../tournaments/21-22-dii-ict-hyatt-regency-o'hare#mcgill-b\">McGill B<\/a>","<a href = \"../tournaments/21-22-dii-ict-hyatt-regency-o'hare#minnesota-b\">Minnesota B<\/a>","<a href = \"../tournaments/21-22-dii-ict-hyatt-regency-o'hare#cornell-b\">Cornell B<\/a>","<a href = \"../tournaments/21-22-dii-ict-ukqb#birmingham-a\">Birmingham A<\/a>","<a href = \"../tournaments/21-22-dii-ict-ukqb#imperial-a\">Imperial A<\/a>","<a href = \"../tournaments/21-22-dii-ict-ukqb#chimera-a\">Chimera A<\/a>","<a href = \"../tournaments/21-22-dii-ict-hyatt-regency-o'hare#william-&-mary-a\">William & Mary A<\/a>","<a href = \"../tournaments/21-22-dii-ict-hyatt-regency-o'hare#stanford-b\">Stanford B<\/a>","<a href = \"../tournaments/21-22-dii-ict-hyatt-regency-o'hare#ucla-a\">UCLA A<\/a>","<a href = \"../tournaments/21-22-dii-ict-hyatt-regency-o'hare#columbia-c\">Columbia C<\/a>","<a href = \"../tournaments/21-22-dii-ict-hyatt-regency-o'hare#george-washington-a\">George Washington A<\/a>","<a href = \"../tournaments/21-22-dii-ict-hyatt-regency-o'hare#minnesota-a\">Minnesota A<\/a>","<a href = \"../tournaments/21-22-dii-ict-hyatt-regency-o'hare#minnesota-a\">Minnesota A<\/a>","<a href = \"../tournaments/21-22-dii-ict-hyatt-regency-o'hare#north-carolina-a\">North Carolina A<\/a>","<a href = \"../tournaments/21-22-dii-ict-hyatt-regency-o'hare#columbia-c\">Columbia C<\/a>","<a href = \"../tournaments/21-22-dii-ict-hyatt-regency-o'hare#cornell-b\">Cornell B<\/a>","<a href = \"../tournaments/21-22-dii-ict-hyatt-regency-o'hare#penn-a\">Penn A<\/a>","<a href = \"../tournaments/21-22-dii-ict-ukqb#oxford-a\">Oxford A<\/a>","<a href = \"../tournaments/21-22-dii-ict-hyatt-regency-o'hare#chicago-d\">Chicago D<\/a>","<a href = \"../tournaments/21-22-dii-ict-hyatt-regency-o'hare#wustl-b\">WUSTL B<\/a>","<a href = \"../tournaments/21-22-dii-ict-hyatt-regency-o'hare#minnesota-b\">Minnesota B<\/a>","<a href = \"../tournaments/21-22-dii-ict-hyatt-regency-o'hare#notre-dame-a\">Notre Dame A<\/a>","<a href = \"../tournaments/21-22-dii-ict-ukqb#bristol-a\">Bristol A<\/a>","<a href = \"../tournaments/21-22-dii-ict-hyatt-regency-o'hare#toronto-a\">Toronto A<\/a>","<a href = \"../tournaments/21-22-dii-ict-ukqb#birmingham-a\">Birmingham A<\/a>","<a href = \"../tournaments/21-22-dii-ict-hyatt-regency-o'hare#george-washington-a\">George Washington A<\/a>","<a href = \"../tournaments/21-22-dii-ict-hyatt-regency-o'hare#mit-b\">MIT B<\/a>","<a href = \"../tournaments/21-22-dii-ict-hyatt-regency-o'hare#chipola-a\">Chipola A<\/a>","<a href = \"../tournaments/21-22-dii-ict-ukqb#cambridge-a\">Cambridge A<\/a>","<a href = \"../tournaments/21-22-dii-ict-ukqb#imperial-b\">Imperial B<\/a>","<a href = \"../tournaments/21-22-dii-ict-hyatt-regency-o'hare#purdue-a\">Purdue A<\/a>","<a href = \"../tournaments/21-22-dii-ict-hyatt-regency-o'hare#jefferson-ctc-a\">Jefferson CTC A<\/a>","<a href = \"../tournaments/21-22-dii-ict-hyatt-regency-o'hare#mit-b\">MIT B<\/a>","<a href = \"../tournaments/21-22-dii-ict-ukqb#bristol-a\">Bristol A<\/a>","<a href = \"../tournaments/21-22-dii-ict-ukqb#imperial-b\">Imperial B<\/a>","<a href = \"../tournaments/21-22-dii-ict-hyatt-regency-o'hare#kentucky-b\">Kentucky B<\/a>","<a href = \"../tournaments/21-22-dii-ict-hyatt-regency-o'hare#stanford-b\">Stanford B<\/a>","<a href = \"../tournaments/21-22-dii-ict-hyatt-regency-o'hare#ucla-a\">UCLA A<\/a>","<a href = \"../tournaments/21-22-dii-ict-hyatt-regency-o'hare#miami-ohio-a\">Miami-Ohio A<\/a>","<a href = \"../tournaments/21-22-dii-ict-ukqb#cambridge-a\">Cambridge A<\/a>","<a href = \"../tournaments/21-22-dii-ict-ukqb#edinburgh-a\">Edinburgh A<\/a>","<a href = \"../tournaments/21-22-dii-ict-ukqb#chimera-a\">Chimera A<\/a>","<a href = \"../tournaments/21-22-dii-ict-hyatt-regency-o'hare#chipola-a\">Chipola A<\/a>","<a href = \"../tournaments/21-22-dii-ict-hyatt-regency-o'hare#georgia-a\">Georgia A<\/a>","<a href = \"../tournaments/21-22-dii-ict-hyatt-regency-o'hare#jefferson-ctc-a\">Jefferson CTC A<\/a>","<a href = \"../tournaments/21-22-dii-ict-hyatt-regency-o'hare#miami-ohio-a\">Miami-Ohio A<\/a>","<a href = \"../tournaments/21-22-dii-ict-hyatt-regency-o'hare#kentucky-b\">Kentucky B<\/a>","<a href = \"../tournaments/21-22-dii-ict-ukqb#birmingham-a\">Birmingham A<\/a>","<a href = \"../tournaments/21-22-dii-ict-hyatt-regency-o'hare#chipola-a\">Chipola A<\/a>","<a href = \"../tournaments/21-22-dii-ict-hyatt-regency-o'hare#harvard-b\">Harvard B<\/a>","<a href = \"../tournaments/21-22-dii-ict-hyatt-regency-o'hare#toronto-a\">Toronto A<\/a>","<a href = \"../tournaments/21-22-dii-ict-ukqb#warwick-a\">Warwick A<\/a>","<a href = \"../tournaments/21-22-dii-ict-ukqb#manchester-a\">Manchester A<\/a>","<a href = \"../tournaments/21-22-dii-ict-ukqb#manchester-a\">Manchester A<\/a>","<a href = \"../tournaments/21-22-dii-ict-hyatt-regency-o'hare#purdue-a\">Purdue A<\/a>","<a href = \"../tournaments/21-22-dii-ict-hyatt-regency-o'hare#ucla-a\">UCLA A<\/a>","<a href = \"../tournaments/21-22-dii-ict-hyatt-regency-o'hare#western-ontario-a\">Western Ontario A<\/a>","<a href = \"../tournaments/21-22-dii-ict-hyatt-regency-o'hare#alabama-a\">Alabama A<\/a>","<a href = \"../tournaments/21-22-dii-ict-hyatt-regency-o'hare#lehigh-a\">Lehigh A<\/a>","<a href = \"../tournaments/21-22-dii-ict-hyatt-regency-o'hare#notre-dame-a\">Notre Dame A<\/a>","<a href = \"../tournaments/21-22-dii-ict-hyatt-regency-o'hare#jefferson-ctc-a\">Jefferson CTC A<\/a>","<a href = \"../tournaments/21-22-dii-ict-hyatt-regency-o'hare#yale-b\">Yale B<\/a>","<a href = \"../tournaments/21-22-dii-ict-hyatt-regency-o'hare#western-ontario-a\">Western Ontario A<\/a>","<a href = \"../tournaments/21-22-dii-ict-hyatt-regency-o'hare#lehigh-a\">Lehigh A<\/a>","<a href = \"../tournaments/21-22-dii-ict-hyatt-regency-o'hare#wustl-b\">WUSTL B<\/a>","<a href = \"../tournaments/21-22-dii-ict-ukqb#bristol-a\">Bristol A<\/a>","<a href = \"../tournaments/21-22-dii-ict-hyatt-regency-o'hare#texas-c\">Texas C<\/a>","<a href = \"../tournaments/21-22-dii-ict-hyatt-regency-o'hare#chipola-a\">Chipola A<\/a>","<a href = \"../tournaments/21-22-dii-ict-hyatt-regency-o'hare#vanderbilt-b\">Vanderbilt B<\/a>","<a href = \"../tournaments/21-22-dii-ict-hyatt-regency-o'hare#alabama-a\">Alabama A<\/a>","<a href = \"../tournaments/21-22-dii-ict-hyatt-regency-o'hare#kentucky-b\">Kentucky B<\/a>","<a href = \"../tournaments/21-22-dii-ict-hyatt-regency-o'hare#notre-dame-a\">Notre Dame A<\/a>","<a href = \"../tournaments/21-22-dii-ict-ukqb#warwick-a\">Warwick A<\/a>","<a href = \"../tournaments/21-22-dii-ict-hyatt-regency-o'hare#uc-berkeley-b\">UC Berkeley B<\/a>","<a href = \"../tournaments/21-22-dii-ict-hyatt-regency-o'hare#vanderbilt-b\">Vanderbilt B<\/a>","<a href = \"../tournaments/21-22-dii-ict-hyatt-regency-o'hare#chipola-a\">Chipola A<\/a>","<a href = \"../tournaments/21-22-dii-ict-ukqb#chimera-a\">Chimera A<\/a>","<a href = \"../tournaments/21-22-dii-ict-hyatt-regency-o'hare#harvard-b\">Harvard B<\/a>","<a href = \"../tournaments/21-22-dii-ict-hyatt-regency-o'hare#kentucky-b\">Kentucky B<\/a>","<a href = \"../tournaments/21-22-dii-ict-ukqb#birmingham-a\">Birmingham A<\/a>","<a href = \"../tournaments/21-22-dii-ict-hyatt-regency-o'hare#alabama-a\">Alabama A<\/a>","<a href = \"../tournaments/21-22-dii-ict-hyatt-regency-o'hare#johns-hopkins-a\">Johns Hopkins A<\/a>","<a href = \"../tournaments/21-22-dii-ict-hyatt-regency-o'hare#stanford-b\">Stanford B<\/a>","<a href = \"../tournaments/21-22-dii-ict-hyatt-regency-o'hare#chipola-a\">Chipola A<\/a>","<a href = \"../tournaments/21-22-dii-ict-hyatt-regency-o'hare#brown-b\">Brown B<\/a>"],["<a href = \"../tournaments/21-22-DII ICT-hyatt-regency-o'hare\">Hyatt Regency O'Hare<\/a>","<a href = \"../tournaments/21-22-DII ICT-ukqb\">UKQB<\/a>","<a href = \"../tournaments/21-22-DII ICT-hyatt-regency-o'hare\">Hyatt Regency O'Hare<\/a>","<a href = \"../tournaments/21-22-DII ICT-ukqb\">UKQB<\/a>","<a href = \"../tournaments/21-22-DII ICT-hyatt-regency-o'hare\">Hyatt Regency O'Hare<\/a>","<a href = \"../tournaments/21-22-DII ICT-hyatt-regency-o'hare\">Hyatt Regency O'Hare<\/a>","<a href = \"../tournaments/21-22-DII ICT-ukqb\">UKQB<\/a>","<a href = \"../tournaments/21-22-DII ICT-hyatt-regency-o'hare\">Hyatt Regency O'Hare<\/a>","<a href = \"../tournaments/21-22-DII ICT-hyatt-regency-o'hare\">Hyatt Regency O'Hare<\/a>","<a href = \"../tournaments/21-22-DII ICT-hyatt-regency-o'hare\">Hyatt Regency O'Hare<\/a>","<a href = \"../tournaments/21-22-DII ICT-hyatt-regency-o'hare\">Hyatt Regency O'Hare<\/a>","<a href = \"../tournaments/21-22-DII ICT-hyatt-regency-o'hare\">Hyatt Regency O'Hare<\/a>","<a href = \"../tournaments/21-22-DII ICT-hyatt-regency-o'hare\">Hyatt Regency O'Hare<\/a>","<a href = \"../tournaments/21-22-DII ICT-hyatt-regency-o'hare\">Hyatt Regency O'Hare<\/a>","<a href = \"../tournaments/21-22-DII ICT-hyatt-regency-o'hare\">Hyatt Regency O'Hare<\/a>","<a href = \"../tournaments/21-22-DII ICT-ukqb\">UKQB<\/a>","<a href = \"../tournaments/21-22-DII ICT-hyatt-regency-o'hare\">Hyatt Regency O'Hare<\/a>","<a href = \"../tournaments/21-22-DII ICT-hyatt-regency-o'hare\">Hyatt Regency O'Hare<\/a>","<a href = \"../tournaments/21-22-DII ICT-ukqb\">UKQB<\/a>","<a href = \"../tournaments/21-22-DII ICT-hyatt-regency-o'hare\">Hyatt Regency O'Hare<\/a>","<a href = \"../tournaments/21-22-DII ICT-ukqb\">UKQB<\/a>","<a href = \"../tournaments/21-22-DII ICT-ukqb\">UKQB<\/a>","<a href = \"../tournaments/21-22-DII ICT-hyatt-regency-o'hare\">Hyatt Regency O'Hare<\/a>","<a href = \"../tournaments/21-22-DII ICT-hyatt-regency-o'hare\">Hyatt Regency O'Hare<\/a>","<a href = \"../tournaments/21-22-DII ICT-hyatt-regency-o'hare\">Hyatt Regency O'Hare<\/a>","<a href = \"../tournaments/21-22-DII ICT-hyatt-regency-o'hare\">Hyatt Regency O'Hare<\/a>","<a href = \"../tournaments/21-22-DII ICT-ukqb\">UKQB<\/a>","<a href = \"../tournaments/21-22-DII ICT-ukqb\">UKQB<\/a>","<a href = \"../tournaments/21-22-DII ICT-ukqb\">UKQB<\/a>","<a href = \"../tournaments/21-22-DII ICT-hyatt-regency-o'hare\">Hyatt Regency O'Hare<\/a>","<a href = \"../tournaments/21-22-DII ICT-hyatt-regency-o'hare\">Hyatt Regency O'Hare<\/a>","<a href = \"../tournaments/21-22-DII ICT-hyatt-regency-o'hare\">Hyatt Regency O'Hare<\/a>","<a href = \"../tournaments/21-22-DII ICT-hyatt-regency-o'hare\">Hyatt Regency O'Hare<\/a>","<a href = \"../tournaments/21-22-DII ICT-hyatt-regency-o'hare\">Hyatt Regency O'Hare<\/a>","<a href = \"../tournaments/21-22-DII ICT-hyatt-regency-o'hare\">Hyatt Regency O'Hare<\/a>","<a href = \"../tournaments/21-22-DII ICT-hyatt-regency-o'hare\">Hyatt Regency O'Hare<\/a>","<a href = \"../tournaments/21-22-DII ICT-hyatt-regency-o'hare\">Hyatt Regency O'Hare<\/a>","<a href = \"../tournaments/21-22-DII ICT-hyatt-regency-o'hare\">Hyatt Regency O'Hare<\/a>","<a href = \"../tournaments/21-22-DII ICT-ukqb\">UKQB<\/a>","<a href = \"../tournaments/21-22-DII ICT-hyatt-regency-o'hare\">Hyatt Regency O'Hare<\/a>","<a href = \"../tournaments/21-22-DII ICT-hyatt-regency-o'hare\">Hyatt Regency O'Hare<\/a>","<a href = \"../tournaments/21-22-DII ICT-hyatt-regency-o'hare\">Hyatt Regency O'Hare<\/a>","<a href = \"../tournaments/21-22-DII ICT-hyatt-regency-o'hare\">Hyatt Regency O'Hare<\/a>","<a href = \"../tournaments/21-22-DII ICT-hyatt-regency-o'hare\">Hyatt Regency O'Hare<\/a>","<a href = \"../tournaments/21-22-DII ICT-hyatt-regency-o'hare\">Hyatt Regency O'Hare<\/a>","<a href = \"../tournaments/21-22-DII ICT-hyatt-regency-o'hare\">Hyatt Regency O'Hare<\/a>","<a href = \"../tournaments/21-22-DII ICT-ukqb\">UKQB<\/a>","<a href = \"../tournaments/21-22-DII ICT-ukqb\">UKQB<\/a>","<a href = \"../tournaments/21-22-DII ICT-hyatt-regency-o'hare\">Hyatt Regency O'Hare<\/a>","<a href = \"../tournaments/21-22-DII ICT-ukqb\">UKQB<\/a>","<a href = \"../tournaments/21-22-DII ICT-ukqb\">UKQB<\/a>","<a href = \"../tournaments/21-22-DII ICT-hyatt-regency-o'hare\">Hyatt Regency O'Hare<\/a>","<a href = \"../tournaments/21-22-DII ICT-hyatt-regency-o'hare\">Hyatt Regency O'Hare<\/a>","<a href = \"../tournaments/21-22-DII ICT-hyatt-regency-o'hare\">Hyatt Regency O'Hare<\/a>","<a href = \"../tournaments/21-22-DII ICT-hyatt-regency-o'hare\">Hyatt Regency O'Hare<\/a>","<a href = \"../tournaments/21-22-DII ICT-hyatt-regency-o'hare\">Hyatt Regency O'Hare<\/a>","<a href = \"../tournaments/21-22-DII ICT-hyatt-regency-o'hare\">Hyatt Regency O'Hare<\/a>","<a href = \"../tournaments/21-22-DII ICT-hyatt-regency-o'hare\">Hyatt Regency O'Hare<\/a>","<a href = \"../tournaments/21-22-DII ICT-hyatt-regency-o'hare\">Hyatt Regency O'Hare<\/a>","<a href = \"../tournaments/21-22-DII ICT-hyatt-regency-o'hare\">Hyatt Regency O'Hare<\/a>","<a href = \"../tournaments/21-22-DII ICT-hyatt-regency-o'hare\">Hyatt Regency O'Hare<\/a>","<a href = \"../tournaments/21-22-DII ICT-hyatt-regency-o'hare\">Hyatt Regency O'Hare<\/a>","<a href = \"../tournaments/21-22-DII ICT-hyatt-regency-o'hare\">Hyatt Regency O'Hare<\/a>","<a href = \"../tournaments/21-22-DII ICT-hyatt-regency-o'hare\">Hyatt Regency O'Hare<\/a>","<a href = \"../tournaments/21-22-DII ICT-hyatt-regency-o'hare\">Hyatt Regency O'Hare<\/a>","<a href = \"../tournaments/21-22-DII ICT-ukqb\">UKQB<\/a>","<a href = \"../tournaments/21-22-DII ICT-ukqb\">UKQB<\/a>","<a href = \"../tournaments/21-22-DII ICT-hyatt-regency-o'hare\">Hyatt Regency O'Hare<\/a>","<a href = \"../tournaments/21-22-DII ICT-hyatt-regency-o'hare\">Hyatt Regency O'Hare<\/a>","<a href = \"../tournaments/21-22-DII ICT-hyatt-regency-o'hare\">Hyatt Regency O'Hare<\/a>","<a href = \"../tournaments/21-22-DII ICT-ukqb\">UKQB<\/a>","<a href = \"../tournaments/21-22-DII ICT-hyatt-regency-o'hare\">Hyatt Regency O'Hare<\/a>","<a href = \"../tournaments/21-22-DII ICT-hyatt-regency-o'hare\">Hyatt Regency O'Hare<\/a>","<a href = \"../tournaments/21-22-DII ICT-hyatt-regency-o'hare\">Hyatt Regency O'Hare<\/a>","<a href = \"../tournaments/21-22-DII ICT-hyatt-regency-o'hare\">Hyatt Regency O'Hare<\/a>","<a href = \"../tournaments/21-22-DII ICT-hyatt-regency-o'hare\">Hyatt Regency O'Hare<\/a>","<a href = \"../tournaments/21-22-DII ICT-ukqb\">UKQB<\/a>","<a href = \"../tournaments/21-22-DII ICT-hyatt-regency-o'hare\">Hyatt Regency O'Hare<\/a>","<a href = \"../tournaments/21-22-DII ICT-hyatt-regency-o'hare\">Hyatt Regency O'Hare<\/a>","<a href = \"../tournaments/21-22-DII ICT-hyatt-regency-o'hare\">Hyatt Regency O'Hare<\/a>","<a href = \"../tournaments/21-22-DII ICT-ukqb\">UKQB<\/a>","<a href = \"../tournaments/21-22-DII ICT-hyatt-regency-o'hare\">Hyatt Regency O'Hare<\/a>","<a href = \"../tournaments/21-22-DII ICT-hyatt-regency-o'hare\">Hyatt Regency O'Hare<\/a>","<a href = \"../tournaments/21-22-DII ICT-hyatt-regency-o'hare\">Hyatt Regency O'Hare<\/a>","<a href = \"../tournaments/21-22-DII ICT-ukqb\">UKQB<\/a>","<a href = \"../tournaments/21-22-DII ICT-ukqb\">UKQB<\/a>","<a href = \"../tournaments/21-22-DII ICT-ukqb\">UKQB<\/a>","<a href = \"../tournaments/21-22-DII ICT-hyatt-regency-o'hare\">Hyatt Regency O'Hare<\/a>","<a href = \"../tournaments/21-22-DII ICT-hyatt-regency-o'hare\">Hyatt Regency O'Hare<\/a>","<a href = \"../tournaments/21-22-DII ICT-hyatt-regency-o'hare\">Hyatt Regency O'Hare<\/a>","<a href = \"../tournaments/21-22-DII ICT-hyatt-regency-o'hare\">Hyatt Regency O'Hare<\/a>","<a href = \"../tournaments/21-22-DII ICT-hyatt-regency-o'hare\">Hyatt Regency O'Hare<\/a>","<a href = \"../tournaments/21-22-DII ICT-hyatt-regency-o'hare\">Hyatt Regency O'Hare<\/a>","<a href = \"../tournaments/21-22-DII ICT-hyatt-regency-o'hare\">Hyatt Regency O'Hare<\/a>","<a href = \"../tournaments/21-22-DII ICT-hyatt-regency-o'hare\">Hyatt Regency O'Hare<\/a>","<a href = \"../tournaments/21-22-DII ICT-hyatt-regency-o'hare\">Hyatt Regency O'Hare<\/a>","<a href = \"../tournaments/21-22-DII ICT-ukqb\">UKQB<\/a>","<a href = \"../tournaments/21-22-DII ICT-hyatt-regency-o'hare\">Hyatt Regency O'Hare<\/a>","<a href = \"../tournaments/21-22-DII ICT-hyatt-regency-o'hare\">Hyatt Regency O'Hare<\/a>","<a href = \"../tournaments/21-22-DII ICT-hyatt-regency-o'hare\">Hyatt Regency O'Hare<\/a>","<a href = \"../tournaments/21-22-DII ICT-ukqb\">UKQB<\/a>","<a href = \"../tournaments/21-22-DII ICT-ukqb\">UKQB<\/a>","<a href = \"../tournaments/21-22-DII ICT-ukqb\">UKQB<\/a>","<a href = \"../tournaments/21-22-DII ICT-hyatt-regency-o'hare\">Hyatt Regency O'Hare<\/a>","<a href = \"../tournaments/21-22-DII ICT-hyatt-regency-o'hare\">Hyatt Regency O'Hare<\/a>","<a href = \"../tournaments/21-22-DII ICT-hyatt-regency-o'hare\">Hyatt Regency O'Hare<\/a>","<a href = \"../tournaments/21-22-DII ICT-hyatt-regency-o'hare\">Hyatt Regency O'Hare<\/a>","<a href = \"../tournaments/21-22-DII ICT-hyatt-regency-o'hare\">Hyatt Regency O'Hare<\/a>","<a href = \"../tournaments/21-22-DII ICT-hyatt-regency-o'hare\">Hyatt Regency O'Hare<\/a>","<a href = \"../tournaments/21-22-DII ICT-hyatt-regency-o'hare\">Hyatt Regency O'Hare<\/a>","<a href = \"../tournaments/21-22-DII ICT-hyatt-regency-o'hare\">Hyatt Regency O'Hare<\/a>","<a href = \"../tournaments/21-22-DII ICT-hyatt-regency-o'hare\">Hyatt Regency O'Hare<\/a>","<a href = \"../tournaments/21-22-DII ICT-hyatt-regency-o'hare\">Hyatt Regency O'Hare<\/a>","<a href = \"../tournaments/21-22-DII ICT-hyatt-regency-o'hare\">Hyatt Regency O'Hare<\/a>","<a href = \"../tournaments/21-22-DII ICT-ukqb\">UKQB<\/a>","<a href = \"../tournaments/21-22-DII ICT-hyatt-regency-o'hare\">Hyatt Regency O'Hare<\/a>","<a href = \"../tournaments/21-22-DII ICT-hyatt-regency-o'hare\">Hyatt Regency O'Hare<\/a>","<a href = \"../tournaments/21-22-DII ICT-hyatt-regency-o'hare\">Hyatt Regency O'Hare<\/a>","<a href = \"../tournaments/21-22-DII ICT-hyatt-regency-o'hare\">Hyatt Regency O'Hare<\/a>","<a href = \"../tournaments/21-22-DII ICT-ukqb\">UKQB<\/a>","<a href = \"../tournaments/21-22-DII ICT-hyatt-regency-o'hare\">Hyatt Regency O'Hare<\/a>","<a href = \"../tournaments/21-22-DII ICT-ukqb\">UKQB<\/a>","<a href = \"../tournaments/21-22-DII ICT-hyatt-regency-o'hare\">Hyatt Regency O'Hare<\/a>","<a href = \"../tournaments/21-22-DII ICT-hyatt-regency-o'hare\">Hyatt Regency O'Hare<\/a>","<a href = \"../tournaments/21-22-DII ICT-hyatt-regency-o'hare\">Hyatt Regency O'Hare<\/a>","<a href = \"../tournaments/21-22-DII ICT-ukqb\">UKQB<\/a>","<a href = \"../tournaments/21-22-DII ICT-ukqb\">UKQB<\/a>","<a href = \"../tournaments/21-22-DII ICT-hyatt-regency-o'hare\">Hyatt Regency O'Hare<\/a>","<a href = \"../tournaments/21-22-DII ICT-hyatt-regency-o'hare\">Hyatt Regency O'Hare<\/a>","<a href = \"../tournaments/21-22-DII ICT-hyatt-regency-o'hare\">Hyatt Regency O'Hare<\/a>","<a href = \"../tournaments/21-22-DII ICT-ukqb\">UKQB<\/a>","<a href = \"../tournaments/21-22-DII ICT-ukqb\">UKQB<\/a>","<a href = \"../tournaments/21-22-DII ICT-hyatt-regency-o'hare\">Hyatt Regency O'Hare<\/a>","<a href = \"../tournaments/21-22-DII ICT-hyatt-regency-o'hare\">Hyatt Regency O'Hare<\/a>","<a href = \"../tournaments/21-22-DII ICT-hyatt-regency-o'hare\">Hyatt Regency O'Hare<\/a>","<a href = \"../tournaments/21-22-DII ICT-hyatt-regency-o'hare\">Hyatt Regency O'Hare<\/a>","<a href = \"../tournaments/21-22-DII ICT-ukqb\">UKQB<\/a>","<a href = \"../tournaments/21-22-DII ICT-ukqb\">UKQB<\/a>","<a href = \"../tournaments/21-22-DII ICT-ukqb\">UKQB<\/a>","<a href = \"../tournaments/21-22-DII ICT-hyatt-regency-o'hare\">Hyatt Regency O'Hare<\/a>","<a href = \"../tournaments/21-22-DII ICT-hyatt-regency-o'hare\">Hyatt Regency O'Hare<\/a>","<a href = \"../tournaments/21-22-DII ICT-hyatt-regency-o'hare\">Hyatt Regency O'Hare<\/a>","<a href = \"../tournaments/21-22-DII ICT-hyatt-regency-o'hare\">Hyatt Regency O'Hare<\/a>","<a href = \"../tournaments/21-22-DII ICT-hyatt-regency-o'hare\">Hyatt Regency O'Hare<\/a>","<a href = \"../tournaments/21-22-DII ICT-ukqb\">UKQB<\/a>","<a href = \"../tournaments/21-22-DII ICT-hyatt-regency-o'hare\">Hyatt Regency O'Hare<\/a>","<a href = \"../tournaments/21-22-DII ICT-hyatt-regency-o'hare\">Hyatt Regency O'Hare<\/a>","<a href = \"../tournaments/21-22-DII ICT-hyatt-regency-o'hare\">Hyatt Regency O'Hare<\/a>","<a href = \"../tournaments/21-22-DII ICT-ukqb\">UKQB<\/a>","<a href = \"../tournaments/21-22-DII ICT-ukqb\">UKQB<\/a>","<a href = \"../tournaments/21-22-DII ICT-ukqb\">UKQB<\/a>","<a href = \"../tournaments/21-22-DII ICT-hyatt-regency-o'hare\">Hyatt Regency O'Hare<\/a>","<a href = \"../tournaments/21-22-DII ICT-hyatt-regency-o'hare\">Hyatt Regency O'Hare<\/a>","<a href = \"../tournaments/21-22-DII ICT-hyatt-regency-o'hare\">Hyatt Regency O'Hare<\/a>","<a href = \"../tournaments/21-22-DII ICT-hyatt-regency-o'hare\">Hyatt Regency O'Hare<\/a>","<a href = \"../tournaments/21-22-DII ICT-hyatt-regency-o'hare\">Hyatt Regency O'Hare<\/a>","<a href = \"../tournaments/21-22-DII ICT-hyatt-regency-o'hare\">Hyatt Regency O'Hare<\/a>","<a href = \"../tournaments/21-22-DII ICT-hyatt-regency-o'hare\">Hyatt Regency O'Hare<\/a>","<a href = \"../tournaments/21-22-DII ICT-hyatt-regency-o'hare\">Hyatt Regency O'Hare<\/a>","<a href = \"../tournaments/21-22-DII ICT-hyatt-regency-o'hare\">Hyatt Regency O'Hare<\/a>","<a href = \"../tournaments/21-22-DII ICT-hyatt-regency-o'hare\">Hyatt Regency O'Hare<\/a>","<a href = \"../tournaments/21-22-DII ICT-hyatt-regency-o'hare\">Hyatt Regency O'Hare<\/a>","<a href = \"../tournaments/21-22-DII ICT-ukqb\">UKQB<\/a>","<a href = \"../tournaments/21-22-DII ICT-hyatt-regency-o'hare\">Hyatt Regency O'Hare<\/a>","<a href = \"../tournaments/21-22-DII ICT-hyatt-regency-o'hare\">Hyatt Regency O'Hare<\/a>","<a href = \"../tournaments/21-22-DII ICT-hyatt-regency-o'hare\">Hyatt Regency O'Hare<\/a>","<a href = \"../tournaments/21-22-DII ICT-hyatt-regency-o'hare\">Hyatt Regency O'Hare<\/a>","<a href = \"../tournaments/21-22-DII ICT-hyatt-regency-o'hare\">Hyatt Regency O'Hare<\/a>","<a href = \"../tournaments/21-22-DII ICT-hyatt-regency-o'hare\">Hyatt Regency O'Hare<\/a>","<a href = \"../tournaments/21-22-DII ICT-ukqb\">UKQB<\/a>","<a href = \"../tournaments/21-22-DII ICT-hyatt-regency-o'hare\">Hyatt Regency O'Hare<\/a>","<a href = \"../tournaments/21-22-DII ICT-hyatt-regency-o'hare\">Hyatt Regency O'Hare<\/a>","<a href = \"../tournaments/21-22-DII ICT-hyatt-regency-o'hare\">Hyatt Regency O'Hare<\/a>","<a href = \"../tournaments/21-22-DII ICT-ukqb\">UKQB<\/a>","<a href = \"../tournaments/21-22-DII ICT-hyatt-regency-o'hare\">Hyatt Regency O'Hare<\/a>","<a href = \"../tournaments/21-22-DII ICT-hyatt-regency-o'hare\">Hyatt Regency O'Hare<\/a>","<a href = \"../tournaments/21-22-DII ICT-ukqb\">UKQB<\/a>","<a href = \"../tournaments/21-22-DII ICT-hyatt-regency-o'hare\">Hyatt Regency O'Hare<\/a>","<a href = \"../tournaments/21-22-DII ICT-hyatt-regency-o'hare\">Hyatt Regency O'Hare<\/a>","<a href = \"../tournaments/21-22-DII ICT-hyatt-regency-o'hare\">Hyatt Regency O'Hare<\/a>","<a href = \"../tournaments/21-22-DII ICT-hyatt-regency-o'hare\">Hyatt Regency O'Hare<\/a>","<a href = \"../tournaments/21-22-DII ICT-hyatt-regency-o'hare\">Hyatt Regency O'Hare<\/a>"],[13,10,13,10,14,14,10,14,13,14,16,13,14,14,13,9,13,14,10,14,5,5,14,13,13,14,10,10,10,13,14,13,13,13,13,14,13,13,10,13,13,14,14,13,14,13,10,10,13,10,10,14,13,15,14,13,13,14,14,13,13,16,14,13,13,10,9,13,13,14,10,13,13,14,14,16,10,13,14,15,5,11,13,13,6,10,10,13,13,13,13,13,14,15,12,13,10,14,13,5,4,10,10,13,12,13,13,13,14,14,13,13,9,15,10,13,14,13,14,9,14,10,13,13,13,10,10,13,13,13,9,9,5,13,14,13,10,6,10,13,13,13,13,5,6,11,13,14,4,10,10,13,14,13,10,13,13,13,8,13,13,14,4,16,12,11,11,9,13,6,14,9,4,10,13,9,10,10,14,6,1,14],[295,240,287,240,299,303,240,305,286,322,349,291,318,321,288,216,294,315,240,332,120,120,310,297,292,315,240,240,240,291,317,304,304,289,283,317,284,298,240,292,291,299,332,297,310,291,240,240,294,240,240,317,297,312,320,289,302,287,315,302,298,349,315,284,289,240,216,297,286,302,240,283,278,303,310,349,240,280,321,312,120,252,284,302,144,240,240,291,288,280,287,304,321,312,249,283,240,321,280,103,96,240,240,302,236,293,297,297,303,303,283,297,186,312,240,291,320,280,295,216,299,240,297,287,272,240,240,294,284,287,216,216,99,267,305,298,240,144,240,273,304,284,298,103,144,234,295,299,96,240,240,294,305,286,229,284,170,284,100,286,284,320,96,349,258,167,254,189,174,144,315,131,67,240,295,193,240,231,310,79,24,317],[29,21,26,16,24,26,19,15,10,7,25,12,17,18,13,7,20,19,13,22,6,8,17,9,10,17,3,2,10,22,14,13,10,12,4,11,8,10,3,11,15,11,18,3,9,9,2,5,5,5,8,9,18,9,9,15,7,5,13,9,8,19,7,2,16,2,6,10,7,7,2,10,4,10,1,10,6,5,7,5,3,7,3,1,3,7,3,6,7,6,4,1,6,6,7,5,3,13,8,2,0,5,7,4,3,6,4,2,4,11,5,5,7,6,5,6,5,5,1,4,2,3,1,8,1,1,1,2,3,5,2,2,1,4,2,4,3,2,0,0,2,0,0,1,0,1,1,3,1,0,3,2,1,2,1,0,3,0,1,1,0,1,0,0,0,0,1,0,0,0,1,1,0,4,0,1,0,0,2,0,0,0],[100,49,59,42,58,58,35,62,66,76,56,57,55,57,51,37,43,46,29,37,15,11,36,45,46,34,37,42,25,27,40,37,34,38,51,38,44,40,35,34,30,39,28,44,40,34,40,29,39,26,21,40,24,40,35,20,33,44,27,29,33,27,38,40,21,29,20,24,29,31,24,24,33,28,39,29,21,30,24,29,12,17,30,29,11,12,20,23,18,21,23,27,27,23,15,21,16,11,16,8,8,14,11,18,19,21,18,22,21,8,15,19,7,17,9,11,18,19,20,9,17,12,19,10,21,13,12,14,12,10,9,11,5,12,14,10,7,5,10,14,13,16,13,4,5,11,9,7,2,10,3,8,9,7,5,9,4,9,3,6,10,7,3,9,6,5,4,7,6,3,6,1,1,1,3,1,2,2,1,1,0,0],[23,15,14,5,14,20,7,6,16,18,13,9,13,22,8,5,17,15,3,11,3,2,3,6,14,6,3,12,2,19,14,14,0,15,17,5,16,14,6,8,12,14,14,8,12,7,19,6,6,1,0,15,17,9,6,2,5,15,5,5,10,13,12,8,14,6,7,6,7,6,2,11,11,14,9,6,10,13,4,4,10,5,10,3,5,2,6,9,2,5,4,4,15,3,3,5,1,6,5,3,1,6,6,1,4,14,3,5,7,2,2,11,6,5,2,1,10,16,4,5,2,6,7,10,11,3,1,1,0,3,2,6,1,6,2,3,1,3,0,3,7,8,2,2,0,7,1,2,1,5,0,3,1,3,0,2,2,3,0,1,6,3,2,3,1,0,1,6,1,1,5,0,0,9,0,1,0,1,4,1,0,1],[2.23,2.1,2,1.6,1.71,1.86,1.9,1.07,0.77,0.5,1.56,0.92,1.21,1.29,1,0.78,1.54,1.36,1.3,1.57,1.2,1.6,1.21,0.69,0.77,1.21,0.3,0.2,1,1.69,1,1,0.77,0.92,0.31,0.79,0.62,0.77,0.3,0.85,1.15,0.79,1.29,0.23,0.64,0.69,0.2,0.5,0.38,0.5,0.8,0.64,1.38,0.6,0.64,1.15,0.54,0.36,0.93,0.69,0.62,1.19,0.5,0.15,1.23,0.2,0.67,0.77,0.54,0.5,0.2,0.77,0.31,0.71,0.07,0.63,0.6,0.38,0.5,0.33,0.6,0.64,0.23,0.08,0.5,0.7,0.3,0.46,0.54,0.46,0.31,0.08,0.43,0.4,0.58,0.38,0.3,0.93,0.62,0.4,0,0.5,0.7,0.31,0.25,0.46,0.31,0.15,0.29,0.79,0.38,0.38,0.78,0.4,0.5,0.46,0.36,0.38,0.07,0.44,0.14,0.3,0.08,0.62,0.08,0.1,0.1,0.15,0.23,0.38,0.22,0.22,0.2,0.31,0.14,0.31,0.3,0.33,0,0,0.15,0,0,0.2,0,0.09,0.08,0.21,0.25,0,0.3,0.15,0.07,0.15,0.1,0,0.23,0,0.13,0.08,0,0.07,0,0,0,0,0.09,0,0,0,0.07,0.11,0,0.4,0,0.11,0,0,0.14,0,0,0],[7.69,4.9,4.54,4.2,4.14,4.14,3.5,4.43,5.08,5.43,3.5,4.38,3.93,4.07,3.92,4.11,3.31,3.29,2.9,2.64,3,2.2,2.57,3.46,3.54,2.43,3.7,4.2,2.5,2.08,2.86,2.85,2.62,2.92,3.92,2.71,3.38,3.08,3.5,2.62,2.31,2.79,2,3.38,2.86,2.62,4,2.9,3,2.6,2.1,2.86,1.85,2.67,2.5,1.54,2.54,3.14,1.93,2.23,2.54,1.69,2.71,3.08,1.62,2.9,2.22,1.85,2.23,2.21,2.4,1.85,2.54,2,2.79,1.81,2.1,2.31,1.71,1.93,2.4,1.55,2.31,2.23,1.83,1.2,2,1.77,1.38,1.62,1.77,2.08,1.93,1.53,1.25,1.62,1.6,0.79,1.23,1.6,2,1.4,1.1,1.38,1.58,1.62,1.38,1.69,1.5,0.57,1.15,1.46,0.78,1.13,0.9,0.85,1.29,1.46,1.43,1,1.21,1.2,1.46,0.77,1.62,1.3,1.2,1.08,0.92,0.77,1,1.22,1,0.92,1,0.77,0.7,0.83,1,1.08,1,1.23,1,0.8,0.83,1,0.69,0.5,0.5,1,0.3,0.62,0.64,0.54,0.5,0.69,0.31,0.69,0.38,0.46,0.77,0.5,0.75,0.56,0.5,0.45,0.36,0.78,0.46,0.5,0.43,0.11,0.25,0.1,0.23,0.11,0.2,0.2,0.07,0.17,0,0],[1.77,1.5,1.08,0.5,1,1.43,0.7,0.43,1.23,1.29,0.81,0.69,0.93,1.57,0.62,0.56,1.31,1.07,0.3,0.79,0.6,0.4,0.21,0.46,1.08,0.43,0.3,1.2,0.2,1.46,1,1.08,0,1.15,1.31,0.36,1.23,1.08,0.6,0.62,0.92,1,1,0.62,0.86,0.54,1.9,0.6,0.46,0.1,0,1.07,1.31,0.6,0.43,0.15,0.38,1.07,0.36,0.38,0.77,0.81,0.86,0.62,1.08,0.6,0.78,0.46,0.54,0.43,0.2,0.85,0.85,1,0.64,0.38,1,1,0.29,0.27,2,0.45,0.77,0.23,0.83,0.2,0.6,0.69,0.15,0.38,0.31,0.31,1.07,0.2,0.25,0.38,0.1,0.43,0.38,0.6,0.25,0.6,0.6,0.08,0.33,1.08,0.23,0.38,0.5,0.14,0.15,0.85,0.67,0.33,0.2,0.08,0.71,1.23,0.29,0.56,0.14,0.6,0.54,0.77,0.85,0.3,0.1,0.08,0,0.23,0.22,0.67,0.2,0.46,0.14,0.23,0.1,0.5,0,0.23,0.54,0.62,0.15,0.4,0,0.64,0.08,0.14,0.25,0.5,0,0.23,0.07,0.23,0,0.15,0.15,0.23,0,0.08,0.46,0.21,0.5,0.19,0.08,0,0.09,0.67,0.08,0.17,0.36,0,0,0.9,0,0.11,0,0.1,0.29,0.17,0,0.07],[1.26,1.4,1.86,3.2,1.71,1.3,2.71,2.5,0.63,0.39,1.92,1.33,1.31,0.82,1.63,1.4,1.18,1.27,4.33,2,2,4,5.67,1.5,0.71,2.83,1,0.17,5,1.16,1,0.93,null,0.8,0.24,2.2,0.5,0.71,0.5,1.38,1.25,0.79,1.29,0.38,0.75,1.29,0.11,0.83,0.83,5,null,0.6,1.06,1,1.5,7.5,1.4,0.33,2.6,1.8,0.8,1.46,0.58,0.25,1.14,0.33,0.86,1.67,1,1.17,1,0.91,0.36,0.71,0.11,1.67,0.6,0.38,1.75,1.25,0.3,1.4,0.3,0.33,0.6,3.5,0.5,0.67,3.5,1.2,1,0.25,0.4,2,2.33,1,3,2.17,1.6,0.67,0,0.83,1.17,4,0.75,0.43,1.33,0.4,0.57,5.5,2.5,0.45,1.17,1.2,2.5,6,0.5,0.31,0.25,0.8,1,0.5,0.14,0.8,0.09,0.33,1,2,null,1.67,1,0.33,1,0.67,1,1.33,3,0.67,null,0,0.29,0,0,0.5,null,0.14,1,1.5,1,0,null,0.67,1,0.67,null,0,1.5,0,null,1,0,0.33,0,0,0,null,1,0,0,0,0.2,null,null,0.44,null,1,null,0,0.5,0,null,0],[5.61,4.67,6.07,11.6,5.86,4.2,7.71,12.83,4.75,4.61,6.23,7.67,5.54,3.41,8,8.8,3.71,4.33,14,5.36,7,9.5,17.67,9,4,8.5,13.33,3.67,17.5,2.58,3.86,3.57,null,3.33,3.24,9.8,3.25,3.57,6.33,5.63,3.75,3.57,3.29,5.88,4.08,6.14,2.21,5.67,7.33,31,null,3.27,2.47,5.44,7.33,17.5,8,3.27,8,7.6,4.1,3.54,3.75,5.25,2.64,5.17,3.71,5.67,5.14,6.33,13,3.09,3.36,2.71,4.44,6.5,2.7,2.69,7.75,8.5,1.5,4.8,3.3,10,2.8,9.5,3.83,3.22,12.5,5.4,6.75,7,2.2,9.67,7.33,5.2,19,4,4.8,3.33,8,3.17,3,22,5.5,1.93,7.33,4.8,3.57,9.5,10,2.18,2.33,4.6,7,17,2.3,1.5,5.25,2.6,9.5,2.5,2.86,1.8,2,4.67,13,16,null,5,5.5,2.17,6,2.67,8,4.67,10,2.33,null,4.67,2.14,2,6.5,2.5,null,1.71,10,5,3,2,null,3.33,10,3,null,4.5,3.5,3,null,7,1.67,2.67,1.5,3,6,null,5,1.17,6,3,1.4,null,null,0.56,null,2,null,2,0.75,1,null,0],[101.54,73,70,63.5,62.14,62.14,60,58.21,56.15,55.36,54.38,54.23,52.86,52.14,51.15,50,49.62,47.86,47,46.07,45,44,42.86,42.69,41.54,40.36,40,39,39,38.85,38.57,38.08,37.69,37.31,37.31,37.14,36.92,36.92,36.5,35.77,35.77,34.64,34.29,34.23,33.93,33.85,33.5,33.5,33.46,33,33,32.86,32.69,32.67,32.5,31.92,31.54,31.43,31.43,30.77,30.77,30.63,30.36,30,29.23,29,28.33,27.69,27.69,27.5,26,25.77,25.77,25.71,25.71,25.63,25,23.85,23.21,23,23,22.73,22.69,22.31,21.67,21.5,21.5,21.15,21.15,21.15,20.77,20.38,20.36,20.33,20,20,20,19.64,19.62,19,18.75,18.5,18.5,18.08,17.92,17.69,17.31,17.31,16.79,16.79,16.54,16.15,16.11,15.67,15.5,15,14.64,14.23,13.93,13.89,13.57,13.5,13.08,13.08,13.08,13,13,12.69,12.69,12.31,12.22,12.22,12,11.54,11.43,11.15,11,10.83,10,9.62,9.62,9.23,9.23,9,8.33,8.18,7.69,7.5,7.5,7.5,7.5,7.31,7.14,6.54,6.5,6.15,5.77,5.77,5.63,5.38,5.38,5,5,4.69,4.58,4.55,4.55,4.44,4.23,4.17,3.57,2.78,2.5,2.5,2.31,2.22,2,1.5,1.43,0.83,0,-0.36]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>Player<\/th>\n      <th>Team<\/th>\n      <th>Site<\/th>\n      <th>GP<\/th>\n      <th>TUH<\/th>\n      <th>15<\/th>\n      <th>10<\/th>\n      <th>-5<\/th>\n      <th>15/G<\/th>\n      <th>10/G<\/th>\n      <th>-5/G<\/th>\n      <th>P/N<\/th>\n      <th>G/N<\/th>\n      <th>PPG<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"dom":"tp","rowCallback":"function(row, data){\n  for(var i=0; i<data.length; i++){\n    if(data[i] === null){\n      $('td:eq('+(i)+')', row).html('-')\n        .css({'font-style': 'italic', 'text-align': 'center'});\n    }\n  }\nvar value=data[3]; $(this.api().cell(row, 3).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[4]; $(this.api().cell(row, 4).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[5]; $(this.api().cell(row, 5).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[6]; $(this.api().cell(row, 6).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[7]; $(this.api().cell(row, 7).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[8]; $(this.api().cell(row, 8).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[9]; $(this.api().cell(row, 9).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[10]; $(this.api().cell(row, 10).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[11]; $(this.api().cell(row, 11).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[12]; $(this.api().cell(row, 12).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[13]; $(this.api().cell(row, 13).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[0]; $(this.api().cell(row, 0).node()).css({'border-right':'2px solid #d3d3d3'});\nvar value=data[1]; $(this.api().cell(row, 1).node()).css({'border-right':'2px solid #d3d3d3'});\nvar value=data[2]; $(this.api().cell(row, 2).node()).css({'border-right':'2px solid #d3d3d3'});\nvar value=data[4]; $(this.api().cell(row, 4).node()).css({'border-right':'2px solid #d3d3d3'});\nvar value=data[7]; $(this.api().cell(row, 7).node()).css({'border-right':'2px solid #d3d3d3'});\nvar value=data[10]; $(this.api().cell(row, 10).node()).css({'border-right':'2px solid #d3d3d3'});\n}","columnDefs":[{"targets":8,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 2, 3, \",\", \".\", null);\n  }"},{"targets":9,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 2, 3, \",\", \".\", null);\n  }"},{"targets":10,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 2, 3, \",\", \".\", null);\n  }"},{"targets":13,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 2, 3, \",\", \".\", null);\n  }"},{"targets":11,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 2, 3, \",\", \".\", null);\n  }"},{"targets":12,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 2, 3, \",\", \".\", null);\n  }"},{"className":"dt-right","targets":[3,4,5,6,7,8,9,10,11,12,13]}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":["options.rowCallback","options.columnDefs.0.render","options.columnDefs.1.render","options.columnDefs.2.render","options.columnDefs.3.render","options.columnDefs.4.render","options.columnDefs.5.render"],"jsHooks":[]}</script>
+</div>
+
+
+<script>
+
+var source = new Bloodhound({
+  datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
+  queryTokenizer: Bloodhound.tokenizers.whitespace,
+  prefetch: {
+    url: '../test-index.json',
+    cache: false
+  }
+});
+
+source.initialize();
+
+$('#custom-templates .typeahead').typeahead(null, {
+  name: 'matched-links',
+  displayKey: 'name',
+  source: source.ttAdapter(),
+  templates: {
+    empty: [
+      '<div class="empty-message">',
+      'unable to find any search results that match the current query',
+      '</div>'
+    ].join('\n'),
+      suggestion: Handlebars.compile('<p><a href="{{id}}">{{name}}</a></p>')
+  }
+});
+</script>
+
+<script>
+  $(function() {
+  var navSelector = '#toc';
+  var $myNav = $(navSelector);
+  Toc.init($myNav);
+  $('body').scrollspy({
+    target: navSelector
+  });
+});
+</script>
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+
+</body>
+</html>

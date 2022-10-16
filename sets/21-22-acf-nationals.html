@@ -1,0 +1,1231 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>ACF Nationals | College Quizbowl Stats</title>
+
+<script src="libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="libs/navigation-1.1/tabsets.js"></script>
+<link href="libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="libs/highlightjs-9.12.0/highlight.js"></script>
+<script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script>
+<link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
+<script src="libs/datatables-binding-0.24/datatables.js"></script>
+<link href="libs/dt-core-1.11.3/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="libs/dt-core-1.11.3/css/jquery.dataTables.extra.css" rel="stylesheet" />
+<script src="libs/dt-core-1.11.3/js/jquery.dataTables.min.js"></script>
+<link href="libs/crosstalk-1.1.1/css/crosstalk.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.1.1/js/crosstalk.min.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Alegreya+Sans&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inconsolata&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+<script src="https://twitter.github.io/typeahead.js/releases/latest/typeahead.bundle.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.7/handlebars.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-sidebar/3.3.1/jquery.sticky-sidebar.min.js" integrity="sha512-iVhJqV0j477IrAkkzsn/tVJWXYsEqAj4PSS7AG+z1F7eD6uLKQxYBg09x13viaJ1Z5yYhlpyx0zLAUUErdHM6A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<!-- add after bootstrap.min.css -->
+<link rel="stylesheet" href="https://cdn.rawgit.com/afeld/bootstrap-toc/v0.4.1/dist/bootstrap-toc.min.css">
+<!-- add after bootstrap.min.js -->
+<script src="https://cdn.rawgit.com/afeld/bootstrap-toc/v0.4.1/dist/bootstrap-toc.min.js"></script>
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+      .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+
+
+<link rel="stylesheet" href="../css/style.css" type="text/css" />
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+
+<nav class = 'top-nav'>
+  <ul>
+    <li><p class = "site-title"><a href="/index.html">College Quizbowl Stats</a></p>
+    </li>
+    <li><a class = "navbar-link" href="/seasons/">Seasons</a></li>
+    <li><a class = "navbar-link" href="/sets/">Sets</a></li>
+    <li><a class = "navbar-link" href="/circuits/">Circuits</a></li>
+    <li><a class = "navbar-link" href="/records.html">Records</a></li>
+    <li><a class = "navbar-link" href="/about.html">About</a></li>
+
+<div id="custom-templates">
+  <input class="typeahead" type="text" placeholder="Player/Team Search">
+</div>
+  </ul>
+</nav>
+
+<div id="header">
+
+
+
+
+</div>
+
+
+<div class = 'main-flex'>
+<div class="toc-div col-sm-2">
+<nav class="side-nav" id="toc">
+</nav>
+</div>
+<div class = 'main-content col-sm-10'>
+<p class="page-title">
+21-22 ACF Nationals
+</p>
+<p class="page-subtitle">
+Head Editor: John Lawrence
+</p>
+<hr>
+<div id="editors" class="section level2">
+<h2>Editors</h2>
+<div id="uukhdcypji" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>html {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+}
+
+#uukhdcypji .gt_table {
+  display: table;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#uukhdcypji .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#uukhdcypji .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 1px;
+  padding-bottom: 1px;
+  padding-left: 6px;
+  padding-right: 6px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#uukhdcypji .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 0;
+  padding-bottom: 3px;
+  padding-left: 6px;
+  padding-right: 6px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#uukhdcypji .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#uukhdcypji .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#uukhdcypji .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 1.25px;
+  padding-bottom: 2.25px;
+  padding-left: 6px;
+  padding-right: 6px;
+  overflow-x: hidden;
+}
+
+#uukhdcypji .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#uukhdcypji .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#uukhdcypji .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#uukhdcypji .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 1.25px;
+  padding-bottom: 1.25px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#uukhdcypji .gt_group_heading {
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-left: 6px;
+  padding-right: 6px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#uukhdcypji .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#uukhdcypji .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#uukhdcypji .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#uukhdcypji .gt_row {
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-left: 6px;
+  padding-right: 6px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#uukhdcypji .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 6px;
+  padding-right: 6px;
+}
+
+#uukhdcypji .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 6px;
+  padding-right: 6px;
+  vertical-align: top;
+}
+
+#uukhdcypji .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#uukhdcypji .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-left: 6px;
+  padding-right: 6px;
+}
+
+#uukhdcypji .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#uukhdcypji .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#uukhdcypji .gt_last_summary_row {
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-left: 6px;
+  padding-right: 6px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#uukhdcypji .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-left: 6px;
+  padding-right: 6px;
+}
+
+#uukhdcypji .gt_first_grand_summary_row {
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-left: 6px;
+  padding-right: 6px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#uukhdcypji .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#uukhdcypji .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#uukhdcypji .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#uukhdcypji .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-left: 1px;
+  padding-right: 1px;
+  padding-left: 6px;
+  padding-right: 6px;
+}
+
+#uukhdcypji .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#uukhdcypji .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 1px;
+  padding-bottom: 1px;
+  padding-left: 6px;
+  padding-right: 6px;
+}
+
+#uukhdcypji .gt_left {
+  text-align: left;
+}
+
+#uukhdcypji .gt_center {
+  text-align: center;
+}
+
+#uukhdcypji .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#uukhdcypji .gt_font_normal {
+  font-weight: normal;
+}
+
+#uukhdcypji .gt_font_bold {
+  font-weight: bold;
+}
+
+#uukhdcypji .gt_font_italic {
+  font-style: italic;
+}
+
+#uukhdcypji .gt_super {
+  font-size: 65%;
+}
+
+#uukhdcypji .gt_two_val_uncert {
+  display: inline-block;
+  line-height: 1em;
+  text-align: right;
+  font-size: 60%;
+  vertical-align: -0.25em;
+  margin-left: 0.1em;
+}
+
+#uukhdcypji .gt_footnote_marks {
+  font-style: italic;
+  font-weight: normal;
+  font-size: 75%;
+  vertical-align: 0.4em;
+}
+
+#uukhdcypji .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#uukhdcypji .gt_slash_mark {
+  font-size: 0.7em;
+  line-height: 0.7em;
+  vertical-align: 0.15em;
+}
+
+#uukhdcypji .gt_fraction_numerator {
+  font-size: 0.6em;
+  line-height: 0.6em;
+  vertical-align: 0.45em;
+}
+
+#uukhdcypji .gt_fraction_denominator {
+  font-size: 0.6em;
+  line-height: 0.6em;
+  vertical-align: -0.05em;
+}
+</style>
+<table class="gt_table">
+  
+  <thead class="gt_col_headings">
+    <tr>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;">Subcategory</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1">Editors</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr class="gt_group_heading_row">
+      <td colspan="2" class="gt_group_heading">Literature</td>
+    </tr>
+    <tr class="gt_row_group_first"><td class="gt_row gt_left" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;">Literature</td>
+<td class="gt_row gt_left"><a href = "../players/john-lawrence.html">John Lawrence</a></td></tr>
+    <tr class="gt_group_heading_row">
+      <td colspan="2" class="gt_group_heading">History</td>
+    </tr>
+    <tr class="gt_row_group_first"><td class="gt_row gt_left gt_striped" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;">History</td>
+<td class="gt_row gt_left gt_striped"><a href = "../players/will-alston.html">Will Alston</a></td></tr>
+    <tr class="gt_group_heading_row">
+      <td colspan="2" class="gt_group_heading">Science</td>
+    </tr>
+    <tr class="gt_row_group_first"><td class="gt_row gt_left" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;">Biology</td>
+<td class="gt_row gt_left"><a href = "../players/eric-mukherjee.html">Eric Mukherjee</a></td></tr>
+    <tr><td class="gt_row gt_left gt_striped" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;">Chemistry</td>
+<td class="gt_row gt_left gt_striped"><a href = "../players/adam-silverman.html">Adam Silverman</a></td></tr>
+    <tr><td class="gt_row gt_left" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;">Other Science, Physics</td>
+<td class="gt_row gt_left"><a href = "../players/stephen-eltinge.html">Stephen Eltinge</a></td></tr>
+    <tr class="gt_group_heading_row">
+      <td colspan="2" class="gt_group_heading">Arts</td>
+    </tr>
+    <tr class="gt_row_group_first"><td class="gt_row gt_left gt_striped" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;">Auditory Arts</td>
+<td class="gt_row gt_left gt_striped"><a href = "../players/john-lawrence.html">John Lawrence</a></td></tr>
+    <tr><td class="gt_row gt_left" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;">Other Arts</td>
+<td class="gt_row gt_left"><a href = "../players/john-lawrence.html">John Lawrence</a>, <a href = "../players/stephen-liu.html">Stephen Liu</a></td></tr>
+    <tr><td class="gt_row gt_left gt_striped" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;">Visual Arts</td>
+<td class="gt_row gt_left gt_striped"><a href = "../players/stephen-liu.html">Stephen Liu</a></td></tr>
+    <tr class="gt_group_heading_row">
+      <td colspan="2" class="gt_group_heading">Beliefs</td>
+    </tr>
+    <tr class="gt_row_group_first"><td class="gt_row gt_left" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;">Mythology</td>
+<td class="gt_row gt_left"><a href = "../players/stephen-liu.html">Stephen Liu</a></td></tr>
+    <tr><td class="gt_row gt_left gt_striped" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;">Religion</td>
+<td class="gt_row gt_left gt_striped"><a href = "../players/will-alston.html">Will Alston</a></td></tr>
+    <tr class="gt_group_heading_row">
+      <td colspan="2" class="gt_group_heading">Thought</td>
+    </tr>
+    <tr class="gt_row_group_first"><td class="gt_row gt_left" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;">Philosophy</td>
+<td class="gt_row gt_left"><a href = "../players/john-lawrence.html">John Lawrence</a></td></tr>
+    <tr><td class="gt_row gt_left gt_striped" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;">Social Science</td>
+<td class="gt_row gt_left gt_striped"><a href = "../players/will-alston.html">Will Alston</a></td></tr>
+    <tr class="gt_group_heading_row">
+      <td colspan="2" class="gt_group_heading">Other</td>
+    </tr>
+    <tr class="gt_row_group_first"><td class="gt_row gt_left" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;">Other</td>
+<td class="gt_row gt_left"><a href = "../players/will-alston.html">Will Alston</a></td></tr>
+  </tbody>
+  
+  
+</table>
+</div>
+<hr>
+</div>
+<div id="tournaments" class="section level2">
+<h2>Tournaments</h2>
+<div id="uqwewjnrqn" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>html {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+}
+
+#uqwewjnrqn .gt_table {
+  display: table;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#uqwewjnrqn .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#uqwewjnrqn .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 1px;
+  padding-bottom: 1px;
+  padding-left: 6px;
+  padding-right: 6px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#uqwewjnrqn .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 0;
+  padding-bottom: 3px;
+  padding-left: 6px;
+  padding-right: 6px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#uqwewjnrqn .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#uqwewjnrqn .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#uqwewjnrqn .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 1.25px;
+  padding-bottom: 2.25px;
+  padding-left: 6px;
+  padding-right: 6px;
+  overflow-x: hidden;
+}
+
+#uqwewjnrqn .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#uqwewjnrqn .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#uqwewjnrqn .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#uqwewjnrqn .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 1.25px;
+  padding-bottom: 1.25px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#uqwewjnrqn .gt_group_heading {
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-left: 6px;
+  padding-right: 6px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#uqwewjnrqn .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#uqwewjnrqn .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#uqwewjnrqn .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#uqwewjnrqn .gt_row {
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-left: 6px;
+  padding-right: 6px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#uqwewjnrqn .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 6px;
+  padding-right: 6px;
+}
+
+#uqwewjnrqn .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 6px;
+  padding-right: 6px;
+  vertical-align: top;
+}
+
+#uqwewjnrqn .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#uqwewjnrqn .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-left: 6px;
+  padding-right: 6px;
+}
+
+#uqwewjnrqn .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#uqwewjnrqn .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#uqwewjnrqn .gt_last_summary_row {
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-left: 6px;
+  padding-right: 6px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#uqwewjnrqn .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-left: 6px;
+  padding-right: 6px;
+}
+
+#uqwewjnrqn .gt_first_grand_summary_row {
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-left: 6px;
+  padding-right: 6px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#uqwewjnrqn .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#uqwewjnrqn .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#uqwewjnrqn .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#uqwewjnrqn .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-left: 1px;
+  padding-right: 1px;
+  padding-left: 6px;
+  padding-right: 6px;
+}
+
+#uqwewjnrqn .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#uqwewjnrqn .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 1px;
+  padding-bottom: 1px;
+  padding-left: 6px;
+  padding-right: 6px;
+}
+
+#uqwewjnrqn .gt_left {
+  text-align: left;
+}
+
+#uqwewjnrqn .gt_center {
+  text-align: center;
+}
+
+#uqwewjnrqn .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#uqwewjnrqn .gt_font_normal {
+  font-weight: normal;
+}
+
+#uqwewjnrqn .gt_font_bold {
+  font-weight: bold;
+}
+
+#uqwewjnrqn .gt_font_italic {
+  font-style: italic;
+}
+
+#uqwewjnrqn .gt_super {
+  font-size: 65%;
+}
+
+#uqwewjnrqn .gt_two_val_uncert {
+  display: inline-block;
+  line-height: 1em;
+  text-align: right;
+  font-size: 60%;
+  vertical-align: -0.25em;
+  margin-left: 0.1em;
+}
+
+#uqwewjnrqn .gt_footnote_marks {
+  font-style: italic;
+  font-weight: normal;
+  font-size: 75%;
+  vertical-align: 0.4em;
+}
+
+#uqwewjnrqn .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#uqwewjnrqn .gt_slash_mark {
+  font-size: 0.7em;
+  line-height: 0.7em;
+  vertical-align: 0.15em;
+}
+
+#uqwewjnrqn .gt_fraction_numerator {
+  font-size: 0.6em;
+  line-height: 0.6em;
+  vertical-align: 0.45em;
+}
+
+#uqwewjnrqn .gt_fraction_denominator {
+  font-size: 0.6em;
+  line-height: 0.6em;
+  vertical-align: -0.05em;
+}
+</style>
+<table class="gt_table">
+  
+  <thead class="gt_col_headings">
+    <tr>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;">Site</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">Teams</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;">Schools</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1">15%</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;">Conv%</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">PPB</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr class="gt_group_heading_row">
+      <td colspan="6" class="gt_group_heading">2022-04-09</td>
+    </tr>
+    <tr class="gt_row_group_first"><td class="gt_row gt_left" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;"><a href = "../tournaments/21-22-acf-nationals-minnesota">Minnesota</a></td>
+<td class="gt_row gt_right" style="font-family: var(--table-font); font-size: 110%;">51</td>
+<td class="gt_row gt_right" style="font-family: var(--table-font); font-size: 110%; border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;">36</td>
+<td class="gt_row gt_center">-</td>
+<td class="gt_row gt_right" style="font-family: var(--table-font); font-size: 110%; border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;">0.851</td>
+<td class="gt_row gt_right" style="font-family: var(--table-font); font-size: 110%;">13.97</td></tr>
+  </tbody>
+  
+  
+</table>
+</div>
+<hr>
+</div>
+<div id="teams" class="section level2">
+<h2>Teams</h2>
+<div id="htmlwidget-1fc37ea2f6df2b78f2a3" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-1fc37ea2f6df2b78f2a3">{"x":{"filter":"none","vertical":false,"data":[["<a href = \"../tournaments/21-22-acf-nationals-minnesota#georgia-tech-a\">Georgia Tech A<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#stanford-a\">Stanford A<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#ohio-state-a\">Ohio State A<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#wustl-a\">WUSTL A<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#cornell-a\">Cornell A<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#harvard-a\">Harvard A<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#texas-a\">Texas A<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#maryland-a\">Maryland A<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#north-carolina-a\">North Carolina A<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#chicago-a\">Chicago A<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#florida-a\">Florida A<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#yale-a\">Yale A<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#brown-a\">Brown A<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#uc-berkeley-a\">UC Berkeley A<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#columbia-a\">Columbia A<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#northwestern-a\">Northwestern A<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#chicago-b\">Chicago B<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#johns-hopkins-a\">Johns Hopkins A<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#oxford-a\">Oxford A<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#texas-b\">Texas B<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#vanderbilt-a\">Vanderbilt A<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#columbia-b\">Columbia B<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#illinois-a\">Illinois A<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#mcgill-a\">McGill A<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#chicago-d\">Chicago D<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#rutgers-a\">Rutgers A<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#toronto-a\">Toronto A<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#duke-a\">Duke A<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#michigan-a\">Michigan A<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#georgia-tech-b\">Georgia Tech B<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#purdue-a\">Purdue A<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#minnesota-b\">Minnesota B<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#indiana-a\">Indiana A<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#cornell-b\">Cornell B<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#harvard-b\">Harvard B<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#north-carolina-b\">North Carolina B<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#imperial-a\">Imperial A<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#claremont-colleges-a\">Claremont Colleges A<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#chicago-c\">Chicago C<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#south-carolina-a\">South Carolina A<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#minnesota-a\">Minnesota A<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#kenyon-a\">Kenyon A<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#kentucky-a\">Kentucky A<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#iowa-state-a\">Iowa State A<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#northwestern-b\">Northwestern B<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#texas-c\">Texas C<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#wustl-b\">WUSTL B<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#ohio-state-b\">Ohio State B<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#gettysburg-a\">Gettysburg A<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#florida-b\">Florida B<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#ncf-a\">NCF A<\/a>"],["<a href = \"../tournaments/21-22-acf-nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota\">Minnesota<\/a>"],[19,19,20,19,18,17,19,19,18,18,19,20,21,18,18,17,19,18,18,17,18,17,17,18,17,18,16,18,18,17,15,17,18,18,17,18,18,17,17,16,17,16,16,18,15,16,16,17,16,15,16],["18-1","16-3","16-4","14-5","13-5","11-6","11-8","14-5","9-9","9-9","13-6","17-3","9-12","12-6","8-10","9-8","11-8","12-6","11-7","9-8","11-7","12-5","5-12","12-6","9-8","8-10","7-9","10-8","10-8","9-8","8-7","5-12","7-11","11-7","6-11","4-14","9-9","8-9","6-11","3-13","3-14","6-10","7-9","5-13","6-9","4-12","4-12","2-15","6-10","0-15","2-14"],[380,380,400,380,360,340,380,380,360,360,380,400,420,360,360,340,380,360,360,340,360,340,340,360,340,360,320,360,360,340,300,340,360,360,340,360,360,340,340,320,340,320,320,360,300,320,320,340,320,300,320],[null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null],[257,228,235,203,197,187,179,187,168,164,203,213,193,177,164,153,172,173,170,153,162,162,139,166,151,148,133,143,144,129,127,140,142,153,127,124,136,129,112,109,106,109,116,118,97,102,99,103,76,69,62],[38,44,40,63,33,47,46,31,44,33,55,27,45,31,23,40,38,27,29,37,55,24,30,31,34,43,33,35,23,29,22,41,23,37,18,46,37,27,45,30,51,18,35,15,7,12,26,52,20,30,7],[null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null],[13.53,12,11.75,10.68,10.94,11,9.42,9.84,9.33,9.11,10.68,10.65,9.19,9.83,9.11,9,9.05,9.61,9.44,9,9,9.53,8.18,9.22,8.88,8.22,8.31,7.94,8,7.59,8.47,8.24,7.89,8.5,7.47,6.89,7.56,7.59,6.59,6.81,6.24,6.81,7.25,6.56,6.47,6.38,6.19,6.06,4.75,4.6,3.88],[2,2.32,2,3.32,1.83,2.76,2.42,1.63,2.44,1.83,2.89,1.35,2.14,1.72,1.28,2.35,2,1.5,1.61,2.18,3.06,1.41,1.76,1.72,2,2.39,2.06,1.94,1.28,1.71,1.47,2.41,1.28,2.06,1.06,2.56,2.06,1.59,2.65,1.88,3,1.13,2.19,0.83,0.47,0.75,1.63,3.06,1.25,2,0.44],[0.676315789473684,0.6,0.5875,0.534210526315789,0.547222222222222,0.55,0.471052631578947,0.492105263157895,0.466666666666667,0.455555555555556,0.534210526315789,0.5325,0.45952380952381,0.491666666666667,0.455555555555556,0.45,0.452631578947368,0.480555555555556,0.472222222222222,0.45,0.45,0.476470588235294,0.408823529411765,0.461111111111111,0.444117647058824,0.411111111111111,0.415625,0.397222222222222,0.4,0.379411764705882,0.423333333333333,0.411764705882353,0.394444444444444,0.425,0.373529411764706,0.344444444444444,0.377777777777778,0.379411764705882,0.329411764705882,0.340625,0.311764705882353,0.340625,0.3625,0.327777777777778,0.323333333333333,0.31875,0.309375,0.302941176470588,0.2375,0.23,0.19375],[384.74,337.89,311,278.16,282.5,283.24,241.05,244.47,232.78,225.83,259.74,255.25,211.67,238.61,209.72,215.88,218.95,219.17,224.72,202.06,204.17,218.24,184.12,203.06,190,170.28,178.44,175.28,181.39,165,192,169.71,163.61,171.94,160,130,156.39,157.35,137.94,139.38,122.65,140,139.69,132.5,124.33,126.25,111.25,100,82.5,80,69.06],[19.18,19.12,17.32,17.59,16.65,17.01,16.87,15.67,16.25,15.79,15.67,14.6,14.2,15.14,13.72,15.29,15.29,13.58,14.65,13.66,14.38,13.64,13.6,12.95,12.52,12.16,12.71,13.29,13.47,12.87,13.54,12.07,11.55,11.44,12.13,10.73,12.06,11.78,12.95,11.83,12.08,11.38,10.78,10.85,9.59,10.39,9.29,9.03,8.68,9.57,8.39],[460.01,416.38,370.49,357.47,357.45,342.11,297.92,293.41,284.39,277.62,267.13,265.32,260.25,248.93,246.79,234.83,228.84,227.73,224.79,219.23,203.92,199.37,188.05,185.74,183.48,176.85,164.03,163.79,162.53,160.1,154.95,154.36,150.98,145.63,141.81,138.39,133.97,131.34,130.87,128.03,113.85,111.74,110.83,110.35,98.04,96,89.62,87.31,65.44,63.95,56.93]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>Team<\/th>\n      <th>Site<\/th>\n      <th>GP<\/th>\n      <th>W-L<\/th>\n      <th>TUH<\/th>\n      <th>15<\/th>\n      <th>10<\/th>\n      <th>-5<\/th>\n      <th>15/G<\/th>\n      <th>10/G<\/th>\n      <th>-5/G<\/th>\n      <th>TU%<\/th>\n      <th>PPG<\/th>\n      <th>PPB<\/th>\n      <th>A-Value<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"dom":"tp","rowCallback":"function(row, data){\n  for(var i=0; i<data.length; i++){\n    if(data[i] === null){\n      $('td:eq('+(i)+')', row).html('-')\n        .css({'font-style': 'italic', 'text-align': 'center'});\n    }\n  }\nvar value=data[2]; $(this.api().cell(row, 2).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[3]; $(this.api().cell(row, 3).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[4]; $(this.api().cell(row, 4).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[6]; $(this.api().cell(row, 6).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[7]; $(this.api().cell(row, 7).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[9]; $(this.api().cell(row, 9).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[10]; $(this.api().cell(row, 10).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[11]; $(this.api().cell(row, 11).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[12]; $(this.api().cell(row, 12).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[13]; $(this.api().cell(row, 13).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[14]; $(this.api().cell(row, 14).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[3]; $(this.api().cell(row, 3).node()).css({'text-align':'right'});\nvar value=data[0]; $(this.api().cell(row, 0).node()).css({'border-right':'2px solid #d3d3d3'});\nvar value=data[1]; $(this.api().cell(row, 1).node()).css({'border-right':'2px solid #d3d3d3'});\nvar value=data[3]; $(this.api().cell(row, 3).node()).css({'border-right':'2px solid #d3d3d3'});\nvar value=data[4]; $(this.api().cell(row, 4).node()).css({'border-right':'2px solid #d3d3d3'});\nvar value=data[7]; $(this.api().cell(row, 7).node()).css({'border-right':'2px solid #d3d3d3'});\nvar value=data[10]; $(this.api().cell(row, 10).node()).css({'border-right':'2px solid #d3d3d3'});\nvar value=data[11]; $(this.api().cell(row, 11).node()).css({'border-right':'2px solid #d3d3d3'});\n}","columnDefs":[{"targets":8,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 2, 3, \",\", \".\", null);\n  }"},{"targets":9,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 2, 3, \",\", \".\", null);\n  }"},{"targets":10,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 2, 3, \",\", \".\", null);\n  }"},{"targets":12,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 2, 3, \",\", \".\", null);\n  }"},{"targets":13,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 2, 3, \",\", \".\", null);\n  }"},{"targets":14,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 2, 3, \",\", \".\", null);\n  }"},{"targets":11,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatPercentage(data, 0, 3, \",\", \".\", null);\n  }"},{"className":"dt-right","targets":[2,4,6,7,9,10,11,12,13,14]}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":["options.rowCallback","options.columnDefs.0.render","options.columnDefs.1.render","options.columnDefs.2.render","options.columnDefs.3.render","options.columnDefs.4.render","options.columnDefs.5.render","options.columnDefs.6.render"],"jsHooks":[]}</script>
+<hr>
+</div>
+<div id="players" class="section level2">
+<h2>Players</h2>
+<div id="htmlwidget-0615f455f52e1eb09bf1" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-0615f455f52e1eb09bf1">{"x":{"filter":"none","vertical":false,"data":[["<a href = \"../players/matt-bollinger.html\">Matt Bollinger<\/a>","<a href = \"../players/tracy-mirkin.html\">Tracy Mirkin<\/a>","<a href = \"../players/caleb-kendrick.html\">Caleb Kendrick<\/a>","<a href = \"../players/jason-golfinos.html\">Jason Golfinos<\/a>","<a href = \"../players/clark-smith.html\">Clark Smith<\/a>","<a href = \"../players/amogh-kulkarni.html\">Amogh Kulkarni<\/a>","<a href = \"../players/matthew-lehmann.html\">Matthew Lehmann<\/a>","<a href = \"../players/eric-bobrow.html\">Eric Bobrow<\/a>","<a href = \"../players/conor-thompson.html\">Conor Thompson<\/a>","<a href = \"../players/justin-hawkins.html\">Justin Hawkins<\/a>","<a href = \"../players/todd-maslyk.html\">Todd Maslyk<\/a>","<a href = \"../players/arjun-nageswaran.html\">Arjun Nageswaran<\/a>","<a href = \"../players/chris-ray.html\">Chris Ray<\/a>","<a href = \"../players/daniel-sheinberg.html\">Daniel Sheinberg<\/a>","<a href = \"../players/vincent-du.html\">Vincent Du<\/a>","<a href = \"../players/henry-atkins.html\">Henry Atkins<\/a>","<a href = \"../players/tegan-kapadia.html\">Tegan Kapadia<\/a>","<a href = \"../players/william-golden.html\">William Golden<\/a>","<a href = \"../players/michal-gerasimiuk.html\">Michal Gerasimiuk<\/a>","<a href = \"../players/arthur-delot-vilain.html\">Arthur Delot-Vilain<\/a>","<a href = \"../players/alex-pijanowski.html\">Alex Pijanowski<\/a>","<a href = \"../players/oli-clarke.html\">Oli Clarke<\/a>","<a href = \"../players/chris-sims.html\">Chris Sims<\/a>","<a href = \"../players/mitch-mccullar.html\">Mitch McCullar<\/a>","<a href = \"../players/tim-morrison.html\">Tim Morrison<\/a>","<a href = \"../players/moses-kitakule.html\">Moses Kitakule<\/a>","<a href = \"../players/adam-fine.html\">Adam Fine<\/a>","<a href = \"../players/eve-fleisig.html\">Eve Fleisig<\/a>","<a href = \"../players/geoffrey-chen.html\">Geoffrey Chen<\/a>","<a href = \"../players/eddy-liu.html\">Eddy Liu<\/a>","<a href = \"../players/natan-holtzman.html\">Natan Holtzman<\/a>","<a href = \"../players/beni-keown.html\">Beni Keown<\/a>","<a href = \"../players/felix-roberts.html\">Felix Roberts<\/a>","<a href = \"../players/eric-yin.html\">Eric Yin<\/a>","<a href = \"../players/ashish-subramanian.html\">Ashish Subramanian<\/a>","<a href = \"../players/michael-coates.html\">Michael Coates<\/a>","<a href = \"../players/ethan-ashbrook.html\">Ethan Ashbrook<\/a>","<a href = \"../players/andrew-kelley.html\">Andrew Kelley<\/a>","<a href = \"../players/charles-hang.html\">Charles Hang<\/a>","<a href = \"../players/caroline-mao.html\">Caroline Mao<\/a>","<a href = \"../players/jason-hong.html\">Jason Hong<\/a>","<a href = \"../players/dan-ni.html\">Dan Ni<\/a>","<a href = \"../players/jonathan-tran.html\">Jonathan Tran<\/a>","<a href = \"../players/raymond-wang.html\">Raymond Wang<\/a>","<a href = \"../players/joel-miles.html\">Joel Miles<\/a>","<a href = \"../players/lexi-terman.html\">Lexi Terman<\/a>","<a href = \"../players/andrew-hanna.html\">Andrew Hanna<\/a>","<a href = \"../players/anson-berns.html\">Anson Berns<\/a>","<a href = \"../players/hari-parameswaran.html\">Hari Parameswaran<\/a>","<a href = \"../players/jason-shi.html\">Jason Shi<\/a>","<a href = \"../players/jacob-robertson.html\">Jacob Robertson<\/a>","<a href = \"../players/hayden-toftner.html\">Hayden Toftner<\/a>","<a href = \"../players/john-john-groger.html\">John John Groger<\/a>","<a href = \"../players/justin-wytmar.html\">Justin Wytmar<\/a>","<a href = \"../players/isak-jatoi.html\">Isak Jatoi<\/a>","<a href = \"../players/claire-jones.html\">Claire Jones<\/a>","<a href = \"../players/jacob-augelli.html\">Jacob Augelli<\/a>","<a href = \"../players/eric-wolfsberg.html\">Eric Wolfsberg<\/a>","<a href = \"../players/kevin-fan.html\">Kevin Fan<\/a>","<a href = \"../players/mateo-acosta.html\">Mateo Acosta<\/a>","<a href = \"../players/ashwath-seetharaman.html\">Ashwath Seetharaman<\/a>","<a href = \"../players/dean-ah-now.html\">Dean Ah Now<\/a>","<a href = \"../players/vishwa-shanmugam.html\">Vishwa Shanmugam<\/a>","<a href = \"../players/ryzeson-maravich.html\">Ryzeson Maravich<\/a>","<a href = \"../players/henry-goff.html\">Henry Goff<\/a>","<a href = \"../players/chris-gilmer-hill.html\">Chris Gilmer-Hill<\/a>","<a href = \"../players/jacob-egol.html\">Jacob Egol<\/a>","<a href = \"../players/vivek-sasse.html\">Vivek Sasse<\/a>","<a href = \"../players/davis-everson-rose.html\">Davis Everson-Rose<\/a>","<a href = \"../players/jack-paganelli.html\">Jack Paganelli<\/a>","<a href = \"../players/neal-joshi.html\">Neal Joshi<\/a>","<a href = \"../players/darren-petrosino.html\">Darren Petrosino<\/a>","<a href = \"../players/ethan-strombeck.html\">Ethan Strombeck<\/a>","<a href = \"../players/albert-zhang.html\">Albert Zhang<\/a>","<a href = \"../players/chinmay-murthy.html\">Chinmay Murthy<\/a>","<a href = \"../players/gareth-thorlakson.html\">Gareth Thorlakson<\/a>","<a href = \"../players/jake-lyons.html\">Jake Lyons<\/a>","<a href = \"../players/ned-tagtmeier.html\">Ned Tagtmeier<\/a>","<a href = \"../players/ryan-golant.html\">Ryan Golant<\/a>","<a href = \"../players/sharath-narayan.html\">Sharath Narayan<\/a>","<a href = \"../players/walter-zhang.html\">Walter Zhang<\/a>","<a href = \"../players/vittal-bhat.html\">Vittal Bhat<\/a>","<a href = \"../players/ben-miller.html\">Ben Miller<\/a>","<a href = \"../players/raymond-chen.html\">Raymond Chen<\/a>","<a href = \"../players/sky-li.html\">Sky Li<\/a>","<a href = \"../players/vinu-harihar.html\">Vinu Harihar<\/a>","<a href = \"../players/bradley-mclain.html\">Bradley McLain<\/a>","<a href = \"../players/karan-gurazada.html\">Karan Gurazada<\/a>","<a href = \"../players/tanis-nielsen.html\">Tanis Nielsen<\/a>","<a href = \"../players/alex-akridge.html\">Alex Akridge<\/a>","<a href = \"../players/andrew-salij.html\">Andrew Salij<\/a>","<a href = \"../players/rosa-xia.html\">Rosa Xia<\/a>","<a href = \"../players/shahar-schwartz.html\">Shahar Schwartz<\/a>","<a href = \"../players/grant-li.html\">Grant Li<\/a>","<a href = \"../players/mazin-omer.html\">Mazin Omer<\/a>","<a href = \"../players/rohin-devanathan.html\">Rohin Devanathan<\/a>","<a href = \"../players/shehryar-qazi.html\">Shehryar Qazi<\/a>","<a href = \"../players/ben-gordon.html\">Ben Gordon<\/a>","<a href = \"../players/ian-chow.html\">Ian Chow<\/a>","<a href = \"../players/jeffrey-fung.html\">Jeffrey Fung<\/a>","<a href = \"../players/jisoo-yoo.html\">Jisoo Yoo<\/a>","<a href = \"../players/matt-schiavone.html\">Matt Schiavone<\/a>","<a href = \"../players/benjamin-chapman.html\">Benjamin Chapman<\/a>","<a href = \"../players/liam-starnes.html\">Liam Starnes<\/a>","<a href = \"../players/justin-lee.html\">Justin Lee<\/a>","<a href = \"../players/john-marvin-sipp.html\">John Marvin Sipp<\/a>","<a href = \"../players/raul-passement.html\">Raul Passement<\/a>","<a href = \"../players/justin-posner.html\">Justin Posner<\/a>","<a href = \"../players/carlos-gonzalez.html\">Carlos Gonzalez<\/a>","<a href = \"../players/ian-baram.html\">Ian Baram<\/a>","<a href = \"../players/alex-li.html\">Alex Li<\/a>","<a href = \"../players/leah-honsinger.html\">Leah Honsinger<\/a>","<a href = \"../players/ethan-bonnell.html\">Ethan Bonnell<\/a>","<a href = \"../players/james-stevenson.html\">James Stevenson<\/a>","<a href = \"../players/quynh-phung.html\">Quynh Phung<\/a>","<a href = \"../players/alex-gunasekera.html\">Alex Gunasekera<\/a>","<a href = \"../players/seth-ebner.html\">Seth Ebner<\/a>","<a href = \"../players/jim-fan.html\">Jim Fan<\/a>","<a href = \"../players/ziv-carmi.html\">Ziv Carmi<\/a>","<a href = \"../players/kevin-park.html\">Kevin Park<\/a>","<a href = \"../players/ricky-li.html\">Ricky Li<\/a>","<a href = \"../players/jaskaran-singh.html\">Jaskaran Singh<\/a>","<a href = \"../players/jd-kroth.html\">JD Kroth<\/a>","<a href = \"../players/keaton-martin.html\">Keaton Martin<\/a>","<a href = \"../players/michael-mays.html\">Michael Mays<\/a>","<a href = \"../players/adam-klein.html\">Adam Klein<\/a>","<a href = \"../players/jerry-lin.html\">Jerry Lin<\/a>","<a href = \"../players/sanjay-srihari.html\">Sanjay Srihari<\/a>","<a href = \"../players/tora-husar.html\">Tora Husar<\/a>","<a href = \"../players/thomas-gioia.html\">Thomas Gioia<\/a>","<a href = \"../players/tomás-aguilar-fraga.html\">Tomás Aguilar-Fraga<\/a>","<a href = \"../players/nathan-zhang.html\">Nathan Zhang<\/a>","<a href = \"../players/joelle-smart.html\">Joelle Smart<\/a>","<a href = \"../players/ben-weiner.html\">Ben Weiner<\/a>","<a href = \"../players/anthony-delgado.html\">Anthony Delgado<\/a>","<a href = \"../players/ben-dahl.html\">Ben Dahl<\/a>","<a href = \"../players/ryan-humphrey.html\">Ryan Humphrey<\/a>","<a href = \"../players/daniel-yang.html\">Daniel Yang<\/a>","<a href = \"../players/cormac-beirne.html\">Cormac Beirne<\/a>","<a href = \"../players/oliver-hargrave.html\">Oliver Hargrave<\/a>","<a href = \"../players/richard-niu.html\">Richard Niu<\/a>","<a href = \"../players/justin-kennedy.html\">Justin Kennedy<\/a>","<a href = \"../players/jonathan-shauf.html\">Jonathan Shauf<\/a>","<a href = \"../players/william-groger.html\">William Groger<\/a>","<a href = \"../players/annabelle-yang.html\">Annabelle Yang<\/a>","<a href = \"../players/khushi-umarwadia.html\">Khushi Umarwadia<\/a>","<a href = \"../players/elijah-scheinson.html\">Elijah Scheinson<\/a>","<a href = \"../players/henry-cafaro.html\">Henry Cafaro<\/a>","<a href = \"../players/sarod-nori.html\">Sarod Nori<\/a>","<a href = \"../players/grant-peet.html\">Grant Peet<\/a>","<a href = \"../players/kevin-ye.html\">Kevin Ye<\/a>","<a href = \"../players/noah-sheidlower.html\">Noah Sheidlower<\/a>","<a href = \"../players/sebastian-llaca.html\">Sebastian Llaca<\/a>","<a href = \"../players/jack-oberman.html\">Jack Oberman<\/a>","<a href = \"../players/michael-bucknall.html\">Michael Bucknall<\/a>","<a href = \"../players/pranav-sivaram.html\">Pranav Sivaram<\/a>","<a href = \"../players/andrew-ellis.html\">Andrew Ellis<\/a>","<a href = \"../players/jackson-lee.html\">Jackson Lee<\/a>","<a href = \"../players/micah-kienzle.html\">Micah Kienzle<\/a>","<a href = \"../players/nikhil-chellam.html\">Nikhil Chellam<\/a>","<a href = \"../players/robert-condron.html\">Robert Condron<\/a>","<a href = \"../players/joe-kammann.html\">Joe Kammann<\/a>","<a href = \"../players/garrison-page.html\">Garrison Page<\/a>","<a href = \"../players/sean-higgins.html\">Sean Higgins<\/a>","<a href = \"../players/zachary-beickman.html\">Zachary Beickman<\/a>","<a href = \"../players/quentin-mot.html\">Quentin Mot<\/a>","<a href = \"../players/s.-a.-shenoy.html\">S. A. Shenoy<\/a>","<a href = \"../players/amith-punyala.html\">Amith Punyala<\/a>","<a href = \"../players/sheldon-wong.html\">Sheldon Wong<\/a>","<a href = \"../players/luke-van-de-weghe.html\">Luke Van De Weghe<\/a>","<a href = \"../players/zane-kierzyk.html\">Zane Kierzyk<\/a>","<a href = \"../players/brendan-mcmahon.html\">Brendan McMahon<\/a>","<a href = \"../players/rodrigo-rose.html\">Rodrigo Rose<\/a>","<a href = \"../players/graham-cope.html\">Graham Cope<\/a>","<a href = \"../players/connor-mayers.html\">Connor Mayers<\/a>","<a href = \"../players/jon-vaysman.html\">Jon Vaysman<\/a>","<a href = \"../players/michael-li.html\">Michael Li<\/a>","<a href = \"../players/kevin-thomas.html\">Kevin Thomas<\/a>","<a href = \"../players/simone-valade.html\">Simone Valade<\/a>","<a href = \"../players/fatima-sheriff.html\">Fatima Sheriff<\/a>","<a href = \"../players/payton-schubel.html\">Payton Schubel<\/a>","<a href = \"../players/subhamitra-banerjee-roychoudhury.html\">Subhamitra Banerjee Roychoudhury<\/a>","<a href = \"../players/zac-bennett.html\">Zac Bennett<\/a>","<a href = \"../players/adrienne-hill.html\">Adrienne Hill<\/a>","<a href = \"../players/matt-pecoraro.html\">Matt Pecoraro<\/a>","<a href = \"../players/leo-law.html\">Leo Law<\/a>","<a href = \"../players/aaron-dorsey.html\">Aaron Dorsey<\/a>","<a href = \"../players/paul-lee.html\">Paul Lee<\/a>","<a href = \"../players/guy-indorante.html\">Guy Indorante<\/a>","<a href = \"../players/chloe-chow.html\">Chloe Chow<\/a>","<a href = \"../players/isaac-mammel.html\">Isaac Mammel<\/a>","<a href = \"../players/joe-tankersley.html\">Joe Tankersley<\/a>","<a href = \"../players/chloe-salveson.html\">Chloe Salveson<\/a>","<a href = \"../players/peyton-johnson.html\">Peyton Johnson<\/a>","<a href = \"../players/chandler-west.html\">Chandler West<\/a>","<a href = \"../players/jonah-schwartz.html\">Jonah Schwartz<\/a>","<a href = \"../players/roxanne-tang.html\">Roxanne Tang<\/a>","<a href = \"../players/urbas-ekka.html\">Urbas Ekka<\/a>","<a href = \"../players/gavin-wagner.html\">Gavin Wagner<\/a>","<a href = \"../players/john-nienajadlo.html\">John Nienajadlo<\/a>"],["<a href = \"../tournaments/21-22-acf-nationals-minnesota#georgia-tech-a\">Georgia Tech A<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#florida-a\">Florida A<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#maryland-a\">Maryland A<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#harvard-a\">Harvard A<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#ohio-state-a\">Ohio State A<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#chicago-d\">Chicago D<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#wustl-a\">WUSTL A<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#johns-hopkins-a\">Johns Hopkins A<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#iowa-state-a\">Iowa State A<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#indiana-a\">Indiana A<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#michigan-a\">Michigan A<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#harvard-b\">Harvard B<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#ohio-state-a\">Ohio State A<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#yale-a\">Yale A<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#north-carolina-a\">North Carolina A<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#mcgill-a\">McGill A<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#georgia-tech-b\">Georgia Tech B<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#texas-a\">Texas A<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#yale-a\">Yale A<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#yale-a\">Yale A<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#purdue-a\">Purdue A<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#oxford-a\">Oxford A<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#northwestern-a\">Northwestern A<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#illinois-a\">Illinois A<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#stanford-a\">Stanford A<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#columbia-a\">Columbia A<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#chicago-a\">Chicago A<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#uc-berkeley-a\">UC Berkeley A<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#cornell-a\">Cornell A<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#ohio-state-b\">Ohio State B<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#stanford-a\">Stanford A<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#northwestern-b\">Northwestern B<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#imperial-a\">Imperial A<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#wustl-b\">WUSTL B<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#duke-a\">Duke A<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#uc-berkeley-a\">UC Berkeley A<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#minnesota-b\">Minnesota B<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#kentucky-a\">Kentucky A<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#wustl-a\">WUSTL A<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#columbia-b\">Columbia B<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#brown-a\">Brown A<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#cornell-b\">Cornell B<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#cornell-a\">Cornell A<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#cornell-a\">Cornell A<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#minnesota-b\">Minnesota B<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#rutgers-a\">Rutgers A<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#vanderbilt-a\">Vanderbilt A<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#brown-a\">Brown A<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#georgia-tech-a\">Georgia Tech A<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#texas-c\">Texas C<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#oxford-a\">Oxford A<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#kenyon-a\">Kenyon A<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#columbia-b\">Columbia B<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#illinois-a\">Illinois A<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#south-carolina-a\">South Carolina A<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#chicago-b\">Chicago B<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#vanderbilt-a\">Vanderbilt A<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#stanford-a\">Stanford A<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#mcgill-a\">McGill A<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#florida-b\">Florida B<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#texas-b\">Texas B<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#claremont-colleges-a\">Claremont Colleges A<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#maryland-a\">Maryland A<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#gettysburg-a\">Gettysburg A<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#north-carolina-a\">North Carolina A<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#harvard-b\">Harvard B<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#duke-a\">Duke A<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#chicago-b\">Chicago B<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#minnesota-a\">Minnesota A<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#kenyon-a\">Kenyon A<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#wustl-b\">WUSTL B<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#rutgers-a\">Rutgers A<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#stanford-a\">Stanford A<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#columbia-b\">Columbia B<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#texas-b\">Texas B<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#columbia-a\">Columbia A<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#northwestern-b\">Northwestern B<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#chicago-a\">Chicago A<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#columbia-a\">Columbia A<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#vanderbilt-a\">Vanderbilt A<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#brown-a\">Brown A<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#north-carolina-b\">North Carolina B<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#chicago-a\">Chicago A<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#toronto-a\">Toronto A<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#toronto-a\">Toronto A<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#johns-hopkins-a\">Johns Hopkins A<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#texas-a\">Texas A<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#texas-b\">Texas B<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#claremont-colleges-a\">Claremont Colleges A<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#indiana-a\">Indiana A<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#northwestern-a\">Northwestern A<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#cornell-b\">Cornell B<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#uc-berkeley-a\">UC Berkeley A<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#chicago-b\">Chicago B<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#harvard-a\">Harvard A<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#northwestern-a\">Northwestern A<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#cornell-b\">Cornell B<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#texas-c\">Texas C<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#toronto-a\">Toronto A<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#harvard-b\">Harvard B<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#texas-b\">Texas B<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#purdue-a\">Purdue A<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#toronto-a\">Toronto A<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#chicago-d\">Chicago D<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#imperial-a\">Imperial A<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#chicago-b\">Chicago B<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#texas-c\">Texas C<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#chicago-c\">Chicago C<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#ncf-a\">NCF A<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#chicago-d\">Chicago D<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#georgia-tech-a\">Georgia Tech A<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#florida-a\">Florida A<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#kenyon-a\">Kenyon A<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#michigan-a\">Michigan A<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#purdue-a\">Purdue A<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#oxford-a\">Oxford A<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#johns-hopkins-a\">Johns Hopkins A<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#north-carolina-b\">North Carolina B<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#gettysburg-a\">Gettysburg A<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#claremont-colleges-a\">Claremont Colleges A<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#harvard-a\">Harvard A<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#texas-a\">Texas A<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#iowa-state-a\">Iowa State A<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#kentucky-a\">Kentucky A<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#imperial-a\">Imperial A<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#chicago-c\">Chicago C<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#duke-a\">Duke A<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#georgia-tech-b\">Georgia Tech B<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#minnesota-a\">Minnesota A<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#harvard-a\">Harvard A<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#claremont-colleges-a\">Claremont Colleges A<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#cornell-a\">Cornell A<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#rutgers-a\">Rutgers A<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#minnesota-b\">Minnesota B<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#florida-b\">Florida B<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#purdue-a\">Purdue A<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#texas-a\">Texas A<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#chicago-c\">Chicago C<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#mcgill-a\">McGill A<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#oxford-a\">Oxford A<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#cornell-b\">Cornell B<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#south-carolina-a\">South Carolina A<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#north-carolina-b\">North Carolina B<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#columbia-b\">Columbia B<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#wustl-a\">WUSTL A<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#south-carolina-a\">South Carolina A<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#columbia-b\">Columbia B<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#chicago-c\">Chicago C<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#illinois-a\">Illinois A<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#north-carolina-a\">North Carolina A<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#uc-berkeley-a\">UC Berkeley A<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#columbia-a\">Columbia A<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#johns-hopkins-a\">Johns Hopkins A<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#south-carolina-a\">South Carolina A<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#north-carolina-b\">North Carolina B<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#ohio-state-a\">Ohio State A<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#kentucky-a\">Kentucky A<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#rutgers-a\">Rutgers A<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#ncf-a\">NCF A<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#northwestern-a\">Northwestern A<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#chicago-a\">Chicago A<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#minnesota-a\">Minnesota A<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#kentucky-a\">Kentucky A<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#michigan-a\">Michigan A<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#kentucky-a\">Kentucky A<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#georgia-tech-b\">Georgia Tech B<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#georgia-tech-a\">Georgia Tech A<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#wustl-a\">WUSTL A<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#northwestern-b\">Northwestern B<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#ohio-state-b\">Ohio State B<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#indiana-a\">Indiana A<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#ncf-a\">NCF A<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#georgia-tech-b\">Georgia Tech B<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#florida-a\">Florida A<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#maryland-a\">Maryland A<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#michigan-a\">Michigan A<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#brown-a\">Brown A<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#north-carolina-a\">North Carolina A<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#mcgill-a\">McGill A<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#imperial-a\">Imperial A<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#duke-a\">Duke A<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#michigan-a\">Michigan A<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#ohio-state-b\">Ohio State B<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#ncf-a\">NCF A<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#yale-a\">Yale A<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#florida-a\">Florida A<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#gettysburg-a\">Gettysburg A<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#wustl-a\">WUSTL A<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#iowa-state-a\">Iowa State A<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#northwestern-b\">Northwestern B<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#maryland-a\">Maryland A<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#indiana-a\">Indiana A<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#illinois-a\">Illinois A<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#minnesota-a\">Minnesota A<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#vanderbilt-a\">Vanderbilt A<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#wustl-b\">WUSTL B<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#ohio-state-a\">Ohio State A<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#minnesota-b\">Minnesota B<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#wustl-b\">WUSTL B<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#florida-b\">Florida B<\/a>"],["<a href = \"../tournaments/21-22-ACF Nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-ACF Nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-ACF Nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-ACF Nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-ACF Nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-ACF Nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-ACF Nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-ACF Nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-ACF Nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-ACF Nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-ACF Nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-ACF Nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-ACF Nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-ACF Nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-ACF Nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-ACF Nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-ACF Nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-ACF Nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-ACF Nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-ACF Nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-ACF Nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-ACF Nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-ACF Nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-ACF Nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-ACF Nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-ACF Nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-ACF Nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-ACF Nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-ACF Nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-ACF Nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-ACF Nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-ACF Nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-ACF Nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-ACF Nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-ACF Nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-ACF Nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-ACF Nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-ACF Nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-ACF Nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-ACF Nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-ACF Nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-ACF Nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-ACF Nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-ACF Nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-ACF Nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-ACF Nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-ACF Nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-ACF Nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-ACF Nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-ACF Nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-ACF Nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-ACF Nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-ACF Nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-ACF Nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-ACF Nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-ACF Nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-ACF Nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-ACF Nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-ACF Nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-ACF Nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-ACF Nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-ACF Nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-ACF Nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-ACF Nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-ACF Nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-ACF Nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-ACF Nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-ACF Nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-ACF Nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-ACF Nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-ACF Nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-ACF Nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-ACF Nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-ACF Nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-ACF Nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-ACF Nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-ACF Nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-ACF Nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-ACF Nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-ACF Nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-ACF Nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-ACF Nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-ACF Nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-ACF Nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-ACF Nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-ACF Nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-ACF Nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-ACF Nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-ACF Nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-ACF Nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-ACF Nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-ACF Nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-ACF Nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-ACF Nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-ACF Nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-ACF Nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-ACF Nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-ACF Nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-ACF Nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-ACF Nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-ACF Nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-ACF Nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-ACF Nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-ACF Nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-ACF Nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-ACF Nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-ACF Nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-ACF Nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-ACF Nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-ACF Nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-ACF Nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-ACF Nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-ACF Nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-ACF Nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-ACF Nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-ACF Nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-ACF Nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-ACF Nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-ACF Nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-ACF Nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-ACF Nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-ACF Nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-ACF Nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-ACF Nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-ACF Nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-ACF Nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-ACF Nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-ACF Nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-ACF Nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-ACF Nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-ACF Nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-ACF Nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-ACF Nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-ACF Nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-ACF Nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-ACF Nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-ACF Nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-ACF Nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-ACF Nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-ACF Nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-ACF Nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-ACF Nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-ACF Nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-ACF Nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-ACF Nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-ACF Nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-ACF Nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-ACF Nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-ACF Nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-ACF Nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-ACF Nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-ACF Nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-ACF Nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-ACF Nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-ACF Nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-ACF Nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-ACF Nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-ACF Nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-ACF Nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-ACF Nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-ACF Nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-ACF Nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-ACF Nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-ACF Nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-ACF Nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-ACF Nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-ACF Nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-ACF Nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-ACF Nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-ACF Nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-ACF Nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-ACF Nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-ACF Nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-ACF Nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-ACF Nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-ACF Nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-ACF Nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-ACF Nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-ACF Nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-ACF Nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-ACF Nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-ACF Nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-ACF Nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-ACF Nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-ACF Nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-ACF Nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-ACF Nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-ACF Nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-ACF Nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-ACF Nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-ACF Nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-ACF Nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-ACF Nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-ACF Nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-ACF Nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-ACF Nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-ACF Nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-ACF Nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-ACF Nationals-minnesota\">Minnesota<\/a>","<a href = \"../tournaments/21-22-ACF Nationals-minnesota\">Minnesota<\/a>"],[19,19,19,17,20,17,19,18,18,18,18,17,20,20,18,18,17,19,20,9,15,18,17,17,19,18,18,18,18,17,19,15,18,16,18,18,17,16,19,17,21,18,18,18,17,18,18,21,19,16,18,16,17,17,16,19,18,19,18,15,17,17,19,16,18,7,18,19,17,16,16,18,19,13,17,18,15,18,18,18,21,18,18,16,16,18,19,17,17,18,17,18,18,19,17,17,18,16,16,17,17,15,16,17,18,19,16,17,15,17,19,19,16,18,15,18,18,18,16,17,17,19,18,16,18,17,18,17,17,17,17,18,18,17,15,14,19,17,18,18,18,16,18,12,19,16,15,17,17,18,18,18,18,16,18,20,9,18,15,17,18,17,7,18,16,17,19,6,15,17,18,15,17,19,19,9,21,18,18,18,18,9,17,15,20,19,16,13,18,15,19,18,17,17,18,16,20,17,16,15],[380,380,380,340,400,340,380,360,360,360,360,340,400,400,360,360,340,380,400,180,300,360,340,340,380,360,360,360,360,340,380,300,360,320,360,360,340,320,380,340,420,360,360,360,340,360,360,420,380,320,360,320,340,340,320,380,360,380,360,300,340,340,380,320,360,140,360,380,340,320,320,360,380,260,340,360,300,360,360,360,420,360,360,320,320,360,380,340,340,360,340,360,360,380,340,340,360,320,320,340,340,300,320,340,360,380,320,340,300,340,380,380,320,360,300,360,360,360,320,340,340,380,360,320,360,340,360,340,340,340,340,360,360,340,300,280,380,340,360,360,360,320,360,240,380,320,300,340,340,360,360,360,360,320,360,400,180,360,300,340,360,340,140,360,320,340,380,120,300,340,360,300,340,380,380,180,420,360,360,360,360,180,340,300,400,380,320,260,360,300,380,360,340,340,360,320,400,340,320,300],[null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null],[150,142,114,97,111,85,97,84,80,87,85,80,96,86,80,83,71,77,79,35,56,68,62,61,70,63,63,60,64,76,64,46,61,55,60,55,52,54,61,49,65,55,54,53,57,60,62,67,56,45,51,45,46,51,46,53,47,50,48,47,44,41,52,40,45,17,43,43,52,38,35,41,44,35,42,39,31,44,39,41,45,38,37,35,35,40,39,35,32,34,35,33,40,38,33,35,40,30,32,30,32,26,31,36,34,38,27,37,25,30,32,30,26,30,25,28,27,35,25,30,29,37,28,27,29,25,28,27,29,28,26,26,27,24,21,20,26,25,24,23,25,24,28,15,27,20,17,25,21,25,22,23,22,19,23,21,11,20,16,21,20,18,7,17,17,17,19,8,13,16,15,13,14,16,14,6,16,18,11,12,12,6,11,8,13,15,11,10,10,7,7,6,6,7,12,8,7,7,1,1],[16,39,12,18,15,13,24,10,4,18,14,13,20,4,9,17,14,11,12,5,10,16,11,9,14,7,8,4,12,44,13,3,16,16,15,5,5,15,13,2,12,9,8,7,22,23,28,22,11,5,7,6,3,15,11,11,5,8,9,22,9,4,18,8,10,3,8,4,31,9,3,7,9,16,14,4,1,15,5,9,6,5,4,8,8,11,8,8,3,4,10,3,17,10,7,11,18,5,9,2,6,1,8,15,8,13,2,19,2,6,5,1,3,6,5,3,1,18,4,12,10,21,6,10,9,4,8,9,13,12,8,6,9,6,5,6,6,9,5,3,7,10,14,2,11,4,1,13,5,11,5,7,5,5,9,1,4,4,2,8,6,4,1,1,5,5,6,6,1,4,1,2,1,3,0,0,5,14,0,4,4,2,4,1,6,12,8,9,5,2,1,0,1,3,13,7,4,8,0,3],[null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null],[7.89,7.47,6,5.71,5.55,5,5.11,4.67,4.44,4.83,4.72,4.71,4.8,4.3,4.44,4.61,4.18,4.05,3.95,3.89,3.73,3.78,3.65,3.59,3.68,3.5,3.5,3.33,3.56,4.47,3.37,3.07,3.39,3.44,3.33,3.06,3.06,3.38,3.21,2.88,3.1,3.06,3,2.94,3.35,3.33,3.44,3.19,2.95,2.81,2.83,2.81,2.71,3,2.88,2.79,2.61,2.63,2.67,3.13,2.59,2.41,2.74,2.5,2.5,2.43,2.39,2.26,3.06,2.38,2.19,2.28,2.32,2.69,2.47,2.17,2.07,2.44,2.17,2.28,2.14,2.11,2.06,2.19,2.19,2.22,2.05,2.06,1.88,1.89,2.06,1.83,2.22,2,1.94,2.06,2.22,1.88,2,1.76,1.88,1.73,1.94,2.12,1.89,2,1.69,2.18,1.67,1.76,1.68,1.58,1.63,1.67,1.67,1.56,1.5,1.94,1.56,1.76,1.71,1.95,1.56,1.69,1.61,1.47,1.56,1.59,1.71,1.65,1.53,1.44,1.5,1.41,1.4,1.43,1.37,1.47,1.33,1.28,1.39,1.5,1.56,1.25,1.42,1.25,1.13,1.47,1.24,1.39,1.22,1.28,1.22,1.19,1.28,1.05,1.22,1.11,1.07,1.24,1.11,1.06,1,0.94,1.06,1,1,1.33,0.87,0.94,0.83,0.87,0.82,0.84,0.74,0.67,0.76,1,0.61,0.67,0.67,0.67,0.65,0.53,0.65,0.79,0.69,0.77,0.56,0.47,0.37,0.33,0.35,0.41,0.67,0.5,0.35,0.41,0.06,0.07],[0.84,2.05,0.63,1.06,0.75,0.76,1.26,0.56,0.22,1,0.78,0.76,1,0.2,0.5,0.94,0.82,0.58,0.6,0.56,0.67,0.89,0.65,0.53,0.74,0.39,0.44,0.22,0.67,2.59,0.68,0.2,0.89,1,0.83,0.28,0.29,0.94,0.68,0.12,0.57,0.5,0.44,0.39,1.29,1.28,1.56,1.05,0.58,0.31,0.39,0.38,0.18,0.88,0.69,0.58,0.28,0.42,0.5,1.47,0.53,0.24,0.95,0.5,0.56,0.43,0.44,0.21,1.82,0.56,0.19,0.39,0.47,1.23,0.82,0.22,0.07,0.83,0.28,0.5,0.29,0.28,0.22,0.5,0.5,0.61,0.42,0.47,0.18,0.22,0.59,0.17,0.94,0.53,0.41,0.65,1,0.31,0.56,0.12,0.35,0.07,0.5,0.88,0.44,0.68,0.13,1.12,0.13,0.35,0.26,0.05,0.19,0.33,0.33,0.17,0.06,1,0.25,0.71,0.59,1.11,0.33,0.63,0.5,0.24,0.44,0.53,0.76,0.71,0.47,0.33,0.5,0.35,0.33,0.43,0.32,0.53,0.28,0.17,0.39,0.63,0.78,0.17,0.58,0.25,0.07,0.76,0.29,0.61,0.28,0.39,0.28,0.31,0.5,0.05,0.44,0.22,0.13,0.47,0.33,0.24,0.14,0.06,0.31,0.29,0.32,1,0.07,0.24,0.06,0.13,0.06,0.16,0,0,0.24,0.78,0,0.22,0.22,0.22,0.24,0.07,0.3,0.63,0.5,0.69,0.28,0.13,0.05,0,0.06,0.18,0.72,0.44,0.2,0.47,0,0.2],[null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null],[9.38,3.64,9.5,5.39,7.4,6.54,4.04,8.4,20,4.83,6.07,6.15,4.8,21.5,8.89,4.88,5.07,7,6.58,7,5.6,4.25,5.64,6.78,5,9,7.88,15,5.33,1.73,4.92,15.33,3.81,3.44,4,11,10.4,3.6,4.69,24.5,5.42,6.11,6.75,7.57,2.59,2.61,2.21,3.05,5.09,9,7.29,7.5,15.33,3.4,4.18,4.82,9.4,6.25,5.33,2.14,4.89,10.25,2.89,5,4.5,5.67,5.38,10.75,1.68,4.22,11.67,5.86,4.89,2.19,3,9.75,31,2.93,7.8,4.56,7.5,7.6,9.25,4.38,4.38,3.64,4.88,4.38,10.67,8.5,3.5,11,2.35,3.8,4.71,3.18,2.22,6,3.56,15,5.33,26,3.88,2.4,4.25,2.92,13.5,1.95,12.5,5,6.4,30,8.67,5,5,9.33,27,1.94,6.25,2.5,2.9,1.76,4.67,2.7,3.22,6.25,3.5,3,2.23,2.33,3.25,4.33,3,4,4.2,3.33,4.33,2.78,4.8,7.67,3.57,2.4,2,7.5,2.45,5,17,1.92,4.2,2.27,4.4,3.29,4.4,3.8,2.56,21,2.75,5,8,2.63,3.33,4.5,7,17,3.4,3.4,3.17,1.33,13,4,15,6.5,14,5.33,null,null,3.2,1.29,null,3,3,3,2.75,8,2.17,1.25,1.38,1.11,2,3.5,7,null,6,2.33,0.92,1.14,1.75,0.88,null,0.33],[74.74,64.47,56.84,51.76,51.75,46.18,44.74,43.89,43.33,43.33,43.33,43.24,43,42,41.94,41.39,37.65,37.63,36.5,36.11,34,33.33,33.24,33.24,33.16,33.06,32.78,32.22,32.22,31.76,30.26,29.67,29.44,29.38,29.17,29.17,29.12,29.06,28.68,28.24,28.1,28.06,27.78,27.5,27.06,26.94,26.67,26.67,26.58,26.56,26.39,26.25,26.18,25.59,25.31,25,24.72,24.21,24.17,24,23.24,22.94,22.63,22.5,22.22,22.14,21.67,21.58,21.47,20.94,20.94,20.83,20.79,20.77,20.59,20.56,20.33,20.28,20.28,20.28,20,19.72,19.44,19.38,19.38,19.17,18.42,18.24,17.94,17.78,17.65,17.5,17.5,17.37,17.35,17.35,17.22,17.19,17.19,17.06,17.06,17,16.88,16.76,16.67,16.58,16.25,16.18,16,15.88,15.53,15.53,15.31,15,15,14.72,14.72,14.44,14.38,14.12,14.12,13.95,13.89,13.75,13.61,13.53,13.33,13.24,13.24,12.94,12.94,12.78,12.5,12.35,12.33,12.14,12.11,12.06,11.94,11.94,11.94,11.88,11.67,11.67,11.32,11.25,11,10.88,10.88,10.83,10.83,10.83,10.83,10.31,10.28,10.25,10,10,10,10,9.44,9.41,9.29,9.17,9.06,8.53,8.42,8.33,8.33,8.24,8.06,8,7.94,7.63,7.37,6.67,6.43,6.11,6.11,5.56,5.56,5.56,5.29,5,5,4.74,4.38,4.23,4.17,4,3.42,3.33,3.24,3.24,3.06,2.81,2.5,1.76,0.63,-0.33]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>Player<\/th>\n      <th>Team<\/th>\n      <th>Site<\/th>\n      <th>GP<\/th>\n      <th>TUH<\/th>\n      <th>15<\/th>\n      <th>10<\/th>\n      <th>-5<\/th>\n      <th>15/G<\/th>\n      <th>10/G<\/th>\n      <th>-5/G<\/th>\n      <th>P/N<\/th>\n      <th>G/N<\/th>\n      <th>PPG<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"dom":"tp","rowCallback":"function(row, data){\n  for(var i=0; i<data.length; i++){\n    if(data[i] === null){\n      $('td:eq('+(i)+')', row).html('-')\n        .css({'font-style': 'italic', 'text-align': 'center'});\n    }\n  }\nvar value=data[3]; $(this.api().cell(row, 3).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[4]; $(this.api().cell(row, 4).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[6]; $(this.api().cell(row, 6).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[7]; $(this.api().cell(row, 7).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[9]; $(this.api().cell(row, 9).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[10]; $(this.api().cell(row, 10).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[12]; $(this.api().cell(row, 12).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[13]; $(this.api().cell(row, 13).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[0]; $(this.api().cell(row, 0).node()).css({'border-right':'2px solid #d3d3d3'});\nvar value=data[1]; $(this.api().cell(row, 1).node()).css({'border-right':'2px solid #d3d3d3'});\nvar value=data[2]; $(this.api().cell(row, 2).node()).css({'border-right':'2px solid #d3d3d3'});\nvar value=data[4]; $(this.api().cell(row, 4).node()).css({'border-right':'2px solid #d3d3d3'});\nvar value=data[7]; $(this.api().cell(row, 7).node()).css({'border-right':'2px solid #d3d3d3'});\nvar value=data[10]; $(this.api().cell(row, 10).node()).css({'border-right':'2px solid #d3d3d3'});\n}","columnDefs":[{"targets":8,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 2, 3, \",\", \".\", null);\n  }"},{"targets":9,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 2, 3, \",\", \".\", null);\n  }"},{"targets":10,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 2, 3, \",\", \".\", null);\n  }"},{"targets":13,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 2, 3, \",\", \".\", null);\n  }"},{"targets":11,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 2, 3, \",\", \".\", null);\n  }"},{"targets":12,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 2, 3, \",\", \".\", null);\n  }"},{"className":"dt-right","targets":[3,4,6,7,9,10,12,13]}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":["options.rowCallback","options.columnDefs.0.render","options.columnDefs.1.render","options.columnDefs.2.render","options.columnDefs.3.render","options.columnDefs.4.render","options.columnDefs.5.render"],"jsHooks":[]}</script>
+</div>
+
+
+<script>
+
+var source = new Bloodhound({
+  datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
+  queryTokenizer: Bloodhound.tokenizers.whitespace,
+  prefetch: {
+    url: '../test-index.json',
+    cache: false
+  }
+});
+
+source.initialize();
+
+$('#custom-templates .typeahead').typeahead(null, {
+  name: 'matched-links',
+  displayKey: 'name',
+  source: source.ttAdapter(),
+  templates: {
+    empty: [
+      '<div class="empty-message">',
+      'unable to find any search results that match the current query',
+      '</div>'
+    ].join('\n'),
+      suggestion: Handlebars.compile('<p><a href="{{id}}">{{name}}</a></p>')
+  }
+});
+</script>
+
+<script>
+  $(function() {
+  var navSelector = '#toc';
+  var $myNav = $(navSelector);
+  Toc.init($myNav);
+  $('body').scrollspy({
+    target: navSelector
+  });
+});
+</script>
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+
+</body>
+</html>

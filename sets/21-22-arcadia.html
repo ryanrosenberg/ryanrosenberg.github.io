@@ -1,0 +1,1294 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>ARCADIA | College Quizbowl Stats</title>
+
+<script src="libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="libs/navigation-1.1/tabsets.js"></script>
+<link href="libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="libs/highlightjs-9.12.0/highlight.js"></script>
+<script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script>
+<link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
+<script src="libs/datatables-binding-0.24/datatables.js"></script>
+<link href="libs/dt-core-1.11.3/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="libs/dt-core-1.11.3/css/jquery.dataTables.extra.css" rel="stylesheet" />
+<script src="libs/dt-core-1.11.3/js/jquery.dataTables.min.js"></script>
+<link href="libs/crosstalk-1.1.1/css/crosstalk.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.1.1/js/crosstalk.min.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Alegreya+Sans&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inconsolata&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+<script src="https://twitter.github.io/typeahead.js/releases/latest/typeahead.bundle.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.7/handlebars.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-sidebar/3.3.1/jquery.sticky-sidebar.min.js" integrity="sha512-iVhJqV0j477IrAkkzsn/tVJWXYsEqAj4PSS7AG+z1F7eD6uLKQxYBg09x13viaJ1Z5yYhlpyx0zLAUUErdHM6A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<!-- add after bootstrap.min.css -->
+<link rel="stylesheet" href="https://cdn.rawgit.com/afeld/bootstrap-toc/v0.4.1/dist/bootstrap-toc.min.css">
+<!-- add after bootstrap.min.js -->
+<script src="https://cdn.rawgit.com/afeld/bootstrap-toc/v0.4.1/dist/bootstrap-toc.min.js"></script>
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+      .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+
+
+<link rel="stylesheet" href="../css/style.css" type="text/css" />
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+
+<nav class = 'top-nav'>
+  <ul>
+    <li><p class = "site-title"><a href="/index.html">College Quizbowl Stats</a></p>
+    </li>
+    <li><a class = "navbar-link" href="/seasons/">Seasons</a></li>
+    <li><a class = "navbar-link" href="/sets/">Sets</a></li>
+    <li><a class = "navbar-link" href="/circuits/">Circuits</a></li>
+    <li><a class = "navbar-link" href="/records.html">Records</a></li>
+    <li><a class = "navbar-link" href="/about.html">About</a></li>
+
+<div id="custom-templates">
+  <input class="typeahead" type="text" placeholder="Player/Team Search">
+</div>
+  </ul>
+</nav>
+
+<div id="header">
+
+
+
+
+</div>
+
+
+<div class = 'main-flex'>
+<div class="toc-div col-sm-2">
+<nav class="side-nav" id="toc">
+</nav>
+</div>
+<div class = 'main-content col-sm-10'>
+<p class="page-title">
+21-22 ARCADIA
+</p>
+<p class="page-subtitle">
+Head Editor: Ryan Rosenberg
+</p>
+<hr>
+<div id="editors" class="section level2">
+<h2>Editors</h2>
+<div id="iobkzklfmn" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>html {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+}
+
+#iobkzklfmn .gt_table {
+  display: table;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#iobkzklfmn .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#iobkzklfmn .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 1px;
+  padding-bottom: 1px;
+  padding-left: 6px;
+  padding-right: 6px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#iobkzklfmn .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 0;
+  padding-bottom: 3px;
+  padding-left: 6px;
+  padding-right: 6px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#iobkzklfmn .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#iobkzklfmn .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#iobkzklfmn .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 1.25px;
+  padding-bottom: 2.25px;
+  padding-left: 6px;
+  padding-right: 6px;
+  overflow-x: hidden;
+}
+
+#iobkzklfmn .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#iobkzklfmn .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#iobkzklfmn .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#iobkzklfmn .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 1.25px;
+  padding-bottom: 1.25px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#iobkzklfmn .gt_group_heading {
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-left: 6px;
+  padding-right: 6px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#iobkzklfmn .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#iobkzklfmn .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#iobkzklfmn .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#iobkzklfmn .gt_row {
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-left: 6px;
+  padding-right: 6px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#iobkzklfmn .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 6px;
+  padding-right: 6px;
+}
+
+#iobkzklfmn .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 6px;
+  padding-right: 6px;
+  vertical-align: top;
+}
+
+#iobkzklfmn .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#iobkzklfmn .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-left: 6px;
+  padding-right: 6px;
+}
+
+#iobkzklfmn .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#iobkzklfmn .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#iobkzklfmn .gt_last_summary_row {
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-left: 6px;
+  padding-right: 6px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#iobkzklfmn .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-left: 6px;
+  padding-right: 6px;
+}
+
+#iobkzklfmn .gt_first_grand_summary_row {
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-left: 6px;
+  padding-right: 6px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#iobkzklfmn .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#iobkzklfmn .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#iobkzklfmn .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#iobkzklfmn .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-left: 1px;
+  padding-right: 1px;
+  padding-left: 6px;
+  padding-right: 6px;
+}
+
+#iobkzklfmn .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#iobkzklfmn .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 1px;
+  padding-bottom: 1px;
+  padding-left: 6px;
+  padding-right: 6px;
+}
+
+#iobkzklfmn .gt_left {
+  text-align: left;
+}
+
+#iobkzklfmn .gt_center {
+  text-align: center;
+}
+
+#iobkzklfmn .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#iobkzklfmn .gt_font_normal {
+  font-weight: normal;
+}
+
+#iobkzklfmn .gt_font_bold {
+  font-weight: bold;
+}
+
+#iobkzklfmn .gt_font_italic {
+  font-style: italic;
+}
+
+#iobkzklfmn .gt_super {
+  font-size: 65%;
+}
+
+#iobkzklfmn .gt_two_val_uncert {
+  display: inline-block;
+  line-height: 1em;
+  text-align: right;
+  font-size: 60%;
+  vertical-align: -0.25em;
+  margin-left: 0.1em;
+}
+
+#iobkzklfmn .gt_footnote_marks {
+  font-style: italic;
+  font-weight: normal;
+  font-size: 75%;
+  vertical-align: 0.4em;
+}
+
+#iobkzklfmn .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#iobkzklfmn .gt_slash_mark {
+  font-size: 0.7em;
+  line-height: 0.7em;
+  vertical-align: 0.15em;
+}
+
+#iobkzklfmn .gt_fraction_numerator {
+  font-size: 0.6em;
+  line-height: 0.6em;
+  vertical-align: 0.45em;
+}
+
+#iobkzklfmn .gt_fraction_denominator {
+  font-size: 0.6em;
+  line-height: 0.6em;
+  vertical-align: -0.05em;
+}
+</style>
+<table class="gt_table">
+  
+  <thead class="gt_col_headings">
+    <tr>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;">Subcategory</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1">Editors</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr class="gt_group_heading_row">
+      <td colspan="2" class="gt_group_heading">Literature</td>
+    </tr>
+    <tr class="gt_row_group_first"><td class="gt_row gt_left" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;">American Literature, European Literature</td>
+<td class="gt_row gt_left"><a href = "../players/payton-schubel.html">Payton Schubel</a></td></tr>
+    <tr><td class="gt_row gt_left gt_striped" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;">British Literature, World Literature</td>
+<td class="gt_row gt_left gt_striped"><a href = "../players/henry-goff.html">Henry Goff</a></td></tr>
+    <tr class="gt_group_heading_row">
+      <td colspan="2" class="gt_group_heading">History</td>
+    </tr>
+    <tr class="gt_row_group_first"><td class="gt_row gt_left" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;">American History</td>
+<td class="gt_row gt_left"><a href = "../players/ryan-rosenberg.html">Ryan Rosenberg</a></td></tr>
+    <tr><td class="gt_row gt_left gt_striped" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;">Ancient History</td>
+<td class="gt_row gt_left gt_striped"><a href = "../players/kevin-thomas.html">Kevin Thomas</a></td></tr>
+    <tr><td class="gt_row gt_left" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;">European History, Other History, World History</td>
+<td class="gt_row gt_left"><a href = "../players/grant-peet.html">Grant Peet</a></td></tr>
+    <tr class="gt_group_heading_row">
+      <td colspan="2" class="gt_group_heading">Science</td>
+    </tr>
+    <tr class="gt_row_group_first"><td class="gt_row gt_left gt_striped" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;">Biology</td>
+<td class="gt_row gt_left gt_striped"><a href = "../players/hasna-karim.html">Hasna Karim</a></td></tr>
+    <tr><td class="gt_row gt_left" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;">Chemistry, Physics</td>
+<td class="gt_row gt_left"><a href = "../players/vincent-du.html">Vincent Du</a></td></tr>
+    <tr><td class="gt_row gt_left gt_striped" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;">Other Science</td>
+<td class="gt_row gt_left gt_striped"><a href = "../players/ryan-rosenberg.html">Ryan Rosenberg</a>, <a href = "../players/vincent-du.html">Vincent Du</a></td></tr>
+    <tr class="gt_group_heading_row">
+      <td colspan="2" class="gt_group_heading">Arts</td>
+    </tr>
+    <tr class="gt_row_group_first"><td class="gt_row gt_left" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;">Auditory Arts</td>
+<td class="gt_row gt_left"><a href = "../players/jacob-egol.html">Jacob Egol</a></td></tr>
+    <tr><td class="gt_row gt_left gt_striped" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;">Other Arts</td>
+<td class="gt_row gt_left gt_striped"><a href = "../players/annabelle-yang.html">Annabelle Yang</a>, <a href = "../players/jacob-egol.html">Jacob Egol</a></td></tr>
+    <tr><td class="gt_row gt_left" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;">Visual Arts</td>
+<td class="gt_row gt_left"><a href = "../players/annabelle-yang.html">Annabelle Yang</a></td></tr>
+    <tr class="gt_group_heading_row">
+      <td colspan="2" class="gt_group_heading">Beliefs</td>
+    </tr>
+    <tr class="gt_row_group_first"><td class="gt_row gt_left gt_striped" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;">Mythology</td>
+<td class="gt_row gt_left gt_striped"><a href = "../players/annabelle-yang.html">Annabelle Yang</a></td></tr>
+    <tr><td class="gt_row gt_left" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;">Religion</td>
+<td class="gt_row gt_left"><a href = "../players/annabelle-yang.html">Annabelle Yang</a>, <a href = "../players/hasna-karim.html">Hasna Karim</a>, <a href = "../players/kevin-thomas.html">Kevin Thomas</a></td></tr>
+    <tr class="gt_group_heading_row">
+      <td colspan="2" class="gt_group_heading">Thought</td>
+    </tr>
+    <tr class="gt_row_group_first"><td class="gt_row gt_left gt_striped" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;">Philosophy</td>
+<td class="gt_row gt_left gt_striped"><a href = "../players/vincent-du.html">Vincent Du</a></td></tr>
+    <tr><td class="gt_row gt_left" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;">Social Science</td>
+<td class="gt_row gt_left"><a href = "../players/ryan-rosenberg.html">Ryan Rosenberg</a></td></tr>
+    <tr class="gt_group_heading_row">
+      <td colspan="2" class="gt_group_heading">Other</td>
+    </tr>
+    <tr class="gt_row_group_first"><td class="gt_row gt_left gt_striped" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;">Current Events, Geography</td>
+<td class="gt_row gt_left gt_striped"><a href = "../players/grant-peet.html">Grant Peet</a></td></tr>
+  </tbody>
+  
+  
+</table>
+</div>
+<hr>
+</div>
+<div id="tournaments" class="section level2">
+<h2>Tournaments</h2>
+<div id="uyiycrdiag" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>html {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+}
+
+#uyiycrdiag .gt_table {
+  display: table;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#uyiycrdiag .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#uyiycrdiag .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 1px;
+  padding-bottom: 1px;
+  padding-left: 6px;
+  padding-right: 6px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#uyiycrdiag .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 0;
+  padding-bottom: 3px;
+  padding-left: 6px;
+  padding-right: 6px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#uyiycrdiag .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#uyiycrdiag .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#uyiycrdiag .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 1.25px;
+  padding-bottom: 2.25px;
+  padding-left: 6px;
+  padding-right: 6px;
+  overflow-x: hidden;
+}
+
+#uyiycrdiag .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#uyiycrdiag .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#uyiycrdiag .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#uyiycrdiag .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 1.25px;
+  padding-bottom: 1.25px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#uyiycrdiag .gt_group_heading {
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-left: 6px;
+  padding-right: 6px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#uyiycrdiag .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#uyiycrdiag .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#uyiycrdiag .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#uyiycrdiag .gt_row {
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-left: 6px;
+  padding-right: 6px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#uyiycrdiag .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 6px;
+  padding-right: 6px;
+}
+
+#uyiycrdiag .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 6px;
+  padding-right: 6px;
+  vertical-align: top;
+}
+
+#uyiycrdiag .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#uyiycrdiag .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-left: 6px;
+  padding-right: 6px;
+}
+
+#uyiycrdiag .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#uyiycrdiag .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#uyiycrdiag .gt_last_summary_row {
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-left: 6px;
+  padding-right: 6px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#uyiycrdiag .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-left: 6px;
+  padding-right: 6px;
+}
+
+#uyiycrdiag .gt_first_grand_summary_row {
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-left: 6px;
+  padding-right: 6px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#uyiycrdiag .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#uyiycrdiag .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#uyiycrdiag .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#uyiycrdiag .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-left: 1px;
+  padding-right: 1px;
+  padding-left: 6px;
+  padding-right: 6px;
+}
+
+#uyiycrdiag .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#uyiycrdiag .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 1px;
+  padding-bottom: 1px;
+  padding-left: 6px;
+  padding-right: 6px;
+}
+
+#uyiycrdiag .gt_left {
+  text-align: left;
+}
+
+#uyiycrdiag .gt_center {
+  text-align: center;
+}
+
+#uyiycrdiag .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#uyiycrdiag .gt_font_normal {
+  font-weight: normal;
+}
+
+#uyiycrdiag .gt_font_bold {
+  font-weight: bold;
+}
+
+#uyiycrdiag .gt_font_italic {
+  font-style: italic;
+}
+
+#uyiycrdiag .gt_super {
+  font-size: 65%;
+}
+
+#uyiycrdiag .gt_two_val_uncert {
+  display: inline-block;
+  line-height: 1em;
+  text-align: right;
+  font-size: 60%;
+  vertical-align: -0.25em;
+  margin-left: 0.1em;
+}
+
+#uyiycrdiag .gt_footnote_marks {
+  font-style: italic;
+  font-weight: normal;
+  font-size: 75%;
+  vertical-align: 0.4em;
+}
+
+#uyiycrdiag .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#uyiycrdiag .gt_slash_mark {
+  font-size: 0.7em;
+  line-height: 0.7em;
+  vertical-align: 0.15em;
+}
+
+#uyiycrdiag .gt_fraction_numerator {
+  font-size: 0.6em;
+  line-height: 0.6em;
+  vertical-align: 0.45em;
+}
+
+#uyiycrdiag .gt_fraction_denominator {
+  font-size: 0.6em;
+  line-height: 0.6em;
+  vertical-align: -0.05em;
+}
+</style>
+<table class="gt_table">
+  
+  <thead class="gt_col_headings">
+    <tr>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;">Site</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">Teams</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;">Schools</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">15%</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;">Conv%</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">PPB</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr class="gt_group_heading_row">
+      <td colspan="6" class="gt_group_heading">2021-11-13</td>
+    </tr>
+    <tr class="gt_row_group_first"><td class="gt_row gt_left" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;"><a href = "../tournaments/21-22-arcadia-north-carolina">North Carolina</a></td>
+<td class="gt_row gt_right" style="font-family: var(--table-font); font-size: 110%;">6</td>
+<td class="gt_row gt_right" style="font-family: var(--table-font); font-size: 110%; border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;">2</td>
+<td class="gt_row gt_right" style="font-family: var(--table-font); font-size: 110%;">0.087</td>
+<td class="gt_row gt_right" style="font-family: var(--table-font); font-size: 110%; border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;">0.920</td>
+<td class="gt_row gt_right" style="font-family: var(--table-font); font-size: 110%;">14.71</td></tr>
+    <tr class="gt_group_heading_row">
+      <td colspan="6" class="gt_group_heading">2021-11-20</td>
+    </tr>
+    <tr class="gt_row_group_first"><td class="gt_row gt_left gt_striped" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;"><a href = "../tournaments/21-22-arcadia-georgia-and-georgia-tech">Georgia and Georgia Tech</a></td>
+<td class="gt_row gt_right gt_striped" style="font-family: var(--table-font); font-size: 110%;">14</td>
+<td class="gt_row gt_right gt_striped" style="font-family: var(--table-font); font-size: 110%; border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;">8</td>
+<td class="gt_row gt_right gt_striped" style="font-family: var(--table-font); font-size: 110%;">0.068</td>
+<td class="gt_row gt_right gt_striped" style="font-family: var(--table-font); font-size: 110%; border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;">0.889</td>
+<td class="gt_row gt_right gt_striped" style="font-family: var(--table-font); font-size: 110%;">14.96</td></tr>
+    <tr><td class="gt_row gt_left" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;"><a href = "../tournaments/21-22-arcadia-mcmaster">McMaster</a></td>
+<td class="gt_row gt_right" style="font-family: var(--table-font); font-size: 110%;">6</td>
+<td class="gt_row gt_right" style="font-family: var(--table-font); font-size: 110%; border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;">5</td>
+<td class="gt_row gt_right" style="font-family: var(--table-font); font-size: 110%;">0.115</td>
+<td class="gt_row gt_right" style="font-family: var(--table-font); font-size: 110%; border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;">0.964</td>
+<td class="gt_row gt_right" style="font-family: var(--table-font); font-size: 110%;">16.85</td></tr>
+    <tr><td class="gt_row gt_left gt_striped" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;"><a href = "../tournaments/21-22-arcadia-northwestern">Northwestern</a></td>
+<td class="gt_row gt_right gt_striped" style="font-family: var(--table-font); font-size: 110%;">16</td>
+<td class="gt_row gt_right gt_striped" style="font-family: var(--table-font); font-size: 110%; border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;">7</td>
+<td class="gt_row gt_right gt_striped" style="font-family: var(--table-font); font-size: 110%;">0.073</td>
+<td class="gt_row gt_right gt_striped" style="font-family: var(--table-font); font-size: 110%; border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;">0.894</td>
+<td class="gt_row gt_right gt_striped" style="font-family: var(--table-font); font-size: 110%;">15.04</td></tr>
+    <tr class="gt_group_heading_row">
+      <td colspan="6" class="gt_group_heading">2021-12-04</td>
+    </tr>
+    <tr class="gt_row_group_first"><td class="gt_row gt_left" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;"><a href = "../tournaments/21-22-arcadia-uc-berkeley">UC Berkeley</a></td>
+<td class="gt_row gt_right" style="font-family: var(--table-font); font-size: 110%;">6</td>
+<td class="gt_row gt_right" style="font-family: var(--table-font); font-size: 110%; border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;">3</td>
+<td class="gt_row gt_right" style="font-family: var(--table-font); font-size: 110%;">0.141</td>
+<td class="gt_row gt_right" style="font-family: var(--table-font); font-size: 110%; border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;">0.982</td>
+<td class="gt_row gt_right" style="font-family: var(--table-font); font-size: 110%;">18.35</td></tr>
+    <tr class="gt_group_heading_row">
+      <td colspan="6" class="gt_group_heading">2021-12-11</td>
+    </tr>
+    <tr class="gt_row_group_first"><td class="gt_row gt_left gt_striped" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;"><a href = "../tournaments/21-22-arcadia-imperial">Imperial</a></td>
+<td class="gt_row gt_right gt_striped" style="font-family: var(--table-font); font-size: 110%;">6</td>
+<td class="gt_row gt_right gt_striped" style="font-family: var(--table-font); font-size: 110%; border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;">4</td>
+<td class="gt_row gt_right gt_striped" style="font-family: var(--table-font); font-size: 110%;">0.115</td>
+<td class="gt_row gt_right gt_striped" style="font-family: var(--table-font); font-size: 110%; border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;">0.948</td>
+<td class="gt_row gt_right gt_striped" style="font-family: var(--table-font); font-size: 110%;">18.11</td></tr>
+    <tr class="gt_group_heading_row">
+      <td colspan="6" class="gt_group_heading">2022-01-15</td>
+    </tr>
+    <tr class="gt_row_group_first"><td class="gt_row gt_left" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;"><a href = "../tournaments/21-22-arcadia-ohio-state">Ohio State</a></td>
+<td class="gt_row gt_right" style="font-family: var(--table-font); font-size: 110%;">12</td>
+<td class="gt_row gt_right" style="font-family: var(--table-font); font-size: 110%; border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;">6</td>
+<td class="gt_row gt_right" style="font-family: var(--table-font); font-size: 110%;">0.093</td>
+<td class="gt_row gt_right" style="font-family: var(--table-font); font-size: 110%; border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;">0.934</td>
+<td class="gt_row gt_right" style="font-family: var(--table-font); font-size: 110%;">16.28</td></tr>
+    <tr class="gt_group_heading_row">
+      <td colspan="6" class="gt_group_heading">2022-01-22</td>
+    </tr>
+    <tr class="gt_row_group_first"><td class="gt_row gt_left gt_striped" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;"><a href = "../tournaments/21-22-arcadia-columbia">Columbia</a></td>
+<td class="gt_row gt_right gt_striped" style="font-family: var(--table-font); font-size: 110%;">8</td>
+<td class="gt_row gt_right gt_striped" style="font-family: var(--table-font); font-size: 110%; border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;">8</td>
+<td class="gt_row gt_right gt_striped" style="font-family: var(--table-font); font-size: 110%;">0.091</td>
+<td class="gt_row gt_right gt_striped" style="font-family: var(--table-font); font-size: 110%; border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;">0.933</td>
+<td class="gt_row gt_right gt_striped" style="font-family: var(--table-font); font-size: 110%;">15.59</td></tr>
+  </tbody>
+  
+  
+</table>
+</div>
+<hr>
+</div>
+<div id="teams" class="section level2">
+<h2>Teams</h2>
+<div id="htmlwidget-b92cede44fe992bbfa9f" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-b92cede44fe992bbfa9f">{"x":{"filter":"none","vertical":false,"data":[["<a href = \"../tournaments/21-22-arcadia-ohio-state#ohio-state-a\">Ohio State A<\/a>","<a href = \"../tournaments/21-22-arcadia-uc-berkeley#stanford-a\">Stanford A<\/a>","<a href = \"../tournaments/21-22-arcadia-georgia-and-georgia-tech#florida-a\">Florida A<\/a>","<a href = \"../tournaments/21-22-arcadia-georgia-and-georgia-tech#georgia-tech-a\">Georgia Tech A<\/a>","<a href = \"../tournaments/21-22-arcadia-columbia#johns-hopkins-a\">Johns Hopkins A<\/a>","<a href = \"../tournaments/21-22-arcadia-columbia#cornell-a\">Cornell A<\/a>","<a href = \"../tournaments/21-22-arcadia-northwestern#chicago-a\">Chicago A<\/a>","<a href = \"../tournaments/21-22-arcadia-ohio-state#maryland-a\">Maryland A<\/a>","<a href = \"../tournaments/21-22-arcadia-imperial#southampton-a\">Southampton A<\/a>","<a href = \"../tournaments/21-22-arcadia-north-carolina#virginia-a\">Virginia A<\/a>","<a href = \"../tournaments/21-22-arcadia-imperial#oxford-a\">Oxford A<\/a>","<a href = \"../tournaments/21-22-arcadia-northwestern#illinois-a\">Illinois A<\/a>","<a href = \"../tournaments/21-22-arcadia-imperial#cambridge-a\">Cambridge A<\/a>","<a href = \"../tournaments/21-22-arcadia-uc-berkeley#uc-berkeley-a\">UC Berkeley A<\/a>","<a href = \"../tournaments/21-22-arcadia-mcmaster#ubc-a\">UBC A<\/a>","<a href = \"../tournaments/21-22-arcadia-northwestern#chicago-b\">Chicago B<\/a>","<a href = \"../tournaments/21-22-arcadia-mcmaster#mcgill-a\">McGill A<\/a>","<a href = \"../tournaments/21-22-arcadia-mcmaster#waterloo-a\">Waterloo A<\/a>","<a href = \"../tournaments/21-22-arcadia-northwestern#michigan-a\">Michigan A<\/a>","<a href = \"../tournaments/21-22-arcadia-uc-berkeley#claremont-colleges-a\">Claremont Colleges A<\/a>","<a href = \"../tournaments/21-22-arcadia-mcmaster#toronto-a\">Toronto A<\/a>","<a href = \"../tournaments/21-22-arcadia-mcmaster#toronto-b\">Toronto B<\/a>","<a href = \"../tournaments/21-22-arcadia-columbia#virginia-a\">Virginia A<\/a>","<a href = \"../tournaments/21-22-arcadia-uc-berkeley#uc-berkeley-c\">UC Berkeley C<\/a>","<a href = \"../tournaments/21-22-arcadia-georgia-and-georgia-tech#georgia-tech-b\">Georgia Tech B<\/a>","<a href = \"../tournaments/21-22-arcadia-georgia-and-georgia-tech#south-carolina-a\">South Carolina A<\/a>","<a href = \"../tournaments/21-22-arcadia-northwestern#purdue-a\">Purdue A<\/a>","<a href = \"../tournaments/21-22-arcadia-uc-berkeley#uc-berkeley-b\">UC Berkeley B<\/a>","<a href = \"../tournaments/21-22-arcadia-columbia#carnegie-mellon-a\">Carnegie Mellon A<\/a>","<a href = \"../tournaments/21-22-arcadia-imperial#oxford-b\">Oxford B<\/a>","<a href = \"../tournaments/21-22-arcadia-ohio-state#kentucky-a\">Kentucky A<\/a>","<a href = \"../tournaments/21-22-arcadia-ohio-state#kenyon-a\">Kenyon A<\/a>","<a href = \"../tournaments/21-22-arcadia-north-carolina#isosceles-triangle\">Isosceles Triangle<\/a>","<a href = \"../tournaments/21-22-arcadia-northwestern#wustl-a\">WUSTL A<\/a>","<a href = \"../tournaments/21-22-arcadia-georgia-and-georgia-tech#vanderbilt-a\">Vanderbilt A<\/a>","<a href = \"../tournaments/21-22-arcadia-ohio-state#case-western-a\">Case Western A<\/a>","<a href = \"../tournaments/21-22-arcadia-ohio-state#ohio-state-b\">Ohio State B<\/a>","<a href = \"../tournaments/21-22-arcadia-georgia-and-georgia-tech#alabama-a\">Alabama A<\/a>","<a href = \"../tournaments/21-22-arcadia-northwestern#purdue-c\">Purdue C<\/a>","<a href = \"../tournaments/21-22-arcadia-ohio-state#beavercreek-a\">Beavercreek A<\/a>","<a href = \"../tournaments/21-22-arcadia-northwestern#purdue-b\">Purdue B<\/a>","<a href = \"../tournaments/21-22-arcadia-ohio-state#rit-a\">RIT A<\/a>","<a href = \"../tournaments/21-22-arcadia-uc-berkeley#archbishop-mitty-a\">Archbishop Mitty A<\/a>","<a href = \"../tournaments/21-22-arcadia-northwestern#grinnell-a\">Grinnell A<\/a>","<a href = \"../tournaments/21-22-arcadia-north-carolina#etsu-a\">ETSU A<\/a>","<a href = \"../tournaments/21-22-arcadia-imperial#birmingham-a\">Birmingham A<\/a>","<a href = \"../tournaments/21-22-arcadia-ohio-state#solon-a\">Solon A<\/a>","<a href = \"../tournaments/21-22-arcadia-imperial#univglasperboldt\">UnivGlasPerBoldt<\/a>","<a href = \"../tournaments/21-22-arcadia-north-carolina#equilateral-triangle\">Equilateral Triangle<\/a>","<a href = \"../tournaments/21-22-arcadia-georgia-and-georgia-tech#south-carolina-b\">South Carolina B<\/a>","<a href = \"../tournaments/21-22-arcadia-northwestern#purdue-d\">Purdue D<\/a>","<a href = \"../tournaments/21-22-arcadia-georgia-and-georgia-tech#georgia-tech-c\">Georgia Tech C<\/a>","<a href = \"../tournaments/21-22-arcadia-columbia#penn-a\">Penn A<\/a>","<a href = \"../tournaments/21-22-arcadia-north-carolina#scalene-triangle\">Scalene Triangle<\/a>","<a href = \"../tournaments/21-22-arcadia-northwestern#illinois-b\">Illinois B<\/a>","<a href = \"../tournaments/21-22-arcadia-columbia#gettysburg-a\">Gettysburg A<\/a>","<a href = \"../tournaments/21-22-arcadia-northwestern#illinois-c\">Illinois C<\/a>","<a href = \"../tournaments/21-22-arcadia-columbia#uconn-a\">UConn A<\/a>","<a href = \"../tournaments/21-22-arcadia-northwestern#wisconsin-a\">Wisconsin A<\/a>","<a href = \"../tournaments/21-22-arcadia-northwestern#michigan-b\">Michigan B<\/a>","<a href = \"../tournaments/21-22-arcadia-georgia-and-georgia-tech#emory-b\">Emory B<\/a>","<a href = \"../tournaments/21-22-arcadia-georgia-and-georgia-tech#emory-a\">Emory A<\/a>","<a href = \"../tournaments/21-22-arcadia-north-carolina#virginia-b\">Virginia B<\/a>","<a href = \"../tournaments/21-22-arcadia-georgia-and-georgia-tech#georgia-tech-d\">Georgia Tech D<\/a>","<a href = \"../tournaments/21-22-arcadia-georgia-and-georgia-tech#mississippi-state-a\">Mississippi State A<\/a>","<a href = \"../tournaments/21-22-arcadia-columbia#syracuse-a\">Syracuse A<\/a>","<a href = \"../tournaments/21-22-arcadia-georgia-and-georgia-tech#tennessee-a\">Tennessee A<\/a>","<a href = \"../tournaments/21-22-arcadia-ohio-state#case-western-b\">Case Western B<\/a>","<a href = \"../tournaments/21-22-arcadia-mcmaster#mcmaster-a\">McMaster A<\/a>","<a href = \"../tournaments/21-22-arcadia-ohio-state#toledo-arts-a\">Toledo Arts A<\/a>","<a href = \"../tournaments/21-22-arcadia-northwestern#wisconsin-b\">Wisconsin B<\/a>","<a href = \"../tournaments/21-22-arcadia-georgia-and-georgia-tech#tennessee-b\">Tennessee B<\/a>","<a href = \"../tournaments/21-22-arcadia-northwestern#michigan-c\">Michigan C<\/a>","<a href = \"../tournaments/21-22-arcadia-ohio-state#detroit-catholic-central-a\">Detroit Catholic Central A<\/a>"],["<a href = \"../tournaments/21-22-arcadia-ohio-state\">Ohio State<\/a>","<a href = \"../tournaments/21-22-arcadia-uc-berkeley\">UC Berkeley<\/a>","<a href = \"../tournaments/21-22-arcadia-georgia-and-georgia-tech\">Georgia and Georgia Tech<\/a>","<a href = \"../tournaments/21-22-arcadia-georgia-and-georgia-tech\">Georgia and Georgia Tech<\/a>","<a href = \"../tournaments/21-22-arcadia-columbia\">Columbia<\/a>","<a href = \"../tournaments/21-22-arcadia-columbia\">Columbia<\/a>","<a href = \"../tournaments/21-22-arcadia-northwestern\">Northwestern<\/a>","<a href = \"../tournaments/21-22-arcadia-ohio-state\">Ohio State<\/a>","<a href = \"../tournaments/21-22-arcadia-imperial\">Imperial<\/a>","<a href = \"../tournaments/21-22-arcadia-north-carolina\">North Carolina<\/a>","<a href = \"../tournaments/21-22-arcadia-imperial\">Imperial<\/a>","<a href = \"../tournaments/21-22-arcadia-northwestern\">Northwestern<\/a>","<a href = \"../tournaments/21-22-arcadia-imperial\">Imperial<\/a>","<a href = \"../tournaments/21-22-arcadia-uc-berkeley\">UC Berkeley<\/a>","<a href = \"../tournaments/21-22-arcadia-mcmaster\">McMaster<\/a>","<a href = \"../tournaments/21-22-arcadia-northwestern\">Northwestern<\/a>","<a href = \"../tournaments/21-22-arcadia-mcmaster\">McMaster<\/a>","<a href = \"../tournaments/21-22-arcadia-mcmaster\">McMaster<\/a>","<a href = \"../tournaments/21-22-arcadia-northwestern\">Northwestern<\/a>","<a href = \"../tournaments/21-22-arcadia-uc-berkeley\">UC Berkeley<\/a>","<a href = \"../tournaments/21-22-arcadia-mcmaster\">McMaster<\/a>","<a href = \"../tournaments/21-22-arcadia-mcmaster\">McMaster<\/a>","<a href = \"../tournaments/21-22-arcadia-columbia\">Columbia<\/a>","<a href = \"../tournaments/21-22-arcadia-uc-berkeley\">UC Berkeley<\/a>","<a href = \"../tournaments/21-22-arcadia-georgia-and-georgia-tech\">Georgia and Georgia Tech<\/a>","<a href = \"../tournaments/21-22-arcadia-georgia-and-georgia-tech\">Georgia and Georgia Tech<\/a>","<a href = \"../tournaments/21-22-arcadia-northwestern\">Northwestern<\/a>","<a href = \"../tournaments/21-22-arcadia-uc-berkeley\">UC Berkeley<\/a>","<a href = \"../tournaments/21-22-arcadia-columbia\">Columbia<\/a>","<a href = \"../tournaments/21-22-arcadia-imperial\">Imperial<\/a>","<a href = \"../tournaments/21-22-arcadia-ohio-state\">Ohio State<\/a>","<a href = \"../tournaments/21-22-arcadia-ohio-state\">Ohio State<\/a>","<a href = \"../tournaments/21-22-arcadia-north-carolina\">North Carolina<\/a>","<a href = \"../tournaments/21-22-arcadia-northwestern\">Northwestern<\/a>","<a href = \"../tournaments/21-22-arcadia-georgia-and-georgia-tech\">Georgia and Georgia Tech<\/a>","<a href = \"../tournaments/21-22-arcadia-ohio-state\">Ohio State<\/a>","<a href = \"../tournaments/21-22-arcadia-ohio-state\">Ohio State<\/a>","<a href = \"../tournaments/21-22-arcadia-georgia-and-georgia-tech\">Georgia and Georgia Tech<\/a>","<a href = \"../tournaments/21-22-arcadia-northwestern\">Northwestern<\/a>","<a href = \"../tournaments/21-22-arcadia-ohio-state\">Ohio State<\/a>","<a href = \"../tournaments/21-22-arcadia-northwestern\">Northwestern<\/a>","<a href = \"../tournaments/21-22-arcadia-ohio-state\">Ohio State<\/a>","<a href = \"../tournaments/21-22-arcadia-uc-berkeley\">UC Berkeley<\/a>","<a href = \"../tournaments/21-22-arcadia-northwestern\">Northwestern<\/a>","<a href = \"../tournaments/21-22-arcadia-north-carolina\">North Carolina<\/a>","<a href = \"../tournaments/21-22-arcadia-imperial\">Imperial<\/a>","<a href = \"../tournaments/21-22-arcadia-ohio-state\">Ohio State<\/a>","<a href = \"../tournaments/21-22-arcadia-imperial\">Imperial<\/a>","<a href = \"../tournaments/21-22-arcadia-north-carolina\">North Carolina<\/a>","<a href = \"../tournaments/21-22-arcadia-georgia-and-georgia-tech\">Georgia and Georgia Tech<\/a>","<a href = \"../tournaments/21-22-arcadia-northwestern\">Northwestern<\/a>","<a href = \"../tournaments/21-22-arcadia-georgia-and-georgia-tech\">Georgia and Georgia Tech<\/a>","<a href = \"../tournaments/21-22-arcadia-columbia\">Columbia<\/a>","<a href = \"../tournaments/21-22-arcadia-north-carolina\">North Carolina<\/a>","<a href = \"../tournaments/21-22-arcadia-northwestern\">Northwestern<\/a>","<a href = \"../tournaments/21-22-arcadia-columbia\">Columbia<\/a>","<a href = \"../tournaments/21-22-arcadia-northwestern\">Northwestern<\/a>","<a href = \"../tournaments/21-22-arcadia-columbia\">Columbia<\/a>","<a href = \"../tournaments/21-22-arcadia-northwestern\">Northwestern<\/a>","<a href = \"../tournaments/21-22-arcadia-northwestern\">Northwestern<\/a>","<a href = \"../tournaments/21-22-arcadia-georgia-and-georgia-tech\">Georgia and Georgia Tech<\/a>","<a href = \"../tournaments/21-22-arcadia-georgia-and-georgia-tech\">Georgia and Georgia Tech<\/a>","<a href = \"../tournaments/21-22-arcadia-north-carolina\">North Carolina<\/a>","<a href = \"../tournaments/21-22-arcadia-georgia-and-georgia-tech\">Georgia and Georgia Tech<\/a>","<a href = \"../tournaments/21-22-arcadia-georgia-and-georgia-tech\">Georgia and Georgia Tech<\/a>","<a href = \"../tournaments/21-22-arcadia-columbia\">Columbia<\/a>","<a href = \"../tournaments/21-22-arcadia-georgia-and-georgia-tech\">Georgia and Georgia Tech<\/a>","<a href = \"../tournaments/21-22-arcadia-ohio-state\">Ohio State<\/a>","<a href = \"../tournaments/21-22-arcadia-mcmaster\">McMaster<\/a>","<a href = \"../tournaments/21-22-arcadia-ohio-state\">Ohio State<\/a>","<a href = \"../tournaments/21-22-arcadia-northwestern\">Northwestern<\/a>","<a href = \"../tournaments/21-22-arcadia-georgia-and-georgia-tech\">Georgia and Georgia Tech<\/a>","<a href = \"../tournaments/21-22-arcadia-northwestern\">Northwestern<\/a>","<a href = \"../tournaments/21-22-arcadia-ohio-state\">Ohio State<\/a>"],[9,10,11,11,11,11,9,9,10,10,10,9,10,10,7,9,7,7,9,10,7,7,10,10,9,9,9,10,10,10,8,8,10,9,9,8,8,9,9,8,9,8,10,9,10,10,8,10,10,9,9,9,10,10,9,10,9,10,9,9,9,9,10,9,9,10,9,8,7,8,9,9,9,8],["9-0","10-0","10-1","9-2","10-1","9-2","9-0","7-2","9-1","10-0","7-3","7-2","8-2","7-3","4-3","7-2","4-3","5-2","7-2","4-6","4-3","4-3","5-5","5-5","7-2","6-3","7-2","2-8","5-5","1-9","6-2","5-3","7-3","5-4","5-4","2-6","4-4","4-5","5-4","5-3","5-4","3-5","2-8","3-6","5-5","1-9","3-5","4-6","6-4","4-5","2-7","6-3","4-6","1-9","4-5","4-6","3-6","2-8","3-6","3-6","3-6","3-6","1-9","2-7","2-7","2-8","3-6","1-7","0-7","0-8","2-7","1-8","0-9","4-4"],[180,200,220,220,220,220,180,180,200,200,200,180,200,200,141,180,140,141,180,200,140,140,200,200,180,180,180,200,200,200,160,160,200,180,180,160,160,180,180,160,180,160,200,180,200,201,160,201,200,180,180,180,200,200,180,200,180,200,180,180,180,180,200,180,180,200,180,160,140,160,180,180,180,160],[49,73,45,43,46,55,46,33,23,64,31,39,32,34,23,21,22,20,21,16,12,11,17,14,17,14,11,21,10,19,4,13,15,7,18,15,14,7,13,11,8,11,11,13,10,14,14,19,8,8,6,10,10,5,2,2,7,6,8,6,6,4,2,3,2,3,1,7,9,2,2,0,0,9],[82,77,105,101,103,85,77,81,100,86,86,73,78,78,56,88,57,50,79,79,62,60,84,72,81,82,83,59,78,67,74,65,88,87,64,50,67,72,81,64,73,50,55,63,78,54,52,47,72,81,67,67,73,71,72,69,54,68,55,60,54,63,53,65,53,56,54,29,24,42,45,36,21,77],[19,21,14,29,17,31,19,15,18,28,26,26,11,34,13,19,18,12,22,15,16,13,19,19,18,29,16,15,20,23,6,8,27,28,42,21,26,24,23,21,23,25,34,27,20,28,36,32,15,23,14,19,33,13,16,8,28,30,11,16,10,22,9,13,24,15,8,5,25,21,7,16,3,10],[5.44,7.3,4.09,3.91,4.18,5,5.11,3.67,2.3,6.4,3.1,4.33,3.2,3.4,3.29,2.33,3.14,2.86,2.33,1.6,1.71,1.57,1.7,1.4,1.89,1.56,1.22,2.1,1,1.9,0.5,1.63,1.5,0.78,2,1.88,1.75,0.78,1.44,1.38,0.89,1.38,1.1,1.44,1,1.4,1.75,1.9,0.8,0.89,0.67,1.11,1,0.5,0.22,0.2,0.78,0.6,0.89,0.67,0.67,0.44,0.2,0.33,0.22,0.3,0.11,0.88,1.29,0.25,0.22,0,0,1.13],[9.11,7.7,9.55,9.18,9.36,7.73,8.56,9,10,8.6,8.6,8.11,7.8,7.8,8,9.78,8.14,7.14,8.78,7.9,8.86,8.57,8.4,7.2,9,9.11,9.22,5.9,7.8,6.7,9.25,8.13,8.8,9.67,7.11,6.25,8.38,8,9,8,8.11,6.25,5.5,7,7.8,5.4,6.5,4.7,7.2,9,7.44,7.44,7.3,7.1,8,6.9,6,6.8,6.11,6.67,6,7,5.3,7.22,5.89,5.6,6,3.63,3.43,5.25,5,4,2.33,9.63],[2.11,2.1,1.27,2.64,1.55,2.82,2.11,1.67,1.8,2.8,2.6,2.89,1.1,3.4,1.86,2.11,2.57,1.71,2.44,1.5,2.29,1.86,1.9,1.9,2,3.22,1.78,1.5,2,2.3,0.75,1,2.7,3.11,4.67,2.63,3.25,2.67,2.56,2.63,2.56,3.13,3.4,3,2,2.8,4.5,3.2,1.5,2.56,1.56,2.11,3.3,1.3,1.78,0.8,3.11,3,1.22,1.78,1.11,2.44,0.9,1.44,2.67,1.5,0.89,0.63,3.57,2.63,0.78,1.78,0.33,1.25],[0.727777777777778,0.75,0.681818181818182,0.654545454545455,0.677272727272727,0.636363636363636,0.683333333333333,0.633333333333333,0.615,0.75,0.585,0.622222222222222,0.55,0.56,0.560283687943262,0.605555555555556,0.564285714285714,0.49645390070922,0.555555555555556,0.475,0.528571428571429,0.507142857142857,0.505,0.43,0.544444444444444,0.533333333333333,0.522222222222222,0.4,0.44,0.43,0.4875,0.4875,0.515,0.522222222222222,0.455555555555556,0.40625,0.50625,0.438888888888889,0.522222222222222,0.46875,0.45,0.38125,0.33,0.422222222222222,0.44,0.338308457711443,0.4125,0.328358208955224,0.4,0.494444444444444,0.405555555555556,0.427777777777778,0.415,0.38,0.411111111111111,0.355,0.338888888888889,0.37,0.35,0.366666666666667,0.333333333333333,0.372222222222222,0.275,0.377777777777778,0.305555555555556,0.295,0.305555555555556,0.225,0.235714285714286,0.275,0.261111111111111,0.2,0.116666666666667,0.5375],[506.11,540,445,394.55,420.45,391.82,423.89,385.56,375.5,491,362.5,376.11,341.5,314,325.71,342.22,302.86,278.57,299.44,247.5,288.57,278.57,247,224.5,280.56,259.44,268.33,205,220,215,250,246.88,252,253.89,227.78,192.5,248.75,206.11,241.11,231.25,216.11,166.25,154.5,200,184,155,196.25,152.5,171.5,215,172.22,188.33,171.5,150,162.22,158,141.67,149,140.56,153.33,140,156.67,111.5,143.33,114.44,107,117.22,96.25,82.86,90.63,101.67,67.78,41.67,264.38],[23.63,24.27,21.6,19.65,20.07,19.93,19.92,19.65,20.33,21.53,20.77,19.64,20.09,18.04,18.23,18.17,16.58,17.29,17,16,17.57,17.61,14.55,16.4,15.82,15.1,15.96,15.25,15.57,15.23,15.77,15,15.05,15.43,16.46,14.15,15.31,14.56,13.62,15.33,14.94,12.95,15.15,14.61,11.48,13.82,15.45,14.09,11.88,12.58,11.78,12.6,12.05,10.26,10.68,12.68,12.62,11.76,10.32,11.67,11.33,12.39,10.91,9.71,10.73,9.15,9.82,11.11,10,8.64,10,9.17,8.57,14.65],[612.12,572.47,494.07,475.77,468.36,448.97,432.56,422.61,408.87,395.3,387.68,376.44,373.13,369.53,363.22,350.42,348.34,329.35,316.42,295.96,286.18,282.97,277.8,274.59,273.93,253.79,252.11,248.7,245.99,245.26,245.2,244.73,242.77,236.61,234.86,232.72,219.25,214.31,212.58,209.38,205.69,205.62,188.73,187.5,181.23,179.88,179.68,178.26,167.92,167.39,157.13,154.45,147.48,147.27,146.68,137.21,131.15,130.33,123.88,122.87,118.18,116.43,112.28,111.45,101.58,96.07,92.98,90.72,87.06,86.61,83.7,53.27,36.51,null]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>Team<\/th>\n      <th>Site<\/th>\n      <th>GP<\/th>\n      <th>W-L<\/th>\n      <th>TUH<\/th>\n      <th>15<\/th>\n      <th>10<\/th>\n      <th>-5<\/th>\n      <th>15/G<\/th>\n      <th>10/G<\/th>\n      <th>-5/G<\/th>\n      <th>TU%<\/th>\n      <th>PPG<\/th>\n      <th>PPB<\/th>\n      <th>A-Value<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"dom":"tp","rowCallback":"function(row, data){\n  for(var i=0; i<data.length; i++){\n    if(data[i] === null){\n      $('td:eq('+(i)+')', row).html('-')\n        .css({'font-style': 'italic', 'text-align': 'center'});\n    }\n  }\nvar value=data[2]; $(this.api().cell(row, 2).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[3]; $(this.api().cell(row, 3).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[4]; $(this.api().cell(row, 4).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[5]; $(this.api().cell(row, 5).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[6]; $(this.api().cell(row, 6).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[7]; $(this.api().cell(row, 7).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[8]; $(this.api().cell(row, 8).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[9]; $(this.api().cell(row, 9).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[10]; $(this.api().cell(row, 10).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[11]; $(this.api().cell(row, 11).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[12]; $(this.api().cell(row, 12).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[13]; $(this.api().cell(row, 13).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[14]; $(this.api().cell(row, 14).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[3]; $(this.api().cell(row, 3).node()).css({'text-align':'right'});\nvar value=data[0]; $(this.api().cell(row, 0).node()).css({'border-right':'2px solid #d3d3d3'});\nvar value=data[1]; $(this.api().cell(row, 1).node()).css({'border-right':'2px solid #d3d3d3'});\nvar value=data[3]; $(this.api().cell(row, 3).node()).css({'border-right':'2px solid #d3d3d3'});\nvar value=data[4]; $(this.api().cell(row, 4).node()).css({'border-right':'2px solid #d3d3d3'});\nvar value=data[7]; $(this.api().cell(row, 7).node()).css({'border-right':'2px solid #d3d3d3'});\nvar value=data[10]; $(this.api().cell(row, 10).node()).css({'border-right':'2px solid #d3d3d3'});\nvar value=data[11]; $(this.api().cell(row, 11).node()).css({'border-right':'2px solid #d3d3d3'});\n}","columnDefs":[{"targets":8,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 2, 3, \",\", \".\", null);\n  }"},{"targets":9,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 2, 3, \",\", \".\", null);\n  }"},{"targets":10,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 2, 3, \",\", \".\", null);\n  }"},{"targets":12,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 2, 3, \",\", \".\", null);\n  }"},{"targets":13,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 2, 3, \",\", \".\", null);\n  }"},{"targets":14,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 2, 3, \",\", \".\", null);\n  }"},{"targets":11,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatPercentage(data, 0, 3, \",\", \".\", null);\n  }"},{"className":"dt-right","targets":[2,4,5,6,7,8,9,10,11,12,13,14]}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":["options.rowCallback","options.columnDefs.0.render","options.columnDefs.1.render","options.columnDefs.2.render","options.columnDefs.3.render","options.columnDefs.4.render","options.columnDefs.5.render","options.columnDefs.6.render"],"jsHooks":[]}</script>
+<hr>
+</div>
+<div id="players" class="section level2">
+<h2>Players</h2>
+<div id="htmlwidget-bcaa49fbb6d82981a172" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-bcaa49fbb6d82981a172">{"x":{"filter":"none","vertical":false,"data":[["<a href = \"../players/itamar-naveh-benjamin.html\">Itamar Naveh-Benjamin<\/a>","<a href = \"../players/caleb-kendrick.html\">Caleb Kendrick<\/a>","<a href = \"../players/evan-lynch.html\">Evan Lynch<\/a>","<a href = \"../players/henry-atkins.html\">Henry Atkins<\/a>","<a href = \"../players/lia-rathburn.html\">Lia Rathburn<\/a>","<a href = \"../players/tracy-mirkin.html\">Tracy Mirkin<\/a>","<a href = \"../players/joseph-krol.html\">Joseph Krol<\/a>","<a href = \"../players/david-bass.html\">David Bass<\/a>","<a href = \"../players/eric-bobrow.html\">Eric Bobrow<\/a>","<a href = \"../players/seoan-webb.html\">Seoan Webb<\/a>","<a href = \"../players/vivek-sasse.html\">Vivek Sasse<\/a>","<a href = \"../players/sky-li.html\">Sky Li<\/a>","<a href = \"../players/andrew-kelley.html\">Andrew Kelley<\/a>","<a href = \"../players/eve-fleisig.html\">Eve Fleisig<\/a>","<a href = \"../players/chris-ray.html\">Chris Ray<\/a>","<a href = \"../players/henry-greentree.html\">Henry Greentree<\/a>","<a href = \"../players/tim-morrison.html\">Tim Morrison<\/a>","<a href = \"../players/hari-parameswaran.html\">Hari Parameswaran<\/a>","<a href = \"../players/ned-tagtmeier.html\">Ned Tagtmeier<\/a>","<a href = \"../players/evan-knox.html\">Evan Knox<\/a>","<a href = \"../players/todd-maslyk.html\">Todd Maslyk<\/a>","<a href = \"../players/clark-smith.html\">Clark Smith<\/a>","<a href = \"../players/eddy-liu.html\">Eddy Liu<\/a>","<a href = \"../players/ian-chow.html\">Ian Chow<\/a>","<a href = \"../players/brandon-jones.html\">Brandon Jones<\/a>","<a href = \"../players/arjun-panickssery.html\">Arjun Panickssery<\/a>","<a href = \"../players/isak-jatoi.html\">Isak Jatoi<\/a>","<a href = \"../players/justin-abel.html\">Justin Abel<\/a>","<a href = \"../players/jerry-lin.html\">Jerry Lin<\/a>","<a href = \"../players/sanjeev-uppaluri.html\">Sanjeev Uppaluri<\/a>","<a href = \"../players/stan-melkumian.html\">Stan Melkumian<\/a>","<a href = \"../players/pranav-veluri.html\">Pranav Veluri<\/a>","<a href = \"../players/mitch-mccullar.html\">Mitch McCullar<\/a>","<a href = \"../players/ben-dahl.html\">Ben Dahl<\/a>","<a href = \"../players/ryzeson-maravich.html\">Ryzeson Maravich<\/a>","<a href = \"../players/cade-reinberger.html\">Cade Reinberger<\/a>","<a href = \"../players/ali-izzatdust.html\">Ali Izzatdust<\/a>","<a href = \"../players/adam-fine.html\">Adam Fine<\/a>","<a href = \"../players/ben-miller.html\">Ben Miller<\/a>","<a href = \"../players/vinu-harihar.html\">Vinu Harihar<\/a>","<a href = \"../players/mehmet-tatoglu.html\">Mehmet Tatoglu<\/a>","<a href = \"../players/jonathan-tran.html\">Jonathan Tran<\/a>","<a href = \"../players/nathan-zhang.html\">Nathan Zhang<\/a>","<a href = \"../players/natan-holtzman.html\">Natan Holtzman<\/a>","<a href = \"../players/calvin-bostleman.html\">Calvin Bostleman<\/a>","<a href = \"../players/andrew-hanna.html\">Andrew Hanna<\/a>","<a href = \"../players/jack-oberman.html\">Jack Oberman<\/a>","<a href = \"../players/dylan-bowman.html\">Dylan Bowman<\/a>","<a href = \"../players/peter-wang.html\">Peter Wang<\/a>","<a href = \"../players/michael-joel-bartelle.html\">Michael Joel Bartelle<\/a>","<a href = \"../players/arunn-sankar.html\">Arunn Sankar<\/a>","<a href = \"../players/michael-kohn.html\">Michael Kohn<\/a>","<a href = \"../players/ethan-strombeck.html\">Ethan Strombeck<\/a>","<a href = \"../players/aniket-dixit.html\">Aniket Dixit<\/a>","<a href = \"../players/eric-yin.html\">Eric Yin<\/a>","<a href = \"../players/tomás-aguilar-fraga.html\">Tomás Aguilar-Fraga<\/a>","<a href = \"../players/jeremy-cummings.html\">Jeremy Cummings<\/a>","<a href = \"../players/raymond-jiang.html\">Raymond Jiang<\/a>","<a href = \"../players/adam-klein.html\">Adam Klein<\/a>","<a href = \"../players/alex-moon.html\">Alex Moon<\/a>","<a href = \"../players/charlie-saunders.html\">Charlie Saunders<\/a>","<a href = \"../players/matt-schiavone.html\">Matt Schiavone<\/a>","<a href = \"../players/hayden-toftner.html\">Hayden Toftner<\/a>","<a href = \"../players/shom-chandra.html\">Shom Chandra<\/a>","<a href = \"../players/raymond-chen.html\">Raymond Chen<\/a>","<a href = \"../players/jack-paganelli.html\">Jack Paganelli<\/a>","<a href = \"../players/ruchir-kodihalli.html\">Ruchir Kodihalli<\/a>","<a href = \"../players/rohan-shelke.html\">Rohan Shelke<\/a>","<a href = \"../players/liam-kusalik.html\">Liam Kusalik<\/a>","<a href = \"../players/rodrigo-rose.html\">Rodrigo Rose<\/a>","<a href = \"../players/henry-sanders.html\">Henry Sanders<\/a>","<a href = \"../players/joshua-you.html\">Joshua You<\/a>","<a href = \"../players/drew-laroo.html\">Drew Laroo<\/a>","<a href = \"../players/dan-ni.html\">Dan Ni<\/a>","<a href = \"../players/quynh-phung.html\">Quynh Phung<\/a>","<a href = \"../players/michael-eng.html\">Michael Eng<\/a>","<a href = \"../players/michael-yousif.html\">Michael Yousif<\/a>","<a href = \"../players/rohan-venkateswaran.html\">Rohan Venkateswaran<\/a>","<a href = \"../players/bryan-wan.html\">Bryan Wan<\/a>","<a href = \"../players/vishnu-srinivas.html\">Vishnu Srinivas<\/a>","<a href = \"../players/david-neiman.html\">David Neiman<\/a>","<a href = \"../players/rasheeq-azad.html\">Rasheeq Azad<\/a>","<a href = \"../players/kevin-park.html\">Kevin Park<\/a>","<a href = \"../players/shahar-schwartz.html\">Shahar Schwartz<\/a>","<a href = \"../players/chris-bradley.html\">Chris Bradley<\/a>","<a href = \"../players/ben-chapman.html\">Ben Chapman<\/a>","<a href = \"../players/connor-hofeditz.html\">Connor Hofeditz<\/a>","<a href = \"../players/ethan-bonnell.html\">Ethan Bonnell<\/a>","<a href = \"../players/eric-wolfsberg.html\">Eric Wolfsberg<\/a>","<a href = \"../players/rahul-komatineni.html\">Rahul Komatineni<\/a>","<a href = \"../players/sid-wen.html\">Sid Wen<\/a>","<a href = \"../players/seth-ebner.html\">Seth Ebner<\/a>","<a href = \"../players/justin-lee.html\">Justin Lee<\/a>","<a href = \"../players/advaith-modali.html\">Advaith Modali<\/a>","<a href = \"../players/sam-maloney.html\">Sam Maloney<\/a>","<a href = \"../players/lance-letellier.html\">Lance Letellier<\/a>","<a href = \"../players/kane-nguyen.html\">Kane Nguyen<\/a>","<a href = \"../players/ciarán-drinnon.html\">Ciarán Drinnon<\/a>","<a href = \"../players/anuttam-ramji.html\">Anuttam Ramji<\/a>","<a href = \"../players/alan-xie.html\">Alan Xie<\/a>","<a href = \"../players/quentin-mot.html\">Quentin Mot<\/a>","<a href = \"../players/dylan-cox.html\">Dylan Cox<\/a>","<a href = \"../players/prahalad-rao.html\">Prahalad Rao<\/a>","<a href = \"../players/alex-li.html\">Alex Li<\/a>","<a href = \"../players/sarod-nori.html\">Sarod Nori<\/a>","<a href = \"../players/grant-maiorana.html\">Grant Maiorana<\/a>","<a href = \"../players/william-barnes.html\">William Barnes<\/a>","<a href = \"../players/pranav-sivaram.html\">Pranav Sivaram<\/a>","<a href = \"../players/gabriel-chuang.html\">Gabriel Chuang<\/a>","<a href = \"../players/jacob-robertson.html\">Jacob Robertson<\/a>","<a href = \"../players/leo-law.html\">Leo Law<\/a>","<a href = \"../players/tejas-santanam.html\">Tejas Santanam<\/a>","<a href = \"../players/oishee-shemontee.html\">Oishee Shemontee<\/a>","<a href = \"../players/gaian-valdegamo.html\">Gaian Valdegamo<\/a>","<a href = \"../players/tegan-kapadia.html\">Tegan Kapadia<\/a>","<a href = \"../players/will-carstens.html\">Will Carstens<\/a>","<a href = \"../players/charlotte-goeb.html\">Charlotte Goeb<\/a>","<a href = \"../players/mark-bailey.html\">Mark Bailey<\/a>","<a href = \"../players/lalit-maharjan.html\">Lalit Maharjan<\/a>","<a href = \"../players/leah-honsinger.html\">Leah Honsinger<\/a>","<a href = \"../players/james-carrigy.html\">James Carrigy<\/a>","<a href = \"../players/deen-syed.html\">Deen Syed<\/a>","<a href = \"../players/arjun-verma.html\">Arjun Verma<\/a>","<a href = \"../players/ivvone-zhou.html\">Ivvone Zhou<\/a>","<a href = \"../players/will-dawson.html\">Will Dawson<\/a>","<a href = \"../players/rajeev-godse.html\">Rajeev Godse<\/a>","<a href = \"../players/aidan-fein.html\">Aidan Fein<\/a>","<a href = \"../players/isidora-bailly-hall.html\">Isidora Bailly-Hall<\/a>","<a href = \"../players/khushi-umarwadia.html\">Khushi Umarwadia<\/a>","<a href = \"../players/liam-cross.html\">Liam Cross<\/a>","<a href = \"../players/luke-van-de-weghe.html\">Luke Van De Weghe<\/a>","<a href = \"../players/colin-suits.html\">Colin Suits<\/a>","<a href = \"../players/ziv-carmi.html\">Ziv Carmi<\/a>","<a href = \"../players/dominic-reynolds.html\">Dominic Reynolds<\/a>","<a href = \"../players/maya-wright.html\">Maya Wright<\/a>","<a href = \"../players/gavin-jones.html\">Gavin Jones<\/a>","<a href = \"../players/justin-wytmar.html\">Justin Wytmar<\/a>","<a href = \"../players/sydney-cole.html\">Sydney Cole<\/a>","<a href = \"../players/alana-dickey.html\">Alana Dickey<\/a>","<a href = \"../players/andy-chen.html\">Andy Chen<\/a>","<a href = \"../players/xiaoxing-yu.html\">Xiaoxing Yu<\/a>","<a href = \"../players/joseph-genetti.html\">Joseph Genetti<\/a>","<a href = \"../players/justin-kennedy.html\">Justin Kennedy<\/a>","<a href = \"../players/rosa-xia.html\">Rosa Xia<\/a>","<a href = \"../players/alp-ekmekcioglu.html\">Alp Ekmekcioglu<\/a>","<a href = \"../players/sean-higgins.html\">Sean Higgins<\/a>","<a href = \"../players/garrison-page.html\">Garrison Page<\/a>","<a href = \"../players/shourjo-ganguli.html\">Shourjo Ganguli<\/a>","<a href = \"../players/steven-yuan.html\">Steven Yuan<\/a>","<a href = \"../players/graham-cope.html\">Graham Cope<\/a>","<a href = \"../players/rohit-swain.html\">Rohit Swain<\/a>","<a href = \"../players/tarun-koti.html\">Tarun Koti<\/a>","<a href = \"../players/will-parker.html\">Will Parker<\/a>","<a href = \"../players/william-huang.html\">William Huang<\/a>","<a href = \"../players/aidan-garrity.html\">Aidan Garrity<\/a>","<a href = \"../players/angela-lin.html\">Angela Lin<\/a>","<a href = \"../players/john-robinson.html\">John Robinson<\/a>","<a href = \"../players/nathan-reed.html\">Nathan Reed<\/a>","<a href = \"../players/cormac-beirne.html\">Cormac Beirne<\/a>","<a href = \"../players/daniel-xue.html\">Daniel Xue<\/a>","<a href = \"../players/koshiro-kiso.html\">Koshiro Kiso<\/a>","<a href = \"../players/brody-marshall.html\">Brody Marshall<\/a>","<a href = \"../players/liam-hughes.html\">Liam Hughes<\/a>","<a href = \"../players/evan-moore.html\">Evan Moore<\/a>","<a href = \"../players/sumedh-garimella.html\">Sumedh Garimella<\/a>","<a href = \"../players/jonah-schwartz.html\">Jonah Schwartz<\/a>","<a href = \"../players/jonathan-mui.html\">Jonathan Mui<\/a>","<a href = \"../players/mason-minnich.html\">Mason Minnich<\/a>","<a href = \"../players/usman-ali.html\">Usman Ali<\/a>","<a href = \"../players/calvin-fiedler.html\">Calvin Fiedler<\/a>","<a href = \"../players/chandler-west.html\">Chandler West<\/a>","<a href = \"../players/valerie-ogonor.html\">Valerie Ogonor<\/a>","<a href = \"../players/david-nickel.html\">David Nickel<\/a>","<a href = \"../players/roxanne-tang.html\">Roxanne Tang<\/a>","<a href = \"../players/darshan-krishnaswamy.html\">Darshan Krishnaswamy<\/a>","<a href = \"../players/rohan-navaneetha.html\">Rohan Navaneetha<\/a>","<a href = \"../players/william-rauschenberg.html\">William Rauschenberg<\/a>","<a href = \"../players/martin-profant.html\">Martin Profant<\/a>","<a href = \"../players/aryan-deorah.html\">Aryan Deorah<\/a>","<a href = \"../players/andrew-lien.html\">Andrew Lien<\/a>","<a href = \"../players/subhamitra-banerjee-roychoudhury.html\">Subhamitra Banerjee Roychoudhury<\/a>","<a href = \"../players/emily-girard.html\">Emily Girard<\/a>","<a href = \"../players/elijah-ozbat.html\">Elijah Ozbat<\/a>","<a href = \"../players/jennifer-webb.html\">Jennifer Webb<\/a>","<a href = \"../players/nick-kross.html\">Nick Kross<\/a>","<a href = \"../players/raymond-wysmierski.html\">Raymond Wysmierski<\/a>","<a href = \"../players/cooper-komatsu.html\">Cooper Komatsu<\/a>","<a href = \"../players/josh-abel.html\">Josh Abel<\/a>","<a href = \"../players/kevin-ye.html\">Kevin Ye<\/a>","<a href = \"../players/matthew-mccoig.html\">Matthew McCoig<\/a>","<a href = \"../players/seth-honnigford.html\">Seth Honnigford<\/a>","<a href = \"../players/connor-mayers.html\">Connor Mayers<\/a>","<a href = \"../players/alex-gunasekera.html\">Alex Gunasekera<\/a>","<a href = \"../players/darius-darulis.html\">Darius Darulis<\/a>","<a href = \"../players/ethan-feldman.html\">Ethan Feldman<\/a>","<a href = \"../players/weilin-feng.html\">Weilin Feng<\/a>","<a href = \"../players/michael-zhou.html\">Michael Zhou<\/a>","<a href = \"../players/nikhil-chatra.html\">Nikhil Chatra<\/a>","<a href = \"../players/ian-he.html\">Ian He<\/a>","<a href = \"../players/isaac-mammel.html\">Isaac Mammel<\/a>","<a href = \"../players/akhilesh-tumu.html\">Akhilesh Tumu<\/a>","<a href = \"../players/osamah-sufyan.html\">Osamah Sufyan<\/a>","<a href = \"../players/vansh-khatri.html\">Vansh Khatri<\/a>","<a href = \"../players/diego-almaraz.html\">Diego Almaraz<\/a>","<a href = \"../players/abigail-tan.html\">Abigail Tan<\/a>","<a href = \"../players/shadman-kabir.html\">Shadman Kabir<\/a>","<a href = \"../players/wesley-swanson.html\">Wesley Swanson<\/a>","<a href = \"../players/cullen-beman.html\">Cullen Beman<\/a>","<a href = \"../players/solenne-scholefield.html\">Solenne Scholefield<\/a>","<a href = \"../players/kenny-zhang.html\">Kenny Zhang<\/a>","<a href = \"../players/david-jiang.html\">David Jiang<\/a>","<a href = \"../players/luke-serraglio.html\">Luke Serraglio<\/a>","<a href = \"../players/munir-siddiqui.html\">Munir Siddiqui<\/a>","<a href = \"../players/shejuti-wahed.html\">Shejuti Wahed<\/a>","<a href = \"../players/jananan-arulseelan.html\">Jananan Arulseelan<\/a>","<a href = \"../players/tj-nanugonda.html\">TJ Nanugonda<\/a>","<a href = \"../players/maya-spencer.html\">Maya Spencer<\/a>","<a href = \"../players/rj-barnes.html\">RJ Barnes<\/a>","<a href = \"../players/talia-coopersmith.html\">Talia Coopersmith<\/a>","<a href = \"../players/alex-baker.html\">Alex Baker<\/a>","<a href = \"../players/danny-tran.html\">Danny Tran<\/a>","<a href = \"../players/kelvin-lien.html\">Kelvin Lien<\/a>","<a href = \"../players/benjamin-prince.html\">Benjamin Prince<\/a>","<a href = \"../players/joyce-xi.html\">Joyce Xi<\/a>","<a href = \"../players/russell-nip.html\">Russell Nip<\/a>","<a href = \"../players/ben-biggs.html\">Ben Biggs<\/a>","<a href = \"../players/lindsay-nottingham.html\">Lindsay Nottingham<\/a>","<a href = \"../players/jacob-soder.html\">Jacob Soder<\/a>","<a href = \"../players/yoona-choi.html\">Yoona Choi<\/a>","<a href = \"../players/ethan-kimball.html\">Ethan Kimball<\/a>","<a href = \"../players/nadia-dakdouki.html\">Nadia Dakdouki<\/a>","<a href = \"../players/tim-he.html\">Tim He<\/a>","<a href = \"../players/will-hoover.html\">Will Hoover<\/a>","<a href = \"../players/laura-porto.html\">Laura Porto<\/a>","<a href = \"../players/noah-macbride.html\">Noah MacBride<\/a>","<a href = \"../players/shripad-kher.html\">Shripad Kher<\/a>","<a href = \"../players/jason-huang.html\">Jason Huang<\/a>","<a href = \"../players/sebastian-llaca.html\">Sebastian Llaca<\/a>","<a href = \"../players/lily-kearney.html\">Lily Kearney<\/a>","<a href = \"../players/mark-mcparlan.html\">Mark McParlan<\/a>","<a href = \"../players/jamael-smith.html\">Jamael Smith<\/a>","<a href = \"../players/jessica-cooper.html\">Jessica Cooper<\/a>","<a href = \"../players/emily-zen.html\">Emily Zen<\/a>","<a href = \"../players/jackson-hopper.html\">Jackson Hopper<\/a>","<a href = \"../players/duncan-brickner.html\">Duncan Brickner<\/a>","<a href = \"../players/luke-andersen.html\">Luke Andersen<\/a>","<a href = \"../players/win-hammond.html\">Win Hammond<\/a>","<a href = \"../players/elizabeth-cowan.html\">Elizabeth Cowan<\/a>","<a href = \"../players/jacob-terkel.html\">Jacob Terkel<\/a>","<a href = \"../players/aidan-payne.html\">Aidan Payne<\/a>","<a href = \"../players/will-rogers.html\">Will Rogers<\/a>","<a href = \"../players/sparsh-patel.html\">Sparsh Patel<\/a>","<a href = \"../players/lu-johnston.html\">Lu Johnston<\/a>","<a href = \"../players/ahmad-elrakhawi.html\">Ahmad Elrakhawi<\/a>","<a href = \"../players/brannan-tisdale.html\">Brannan Tisdale<\/a>","<a href = \"../players/wilson-sy.html\">Wilson Sy<\/a>","<a href = \"../players/anna-kuang.html\">Anna Kuang<\/a>","<a href = \"../players/saketh-dendi.html\">Saketh Dendi<\/a>","<a href = \"../players/cory-plotzke.html\">Cory Plotzke<\/a>","<a href = \"../players/isaac-exposito.html\">Isaac Exposito<\/a>","<a href = \"../players/luke-miceli.html\">Luke Miceli<\/a>","<a href = \"../players/shayak-chakrabarti.html\">Shayak Chakrabarti<\/a>","<a href = \"../players/yono-bulis.html\">Yono Bulis<\/a>","<a href = \"../players/caleb-rosenman.html\">Caleb Rosenman<\/a>","<a href = \"../players/callan-hoff.html\">Callan Hoff<\/a>","<a href = \"../players/sarah-henderson.html\">Sarah Henderson<\/a>","<a href = \"../players/david-mathew.html\">David Mathew<\/a>","<a href = \"../players/deven-vickery.html\">Deven Vickery<\/a>","<a href = \"../players/orlando-grant.html\">Orlando Grant<\/a>"],["<a href = \"../tournaments/21-22-arcadia-north-carolina#virginia-a\">Virginia A<\/a>","<a href = \"../tournaments/21-22-arcadia-ohio-state#maryland-a\">Maryland A<\/a>","<a href = \"../tournaments/21-22-arcadia-imperial#southampton-a\">Southampton A<\/a>","<a href = \"../tournaments/21-22-arcadia-mcmaster#mcgill-a\">McGill A<\/a>","<a href = \"../tournaments/21-22-arcadia-mcmaster#ubc-a\">UBC A<\/a>","<a href = \"../tournaments/21-22-arcadia-georgia-and-georgia-tech#florida-a\">Florida A<\/a>","<a href = \"../tournaments/21-22-arcadia-imperial#cambridge-a\">Cambridge A<\/a>","<a href = \"../tournaments/21-22-arcadia-columbia#virginia-a\">Virginia A<\/a>","<a href = \"../tournaments/21-22-arcadia-columbia#johns-hopkins-a\">Johns Hopkins A<\/a>","<a href = \"../tournaments/21-22-arcadia-imperial#oxford-a\">Oxford A<\/a>","<a href = \"../tournaments/21-22-arcadia-northwestern#chicago-b\">Chicago B<\/a>","<a href = \"../tournaments/21-22-arcadia-mcmaster#toronto-a\">Toronto A<\/a>","<a href = \"../tournaments/21-22-arcadia-ohio-state#kentucky-a\">Kentucky A<\/a>","<a href = \"../tournaments/21-22-arcadia-uc-berkeley#uc-berkeley-a\">UC Berkeley A<\/a>","<a href = \"../tournaments/21-22-arcadia-ohio-state#ohio-state-a\">Ohio State A<\/a>","<a href = \"../tournaments/21-22-arcadia-ohio-state#case-western-a\">Case Western A<\/a>","<a href = \"../tournaments/21-22-arcadia-uc-berkeley#stanford-a\">Stanford A<\/a>","<a href = \"../tournaments/21-22-arcadia-georgia-and-georgia-tech#georgia-tech-a\">Georgia Tech A<\/a>","<a href = \"../tournaments/21-22-arcadia-northwestern#chicago-a\">Chicago A<\/a>","<a href = \"../tournaments/21-22-arcadia-north-carolina#scalene-triangle\">Scalene Triangle<\/a>","<a href = \"../tournaments/21-22-arcadia-northwestern#michigan-a\">Michigan A<\/a>","<a href = \"../tournaments/21-22-arcadia-ohio-state#ohio-state-a\">Ohio State A<\/a>","<a href = \"../tournaments/21-22-arcadia-ohio-state#ohio-state-b\">Ohio State B<\/a>","<a href = \"../tournaments/21-22-arcadia-mcmaster#toronto-b\">Toronto B<\/a>","<a href = \"../tournaments/21-22-arcadia-georgia-and-georgia-tech#alabama-a\">Alabama A<\/a>","<a href = \"../tournaments/21-22-arcadia-northwestern#illinois-c\">Illinois C<\/a>","<a href = \"../tournaments/21-22-arcadia-georgia-and-georgia-tech#south-carolina-a\">South Carolina A<\/a>","<a href = \"../tournaments/21-22-arcadia-northwestern#illinois-b\">Illinois B<\/a>","<a href = \"../tournaments/21-22-arcadia-north-carolina#isosceles-triangle\">Isosceles Triangle<\/a>","<a href = \"../tournaments/21-22-arcadia-columbia#syracuse-a\">Syracuse A<\/a>","<a href = \"../tournaments/21-22-arcadia-northwestern#purdue-a\">Purdue A<\/a>","<a href = \"../tournaments/21-22-arcadia-northwestern#purdue-a\">Purdue A<\/a>","<a href = \"../tournaments/21-22-arcadia-northwestern#illinois-a\">Illinois A<\/a>","<a href = \"../tournaments/21-22-arcadia-northwestern#purdue-b\">Purdue B<\/a>","<a href = \"../tournaments/21-22-arcadia-columbia#gettysburg-a\">Gettysburg A<\/a>","<a href = \"../tournaments/21-22-arcadia-ohio-state#rit-a\">RIT A<\/a>","<a href = \"../tournaments/21-22-arcadia-imperial#oxford-b\">Oxford B<\/a>","<a href = \"../tournaments/21-22-arcadia-northwestern#chicago-a\">Chicago A<\/a>","<a href = \"../tournaments/21-22-arcadia-northwestern#chicago-a\">Chicago A<\/a>","<a href = \"../tournaments/21-22-arcadia-columbia#johns-hopkins-a\">Johns Hopkins A<\/a>","<a href = \"../tournaments/21-22-arcadia-imperial#oxford-b\">Oxford B<\/a>","<a href = \"../tournaments/21-22-arcadia-columbia#cornell-a\">Cornell A<\/a>","<a href = \"../tournaments/21-22-arcadia-columbia#cornell-a\">Cornell A<\/a>","<a href = \"../tournaments/21-22-arcadia-uc-berkeley#stanford-a\">Stanford A<\/a>","<a href = \"../tournaments/21-22-arcadia-ohio-state#toledo-arts-a\">Toledo Arts A<\/a>","<a href = \"../tournaments/21-22-arcadia-georgia-and-georgia-tech#vanderbilt-a\">Vanderbilt A<\/a>","<a href = \"../tournaments/21-22-arcadia-georgia-and-georgia-tech#south-carolina-b\">South Carolina B<\/a>","<a href = \"../tournaments/21-22-arcadia-northwestern#illinois-a\">Illinois A<\/a>","<a href = \"../tournaments/21-22-arcadia-mcmaster#waterloo-a\">Waterloo A<\/a>","<a href = \"../tournaments/21-22-arcadia-imperial#birmingham-a\">Birmingham A<\/a>","<a href = \"../tournaments/21-22-arcadia-ohio-state#beavercreek-a\">Beavercreek A<\/a>","<a href = \"../tournaments/21-22-arcadia-imperial#cambridge-a\">Cambridge A<\/a>","<a href = \"../tournaments/21-22-arcadia-uc-berkeley#stanford-a\">Stanford A<\/a>","<a href = \"../tournaments/21-22-arcadia-northwestern#michigan-b\">Michigan B<\/a>","<a href = \"../tournaments/21-22-arcadia-northwestern#wustl-a\">WUSTL A<\/a>","<a href = \"../tournaments/21-22-arcadia-uc-berkeley#claremont-colleges-a\">Claremont Colleges A<\/a>","<a href = \"../tournaments/21-22-arcadia-northwestern#wustl-a\">WUSTL A<\/a>","<a href = \"../tournaments/21-22-arcadia-georgia-and-georgia-tech#georgia-tech-b\">Georgia Tech B<\/a>","<a href = \"../tournaments/21-22-arcadia-northwestern#chicago-b\">Chicago B<\/a>","<a href = \"../tournaments/21-22-arcadia-columbia#penn-a\">Penn A<\/a>","<a href = \"../tournaments/21-22-arcadia-northwestern#wisconsin-b\">Wisconsin B<\/a>","<a href = \"../tournaments/21-22-arcadia-northwestern#purdue-c\">Purdue C<\/a>","<a href = \"../tournaments/21-22-arcadia-ohio-state#kenyon-a\">Kenyon A<\/a>","<a href = \"../tournaments/21-22-arcadia-georgia-and-georgia-tech#georgia-tech-c\">Georgia Tech C<\/a>","<a href = \"../tournaments/21-22-arcadia-mcmaster#toronto-a\">Toronto A<\/a>","<a href = \"../tournaments/21-22-arcadia-ohio-state#kenyon-a\">Kenyon A<\/a>","<a href = \"../tournaments/21-22-arcadia-ohio-state#case-western-b\">Case Western B<\/a>","<a href = \"../tournaments/21-22-arcadia-uc-berkeley#uc-berkeley-b\">UC Berkeley B<\/a>","<a href = \"../tournaments/21-22-arcadia-mcmaster#waterloo-a\">Waterloo A<\/a>","<a href = \"../tournaments/21-22-arcadia-georgia-and-georgia-tech#georgia-tech-b\">Georgia Tech B<\/a>","<a href = \"../tournaments/21-22-arcadia-northwestern#grinnell-a\">Grinnell A<\/a>","<a href = \"../tournaments/21-22-arcadia-uc-berkeley#uc-berkeley-c\">UC Berkeley C<\/a>","<a href = \"../tournaments/21-22-arcadia-ohio-state#detroit-catholic-central-a\">Detroit Catholic Central A<\/a>","<a href = \"../tournaments/21-22-arcadia-columbia#cornell-a\">Cornell A<\/a>","<a href = \"../tournaments/21-22-arcadia-northwestern#purdue-c\">Purdue C<\/a>","<a href = \"../tournaments/21-22-arcadia-north-carolina#equilateral-triangle\">Equilateral Triangle<\/a>","<a href = \"../tournaments/21-22-arcadia-ohio-state#detroit-catholic-central-a\">Detroit Catholic Central A<\/a>","<a href = \"../tournaments/21-22-arcadia-uc-berkeley#uc-berkeley-c\">UC Berkeley C<\/a>","<a href = \"../tournaments/21-22-arcadia-northwestern#purdue-d\">Purdue D<\/a>","<a href = \"../tournaments/21-22-arcadia-northwestern#purdue-c\">Purdue C<\/a>","<a href = \"../tournaments/21-22-arcadia-columbia#carnegie-mellon-a\">Carnegie Mellon A<\/a>","<a href = \"../tournaments/21-22-arcadia-north-carolina#isosceles-triangle\">Isosceles Triangle<\/a>","<a href = \"../tournaments/21-22-arcadia-uc-berkeley#claremont-colleges-a\">Claremont Colleges A<\/a>","<a href = \"../tournaments/21-22-arcadia-uc-berkeley#uc-berkeley-a\">UC Berkeley A<\/a>","<a href = \"../tournaments/21-22-arcadia-columbia#uconn-a\">UConn A<\/a>","<a href = \"../tournaments/21-22-arcadia-mcmaster#toronto-b\">Toronto B<\/a>","<a href = \"../tournaments/21-22-arcadia-north-carolina#etsu-a\">ETSU A<\/a>","<a href = \"../tournaments/21-22-arcadia-ohio-state#kenyon-a\">Kenyon A<\/a>","<a href = \"../tournaments/21-22-arcadia-uc-berkeley#stanford-a\">Stanford A<\/a>","<a href = \"../tournaments/21-22-arcadia-georgia-and-georgia-tech#georgia-tech-d\">Georgia Tech D<\/a>","<a href = \"../tournaments/21-22-arcadia-georgia-and-georgia-tech#emory-a\">Emory A<\/a>","<a href = \"../tournaments/21-22-arcadia-columbia#johns-hopkins-a\">Johns Hopkins A<\/a>","<a href = \"../tournaments/21-22-arcadia-imperial#univglasperboldt\">UnivGlasPerBoldt<\/a>","<a href = \"../tournaments/21-22-arcadia-uc-berkeley#archbishop-mitty-a\">Archbishop Mitty A<\/a>","<a href = \"../tournaments/21-22-arcadia-georgia-and-georgia-tech#south-carolina-b\">South Carolina B<\/a>","<a href = \"../tournaments/21-22-arcadia-northwestern#wisconsin-a\">Wisconsin A<\/a>","<a href = \"../tournaments/21-22-arcadia-mcmaster#mcmaster-a\">McMaster A<\/a>","<a href = \"../tournaments/21-22-arcadia-north-carolina#etsu-a\">ETSU A<\/a>","<a href = \"../tournaments/21-22-arcadia-uc-berkeley#archbishop-mitty-a\">Archbishop Mitty A<\/a>","<a href = \"../tournaments/21-22-arcadia-ohio-state#beavercreek-a\">Beavercreek A<\/a>","<a href = \"../tournaments/21-22-arcadia-georgia-and-georgia-tech#georgia-tech-b\">Georgia Tech B<\/a>","<a href = \"../tournaments/21-22-arcadia-north-carolina#etsu-a\">ETSU A<\/a>","<a href = \"../tournaments/21-22-arcadia-ohio-state#solon-a\">Solon A<\/a>","<a href = \"../tournaments/21-22-arcadia-georgia-and-georgia-tech#georgia-tech-a\">Georgia Tech A<\/a>","<a href = \"../tournaments/21-22-arcadia-northwestern#illinois-a\">Illinois A<\/a>","<a href = \"../tournaments/21-22-arcadia-ohio-state#solon-a\">Solon A<\/a>","<a href = \"../tournaments/21-22-arcadia-georgia-and-georgia-tech#tennessee-a\">Tennessee A<\/a>","<a href = \"../tournaments/21-22-arcadia-ohio-state#ohio-state-a\">Ohio State A<\/a>","<a href = \"../tournaments/21-22-arcadia-columbia#carnegie-mellon-a\">Carnegie Mellon A<\/a>","<a href = \"../tournaments/21-22-arcadia-imperial#oxford-a\">Oxford A<\/a>","<a href = \"../tournaments/21-22-arcadia-georgia-and-georgia-tech#florida-a\">Florida A<\/a>","<a href = \"../tournaments/21-22-arcadia-georgia-and-georgia-tech#georgia-tech-a\">Georgia Tech A<\/a>","<a href = \"../tournaments/21-22-arcadia-georgia-and-georgia-tech#emory-a\">Emory A<\/a>","<a href = \"../tournaments/21-22-arcadia-mcmaster#waterloo-a\">Waterloo A<\/a>","<a href = \"../tournaments/21-22-arcadia-georgia-and-georgia-tech#georgia-tech-a\">Georgia Tech A<\/a>","<a href = \"../tournaments/21-22-arcadia-ohio-state#detroit-catholic-central-a\">Detroit Catholic Central A<\/a>","<a href = \"../tournaments/21-22-arcadia-north-carolina#virginia-b\">Virginia B<\/a>","<a href = \"../tournaments/21-22-arcadia-north-carolina#virginia-a\">Virginia A<\/a>","<a href = \"../tournaments/21-22-arcadia-northwestern#purdue-b\">Purdue B<\/a>","<a href = \"../tournaments/21-22-arcadia-georgia-and-georgia-tech#florida-a\">Florida A<\/a>","<a href = \"../tournaments/21-22-arcadia-imperial#southampton-a\">Southampton A<\/a>","<a href = \"../tournaments/21-22-arcadia-northwestern#illinois-b\">Illinois B<\/a>","<a href = \"../tournaments/21-22-arcadia-georgia-and-georgia-tech#georgia-tech-d\">Georgia Tech D<\/a>","<a href = \"../tournaments/21-22-arcadia-north-carolina#equilateral-triangle\">Equilateral Triangle<\/a>","<a href = \"../tournaments/21-22-arcadia-mcmaster#ubc-a\">UBC A<\/a>","<a href = \"../tournaments/21-22-arcadia-columbia#carnegie-mellon-a\">Carnegie Mellon A<\/a>","<a href = \"../tournaments/21-22-arcadia-georgia-and-georgia-tech#vanderbilt-a\">Vanderbilt A<\/a>","<a href = \"../tournaments/21-22-arcadia-northwestern#grinnell-a\">Grinnell A<\/a>","<a href = \"../tournaments/21-22-arcadia-georgia-and-georgia-tech#south-carolina-a\">South Carolina A<\/a>","<a href = \"../tournaments/21-22-arcadia-ohio-state#detroit-catholic-central-a\">Detroit Catholic Central A<\/a>","<a href = \"../tournaments/21-22-arcadia-ohio-state#ohio-state-b\">Ohio State B<\/a>","<a href = \"../tournaments/21-22-arcadia-uc-berkeley#uc-berkeley-c\">UC Berkeley C<\/a>","<a href = \"../tournaments/21-22-arcadia-columbia#gettysburg-a\">Gettysburg A<\/a>","<a href = \"../tournaments/21-22-arcadia-georgia-and-georgia-tech#tennessee-a\">Tennessee A<\/a>","<a href = \"../tournaments/21-22-arcadia-georgia-and-georgia-tech#emory-b\">Emory B<\/a>","<a href = \"../tournaments/21-22-arcadia-northwestern#grinnell-a\">Grinnell A<\/a>","<a href = \"../tournaments/21-22-arcadia-northwestern#illinois-a\">Illinois A<\/a>","<a href = \"../tournaments/21-22-arcadia-northwestern#michigan-c\">Michigan C<\/a>","<a href = \"../tournaments/21-22-arcadia-north-carolina#virginia-a\">Virginia A<\/a>","<a href = \"../tournaments/21-22-arcadia-northwestern#michigan-a\">Michigan A<\/a>","<a href = \"../tournaments/21-22-arcadia-uc-berkeley#claremont-colleges-a\">Claremont Colleges A<\/a>","<a href = \"../tournaments/21-22-arcadia-georgia-and-georgia-tech#georgia-tech-c\">Georgia Tech C<\/a>","<a href = \"../tournaments/21-22-arcadia-georgia-and-georgia-tech#south-carolina-a\">South Carolina A<\/a>","<a href = \"../tournaments/21-22-arcadia-columbia#cornell-a\">Cornell A<\/a>","<a href = \"../tournaments/21-22-arcadia-north-carolina#virginia-b\">Virginia B<\/a>","<a href = \"../tournaments/21-22-arcadia-northwestern#michigan-a\">Michigan A<\/a>","<a href = \"../tournaments/21-22-arcadia-ohio-state#kentucky-a\">Kentucky A<\/a>","<a href = \"../tournaments/21-22-arcadia-ohio-state#beavercreek-a\">Beavercreek A<\/a>","<a href = \"../tournaments/21-22-arcadia-uc-berkeley#uc-berkeley-b\">UC Berkeley B<\/a>","<a href = \"../tournaments/21-22-arcadia-georgia-and-georgia-tech#florida-a\">Florida A<\/a>","<a href = \"../tournaments/21-22-arcadia-georgia-and-georgia-tech#south-carolina-b\">South Carolina B<\/a>","<a href = \"../tournaments/21-22-arcadia-georgia-and-georgia-tech#emory-b\">Emory B<\/a>","<a href = \"../tournaments/21-22-arcadia-georgia-and-georgia-tech#mississippi-state-a\">Mississippi State A<\/a>","<a href = \"../tournaments/21-22-arcadia-northwestern#wisconsin-a\">Wisconsin A<\/a>","<a href = \"../tournaments/21-22-arcadia-columbia#uconn-a\">UConn A<\/a>","<a href = \"../tournaments/21-22-arcadia-uc-berkeley#uc-berkeley-b\">UC Berkeley B<\/a>","<a href = \"../tournaments/21-22-arcadia-imperial#birmingham-a\">Birmingham A<\/a>","<a href = \"../tournaments/21-22-arcadia-northwestern#purdue-d\">Purdue D<\/a>","<a href = \"../tournaments/21-22-arcadia-mcmaster#mcgill-a\">McGill A<\/a>","<a href = \"../tournaments/21-22-arcadia-columbia#virginia-a\">Virginia A<\/a>","<a href = \"../tournaments/21-22-arcadia-imperial#univglasperboldt\">UnivGlasPerBoldt<\/a>","<a href = \"../tournaments/21-22-arcadia-georgia-and-georgia-tech#alabama-a\">Alabama A<\/a>","<a href = \"../tournaments/21-22-arcadia-imperial#cambridge-a\">Cambridge A<\/a>","<a href = \"../tournaments/21-22-arcadia-georgia-and-georgia-tech#mississippi-state-a\">Mississippi State A<\/a>","<a href = \"../tournaments/21-22-arcadia-georgia-and-georgia-tech#georgia-tech-c\">Georgia Tech C<\/a>","<a href = \"../tournaments/21-22-arcadia-northwestern#wustl-a\">WUSTL A<\/a>","<a href = \"../tournaments/21-22-arcadia-columbia#penn-a\">Penn A<\/a>","<a href = \"../tournaments/21-22-arcadia-northwestern#purdue-d\">Purdue D<\/a>","<a href = \"../tournaments/21-22-arcadia-northwestern#michigan-b\">Michigan B<\/a>","<a href = \"../tournaments/21-22-arcadia-georgia-and-georgia-tech#emory-b\">Emory B<\/a>","<a href = \"../tournaments/21-22-arcadia-georgia-and-georgia-tech#vanderbilt-a\">Vanderbilt A<\/a>","<a href = \"../tournaments/21-22-arcadia-georgia-and-georgia-tech#georgia-tech-d\">Georgia Tech D<\/a>","<a href = \"../tournaments/21-22-arcadia-northwestern#purdue-d\">Purdue D<\/a>","<a href = \"../tournaments/21-22-arcadia-ohio-state#ohio-state-a\">Ohio State A<\/a>","<a href = \"../tournaments/21-22-arcadia-georgia-and-georgia-tech#georgia-tech-d\">Georgia Tech D<\/a>","<a href = \"../tournaments/21-22-arcadia-ohio-state#solon-a\">Solon A<\/a>","<a href = \"../tournaments/21-22-arcadia-ohio-state#ohio-state-b\">Ohio State B<\/a>","<a href = \"../tournaments/21-22-arcadia-mcmaster#toronto-b\">Toronto B<\/a>","<a href = \"../tournaments/21-22-arcadia-uc-berkeley#uc-berkeley-b\">UC Berkeley B<\/a>","<a href = \"../tournaments/21-22-arcadia-northwestern#wisconsin-a\">Wisconsin A<\/a>","<a href = \"../tournaments/21-22-arcadia-northwestern#michigan-a\">Michigan A<\/a>","<a href = \"../tournaments/21-22-arcadia-ohio-state#kentucky-a\">Kentucky A<\/a>","<a href = \"../tournaments/21-22-arcadia-georgia-and-georgia-tech#emory-b\">Emory B<\/a>","<a href = \"../tournaments/21-22-arcadia-northwestern#michigan-b\">Michigan B<\/a>","<a href = \"../tournaments/21-22-arcadia-ohio-state#rit-a\">RIT A<\/a>","<a href = \"../tournaments/21-22-arcadia-georgia-and-georgia-tech#tennessee-b\">Tennessee B<\/a>","<a href = \"../tournaments/21-22-arcadia-northwestern#chicago-b\">Chicago B<\/a>","<a href = \"../tournaments/21-22-arcadia-north-carolina#equilateral-triangle\">Equilateral Triangle<\/a>","<a href = \"../tournaments/21-22-arcadia-uc-berkeley#uc-berkeley-a\">UC Berkeley A<\/a>","<a href = \"../tournaments/21-22-arcadia-georgia-and-georgia-tech#tennessee-a\">Tennessee A<\/a>","<a href = \"../tournaments/21-22-arcadia-northwestern#purdue-b\">Purdue B<\/a>","<a href = \"../tournaments/21-22-arcadia-ohio-state#maryland-a\">Maryland A<\/a>","<a href = \"../tournaments/21-22-arcadia-imperial#oxford-a\">Oxford A<\/a>","<a href = \"../tournaments/21-22-arcadia-imperial#univglasperboldt\">UnivGlasPerBoldt<\/a>","<a href = \"../tournaments/21-22-arcadia-ohio-state#solon-a\">Solon A<\/a>","<a href = \"../tournaments/21-22-arcadia-ohio-state#case-western-a\">Case Western A<\/a>","<a href = \"../tournaments/21-22-arcadia-georgia-and-georgia-tech#georgia-tech-c\">Georgia Tech C<\/a>","<a href = \"../tournaments/21-22-arcadia-georgia-and-georgia-tech#tennessee-b\">Tennessee B<\/a>","<a href = \"../tournaments/21-22-arcadia-north-carolina#equilateral-triangle\">Equilateral Triangle<\/a>","<a href = \"../tournaments/21-22-arcadia-ohio-state#maryland-a\">Maryland A<\/a>","<a href = \"../tournaments/21-22-arcadia-columbia#penn-a\">Penn A<\/a>","<a href = \"../tournaments/21-22-arcadia-imperial#univglasperboldt\">UnivGlasPerBoldt<\/a>","<a href = \"../tournaments/21-22-arcadia-ohio-state#case-western-b\">Case Western B<\/a>","<a href = \"../tournaments/21-22-arcadia-north-carolina#equilateral-triangle\">Equilateral Triangle<\/a>","<a href = \"../tournaments/21-22-arcadia-imperial#cambridge-a\">Cambridge A<\/a>","<a href = \"../tournaments/21-22-arcadia-georgia-and-georgia-tech#emory-a\">Emory A<\/a>","<a href = \"../tournaments/21-22-arcadia-georgia-and-georgia-tech#georgia-tech-b\">Georgia Tech B<\/a>","<a href = \"../tournaments/21-22-arcadia-columbia#uconn-a\">UConn A<\/a>","<a href = \"../tournaments/21-22-arcadia-imperial#oxford-a\">Oxford A<\/a>","<a href = \"../tournaments/21-22-arcadia-north-carolina#virginia-b\">Virginia B<\/a>","<a href = \"../tournaments/21-22-arcadia-northwestern#wisconsin-a\">Wisconsin A<\/a>","<a href = \"../tournaments/21-22-arcadia-ohio-state#ohio-state-b\">Ohio State B<\/a>","<a href = \"../tournaments/21-22-arcadia-ohio-state#maryland-a\">Maryland A<\/a>","<a href = \"../tournaments/21-22-arcadia-ohio-state#case-western-b\">Case Western B<\/a>","<a href = \"../tournaments/21-22-arcadia-mcmaster#mcmaster-a\">McMaster A<\/a>","<a href = \"../tournaments/21-22-arcadia-north-carolina#scalene-triangle\">Scalene Triangle<\/a>","<a href = \"../tournaments/21-22-arcadia-north-carolina#isosceles-triangle\">Isosceles Triangle<\/a>","<a href = \"../tournaments/21-22-arcadia-uc-berkeley#claremont-colleges-a\">Claremont Colleges A<\/a>","<a href = \"../tournaments/21-22-arcadia-columbia#penn-a\">Penn A<\/a>","<a href = \"../tournaments/21-22-arcadia-imperial#oxford-b\">Oxford B<\/a>","<a href = \"../tournaments/21-22-arcadia-georgia-and-georgia-tech#tennessee-b\">Tennessee B<\/a>","<a href = \"../tournaments/21-22-arcadia-northwestern#wisconsin-b\">Wisconsin B<\/a>","<a href = \"../tournaments/21-22-arcadia-columbia#virginia-a\">Virginia A<\/a>","<a href = \"../tournaments/21-22-arcadia-mcmaster#ubc-a\">UBC A<\/a>","<a href = \"../tournaments/21-22-arcadia-mcmaster#ubc-a\">UBC A<\/a>","<a href = \"../tournaments/21-22-arcadia-imperial#oxford-b\">Oxford B<\/a>","<a href = \"../tournaments/21-22-arcadia-northwestern#illinois-c\">Illinois C<\/a>","<a href = \"../tournaments/21-22-arcadia-georgia-and-georgia-tech#mississippi-state-a\">Mississippi State A<\/a>","<a href = \"../tournaments/21-22-arcadia-columbia#carnegie-mellon-a\">Carnegie Mellon A<\/a>","<a href = \"../tournaments/21-22-arcadia-georgia-and-georgia-tech#alabama-a\">Alabama A<\/a>","<a href = \"../tournaments/21-22-arcadia-mcmaster#mcgill-a\">McGill A<\/a>","<a href = \"../tournaments/21-22-arcadia-mcmaster#waterloo-a\">Waterloo A<\/a>","<a href = \"../tournaments/21-22-arcadia-ohio-state#rit-a\">RIT A<\/a>","<a href = \"../tournaments/21-22-arcadia-imperial#birmingham-a\">Birmingham A<\/a>","<a href = \"../tournaments/21-22-arcadia-georgia-and-georgia-tech#south-carolina-a\">South Carolina A<\/a>","<a href = \"../tournaments/21-22-arcadia-northwestern#wisconsin-b\">Wisconsin B<\/a>","<a href = \"../tournaments/21-22-arcadia-uc-berkeley#uc-berkeley-a\">UC Berkeley A<\/a>","<a href = \"../tournaments/21-22-arcadia-columbia#johns-hopkins-a\">Johns Hopkins A<\/a>","<a href = \"../tournaments/21-22-arcadia-imperial#cambridge-a\">Cambridge A<\/a>","<a href = \"../tournaments/21-22-arcadia-imperial#birmingham-a\">Birmingham A<\/a>","<a href = \"../tournaments/21-22-arcadia-north-carolina#isosceles-triangle\">Isosceles Triangle<\/a>","<a href = \"../tournaments/21-22-arcadia-columbia#uconn-a\">UConn A<\/a>","<a href = \"../tournaments/21-22-arcadia-northwestern#chicago-b\">Chicago B<\/a>","<a href = \"../tournaments/21-22-arcadia-georgia-and-georgia-tech#mississippi-state-a\">Mississippi State A<\/a>","<a href = \"../tournaments/21-22-arcadia-ohio-state#rit-a\">RIT A<\/a>","<a href = \"../tournaments/21-22-arcadia-georgia-and-georgia-tech#alabama-a\">Alabama A<\/a>","<a href = \"../tournaments/21-22-arcadia-georgia-and-georgia-tech#south-carolina-b\">South Carolina B<\/a>","<a href = \"../tournaments/21-22-arcadia-georgia-and-georgia-tech#mississippi-state-a\">Mississippi State A<\/a>","<a href = \"../tournaments/21-22-arcadia-columbia#gettysburg-a\">Gettysburg A<\/a>","<a href = \"../tournaments/21-22-arcadia-georgia-and-georgia-tech#alabama-a\">Alabama A<\/a>","<a href = \"../tournaments/21-22-arcadia-imperial#birmingham-a\">Birmingham A<\/a>","<a href = \"../tournaments/21-22-arcadia-north-carolina#scalene-triangle\">Scalene Triangle<\/a>","<a href = \"../tournaments/21-22-arcadia-northwestern#grinnell-a\">Grinnell A<\/a>","<a href = \"../tournaments/21-22-arcadia-ohio-state#rit-a\">RIT A<\/a>","<a href = \"../tournaments/21-22-arcadia-georgia-and-georgia-tech#mississippi-state-a\">Mississippi State A<\/a>","<a href = \"../tournaments/21-22-arcadia-mcmaster#toronto-a\">Toronto A<\/a>","<a href = \"../tournaments/21-22-arcadia-ohio-state#beavercreek-a\">Beavercreek A<\/a>","<a href = \"../tournaments/21-22-arcadia-ohio-state#case-western-a\">Case Western A<\/a>","<a href = \"../tournaments/21-22-arcadia-northwestern#michigan-c\">Michigan C<\/a>","<a href = \"../tournaments/21-22-arcadia-northwestern#illinois-c\">Illinois C<\/a>","<a href = \"../tournaments/21-22-arcadia-ohio-state#ohio-state-b\">Ohio State B<\/a>","<a href = \"../tournaments/21-22-arcadia-ohio-state#solon-a\">Solon A<\/a>","<a href = \"../tournaments/21-22-arcadia-georgia-and-georgia-tech#emory-a\">Emory A<\/a>","<a href = \"../tournaments/21-22-arcadia-columbia#gettysburg-a\">Gettysburg A<\/a>","<a href = \"../tournaments/21-22-arcadia-columbia#syracuse-a\">Syracuse A<\/a>","<a href = \"../tournaments/21-22-arcadia-imperial#cambridge-a\">Cambridge A<\/a>","<a href = \"../tournaments/21-22-arcadia-northwestern#purdue-b\">Purdue B<\/a>","<a href = \"../tournaments/21-22-arcadia-northwestern#purdue-c\">Purdue C<\/a>","<a href = \"../tournaments/21-22-arcadia-imperial#oxford-b\">Oxford B<\/a>"],["<a href = \"../tournaments/21-22-ARCADIA-north-carolina\">North Carolina<\/a>","<a href = \"../tournaments/21-22-ARCADIA-ohio-state\">Ohio State<\/a>","<a href = \"../tournaments/21-22-ARCADIA-imperial\">Imperial<\/a>","<a href = \"../tournaments/21-22-ARCADIA-mcmaster\">McMaster<\/a>","<a href = \"../tournaments/21-22-ARCADIA-mcmaster\">McMaster<\/a>","<a href = \"../tournaments/21-22-ARCADIA-georgia-and-georgia-tech\">Georgia and Georgia Tech<\/a>","<a href = \"../tournaments/21-22-ARCADIA-imperial\">Imperial<\/a>","<a href = \"../tournaments/21-22-ARCADIA-columbia\">Columbia<\/a>","<a href = \"../tournaments/21-22-ARCADIA-columbia\">Columbia<\/a>","<a href = \"../tournaments/21-22-ARCADIA-imperial\">Imperial<\/a>","<a href = \"../tournaments/21-22-ARCADIA-northwestern\">Northwestern<\/a>","<a href = \"../tournaments/21-22-ARCADIA-mcmaster\">McMaster<\/a>","<a href = \"../tournaments/21-22-ARCADIA-ohio-state\">Ohio State<\/a>","<a href = \"../tournaments/21-22-ARCADIA-uc-berkeley\">UC Berkeley<\/a>","<a href = \"../tournaments/21-22-ARCADIA-ohio-state\">Ohio State<\/a>","<a href = \"../tournaments/21-22-ARCADIA-ohio-state\">Ohio State<\/a>","<a href = \"../tournaments/21-22-ARCADIA-uc-berkeley\">UC Berkeley<\/a>","<a href = \"../tournaments/21-22-ARCADIA-georgia-and-georgia-tech\">Georgia and Georgia Tech<\/a>","<a href = \"../tournaments/21-22-ARCADIA-northwestern\">Northwestern<\/a>","<a href = \"../tournaments/21-22-ARCADIA-north-carolina\">North Carolina<\/a>","<a href = \"../tournaments/21-22-ARCADIA-northwestern\">Northwestern<\/a>","<a href = \"../tournaments/21-22-ARCADIA-ohio-state\">Ohio State<\/a>","<a href = \"../tournaments/21-22-ARCADIA-ohio-state\">Ohio State<\/a>","<a href = \"../tournaments/21-22-ARCADIA-mcmaster\">McMaster<\/a>","<a href = \"../tournaments/21-22-ARCADIA-georgia-and-georgia-tech\">Georgia and Georgia Tech<\/a>","<a href = \"../tournaments/21-22-ARCADIA-northwestern\">Northwestern<\/a>","<a href = \"../tournaments/21-22-ARCADIA-georgia-and-georgia-tech\">Georgia and Georgia Tech<\/a>","<a href = \"../tournaments/21-22-ARCADIA-northwestern\">Northwestern<\/a>","<a href = \"../tournaments/21-22-ARCADIA-north-carolina\">North Carolina<\/a>","<a href = \"../tournaments/21-22-ARCADIA-columbia\">Columbia<\/a>","<a href = \"../tournaments/21-22-ARCADIA-northwestern\">Northwestern<\/a>","<a href = \"../tournaments/21-22-ARCADIA-northwestern\">Northwestern<\/a>","<a href = \"../tournaments/21-22-ARCADIA-northwestern\">Northwestern<\/a>","<a href = \"../tournaments/21-22-ARCADIA-northwestern\">Northwestern<\/a>","<a href = \"../tournaments/21-22-ARCADIA-columbia\">Columbia<\/a>","<a href = \"../tournaments/21-22-ARCADIA-ohio-state\">Ohio State<\/a>","<a href = \"../tournaments/21-22-ARCADIA-imperial\">Imperial<\/a>","<a href = \"../tournaments/21-22-ARCADIA-northwestern\">Northwestern<\/a>","<a href = \"../tournaments/21-22-ARCADIA-northwestern\">Northwestern<\/a>","<a href = \"../tournaments/21-22-ARCADIA-columbia\">Columbia<\/a>","<a href = \"../tournaments/21-22-ARCADIA-imperial\">Imperial<\/a>","<a href = \"../tournaments/21-22-ARCADIA-columbia\">Columbia<\/a>","<a href = \"../tournaments/21-22-ARCADIA-columbia\">Columbia<\/a>","<a href = \"../tournaments/21-22-ARCADIA-uc-berkeley\">UC Berkeley<\/a>","<a href = \"../tournaments/21-22-ARCADIA-ohio-state\">Ohio State<\/a>","<a href = \"../tournaments/21-22-ARCADIA-georgia-and-georgia-tech\">Georgia and Georgia Tech<\/a>","<a href = \"../tournaments/21-22-ARCADIA-georgia-and-georgia-tech\">Georgia and Georgia Tech<\/a>","<a href = \"../tournaments/21-22-ARCADIA-northwestern\">Northwestern<\/a>","<a href = \"../tournaments/21-22-ARCADIA-mcmaster\">McMaster<\/a>","<a href = \"../tournaments/21-22-ARCADIA-imperial\">Imperial<\/a>","<a href = \"../tournaments/21-22-ARCADIA-ohio-state\">Ohio State<\/a>","<a href = \"../tournaments/21-22-ARCADIA-imperial\">Imperial<\/a>","<a href = \"../tournaments/21-22-ARCADIA-uc-berkeley\">UC Berkeley<\/a>","<a href = \"../tournaments/21-22-ARCADIA-northwestern\">Northwestern<\/a>","<a href = \"../tournaments/21-22-ARCADIA-northwestern\">Northwestern<\/a>","<a href = \"../tournaments/21-22-ARCADIA-uc-berkeley\">UC Berkeley<\/a>","<a href = \"../tournaments/21-22-ARCADIA-northwestern\">Northwestern<\/a>","<a href = \"../tournaments/21-22-ARCADIA-georgia-and-georgia-tech\">Georgia and Georgia Tech<\/a>","<a href = \"../tournaments/21-22-ARCADIA-northwestern\">Northwestern<\/a>","<a href = \"../tournaments/21-22-ARCADIA-columbia\">Columbia<\/a>","<a href = \"../tournaments/21-22-ARCADIA-northwestern\">Northwestern<\/a>","<a href = \"../tournaments/21-22-ARCADIA-northwestern\">Northwestern<\/a>","<a href = \"../tournaments/21-22-ARCADIA-ohio-state\">Ohio State<\/a>","<a href = \"../tournaments/21-22-ARCADIA-georgia-and-georgia-tech\">Georgia and Georgia Tech<\/a>","<a href = \"../tournaments/21-22-ARCADIA-mcmaster\">McMaster<\/a>","<a href = \"../tournaments/21-22-ARCADIA-ohio-state\">Ohio State<\/a>","<a href = \"../tournaments/21-22-ARCADIA-ohio-state\">Ohio State<\/a>","<a href = \"../tournaments/21-22-ARCADIA-uc-berkeley\">UC Berkeley<\/a>","<a href = \"../tournaments/21-22-ARCADIA-mcmaster\">McMaster<\/a>","<a href = \"../tournaments/21-22-ARCADIA-georgia-and-georgia-tech\">Georgia and Georgia Tech<\/a>","<a href = \"../tournaments/21-22-ARCADIA-northwestern\">Northwestern<\/a>","<a href = \"../tournaments/21-22-ARCADIA-uc-berkeley\">UC Berkeley<\/a>","<a href = \"../tournaments/21-22-ARCADIA-ohio-state\">Ohio State<\/a>","<a href = \"../tournaments/21-22-ARCADIA-columbia\">Columbia<\/a>","<a href = \"../tournaments/21-22-ARCADIA-northwestern\">Northwestern<\/a>","<a href = \"../tournaments/21-22-ARCADIA-north-carolina\">North Carolina<\/a>","<a href = \"../tournaments/21-22-ARCADIA-ohio-state\">Ohio State<\/a>","<a href = \"../tournaments/21-22-ARCADIA-uc-berkeley\">UC Berkeley<\/a>","<a href = \"../tournaments/21-22-ARCADIA-northwestern\">Northwestern<\/a>","<a href = \"../tournaments/21-22-ARCADIA-northwestern\">Northwestern<\/a>","<a href = \"../tournaments/21-22-ARCADIA-columbia\">Columbia<\/a>","<a href = \"../tournaments/21-22-ARCADIA-north-carolina\">North Carolina<\/a>","<a href = \"../tournaments/21-22-ARCADIA-uc-berkeley\">UC Berkeley<\/a>","<a href = \"../tournaments/21-22-ARCADIA-uc-berkeley\">UC Berkeley<\/a>","<a href = \"../tournaments/21-22-ARCADIA-columbia\">Columbia<\/a>","<a href = \"../tournaments/21-22-ARCADIA-mcmaster\">McMaster<\/a>","<a href = \"../tournaments/21-22-ARCADIA-north-carolina\">North Carolina<\/a>","<a href = \"../tournaments/21-22-ARCADIA-ohio-state\">Ohio State<\/a>","<a href = \"../tournaments/21-22-ARCADIA-uc-berkeley\">UC Berkeley<\/a>","<a href = \"../tournaments/21-22-ARCADIA-georgia-and-georgia-tech\">Georgia and Georgia Tech<\/a>","<a href = \"../tournaments/21-22-ARCADIA-georgia-and-georgia-tech\">Georgia and Georgia Tech<\/a>","<a href = \"../tournaments/21-22-ARCADIA-columbia\">Columbia<\/a>","<a href = \"../tournaments/21-22-ARCADIA-imperial\">Imperial<\/a>","<a href = \"../tournaments/21-22-ARCADIA-uc-berkeley\">UC Berkeley<\/a>","<a href = \"../tournaments/21-22-ARCADIA-georgia-and-georgia-tech\">Georgia and Georgia Tech<\/a>","<a href = \"../tournaments/21-22-ARCADIA-northwestern\">Northwestern<\/a>","<a href = \"../tournaments/21-22-ARCADIA-mcmaster\">McMaster<\/a>","<a href = \"../tournaments/21-22-ARCADIA-north-carolina\">North Carolina<\/a>","<a href = \"../tournaments/21-22-ARCADIA-uc-berkeley\">UC Berkeley<\/a>","<a href = \"../tournaments/21-22-ARCADIA-ohio-state\">Ohio State<\/a>","<a href = \"../tournaments/21-22-ARCADIA-georgia-and-georgia-tech\">Georgia and Georgia Tech<\/a>","<a href = \"../tournaments/21-22-ARCADIA-north-carolina\">North Carolina<\/a>","<a href = \"../tournaments/21-22-ARCADIA-ohio-state\">Ohio State<\/a>","<a href = \"../tournaments/21-22-ARCADIA-georgia-and-georgia-tech\">Georgia and Georgia Tech<\/a>","<a href = \"../tournaments/21-22-ARCADIA-northwestern\">Northwestern<\/a>","<a href = \"../tournaments/21-22-ARCADIA-ohio-state\">Ohio State<\/a>","<a href = \"../tournaments/21-22-ARCADIA-georgia-and-georgia-tech\">Georgia and Georgia Tech<\/a>","<a href = \"../tournaments/21-22-ARCADIA-ohio-state\">Ohio State<\/a>","<a href = \"../tournaments/21-22-ARCADIA-columbia\">Columbia<\/a>","<a href = \"../tournaments/21-22-ARCADIA-imperial\">Imperial<\/a>","<a href = \"../tournaments/21-22-ARCADIA-georgia-and-georgia-tech\">Georgia and Georgia Tech<\/a>","<a href = \"../tournaments/21-22-ARCADIA-georgia-and-georgia-tech\">Georgia and Georgia Tech<\/a>","<a href = \"../tournaments/21-22-ARCADIA-georgia-and-georgia-tech\">Georgia and Georgia Tech<\/a>","<a href = \"../tournaments/21-22-ARCADIA-mcmaster\">McMaster<\/a>","<a href = \"../tournaments/21-22-ARCADIA-georgia-and-georgia-tech\">Georgia and Georgia Tech<\/a>","<a href = \"../tournaments/21-22-ARCADIA-ohio-state\">Ohio State<\/a>","<a href = \"../tournaments/21-22-ARCADIA-north-carolina\">North Carolina<\/a>","<a href = \"../tournaments/21-22-ARCADIA-north-carolina\">North Carolina<\/a>","<a href = \"../tournaments/21-22-ARCADIA-northwestern\">Northwestern<\/a>","<a href = \"../tournaments/21-22-ARCADIA-georgia-and-georgia-tech\">Georgia and Georgia Tech<\/a>","<a href = \"../tournaments/21-22-ARCADIA-imperial\">Imperial<\/a>","<a href = \"../tournaments/21-22-ARCADIA-northwestern\">Northwestern<\/a>","<a href = \"../tournaments/21-22-ARCADIA-georgia-and-georgia-tech\">Georgia and Georgia Tech<\/a>","<a href = \"../tournaments/21-22-ARCADIA-north-carolina\">North Carolina<\/a>","<a href = \"../tournaments/21-22-ARCADIA-mcmaster\">McMaster<\/a>","<a href = \"../tournaments/21-22-ARCADIA-columbia\">Columbia<\/a>","<a href = \"../tournaments/21-22-ARCADIA-georgia-and-georgia-tech\">Georgia and Georgia Tech<\/a>","<a href = \"../tournaments/21-22-ARCADIA-northwestern\">Northwestern<\/a>","<a href = \"../tournaments/21-22-ARCADIA-georgia-and-georgia-tech\">Georgia and Georgia Tech<\/a>","<a href = \"../tournaments/21-22-ARCADIA-ohio-state\">Ohio State<\/a>","<a href = \"../tournaments/21-22-ARCADIA-ohio-state\">Ohio State<\/a>","<a href = \"../tournaments/21-22-ARCADIA-uc-berkeley\">UC Berkeley<\/a>","<a href = \"../tournaments/21-22-ARCADIA-columbia\">Columbia<\/a>","<a href = \"../tournaments/21-22-ARCADIA-georgia-and-georgia-tech\">Georgia and Georgia Tech<\/a>","<a href = \"../tournaments/21-22-ARCADIA-georgia-and-georgia-tech\">Georgia and Georgia Tech<\/a>","<a href = \"../tournaments/21-22-ARCADIA-northwestern\">Northwestern<\/a>","<a href = \"../tournaments/21-22-ARCADIA-northwestern\">Northwestern<\/a>","<a href = \"../tournaments/21-22-ARCADIA-northwestern\">Northwestern<\/a>","<a href = \"../tournaments/21-22-ARCADIA-north-carolina\">North Carolina<\/a>","<a href = \"../tournaments/21-22-ARCADIA-northwestern\">Northwestern<\/a>","<a href = \"../tournaments/21-22-ARCADIA-uc-berkeley\">UC Berkeley<\/a>","<a href = \"../tournaments/21-22-ARCADIA-georgia-and-georgia-tech\">Georgia and Georgia Tech<\/a>","<a href = \"../tournaments/21-22-ARCADIA-georgia-and-georgia-tech\">Georgia and Georgia Tech<\/a>","<a href = \"../tournaments/21-22-ARCADIA-columbia\">Columbia<\/a>","<a href = \"../tournaments/21-22-ARCADIA-north-carolina\">North Carolina<\/a>","<a href = \"../tournaments/21-22-ARCADIA-northwestern\">Northwestern<\/a>","<a href = \"../tournaments/21-22-ARCADIA-ohio-state\">Ohio State<\/a>","<a href = \"../tournaments/21-22-ARCADIA-ohio-state\">Ohio State<\/a>","<a href = \"../tournaments/21-22-ARCADIA-uc-berkeley\">UC Berkeley<\/a>","<a href = \"../tournaments/21-22-ARCADIA-georgia-and-georgia-tech\">Georgia and Georgia Tech<\/a>","<a href = \"../tournaments/21-22-ARCADIA-georgia-and-georgia-tech\">Georgia and Georgia Tech<\/a>","<a href = \"../tournaments/21-22-ARCADIA-georgia-and-georgia-tech\">Georgia and Georgia Tech<\/a>","<a href = \"../tournaments/21-22-ARCADIA-georgia-and-georgia-tech\">Georgia and Georgia Tech<\/a>","<a href = \"../tournaments/21-22-ARCADIA-northwestern\">Northwestern<\/a>","<a href = \"../tournaments/21-22-ARCADIA-columbia\">Columbia<\/a>","<a href = \"../tournaments/21-22-ARCADIA-uc-berkeley\">UC Berkeley<\/a>","<a href = \"../tournaments/21-22-ARCADIA-imperial\">Imperial<\/a>","<a href = \"../tournaments/21-22-ARCADIA-northwestern\">Northwestern<\/a>","<a href = \"../tournaments/21-22-ARCADIA-mcmaster\">McMaster<\/a>","<a href = \"../tournaments/21-22-ARCADIA-columbia\">Columbia<\/a>","<a href = \"../tournaments/21-22-ARCADIA-imperial\">Imperial<\/a>","<a href = \"../tournaments/21-22-ARCADIA-georgia-and-georgia-tech\">Georgia and Georgia Tech<\/a>","<a href = \"../tournaments/21-22-ARCADIA-imperial\">Imperial<\/a>","<a href = \"../tournaments/21-22-ARCADIA-georgia-and-georgia-tech\">Georgia and Georgia Tech<\/a>","<a href = \"../tournaments/21-22-ARCADIA-georgia-and-georgia-tech\">Georgia and Georgia Tech<\/a>","<a href = \"../tournaments/21-22-ARCADIA-northwestern\">Northwestern<\/a>","<a href = \"../tournaments/21-22-ARCADIA-columbia\">Columbia<\/a>","<a href = \"../tournaments/21-22-ARCADIA-northwestern\">Northwestern<\/a>","<a href = \"../tournaments/21-22-ARCADIA-northwestern\">Northwestern<\/a>","<a href = \"../tournaments/21-22-ARCADIA-georgia-and-georgia-tech\">Georgia and Georgia Tech<\/a>","<a href = \"../tournaments/21-22-ARCADIA-georgia-and-georgia-tech\">Georgia and Georgia Tech<\/a>","<a href = \"../tournaments/21-22-ARCADIA-georgia-and-georgia-tech\">Georgia and Georgia Tech<\/a>","<a href = \"../tournaments/21-22-ARCADIA-northwestern\">Northwestern<\/a>","<a href = \"../tournaments/21-22-ARCADIA-ohio-state\">Ohio State<\/a>","<a href = \"../tournaments/21-22-ARCADIA-georgia-and-georgia-tech\">Georgia and Georgia Tech<\/a>","<a href = \"../tournaments/21-22-ARCADIA-ohio-state\">Ohio State<\/a>","<a href = \"../tournaments/21-22-ARCADIA-ohio-state\">Ohio State<\/a>","<a href = \"../tournaments/21-22-ARCADIA-mcmaster\">McMaster<\/a>","<a href = \"../tournaments/21-22-ARCADIA-uc-berkeley\">UC Berkeley<\/a>","<a href = \"../tournaments/21-22-ARCADIA-northwestern\">Northwestern<\/a>","<a href = \"../tournaments/21-22-ARCADIA-northwestern\">Northwestern<\/a>","<a href = \"../tournaments/21-22-ARCADIA-ohio-state\">Ohio State<\/a>","<a href = \"../tournaments/21-22-ARCADIA-georgia-and-georgia-tech\">Georgia and Georgia Tech<\/a>","<a href = \"../tournaments/21-22-ARCADIA-northwestern\">Northwestern<\/a>","<a href = \"../tournaments/21-22-ARCADIA-ohio-state\">Ohio State<\/a>","<a href = \"../tournaments/21-22-ARCADIA-georgia-and-georgia-tech\">Georgia and Georgia Tech<\/a>","<a href = \"../tournaments/21-22-ARCADIA-northwestern\">Northwestern<\/a>","<a href = \"../tournaments/21-22-ARCADIA-north-carolina\">North Carolina<\/a>","<a href = \"../tournaments/21-22-ARCADIA-uc-berkeley\">UC Berkeley<\/a>","<a href = \"../tournaments/21-22-ARCADIA-georgia-and-georgia-tech\">Georgia and Georgia Tech<\/a>","<a href = \"../tournaments/21-22-ARCADIA-northwestern\">Northwestern<\/a>","<a href = \"../tournaments/21-22-ARCADIA-ohio-state\">Ohio State<\/a>","<a href = \"../tournaments/21-22-ARCADIA-imperial\">Imperial<\/a>","<a href = \"../tournaments/21-22-ARCADIA-imperial\">Imperial<\/a>","<a href = \"../tournaments/21-22-ARCADIA-ohio-state\">Ohio State<\/a>","<a href = \"../tournaments/21-22-ARCADIA-ohio-state\">Ohio State<\/a>","<a href = \"../tournaments/21-22-ARCADIA-georgia-and-georgia-tech\">Georgia and Georgia Tech<\/a>","<a href = \"../tournaments/21-22-ARCADIA-georgia-and-georgia-tech\">Georgia and Georgia Tech<\/a>","<a href = \"../tournaments/21-22-ARCADIA-north-carolina\">North Carolina<\/a>","<a href = \"../tournaments/21-22-ARCADIA-ohio-state\">Ohio State<\/a>","<a href = \"../tournaments/21-22-ARCADIA-columbia\">Columbia<\/a>","<a href = \"../tournaments/21-22-ARCADIA-imperial\">Imperial<\/a>","<a href = \"../tournaments/21-22-ARCADIA-ohio-state\">Ohio State<\/a>","<a href = \"../tournaments/21-22-ARCADIA-north-carolina\">North Carolina<\/a>","<a href = \"../tournaments/21-22-ARCADIA-imperial\">Imperial<\/a>","<a href = \"../tournaments/21-22-ARCADIA-georgia-and-georgia-tech\">Georgia and Georgia Tech<\/a>","<a href = \"../tournaments/21-22-ARCADIA-georgia-and-georgia-tech\">Georgia and Georgia Tech<\/a>","<a href = \"../tournaments/21-22-ARCADIA-columbia\">Columbia<\/a>","<a href = \"../tournaments/21-22-ARCADIA-imperial\">Imperial<\/a>","<a href = \"../tournaments/21-22-ARCADIA-north-carolina\">North Carolina<\/a>","<a href = \"../tournaments/21-22-ARCADIA-northwestern\">Northwestern<\/a>","<a href = \"../tournaments/21-22-ARCADIA-ohio-state\">Ohio State<\/a>","<a href = \"../tournaments/21-22-ARCADIA-ohio-state\">Ohio State<\/a>","<a href = \"../tournaments/21-22-ARCADIA-ohio-state\">Ohio State<\/a>","<a href = \"../tournaments/21-22-ARCADIA-mcmaster\">McMaster<\/a>","<a href = \"../tournaments/21-22-ARCADIA-north-carolina\">North Carolina<\/a>","<a href = \"../tournaments/21-22-ARCADIA-north-carolina\">North Carolina<\/a>","<a href = \"../tournaments/21-22-ARCADIA-uc-berkeley\">UC Berkeley<\/a>","<a href = \"../tournaments/21-22-ARCADIA-columbia\">Columbia<\/a>","<a href = \"../tournaments/21-22-ARCADIA-imperial\">Imperial<\/a>","<a href = \"../tournaments/21-22-ARCADIA-georgia-and-georgia-tech\">Georgia and Georgia Tech<\/a>","<a href = \"../tournaments/21-22-ARCADIA-northwestern\">Northwestern<\/a>","<a href = \"../tournaments/21-22-ARCADIA-columbia\">Columbia<\/a>","<a href = \"../tournaments/21-22-ARCADIA-mcmaster\">McMaster<\/a>","<a href = \"../tournaments/21-22-ARCADIA-mcmaster\">McMaster<\/a>","<a href = \"../tournaments/21-22-ARCADIA-imperial\">Imperial<\/a>","<a href = \"../tournaments/21-22-ARCADIA-northwestern\">Northwestern<\/a>","<a href = \"../tournaments/21-22-ARCADIA-georgia-and-georgia-tech\">Georgia and Georgia Tech<\/a>","<a href = \"../tournaments/21-22-ARCADIA-columbia\">Columbia<\/a>","<a href = \"../tournaments/21-22-ARCADIA-georgia-and-georgia-tech\">Georgia and Georgia Tech<\/a>","<a href = \"../tournaments/21-22-ARCADIA-mcmaster\">McMaster<\/a>","<a href = \"../tournaments/21-22-ARCADIA-mcmaster\">McMaster<\/a>","<a href = \"../tournaments/21-22-ARCADIA-ohio-state\">Ohio State<\/a>","<a href = \"../tournaments/21-22-ARCADIA-imperial\">Imperial<\/a>","<a href = \"../tournaments/21-22-ARCADIA-georgia-and-georgia-tech\">Georgia and Georgia Tech<\/a>","<a href = \"../tournaments/21-22-ARCADIA-northwestern\">Northwestern<\/a>","<a href = \"../tournaments/21-22-ARCADIA-uc-berkeley\">UC Berkeley<\/a>","<a href = \"../tournaments/21-22-ARCADIA-columbia\">Columbia<\/a>","<a href = \"../tournaments/21-22-ARCADIA-imperial\">Imperial<\/a>","<a href = \"../tournaments/21-22-ARCADIA-imperial\">Imperial<\/a>","<a href = \"../tournaments/21-22-ARCADIA-north-carolina\">North Carolina<\/a>","<a href = \"../tournaments/21-22-ARCADIA-columbia\">Columbia<\/a>","<a href = \"../tournaments/21-22-ARCADIA-northwestern\">Northwestern<\/a>","<a href = \"../tournaments/21-22-ARCADIA-georgia-and-georgia-tech\">Georgia and Georgia Tech<\/a>","<a href = \"../tournaments/21-22-ARCADIA-ohio-state\">Ohio State<\/a>","<a href = \"../tournaments/21-22-ARCADIA-georgia-and-georgia-tech\">Georgia and Georgia Tech<\/a>","<a href = \"../tournaments/21-22-ARCADIA-georgia-and-georgia-tech\">Georgia and Georgia Tech<\/a>","<a href = \"../tournaments/21-22-ARCADIA-georgia-and-georgia-tech\">Georgia and Georgia Tech<\/a>","<a href = \"../tournaments/21-22-ARCADIA-columbia\">Columbia<\/a>","<a href = \"../tournaments/21-22-ARCADIA-georgia-and-georgia-tech\">Georgia and Georgia Tech<\/a>","<a href = \"../tournaments/21-22-ARCADIA-imperial\">Imperial<\/a>","<a href = \"../tournaments/21-22-ARCADIA-north-carolina\">North Carolina<\/a>","<a href = \"../tournaments/21-22-ARCADIA-northwestern\">Northwestern<\/a>","<a href = \"../tournaments/21-22-ARCADIA-ohio-state\">Ohio State<\/a>","<a href = \"../tournaments/21-22-ARCADIA-georgia-and-georgia-tech\">Georgia and Georgia Tech<\/a>","<a href = \"../tournaments/21-22-ARCADIA-mcmaster\">McMaster<\/a>","<a href = \"../tournaments/21-22-ARCADIA-ohio-state\">Ohio State<\/a>","<a href = \"../tournaments/21-22-ARCADIA-ohio-state\">Ohio State<\/a>","<a href = \"../tournaments/21-22-ARCADIA-northwestern\">Northwestern<\/a>","<a href = \"../tournaments/21-22-ARCADIA-northwestern\">Northwestern<\/a>","<a href = \"../tournaments/21-22-ARCADIA-ohio-state\">Ohio State<\/a>","<a href = \"../tournaments/21-22-ARCADIA-ohio-state\">Ohio State<\/a>","<a href = \"../tournaments/21-22-ARCADIA-georgia-and-georgia-tech\">Georgia and Georgia Tech<\/a>","<a href = \"../tournaments/21-22-ARCADIA-columbia\">Columbia<\/a>","<a href = \"../tournaments/21-22-ARCADIA-columbia\">Columbia<\/a>","<a href = \"../tournaments/21-22-ARCADIA-imperial\">Imperial<\/a>","<a href = \"../tournaments/21-22-ARCADIA-northwestern\">Northwestern<\/a>","<a href = \"../tournaments/21-22-ARCADIA-northwestern\">Northwestern<\/a>","<a href = \"../tournaments/21-22-ARCADIA-imperial\">Imperial<\/a>"],[10,9,10,7,7,11,8,10,11,10,9,7,8,10,9,8,10,11,9,10,9,9,8,7,9,8,9,9,10,10,9,9,9,9,10,8,9,9,9,11,8,11,11,10,8,9,9,9,7,9,8,8,10,9,9,10,9,9,9,10,9,9,8,9,7,8,6,10,7,9,9,10,8,11,9,10,8,10,9,9,10,10,10,10,10,7,10,8,10,9,9,11,10,10,9,9,7,10,10,8,9,10,5,11,8,8,9,9,10,10,11,11,9,7,11,8,10,10,9,11,10,8,6,9,7,10,9,9,9,8,7,10,10,9,9,9,9,9,10,9,10,9,9,11,10,9,8,8,10,11,9,9,9,9,10,10,8,9,7,10,5,8,8,9,9,9,10,9,9,9,9,9,9,9,8,8,8,7,10,9,9,8,9,9,7,9,9,4,10,9,9,9,10,10,8,8,9,9,9,9,10,10,8,9,7,9,9,10,10,10,9,3,9,8,7,9,10,10,10,8,9,9,10,7,7,8,8,9,10,5,7,7,7,8,9,9,10,6,7,5,10,10,9,8,7,5,9,8,6,9,9,9,9,3,8,7,8,8,9,8,6,3,9,3,10,2,9,9,8],[200,180,200,140,141,220,160,200,220,200,180,140,160,200,180,160,200,220,180,200,180,180,160,140,180,160,180,180,200,200,180,180,180,180,200,160,163,180,180,220,160,220,220,200,160,180,180,180,141,181,160,160,200,180,170,200,180,180,180,200,180,180,160,180,140,160,120,200,141,180,180,200,160,220,180,200,160,200,180,180,200,200,200,200,200,140,200,160,200,180,180,220,201,200,180,180,140,200,200,160,180,200,100,220,160,160,180,180,200,200,220,220,180,141,220,160,200,200,180,220,200,160,120,180,141,200,180,180,180,160,140,200,200,180,180,180,180,180,200,180,200,180,180,220,200,180,160,160,200,220,180,180,150,180,200,200,161,180,140,200,101,160,160,180,180,180,200,180,180,180,180,180,180,180,160,160,160,140,200,180,180,160,180,180,140,180,180,80,200,180,180,180,200,201,160,160,180,180,180,180,200,201,160,180,140,180,180,200,200,200,180,60,180,160,140,180,200,200,200,160,180,180,200,141,141,160,160,110,200,100,140,141,140,161,180,180,200,120,140,100,200,200,180,90,140,100,180,90,120,180,181,180,180,60,100,140,160,160,180,160,120,60,180,60,200,40,180,180,157],[53,28,18,20,17,31,20,14,27,17,13,6,1,18,20,12,30,21,18,5,8,17,6,6,3,6,9,1,6,3,10,1,19,3,1,8,8,16,12,12,10,20,17,17,2,12,4,9,9,10,8,8,19,3,2,4,5,6,6,5,2,4,4,4,6,6,7,9,4,5,6,8,4,10,4,3,0,5,2,5,3,8,8,9,3,3,5,3,7,2,3,7,9,2,3,5,5,2,9,1,6,3,4,14,6,7,0,8,4,6,5,5,1,4,3,4,0,4,5,7,5,1,0,3,5,3,2,3,1,1,5,1,1,1,2,3,5,0,7,4,4,5,4,8,1,5,1,2,4,2,0,3,1,2,3,6,1,1,2,1,0,4,3,0,1,0,2,2,0,1,4,1,1,4,0,2,2,2,2,0,4,2,0,3,2,0,2,0,5,0,0,2,4,5,1,3,0,0,0,3,3,5,0,2,0,0,0,0,4,1,1,0,0,0,4,0,0,0,0,0,0,0,2,0,1,1,0,0,0,0,0,3,0,2,0,0,2,0,1,0,1,0,0,0,1,0,1,1,0,0,1,0,1,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0],[55,55,85,42,40,52,36,62,44,54,47,41,53,41,32,40,21,45,32,58,48,30,44,33,51,46,41,54,52,56,37,46,16,39,48,34,29,20,25,35,22,20,29,23,42,34,37,29,18,30,23,23,12,36,37,35,30,27,27,36,33,28,24,31,18,21,13,23,18,24,27,24,21,28,28,30,27,28,27,25,28,22,22,26,32,20,28,20,21,24,23,21,15,29,25,19,16,24,26,24,20,26,10,11,12,13,24,12,25,20,22,22,24,12,23,14,24,20,21,15,15,18,15,16,8,18,19,15,18,15,11,20,19,17,15,18,16,18,11,14,14,11,15,8,18,9,13,15,14,16,17,12,16,13,19,9,14,14,10,17,8,10,9,19,14,20,16,13,14,12,11,13,13,8,13,14,9,7,13,14,8,8,15,10,6,13,10,5,6,13,13,10,7,12,13,6,11,15,13,7,13,12,9,8,8,13,10,12,5,11,9,3,9,7,8,10,9,8,8,7,8,6,5,5,3,4,7,7,7,3,5,2,6,5,8,6,5,3,2,3,5,5,4,4,2,2,2,4,2,6,2,3,3,2,3,3,2,4,3,1,0,2,3,0,0,0,0,0,5],[18,8,18,13,11,10,2,11,8,16,12,9,5,9,10,15,6,16,7,8,12,5,15,6,11,22,11,13,15,15,11,5,4,3,6,18,1,7,5,8,3,3,12,9,21,27,10,9,4,15,5,6,1,10,10,5,6,4,4,12,5,2,2,11,5,4,5,4,1,3,12,7,3,16,11,6,4,9,5,10,4,7,7,18,13,7,12,2,5,3,4,1,1,9,10,4,9,0,25,8,10,8,6,7,1,6,2,2,11,7,3,4,7,2,2,2,1,5,16,1,0,3,4,2,1,3,7,2,3,1,9,3,2,2,1,10,12,1,5,6,3,4,9,0,3,1,1,8,5,0,3,2,4,1,13,2,4,1,3,5,0,7,2,10,3,12,8,5,1,1,8,3,3,2,3,11,1,0,4,3,3,0,6,5,0,3,3,0,2,4,4,4,2,15,10,2,1,9,5,2,12,16,0,2,1,7,1,3,1,5,3,0,1,0,16,5,2,0,1,3,4,0,3,1,0,1,4,3,2,0,2,5,4,7,6,2,5,0,0,1,3,1,0,1,1,0,0,5,0,6,1,0,3,2,1,2,0,4,2,2,1,3,4,0,0,0,0,0,15],[5.3,3.11,1.8,2.86,2.43,2.82,2.5,1.4,2.45,1.7,1.44,0.86,0.13,1.8,2.22,1.5,3,1.91,2,0.5,0.89,1.89,0.75,0.86,0.33,0.75,1,0.11,0.6,0.3,1.11,0.11,2.11,0.33,0.1,1,0.89,1.78,1.33,1.09,1.25,1.82,1.55,1.7,0.25,1.33,0.44,1,1.29,1.11,1,1,1.9,0.33,0.22,0.4,0.56,0.67,0.67,0.5,0.22,0.44,0.5,0.44,0.86,0.75,1.17,0.9,0.57,0.56,0.67,0.8,0.5,0.91,0.44,0.3,0,0.5,0.22,0.56,0.3,0.8,0.8,0.9,0.3,0.43,0.5,0.38,0.7,0.22,0.33,0.64,0.9,0.2,0.33,0.56,0.71,0.2,0.9,0.13,0.67,0.3,0.8,1.27,0.75,0.88,0,0.89,0.4,0.6,0.45,0.45,0.11,0.57,0.27,0.5,0,0.4,0.56,0.64,0.5,0.13,0,0.33,0.71,0.3,0.22,0.33,0.11,0.13,0.71,0.1,0.1,0.11,0.22,0.33,0.56,0,0.7,0.44,0.4,0.56,0.44,0.73,0.1,0.56,0.13,0.25,0.4,0.18,0,0.33,0.11,0.22,0.3,0.6,0.13,0.11,0.29,0.1,0,0.5,0.38,0,0.11,0,0.2,0.22,0,0.11,0.44,0.11,0.11,0.44,0,0.25,0.25,0.29,0.2,0,0.44,0.25,0,0.33,0.29,0,0.22,0,0.5,0,0,0.22,0.4,0.5,0.13,0.38,0,0,0,0.33,0.3,0.5,0,0.22,0,0,0,0,0.4,0.1,0.11,0,0,0,0.57,0,0,0,0,0,0,0,0.2,0,0.14,0.13,0,0,0,0,0,0.43,0,0.25,0,0,0.2,0,0.14,0,0.1,0,0,0,0.14,0,0.11,0.13,0,0,0.11,0,0.11,0,0,0,0,0,0,0.13,0.17,0,0,0,0,0,0,0,0],[5.5,6.11,8.5,6,5.71,4.73,4.5,6.2,4,5.4,5.22,5.86,6.63,4.1,3.56,5,2.1,4.09,3.56,5.8,5.33,3.33,5.5,4.71,5.67,5.75,4.56,6,5.2,5.6,4.11,5.11,1.78,4.33,4.8,4.25,3.22,2.22,2.78,3.18,2.75,1.82,2.64,2.3,5.25,3.78,4.11,3.22,2.57,3.33,2.88,2.88,1.2,4,4.11,3.5,3.33,3,3,3.6,3.67,3.11,3,3.44,2.57,2.63,2.17,2.3,2.57,2.67,3,2.4,2.63,2.55,3.11,3,3.38,2.8,3,2.78,2.8,2.2,2.2,2.6,3.2,2.86,2.8,2.5,2.1,2.67,2.56,1.91,1.5,2.9,2.78,2.11,2.29,2.4,2.6,3,2.22,2.6,2,1,1.5,1.63,2.67,1.33,2.5,2,2,2,2.67,1.71,2.09,1.75,2.4,2,2.33,1.36,1.5,2.25,2.5,1.78,1.14,1.8,2.11,1.67,2,1.88,1.57,2,1.9,1.89,1.67,2,1.78,2,1.1,1.56,1.4,1.22,1.67,0.73,1.8,1,1.63,1.88,1.4,1.45,1.89,1.33,1.78,1.44,1.9,0.9,1.75,1.56,1.43,1.7,1.6,1.25,1.13,2.11,1.56,2.22,1.6,1.44,1.56,1.33,1.22,1.44,1.44,0.89,1.63,1.75,1.13,1,1.3,1.56,0.89,1,1.67,1.11,0.86,1.44,1.11,1.25,0.6,1.44,1.44,1.11,0.7,1.2,1.63,0.75,1.22,1.67,1.44,0.78,1.3,1.2,1.13,0.89,1.14,1.44,1.11,1.2,0.5,1.1,1,1,1,0.88,1.14,1.11,0.9,0.8,0.8,0.88,0.89,0.67,0.5,0.71,0.43,0.5,0.88,0.78,0.7,0.6,0.71,0.29,0.86,0.63,0.89,0.67,0.5,0.5,0.29,0.6,0.5,0.5,0.44,0.5,0.29,0.4,0.22,0.5,0.33,0.67,0.22,0.33,0.33,0.67,0.38,0.43,0.25,0.5,0.33,0.13,0,0.67,0.33,0,0,0,0,0,0.63],[1.8,0.89,1.8,1.86,1.57,0.91,0.25,1.1,0.73,1.6,1.33,1.29,0.63,0.9,1.11,1.88,0.6,1.45,0.78,0.8,1.33,0.56,1.88,0.86,1.22,2.75,1.22,1.44,1.5,1.5,1.22,0.56,0.44,0.33,0.6,2.25,0.11,0.78,0.56,0.73,0.38,0.27,1.09,0.9,2.63,3,1.11,1,0.57,1.67,0.63,0.75,0.1,1.11,1.11,0.5,0.67,0.44,0.44,1.2,0.56,0.22,0.25,1.22,0.71,0.5,0.83,0.4,0.14,0.33,1.33,0.7,0.38,1.45,1.22,0.6,0.5,0.9,0.56,1.11,0.4,0.7,0.7,1.8,1.3,1,1.2,0.25,0.5,0.33,0.44,0.09,0.1,0.9,1.11,0.44,1.29,0,2.5,1,1.11,0.8,1.2,0.64,0.13,0.75,0.22,0.22,1.1,0.7,0.27,0.36,0.78,0.29,0.18,0.25,0.1,0.5,1.78,0.09,0,0.38,0.67,0.22,0.14,0.3,0.78,0.22,0.33,0.13,1.29,0.3,0.2,0.22,0.11,1.11,1.33,0.11,0.5,0.67,0.3,0.44,1,0,0.3,0.11,0.13,1,0.5,0,0.33,0.22,0.44,0.11,1.3,0.2,0.5,0.11,0.43,0.5,0,0.88,0.25,1.11,0.33,1.33,0.8,0.56,0.11,0.11,0.89,0.33,0.33,0.22,0.38,1.38,0.13,0,0.4,0.33,0.33,0,0.67,0.56,0,0.33,0.33,0,0.2,0.44,0.44,0.44,0.2,1.5,1.25,0.25,0.11,1,0.56,0.22,1.2,1.6,0,0.22,0.14,0.78,0.11,0.3,0.1,0.5,0.33,0,0.11,0,2.29,0.56,0.2,0,0.1,0.38,0.44,0,0.3,0.14,0,0.13,0.5,0.33,0.2,0,0.29,0.71,0.57,0.88,0.67,0.22,0.5,0,0,0.2,0.3,0.1,0,0.13,0.14,0,0,0.63,0,0.67,0.11,0,0.33,0.67,0.13,0.29,0,0.5,0.22,0.25,0.17,1,0.44,0,0,0,0,0,1.88],[2.94,3.5,1,1.54,1.55,3.1,10,1.27,3.38,1.06,1.08,0.67,0.2,2,2,0.8,5,1.31,2.57,0.63,0.67,3.4,0.4,1,0.27,0.27,0.82,0.08,0.4,0.2,0.91,0.2,4.75,1,0.17,0.44,8,2.29,2.4,1.5,3.33,6.67,1.42,1.89,0.1,0.44,0.4,1,2.25,0.67,1.6,1.33,19,0.3,0.2,0.8,0.83,1.5,1.5,0.42,0.4,2,2,0.36,1.2,1.5,1.4,2.25,4,1.67,0.5,1.14,1.33,0.63,0.36,0.5,0,0.56,0.4,0.5,0.75,1.14,1.14,0.5,0.23,0.43,0.42,1.5,1.4,0.67,0.75,7,9,0.22,0.3,1.25,0.56,null,0.36,0.13,0.6,0.38,0.67,2,6,1.17,0,4,0.36,0.86,1.67,1.25,0.14,2,1.5,2,0,0.8,0.31,7,null,0.33,0,1.5,5,1,0.29,1.5,0.33,1,0.56,0.33,0.5,0.5,2,0.3,0.42,0,1.4,0.67,1.33,1.25,0.44,null,0.33,5,1,0.25,0.8,null,0,1.5,0.25,2,0.23,3,0.25,1,0.67,0.2,null,0.57,1.5,0,0.33,0,0.25,0.4,0,1,0.5,0.33,0.33,2,0,0.18,2,null,0.5,0,1.33,null,0,0.6,null,0,0.67,null,2.5,0,0,0.5,2,0.33,0.1,1.5,0,0,0,1.5,0.25,0.31,null,1,0,0,0,0,4,0.2,0.33,null,0,null,0.25,0,0,null,0,0,0,null,0.67,0,null,1,0,0,0,null,0,0.6,0,0.29,0,0,0.4,null,null,0,0.33,0,null,0,1,null,null,0.2,null,0,1,null,0.33,0,0,0,null,0,0,0.5,1,0,0,null,null,null,null,null,0],[6,10.38,5.72,4.77,5.18,8.3,28,6.91,8.88,4.44,5,5.22,10.8,6.56,5.2,3.47,8.5,4.13,7.14,7.88,4.67,9.4,3.33,6.5,4.91,2.36,4.55,4.23,3.87,3.93,4.27,9.4,8.75,14,8.17,2.33,37,5.14,7.4,5.88,10.67,13.33,3.83,4.44,2.1,1.7,4.1,4.22,6.75,2.67,6.2,5.17,31,3.9,3.9,7.8,5.83,8.25,8.25,3.42,7,16,14,3.18,4.8,6.75,4,8,22,9.67,2.75,4.57,8.33,2.38,2.91,5.5,6.75,3.67,5.8,3,7.75,4.29,4.29,1.94,2.69,3.29,2.75,11.5,5.6,8.67,6.5,28,24,3.44,2.8,6,2.33,null,1.4,3.13,2.6,3.63,2.33,3.57,18,3.33,12,10,2.64,3.71,9,6.75,3.57,8,13,9,24,4.8,1.63,22,null,6.33,3.75,9.5,13,7,3,9,6.33,16,1.78,7,10,9,17,2.1,1.75,18,3.6,3,6,4,2.11,null,6.33,14,14,2.13,3.6,null,5.67,7.5,4.25,15,1.69,7.5,3.75,15,4,3.6,null,2,6,1.9,5,1.67,2.25,3,14,13,1.88,4.67,4.67,6,4.33,1.45,11,null,3.75,4.67,4,null,2.5,2.6,null,4.33,4,null,5.5,3.25,3.25,3,5.5,1.13,1.4,4.5,11,1.67,2.6,5,1.33,1.06,null,5,8,1.86,10,4,9,2.4,3.33,null,9,null,0.75,2,4.5,null,8,2.33,2,null,2.33,5,null,5,1.75,2.33,3.5,null,2.5,1,1.5,1,1.33,3,1.4,null,null,3,2,5,null,4,3,null,null,1,null,1,3,null,1.33,1,3,1.5,null,1,1.5,1,1,0.67,0.75,null,null,null,null,null,0.33],[125.5,103.33,103,93.57,85.71,85,81.25,77.5,73.18,71.5,67.22,65,65,63.5,63.33,63.13,63,62.27,61.67,61.5,60,58.89,56.88,55.71,55.56,55,54.44,54.44,53.5,53,51.67,50,47.22,46.67,46.5,46.25,45,45,45,44.55,44.38,44.09,44.09,44,43.13,42.78,42.22,42.22,42.14,41.67,40.63,40,40,39.44,38.89,38.5,38.33,37.78,37.78,37.5,37.22,36.67,36.25,35,35,35,35,34.5,33.57,33.33,33.33,32.5,31.88,31.82,31.67,31.5,31.25,31,30.56,30.56,30.5,30.5,30.5,30.5,30,30,29.5,29.38,29,28.33,28.33,28.18,28,27.5,27.22,27.22,27.14,27,27,26.88,26.67,26.5,26,25.91,25.63,25.63,25.56,25.56,25.5,25.5,25.45,25,24.44,24.29,24.09,23.75,23.5,23.5,22.78,22.73,22.5,22.5,21.67,21.67,21.43,21,20.56,20.56,20,20,20,20,19.5,19.44,19.44,19.44,19.44,19.44,19,18.89,18.5,18.33,18.33,18.18,18,17.78,17.5,17.5,17.5,17.27,17.22,17.22,17.22,17.22,17,17,16.88,16.67,16.43,16,16,15.63,15.63,15.56,15.56,15.56,15,15,15,14.44,14.44,14.44,14.44,14.44,14.38,14.38,14.38,14.29,14,13.89,13.89,13.75,13.33,13.33,12.86,12.78,12.78,12.5,12.5,12.22,12.22,12.22,12,12,11.88,11.88,11.67,11.67,11.67,11.67,11.5,11.5,11.25,11.11,10.71,10.56,10.56,10.5,10.5,10,10,10,9.44,8.75,8.57,8.33,8,8,7.5,6.88,6.67,6.67,6.5,6.43,6.43,6.25,6.25,6.11,6,6,5.71,5.71,5.71,5.63,5.56,5.56,5.5,5,5,5,5,4.5,4.44,4.38,4.29,4,3.89,3.75,3.33,3.33,3.33,3.33,3.33,3.33,3.13,2.86,2.5,2.5,2.22,1.88,1.67,1.67,1.11,0,0,0,0,0,-3.13]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>Player<\/th>\n      <th>Team<\/th>\n      <th>Site<\/th>\n      <th>GP<\/th>\n      <th>TUH<\/th>\n      <th>15<\/th>\n      <th>10<\/th>\n      <th>-5<\/th>\n      <th>15/G<\/th>\n      <th>10/G<\/th>\n      <th>-5/G<\/th>\n      <th>P/N<\/th>\n      <th>G/N<\/th>\n      <th>PPG<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"dom":"tp","rowCallback":"function(row, data){\n  for(var i=0; i<data.length; i++){\n    if(data[i] === null){\n      $('td:eq('+(i)+')', row).html('-')\n        .css({'font-style': 'italic', 'text-align': 'center'});\n    }\n  }\nvar value=data[3]; $(this.api().cell(row, 3).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[4]; $(this.api().cell(row, 4).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[5]; $(this.api().cell(row, 5).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[6]; $(this.api().cell(row, 6).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[7]; $(this.api().cell(row, 7).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[8]; $(this.api().cell(row, 8).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[9]; $(this.api().cell(row, 9).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[10]; $(this.api().cell(row, 10).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[11]; $(this.api().cell(row, 11).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[12]; $(this.api().cell(row, 12).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[13]; $(this.api().cell(row, 13).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[0]; $(this.api().cell(row, 0).node()).css({'border-right':'2px solid #d3d3d3'});\nvar value=data[1]; $(this.api().cell(row, 1).node()).css({'border-right':'2px solid #d3d3d3'});\nvar value=data[2]; $(this.api().cell(row, 2).node()).css({'border-right':'2px solid #d3d3d3'});\nvar value=data[4]; $(this.api().cell(row, 4).node()).css({'border-right':'2px solid #d3d3d3'});\nvar value=data[7]; $(this.api().cell(row, 7).node()).css({'border-right':'2px solid #d3d3d3'});\nvar value=data[10]; $(this.api().cell(row, 10).node()).css({'border-right':'2px solid #d3d3d3'});\n}","columnDefs":[{"targets":8,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 2, 3, \",\", \".\", null);\n  }"},{"targets":9,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 2, 3, \",\", \".\", null);\n  }"},{"targets":10,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 2, 3, \",\", \".\", null);\n  }"},{"targets":13,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 2, 3, \",\", \".\", null);\n  }"},{"targets":11,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 2, 3, \",\", \".\", null);\n  }"},{"targets":12,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 2, 3, \",\", \".\", null);\n  }"},{"className":"dt-right","targets":[3,4,5,6,7,8,9,10,11,12,13]}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":["options.rowCallback","options.columnDefs.0.render","options.columnDefs.1.render","options.columnDefs.2.render","options.columnDefs.3.render","options.columnDefs.4.render","options.columnDefs.5.render"],"jsHooks":[]}</script>
+</div>
+
+
+<script>
+
+var source = new Bloodhound({
+  datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
+  queryTokenizer: Bloodhound.tokenizers.whitespace,
+  prefetch: {
+    url: '../test-index.json',
+    cache: false
+  }
+});
+
+source.initialize();
+
+$('#custom-templates .typeahead').typeahead(null, {
+  name: 'matched-links',
+  displayKey: 'name',
+  source: source.ttAdapter(),
+  templates: {
+    empty: [
+      '<div class="empty-message">',
+      'unable to find any search results that match the current query',
+      '</div>'
+    ].join('\n'),
+      suggestion: Handlebars.compile('<p><a href="{{id}}">{{name}}</a></p>')
+  }
+});
+</script>
+
+<script>
+  $(function() {
+  var navSelector = '#toc';
+  var $myNav = $(navSelector);
+  Toc.init($myNav);
+  $('body').scrollspy({
+    target: navSelector
+  });
+});
+</script>
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+
+</body>
+</html>

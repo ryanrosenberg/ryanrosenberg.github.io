@@ -1,0 +1,339 @@
+---
+params:
+  tournament_id: 1315
+output:
+  html_document:    
+    self_contained: false
+    lib_dir: libs
+    includes:
+      in_header: ../../html/font_import.html
+      before_body: ../../html/navbar.html
+      after_body: ../../html/js.html
+    css: "../../css/style.css"
+    mathjax: null
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, warning = F, message = F, cache = F)
+
+library(stringr)
+library(tidyr)
+library(dplyr)
+library(knitr)
+library(gtExtras)
+library(htmltools)
+library(DT)
+
+source('../../utils.R')
+con <- dbConnect(RSQLite::SQLite(), "../../../demo-stats.db")
+```
+<div class = 'main-flex'>
+<div class="toc-div col-sm-2">
+<nav class = "side-nav" id="toc"></nav>
+</div>
+```{r get-meta}
+meta <- dbGetQuery(con, 
+                   glue::glue("SELECT 
+           date,  \"set\" || ' at ' || site as tournament_name
+           from tournaments 
+           LEFT JOIN sets on tournaments.set_id = sets.set_id
+           LEFT JOIN sites on tournaments.site_id = sites.site_id
+           WHERE tournaments.tournament_id = {params$tournament_id}"))
+
+```
+
+<div class = 'main-content col-sm-10'>
+
+<p class = 'page-title'>`r pluck(meta$tournament_name, 1)`</p>
+<p class = 'page-subtitle'>`r pluck(meta$date, 1)`</p>
+
+<hr>
+
+
+
+## Standings
+```{r standings}
+dbGetQuery(con, 
+           glue::glue("SELECT 
+           rank as Rank,
+           team as Team,
+           teams.school as School,
+           count(result) as GP,
+           sum(case result when 1 then 1 else 0 end) || '-' ||
+           sum(case result when 0 then 1 else 0 end) as \"W-L\",
+           sum(ifnull(tuh, 20)) as TUH,
+           sum(powers) as \"15\", sum(tens) as \"10\", sum(negs) as \"-5\",
+           round(sum(powers)/count(result), 2) as \"15/G\",
+           round(sum(tens)/count(result), 2) as \"10/G\",
+           round(sum(negs)/count(result), 2) as \"-5/G\",
+           (sum(ifnull(powers, 0)) + sum(tens))/sum(ifnull(tuh, 20)) as \"TU%\",
+           round(avg(total_pts), 2) as PPG, 
+           round(sum(bonus_pts)/sum(bonuses_heard), 2) as PPB,
+           round(a_value, 2) as \"A-Value\" 
+           from team_games
+           LEFT JOIN teams on team_games.team_id = teams.team_id
+           LEFT JOIN tournaments on team_games.tournament_id = tournaments.tournament_id
+           LEFT JOIN tournament_results on team_games.tournament_id = tournament_results.tournament_id
+           and team_games.team_id = tournament_results.team_id
+           LEFT JOIN sets on tournaments.set_id = sets.set_id
+           LEFT JOIN sites on tournaments.site_id = sites.site_id
+           WHERE team_games.tournament_id = {params$tournament_id}
+           GROUP BY 1, 2")) %>% 
+  mutate(Team = glue::glue('<a onclick="openTab(event, \'Team Detail\')" href = "#{slug(Team)}">{Team}</a>'),
+         School = ifelse(is.na(School), School,
+                         glue::glue('<a href = "../schools/{slug(School)}.html">{School}</a>'))) %>% 
+  arrange(Rank) %>% 
+  gt_table(sticky = F) %>% 
+  fmt_passthrough(c(Team, School), escape = F) %>%
+  gt::fmt_percent(columns = c(`TU%`)) %>%
+  cols_align(columns = c(`W-L`), "right") %>%
+  cols_align(columns = c(Team, School), "left") %>%
+  tab_style(
+    style = cell_borders(sides = "right", color = "#d1d3d4", weight = px(1.5)),
+    locations = list(cells_body(columns = c(School, `TUH`, `-5`, `-5/G`)),
+                     cells_column_labels(columns = c(School, `TUH`, `-5`, `-5/G`)))
+  ) %>%
+  sub_missing(columns = c(School, `15`, `15/G`), missing_text = '-')
+
+```
+
+<hr>
+
+## Players
+```{r players}
+options(knitr.kable.NA = '-')
+dbGetQuery(con,
+           
+           glue::glue("
+           SELECT
+           coalesce(fname|| ' ' || lname, player_games.player) as Player,
+           team as Team,
+           count(tens) as GP,
+           sum(ifnull(tuh, 20)) as TUH,
+           sum(powers) as \"15\", 
+           sum(tens) as \"10\", 
+           sum(negs) as \"-5\",
+           round(sum(powers)/count(tens), 2) as \"15/G\",
+           round(sum(tens)/count(tens), 2) as \"10/G\",
+           round(sum(negs)/count(tens), 2) as \"-5/G\",
+           round(sum(powers)/sum(negs), 2) as \"P/N\",
+           round((sum(ifnull(powers, 0)) + sum(tens))/sum(negs), 2) as \"G/N\",
+           round(avg(pts), 2) as PPG from
+           player_games
+           LEFT JOIN teams on player_games.team_id = teams.team_id
+           LEFT JOIN tournaments on player_games.tournament_id = tournaments.tournament_id
+           LEFT JOIN sets on tournaments.set_id = sets.set_id
+           LEFT JOIN sites on tournaments.site_id = sites.site_id
+           LEFT JOIN players on player_games.player_id = players.player_id
+           LEFT JOIN people on players.person_id = people.person_id
+           WHERE player_games.tournament_id = {params$tournament_id}
+           GROUP BY 1, 2
+           ORDER BY PPG desc"
+           )) %>% 
+  mutate(Player = glue::glue('<a href = "#{slug(Team)}-{slug(Player)}">{Player}</a>'),
+         Team = glue::glue('<a href = "#{slug(Team)}">{Team}</a>')) %>% 
+  ungroup() %>% 
+  mutate(Rank = row_number(), .before = 1) %>% 
+  arrange(Rank) %>% 
+  dt_table() %>% 
+  formatRound(columns = c('15/G', '10/G', '-5/G', 'P/N', 'G/N', 'PPG'),
+              digits = 2) %>% 
+  formatStyle(columns = c('Rank', 'Team', 'TUH', '-5', '-5/G', 'G/N'),
+              borderRight = '1.5px solid #d3d3d3')
+```
+
+<hr>
+
+## Team Detail
+```{r team-detail, results = 'asis'}
+team_names <- dbGetQuery(con,
+                         glue::glue("SELECT
+           distinct team
+           from team_games
+           LEFT JOIN teams on team_games.team_id = teams.team_id
+           WHERE tournament_id = {params$tournament_id}
+           ORDER BY 1")) %>% 
+  pull(team) %>% 
+  map(~str_replace_all(., "Anselm's", "Anselms"))
+
+
+team_html <- map(team_names,
+                 function(team_name){
+                   dbGetQuery(con,
+                              glue::glue("SELECT
+           team_games.round,
+           game_num, game_id,
+           opponent_team as Opponent,
+           case result when 1 then 'W' when 0 then 'L' else 'T' end as Result,
+           total_pts as PF, opp_pts as PA, powers as \"15\", tens as \"10\",
+           negs as \"-5\", ifnull(tuh, 20) as TUH,
+           round(total_pts/ifnull(tuh, 20), 2) as PPTUH, 
+           bonuses_heard as BHrd, bonus_pts as BPts,
+           round(bonus_pts/bonuses_heard, 2) as PPB
+           from team_games
+           LEFT JOIN teams on team_games.team_id = teams.team_id
+           LEFT JOIN (select team_id, team as opponent_team from teams) a on team_games.opponent_id = a.team_id
+           WHERE teams.team = '{team_name}'
+           and team_games.tournament_id = {params$tournament_id}",
+           .con = con)
+                   ) %>%
+                     mutate(Round = ifelse(str_detect(round, '\\d'),
+                                           str_extract(round, '\\d+'),
+                                           round),
+                            Opponent = glue::glue('<a href = "#{slug(Opponent)}">{Opponent}</a>'),
+                            Result = glue::glue('<a href = "games.html#game-id-{game_id}">{Result}</a>')) %>%
+                     relocate(Round, .before = 1) %>% 
+                     mutate(Round = str_replace(Round, "Prelims", "1 - Prelims"),
+                            Round = str_replace(Round, "Playoffs", "2 - Playoffs")) %>%
+                     arrange(Round, game_num) %>%
+                     mutate(Round = str_remove(Round, "\\d+ - ")) %>% 
+                     select(-game_id, -game_num, -round)
+                 })
+
+player_html <- map(team_names,
+                   function(team_name){
+                     dbGetQuery(con,
+                                glue::glue("SELECT 
+           coalesce(fname|| ' ' || lname, player_games.player) as Player, 
+           team as Team,
+           players.player_id,
+           count(tens) as GP,
+           sum(ifnull(tuh, 20)) as TUH,
+           sum(powers) as \"15\", sum(tens) as \"10\", sum(negs) as \"-5\",
+           round(sum(powers)/count(tens), 2) as \"15/G\",
+           round(sum(tens)/count(tens), 2) as \"10/G\",
+           round(sum(negs)/count(tens), 2) as \"-5/G\",
+           round(sum(powers)/sum(negs), 2) as \"P/N\",
+           round((sum(ifnull(powers, 0)) + sum(tens))/sum(negs), 2) as \"G/N\",
+           round((sum(ifnull(powers, 0)) + sum(tens))/sum(ifnull(tuh, 20)), 3) as \"TU%\",
+           sum(pts) as Pts,
+           round(avg(pts), 2) as PPG from 
+           player_games
+           LEFT JOIN teams on player_games.team_id = teams.team_id
+           LEFT JOIN tournaments on player_games.tournament_id = tournaments.tournament_id
+           LEFT JOIN players on player_games.player_id = players.player_id
+           LEFT JOIN people on players.person_id = people.person_id
+           WHERE team = '{team_name}'
+           and player_games.tournament_id = {params$tournament_id}
+           GROUP BY 1")) %>%
+                       mutate(Player = ifelse(is.na(player_id), Player,
+                                              glue::glue('<a href = "#{slug(Team)}-{slug(Player)}">{Player}</a>'))) %>% 
+                       select(-player_id, -Team)
+                   })
+
+for(teamj in 1:length(team_html)){
+  cat(glue::glue('<h3 id="{slug(team_names[teamj])}" class = "anchor">{team_names[teamj]}</h3>'))
+  
+  team_html[[teamj]] %>%
+    gt_table(sticky = F) %>%
+    cols_align(columns = Opponent, "left") %>%
+    cols_align(columns = Result, "center") %>%
+    tab_options(table.width = pct(80)) %>%
+    tab_style(
+      style = cell_borders(sides = "right", color = "#d1d3d4", weight = px(1.5)),
+      locations = list(cells_body(columns = c(Result, PA, PPTUH)),
+                       cells_column_labels(columns = c(Result, PA, PPTUH)))
+    ) %>%
+    fmt_passthrough(columns = c(Result, Opponent), escape = F) %>%
+    sub_missing(columns = c(`15`, Round), missing_text = '-') %>%
+    htmltools::tagList() %>%
+    print()
+  
+  cat('<br>')
+  
+  player_html[[teamj]] %>%
+    gt_table(sticky = F) %>%
+    tab_options(table.width = pct(80)) %>%
+    tab_style(
+      style = cell_borders(sides = "right", color = "#d1d3d4", weight = px(1.5)),
+      locations = list(cells_body(columns = c(Player, TUH, `-5`, `G/N`)),
+                       cells_column_labels(columns = c(Player, TUH, `-5`, `G/N`)))
+    ) %>%
+    cols_align(columns = Player, "left") %>%
+    fmt_passthrough(Player, escape = F) %>%
+    sub_missing(columns = c(`15`, `15/G`, `P/N`, `G/N`), missing_text = '-') %>%
+    htmltools::tagList() %>%
+    print()
+}
+
+```
+
+<hr>
+
+## Player Detail
+
+```{r player-detail, results = 'asis'}
+player_team_names <- dbGetQuery(con,
+                                glue::glue("SELECT
+           distinct coalesce(fname|| ' ' || lname, player_games.player) as player,
+           player_games.player_id,
+           team
+           from player_games
+           LEFT JOIN teams on player_games.team_id = teams.team_id
+            LEFT JOIN players on player_games.player_id = players.player_id
+            LEFT JOIN people on players.person_id = people.person_id
+           WHERE tournament_id = {params$tournament_id}
+            ORDER BY 2, 1"))
+
+player_html <- map(player_team_names$player_id,
+                   function(player_id){
+                     dbGetQuery(con,
+                                glue::glue("SELECT
+player_games.round,
+opponent_team as Opponent,
+player_games.game_num, player_games.game_id,
+case result when 1 then 'W' when 0 then 'L' else 'T' end as Result,
+ifnull(player_games.tuh, 20) as TUH,
+player_games.powers as \"15\", player_games.tens as \"10\", player_games.negs as \"-5\", pts as Pts
+from player_games
+LEFT JOIN team_games on player_games.game_id = team_games.game_id
+and player_games.team_id = team_games.team_id
+LEFT JOIN (select team_id, team as opponent_team from teams) a on team_games.opponent_id = a.team_id
+WHERE player_games.player_id = '{player_id}'
+and player_games.tournament_id = {params$tournament_id}")) %>%
+                       mutate(Round = ifelse(str_detect(round, '\\d'),
+                                             str_extract(round, '\\d+'),
+                                             round),
+                              Opponent = glue::glue('<a onclick="openTab(event, \'Teams\')" href = "#{slug(Opponent)}">{Opponent}</a>'),
+                              Result = glue::glue('<a onclick="openTab(event, \'Games\')" href = "games.html#game-id-{game_id}">{Result}</a>')) %>%
+                       relocate(Round, .before = 1) %>% 
+                       arrange(Round, game_num) %>%
+                       select(-game_id, -game_num, -round)
+                   })
+
+for(teamj in 1:length(player_html)){
+  # cat(glue::glue('<h4 id="{slug(player_team_names$team[[teamj]])}-{slug(player_team_names$player[[teamj]])}" class = "anchor"><a href = "../players/{slug(player_team_names$player[[teamj]])}.html">{player_team_names$player[teamj]}</a>, <a onclick="openTab(event, \'Team Detail\')" href = "#{slug(player_team_names$team[teamj])}">{player_team_names$team[teamj]}</a></h4>'))
+  cat(glue::glue('<h3 id="{slug(player_team_names$team[[teamj]])}-{slug(player_team_names$player[[teamj]])}" class = "anchor">{player_team_names$player[teamj]}, {player_team_names$team[teamj]}</h3>'))
+  
+  
+  player_html[[teamj]] %>%
+    gt_table(sticky = F) %>%
+    tab_options(table.width = pct(80)) %>%
+    tab_style(
+      style = cell_borders(sides = "right", color = "#d1d3d4", weight = px(1.5)),
+      locations = list(cells_body(columns = c(Result, `-5`)),
+                       cells_column_labels(columns = c(Result, `-5`)))
+    ) %>%
+    cols_align(columns = Opponent, "left") %>%
+    fmt_passthrough(columns = c(Opponent, Result), escape = F) %>%
+    sub_missing(columns = c(`15`, Round), missing_text = '-') %>%
+    grand_summary_rows(
+      columns = c(`15`, `10`, `-5`, Pts),
+      fns = list(Total = ~sum(.)),
+      missing_text = '-',
+      formatter = fmt_number,
+      decimals = 0
+    ) %>%
+    htmltools::tagList() %>%
+    print()
+}
+
+```
+
+</div>
+</div>
+
+```{r db-dis}
+dbDisconnect(con)
+```
+

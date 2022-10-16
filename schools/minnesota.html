@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>Minnesota | College Quizbowl Stats</title>
+
+<script src="libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="libs/navigation-1.1/tabsets.js"></script>
+<link href="libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="libs/highlightjs-9.12.0/highlight.js"></script>
+<script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script>
+<link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
+<script src="libs/datatables-binding-0.24/datatables.js"></script>
+<link href="libs/dt-core-1.11.3/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="libs/dt-core-1.11.3/css/jquery.dataTables.extra.css" rel="stylesheet" />
+<script src="libs/dt-core-1.11.3/js/jquery.dataTables.min.js"></script>
+<link href="libs/crosstalk-1.1.1/css/crosstalk.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.1.1/js/crosstalk.min.js"></script>
+<link href="libs/dt-ext-rowgroup-1.11.3/css/rowGroup.dataTables.min.css" rel="stylesheet" />
+<script src="libs/dt-ext-rowgroup-1.11.3/js/dataTables.rowGroup.min.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Alegreya+Sans&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inconsolata&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+<script src="https://twitter.github.io/typeahead.js/releases/latest/typeahead.bundle.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.7/handlebars.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-sidebar/3.3.1/jquery.sticky-sidebar.min.js" integrity="sha512-iVhJqV0j477IrAkkzsn/tVJWXYsEqAj4PSS7AG+z1F7eD6uLKQxYBg09x13viaJ1Z5yYhlpyx0zLAUUErdHM6A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<!-- add after bootstrap.min.css -->
+<link rel="stylesheet" href="https://cdn.rawgit.com/afeld/bootstrap-toc/v0.4.1/dist/bootstrap-toc.min.css">
+<!-- add after bootstrap.min.js -->
+<script src="https://cdn.rawgit.com/afeld/bootstrap-toc/v0.4.1/dist/bootstrap-toc.min.js"></script>
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+      .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+
+
+<link rel="stylesheet" href="../css/style.css" type="text/css" />
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+
+<nav class = 'top-nav'>
+  <ul>
+    <li><p class = "site-title"><a href="/index.html">College Quizbowl Stats</a></p>
+    </li>
+    <li><a class = "navbar-link" href="/seasons/">Seasons</a></li>
+    <li><a class = "navbar-link" href="/sets/">Sets</a></li>
+    <li><a class = "navbar-link" href="/circuits/">Circuits</a></li>
+    <li><a class = "navbar-link" href="/records.html">Records</a></li>
+    <li><a class = "navbar-link" href="/about.html">About</a></li>
+
+<div id="custom-templates">
+  <input class="typeahead" type="text" placeholder="Player/Team Search">
+</div>
+  </ul>
+</nav>
+
+<div id="header">
+
+
+
+
+</div>
+
+
+<div class = 'main-flex'>
+<div class="toc-div col-sm-2">
+<nav class="side-nav" id="toc">
+</nav>
+</div>
+<div class = 'main-content col-sm-10'>
+
+
+<p class="page-title">
+Minnesota
+</p>
+<p class="page-subtitle">
+North
+</p>
+<div id="seasons" class="section level2">
+<h2>Seasons</h2>
+<div id="sgxfzvbgef" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>html {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+}
+
+#sgxfzvbgef .gt_table {
+  display: table;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#sgxfzvbgef .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#sgxfzvbgef .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 1px;
+  padding-bottom: 1px;
+  padding-left: 6px;
+  padding-right: 6px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#sgxfzvbgef .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 0;
+  padding-bottom: 3px;
+  padding-left: 6px;
+  padding-right: 6px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#sgxfzvbgef .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#sgxfzvbgef .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#sgxfzvbgef .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 1.25px;
+  padding-bottom: 2.25px;
+  padding-left: 6px;
+  padding-right: 6px;
+  overflow-x: hidden;
+}
+
+#sgxfzvbgef .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#sgxfzvbgef .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#sgxfzvbgef .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#sgxfzvbgef .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 1.25px;
+  padding-bottom: 1.25px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#sgxfzvbgef .gt_group_heading {
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-left: 6px;
+  padding-right: 6px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#sgxfzvbgef .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#sgxfzvbgef .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#sgxfzvbgef .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#sgxfzvbgef .gt_row {
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-left: 6px;
+  padding-right: 6px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#sgxfzvbgef .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 6px;
+  padding-right: 6px;
+}
+
+#sgxfzvbgef .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 6px;
+  padding-right: 6px;
+  vertical-align: top;
+}
+
+#sgxfzvbgef .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#sgxfzvbgef .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-left: 6px;
+  padding-right: 6px;
+}
+
+#sgxfzvbgef .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#sgxfzvbgef .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#sgxfzvbgef .gt_last_summary_row {
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-left: 6px;
+  padding-right: 6px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#sgxfzvbgef .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-left: 6px;
+  padding-right: 6px;
+}
+
+#sgxfzvbgef .gt_first_grand_summary_row {
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-left: 6px;
+  padding-right: 6px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#sgxfzvbgef .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#sgxfzvbgef .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#sgxfzvbgef .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#sgxfzvbgef .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-left: 1px;
+  padding-right: 1px;
+  padding-left: 6px;
+  padding-right: 6px;
+}
+
+#sgxfzvbgef .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#sgxfzvbgef .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 1px;
+  padding-bottom: 1px;
+  padding-left: 6px;
+  padding-right: 6px;
+}
+
+#sgxfzvbgef .gt_left {
+  text-align: left;
+}
+
+#sgxfzvbgef .gt_center {
+  text-align: center;
+}
+
+#sgxfzvbgef .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#sgxfzvbgef .gt_font_normal {
+  font-weight: normal;
+}
+
+#sgxfzvbgef .gt_font_bold {
+  font-weight: bold;
+}
+
+#sgxfzvbgef .gt_font_italic {
+  font-style: italic;
+}
+
+#sgxfzvbgef .gt_super {
+  font-size: 65%;
+}
+
+#sgxfzvbgef .gt_two_val_uncert {
+  display: inline-block;
+  line-height: 1em;
+  text-align: right;
+  font-size: 60%;
+  vertical-align: -0.25em;
+  margin-left: 0.1em;
+}
+
+#sgxfzvbgef .gt_footnote_marks {
+  font-style: italic;
+  font-weight: normal;
+  font-size: 75%;
+  vertical-align: 0.4em;
+}
+
+#sgxfzvbgef .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#sgxfzvbgef .gt_slash_mark {
+  font-size: 0.7em;
+  line-height: 0.7em;
+  vertical-align: 0.15em;
+}
+
+#sgxfzvbgef .gt_fraction_numerator {
+  font-size: 0.6em;
+  line-height: 0.6em;
+  vertical-align: 0.45em;
+}
+
+#sgxfzvbgef .gt_fraction_denominator {
+  font-size: 0.6em;
+  line-height: 0.6em;
+  vertical-align: -0.05em;
+}
+</style>
+<table class="gt_table">
+  
+  <thead class="gt_col_headings">
+    <tr>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;">Season</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;">Tmnts</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">Teams</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;">Players</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">ACF Nats</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">DI ICT</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr><td class="gt_row gt_center" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;"><a href = "../seasons/21-22.html">21-22</a></td>
+<td class="gt_row gt_right" style="font-family: var(--table-font); font-size: 110%; border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;">9</td>
+<td class="gt_row gt_right" style="font-family: var(--table-font); font-size: 110%;">4</td>
+<td class="gt_row gt_right" style="font-family: var(--table-font); font-size: 110%; border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;">34</td>
+<td class="gt_row gt_right" style="font-family: var(--table-font); font-size: 110%;">34</td>
+<td class="gt_row gt_right" style="font-family: var(--table-font); font-size: 110%;">-</td></tr>
+  </tbody>
+  
+  
+</table>
+</div>
+<hr>
+</div>
+<div id="teams" class="section level2">
+<h2>Teams</h2>
+<div id="htmlwidget-969debdf6737178883fb" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-969debdf6737178883fb">{"x":{"filter":"none","vertical":false,"data":[["Minnesota A","Minnesota B","Minnesota C","Minnesota D","Minnesota E"],[7,7,5,2,1],[87,83,54,22,11],["57-30","43-40","40-14","18-4","6-5"],[0.655,0.518,0.741,0.818,0.545],[1790,1701,1102,462,231],[158,77,125,54,12],[793,745,515,234,89],[253,238,115,56,19],[1.82,0.93,2.31,2.45,1.09],[9.11,8.98,9.54,10.64,8.09],[2.91,2.87,2.13,2.55,1.73],[0.531,0.483,0.581,0.623,0.437],[306.03,253.55,344.63,399.09,234.09],[18.5,16.58,19,20.52,15.84]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>Team<\/th>\n      <th>Tmnts<\/th>\n      <th>GP<\/th>\n      <th>W-L<\/th>\n      <th>Win%<\/th>\n      <th>TUH<\/th>\n      <th>15<\/th>\n      <th>10<\/th>\n      <th>-5<\/th>\n      <th>15/G<\/th>\n      <th>10/G<\/th>\n      <th>-5/G<\/th>\n      <th>TU%<\/th>\n      <th>PPG<\/th>\n      <th>PPB<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"dom":"tp","rowCallback":"function(row, data){\n  for(var i=0; i<data.length; i++){\n    if(data[i] === null){\n      $('td:eq('+(i)+')', row).html('-')\n        .css({'font-style': 'italic', 'text-align': 'center'});\n    }\n  }\nvar value=data[1]; $(this.api().cell(row, 1).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[2]; $(this.api().cell(row, 2).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[3]; $(this.api().cell(row, 3).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[4]; $(this.api().cell(row, 4).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[5]; $(this.api().cell(row, 5).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[6]; $(this.api().cell(row, 6).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[7]; $(this.api().cell(row, 7).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[8]; $(this.api().cell(row, 8).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[9]; $(this.api().cell(row, 9).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[10]; $(this.api().cell(row, 10).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[11]; $(this.api().cell(row, 11).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[12]; $(this.api().cell(row, 12).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[13]; $(this.api().cell(row, 13).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[14]; $(this.api().cell(row, 14).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[0]; $(this.api().cell(row, 0).node()).css({'border-right':'1.5px solid #d3d3d3'});\nvar value=data[2]; $(this.api().cell(row, 2).node()).css({'border-right':'1.5px solid #d3d3d3'});\nvar value=data[3]; $(this.api().cell(row, 3).node()).css({'border-right':'1.5px solid #d3d3d3'});\nvar value=data[8]; $(this.api().cell(row, 8).node()).css({'border-right':'1.5px solid #d3d3d3'});\nvar value=data[11]; $(this.api().cell(row, 11).node()).css({'border-right':'1.5px solid #d3d3d3'});\nvar value=data[12]; $(this.api().cell(row, 12).node()).css({'border-right':'1.5px solid #d3d3d3'});\nvar value=data[3]; $(this.api().cell(row, 3).node()).css({'text-align':'right'});\n}","columnDefs":[{"targets":12,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatPercentage(data, 0, 3, \",\", \".\", null);\n  }"},{"targets":4,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"targets":9,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 2, 3, \",\", \".\", null);\n  }"},{"targets":10,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 2, 3, \",\", \".\", null);\n  }"},{"targets":11,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 2, 3, \",\", \".\", null);\n  }"},{"targets":13,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 2, 3, \",\", \".\", null);\n  }"},{"targets":14,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 2, 3, \",\", \".\", null);\n  }"},{"className":"dt-right","targets":[1,2,4,5,6,7,8,9,10,11,12,13,14]}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":["options.rowCallback","options.columnDefs.0.render","options.columnDefs.1.render","options.columnDefs.2.render","options.columnDefs.3.render","options.columnDefs.4.render","options.columnDefs.5.render","options.columnDefs.6.render"],"jsHooks":[]}</script>
+<hr>
+</div>
+<div id="players" class="section level2">
+<h2>Players</h2>
+<div id="htmlwidget-b7a7d846c823da2e49f6" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-b7a7d846c823da2e49f6">{"x":{"filter":"none","vertical":false,"data":[["<a href = \"../players/amanda-bittmann.html\">Amanda Bittmann<\/a>","<a href = \"../players/athens-dress.html\">Athens Dress<\/a>","<a href = \"../players/avery-lembke.html\">Avery Lembke<\/a>","<a href = \"../players/ben-weiner.html\">Ben Weiner<\/a>","<a href = \"../players/cece-shao.html\">Cece Shao<\/a>","<a href = \"../players/davis-everson-rose.html\">Davis Everson-Rose<\/a>","<a href = \"../players/elise-anderson.html\">Elise Anderson<\/a>","<a href = \"../players/emilio-rodriguez.html\">Emilio Rodriguez<\/a>","<a href = \"../players/ethan-ashbrook.html\">Ethan Ashbrook<\/a>","<a href = \"../players/ethan-barber.html\">Ethan Barber<\/a>","<a href = \"../players/evan-saunders-pierce.html\">Evan Saunders-Pierce<\/a>","<a href = \"../players/jim-sweeney.html\">Jim Sweeney<\/a>","<a href = \"../players/joe-kammann.html\">Joe Kammann<\/a>","<a href = \"../players/joel-miles.html\">Joel Miles<\/a>","<a href = \"../players/kathryn-jans.html\">Kathryn Jans<\/a>","<a href = \"../players/keegan-wulf.html\">Keegan Wulf<\/a>","<a href = \"../players/lucas-pham.html\">Lucas Pham<\/a>","<a href = \"../players/madeline-damkot.html\">Madeline Damkot<\/a>","<a href = \"../players/mario-valento.html\">Mario Valento<\/a>","<a href = \"../players/max-pinamonti.html\">Max Pinamonti<\/a>","<a href = \"../players/maxwell-ye.html\">Maxwell Ye<\/a>","<a href = \"../players/morgan-bozeman.html\">Morgan Bozeman<\/a>","<a href = \"../players/nick-tunks.html\">Nick Tunks<\/a>","<a href = \"../players/owen-hunter.html\">Owen Hunter<\/a>","<a href = \"../players/peyton-johnson.html\">Peyton Johnson<\/a>","<a href = \"../players/puna-ekka.html\">Puna Ekka<\/a>","<a href = \"../players/sandra-larson.html\">Sandra Larson<\/a>","<a href = \"../players/shardul-rao.html\">Shardul Rao<\/a>","<a href = \"../players/tommy-lenz.html\">Tommy Lenz<\/a>","<a href = \"../players/tora-husar.html\">Tora Husar<\/a>","<a href = \"../players/urbas-ekka.html\">Urbas Ekka<\/a>","<a href = \"../players/weston-wyatt.html\">Weston Wyatt<\/a>","<a href = \"../players/william-gronewald.html\">William Gronewald<\/a>"],["2021-2022","2021","2021-2022","2021-2022","2021-2022","2021-2022","2021","2021","2022","2021","2021","2021","2021-2022","2021-2022","2021","2021-2022","2021","2021","2021","2021","2022","2021-2022","2021-2022","2022","2021-2022","2021-2022","2021","2021-2022","2021-2022","2021-2022","2021-2022","2021","2021-2022"],[2,1,3,5,4,4,1,1,4,2,2,2,4,6,1,2,1,1,1,1,3,4,3,2,4,3,1,3,2,3,5,1,3],[20,11,32,63,45,50,12,11,49,17,19,19,47,74,8,22,10,12,9,11,36,43,31,24,50,30,11,35,18,39,61,10,27],[396,180,649,1304,938,1008,240,220,1007,330,370,360,960,1526,120,440,190,240,180,180,766,900,627,522,1028,590,190,732,352,807,1262,200,531],[1,1,19,14,13,26,0,5,25,6,3,50,9,96,0,2,0,0,17,3,20,26,12,10,0,0,5,41,3,1,15,0,3],[11,11,139,109,194,148,41,9,199,13,13,74,141,364,2,79,5,1,42,2,41,169,37,22,41,134,6,107,31,104,62,9,16],[6,0,12,36,48,79,10,2,31,9,6,20,72,96,1,17,2,1,6,3,8,19,11,8,19,17,2,43,9,23,50,4,11],[0.05,0.09,0.59,0.22,0.29,0.52,0,0.45,0.51,0.35,0.16,2.63,0.19,1.3,0,0.09,0,0,1.89,0.27,0.56,0.6,0.39,0.42,0,0,0.45,1.17,0.17,0.03,0.25,0,0.11],[0.55,1,4.34,1.73,4.31,2.96,3.42,0.82,4.06,0.76,0.68,3.89,3,4.92,0.25,3.59,0.5,0.08,4.67,0.18,1.14,3.93,1.19,0.92,0.82,4.47,0.55,3.06,1.72,2.67,1.02,0.9,0.59],[0.3,0,0.38,0.57,1.07,1.58,0.83,0.18,0.63,0.53,0.32,1.05,1.53,1.3,0.13,0.77,0.2,0.08,0.67,0.27,0.22,0.44,0.35,0.33,0.38,0.57,0.18,1.23,0.5,0.59,0.82,0.4,0.41],[0.03,0.067,0.243,0.094,0.221,0.173,0.171,0.064,0.222,0.058,0.043,0.344,0.156,0.301,0.017,0.184,0.026,0.004,0.328,0.028,0.08,0.217,0.078,0.061,0.04,0.227,0.058,0.202,0.097,0.13,0.061,0.045,0.036],[4.75,11.36,50.47,17.78,42.11,29.5,30,14.09,45.1,10.29,7.63,73.16,25.21,62.16,1.88,33.41,4,0.42,71.67,4.55,18.61,46.16,15.97,13.75,6.3,41.83,11.36,42,17.22,24.1,9.75,7,5.56]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>Player<\/th>\n      <th>Yrs<\/th>\n      <th>Tmnts<\/th>\n      <th>GP<\/th>\n      <th>TUH<\/th>\n      <th>15<\/th>\n      <th>10<\/th>\n      <th>-5<\/th>\n      <th>15/G<\/th>\n      <th>10/G<\/th>\n      <th>-5/G<\/th>\n      <th>TU%<\/th>\n      <th>PPG<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"dom":"tp","rowCallback":"function(row, data){\n  for(var i=0; i<data.length; i++){\n    if(data[i] === null){\n      $('td:eq('+(i)+')', row).html('-')\n        .css({'font-style': 'italic', 'text-align': 'center'});\n    }\n  }\nvar value=data[2]; $(this.api().cell(row, 2).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[3]; $(this.api().cell(row, 3).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[4]; $(this.api().cell(row, 4).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[5]; $(this.api().cell(row, 5).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[6]; $(this.api().cell(row, 6).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[7]; $(this.api().cell(row, 7).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[8]; $(this.api().cell(row, 8).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[9]; $(this.api().cell(row, 9).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[10]; $(this.api().cell(row, 10).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[11]; $(this.api().cell(row, 11).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[12]; $(this.api().cell(row, 12).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[0]; $(this.api().cell(row, 0).node()).css({'border-right':'1.5px solid #d3d3d3'});\nvar value=data[3]; $(this.api().cell(row, 3).node()).css({'border-right':'1.5px solid #d3d3d3'});\nvar value=data[7]; $(this.api().cell(row, 7).node()).css({'border-right':'1.5px solid #d3d3d3'});\nvar value=data[10]; $(this.api().cell(row, 10).node()).css({'border-right':'1.5px solid #d3d3d3'});\nvar value=data[11]; $(this.api().cell(row, 11).node()).css({'border-right':'1.5px solid #d3d3d3'});\n}","columnDefs":[{"targets":11,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatPercentage(data, 0, 3, \",\", \".\", null);\n  }"},{"targets":8,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 2, 3, \",\", \".\", null);\n  }"},{"targets":9,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 2, 3, \",\", \".\", null);\n  }"},{"targets":10,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 2, 3, \",\", \".\", null);\n  }"},{"targets":12,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 2, 3, \",\", \".\", null);\n  }"},{"className":"dt-right","targets":[2,3,4,5,6,7,8,9,10,11,12]}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":["options.rowCallback","options.columnDefs.0.render","options.columnDefs.1.render","options.columnDefs.2.render","options.columnDefs.3.render","options.columnDefs.4.render"],"jsHooks":[]}</script>
+<hr>
+</div>
+<div id="tournaments" class="section level2">
+<h2>Tournaments</h2>
+<div id="htmlwidget-907c87f15fedabdc6f35" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-907c87f15fedabdc6f35">{"x":{"filter":"none","vertical":false,"extensions":["RowGroup"],"data":[["2022-04-09: ACF Nationals  at Minnesota","2022-04-09: ACF Nationals  at Minnesota","2022-04-02: DII ICT  at Hyatt Regency O'Hare","2022-04-02: DII ICT  at Hyatt Regency O'Hare","2022-02-19: MRNA VACCINE  at Iowa","2022-02-05: DI SCT  at Minnesota","2022-02-05: DI SCT  at Minnesota","2022-02-05: DII SCT  at Minnesota","2022-02-05: DII SCT  at Minnesota","2022-02-05: DII SCT  at Minnesota","2022-01-29: ACF Regionals  at Minnesota","2022-01-29: ACF Regionals  at Minnesota","2021-11-06: ACF Winter  at Minnesota","2021-11-06: ACF Winter  at Minnesota","2021-11-06: ACF Winter  at Minnesota","2021-10-16: ACF Fall  at Minnesota","2021-10-16: ACF Fall  at Minnesota","2021-10-16: ACF Fall  at Minnesota","2021-10-16: ACF Fall  at Minnesota","2021-10-02: NAQT Collegiate Novice  at Minnesota","2021-10-02: NAQT Collegiate Novice  at Minnesota","2021-10-02: NAQT Collegiate Novice  at Minnesota"],["<a href = \"../tournaments/21-22-acf-nationals-minnesota#minnesota-a\">Minnesota A<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#minnesota-b\">Minnesota B<\/a>","<a href = \"../tournaments/21-22-dii-ict-hyatt-regency-o'hare#minnesota-a\">Minnesota A<\/a>","<a href = \"../tournaments/21-22-dii-ict-hyatt-regency-o'hare#minnesota-b\">Minnesota B<\/a>","<a href = \"../tournaments/21-22-mrna-vaccine-iowa#minnesota-a\">Minnesota A<\/a>","<a href = \"../tournaments/21-22-di-sct-minnesota#minnesota-a\">Minnesota A<\/a>","<a href = \"../tournaments/21-22-di-sct-minnesota#minnesota-b\">Minnesota B<\/a>","<a href = \"../tournaments/21-22-dii-sct-minnesota#minnesota-c\">Minnesota C<\/a>","<a href = \"../tournaments/21-22-dii-sct-minnesota#minnesota-d\">Minnesota D<\/a>","<a href = \"../tournaments/21-22-dii-sct-minnesota#minnesota-e\">Minnesota E<\/a>","<a href = \"../tournaments/21-22-acf-regionals-minnesota#minnesota-b\">Minnesota B<\/a>","<a href = \"../tournaments/21-22-acf-regionals-minnesota#minnesota-c\">Minnesota C<\/a>","<a href = \"../tournaments/21-22-acf-winter-minnesota#minnesota-a\">Minnesota A<\/a>","<a href = \"../tournaments/21-22-acf-winter-minnesota#minnesota-b\">Minnesota B<\/a>","<a href = \"../tournaments/21-22-acf-winter-minnesota#minnesota-c\">Minnesota C<\/a>","<a href = \"../tournaments/21-22-acf-fall-minnesota#minnesota-a\">Minnesota A<\/a>","<a href = \"../tournaments/21-22-acf-fall-minnesota#minnesota-b\">Minnesota B<\/a>","<a href = \"../tournaments/21-22-acf-fall-minnesota#minnesota-c\">Minnesota C<\/a>","<a href = \"../tournaments/21-22-acf-fall-minnesota#minnesota-d\">Minnesota D<\/a>","<a href = \"../tournaments/21-22-naqt-collegiate-novice-minnesota#minnesota-a\">Minnesota A<\/a>","<a href = \"../tournaments/21-22-naqt-collegiate-novice-minnesota#minnesota-b\">Minnesota B<\/a>","<a href = \"../tournaments/21-22-naqt-collegiate-novice-minnesota#minnesota-c\">Minnesota C<\/a>"],[" Davis Everson-Rose, Joe Kammann, Peyton Johnson, Tora Husar"," Ben Weiner, Ethan Ashbrook, Joel Miles, Urbas Ekka"," Ben Weiner, Joel Miles, Maxwell Ye, Shardul Rao"," Cece Shao, Morgan Bozeman, Owen Hunter, Urbas Ekka"," Davis Everson-Rose, Ethan Ashbrook, Joel Miles, Urbas Ekka"," Davis Everson-Rose, Ethan Ashbrook, Peyton Johnson, Tora Husar"," Joe Kammann"," Joel Miles, Maxwell Ye, Owen Hunter, Urbas Ekka"," Ben Weiner, Cece Shao, Morgan Bozeman, Shardul Rao, William Gronewald"," Amanda Bittmann, Avery Lembke, Keegan Wulf, Nick Tunks, Tommy Lenz"," Ben Weiner, Joel Miles, Maxwell Ye, Peyton Johnson"," Ethan Ashbrook, Joe Kammann, Puna Ekka"," Ben Weiner, Cece Shao, Davis Everson-Rose, Shardul Rao"," Joe Kammann, Peyton Johnson, Tora Husar, Urbas Ekka"," Ethan Barber, Jim Sweeney, Joel Miles, Lucas Pham, Puna Ekka"," Cece Shao, Elise Anderson, Madeline Damkot"," Evan Saunders-Pierce, Morgan Bozeman, William Gronewald"," Puna Ekka, Weston Wyatt"," Avery Lembke, Keegan Wulf, Nick Tunks, Tommy Lenz"," Amanda Bittmann, Avery Lembke, Emilio Rodriguez, Nick Tunks"," Ethan Barber, Evan Saunders-Pierce, Mario Valento, Morgan Bozeman, William Gronewald"," Athens Dress, Jim Sweeney, Kathryn Jans, Max Pinamonti, Sandra Larson"],["35/51","34/51","3/32","30/32","1/6",null,null,null,null,null,"1/6","6/6","4/14","8/14","6/14","1/12","4/12","5/12","3/12","3/12","1/12","2/12"],[17,17,14,13,10,12,10,11,11,11,11,10,11,10,11,12,11,11,11,11,11,11],["3-14","5-12","11-3","2-11","10-0","9-3","1-9","10-1","9-2","6-5","9-2","8-2","6-5","6-4","5-6","11-1","9-2","7-4","9-2","7-4","11-0","10-1"],[340,340,303,280,200,267,220,242,242,231,221,200,220,200,220,240,220,220,220,220,220,220],[null,null,51,24,58,19,9,66,54,12,null,null,null,null,null,null,null,null,null,30,44,59],[106,140,115,86,85,132,56,86,100,89,136,119,110,107,110,162,120,118,134,83,100,82],[51,41,43,39,38,35,55,28,36,19,29,23,33,33,21,35,18,19,20,18,23,24],[null,null,3.64,1.85,5.8,1.58,0.9,6,4.91,1.09,null,null,null,null,null,null,null,null,null,2.73,4,5.36],[6.24,8.24,8.21,6.62,8.5,11,5.6,7.82,9.09,8.09,12.36,11.9,10,10.7,10,13.5,10.91,10.73,12.18,7.55,9.09,7.45],[3,2.41,3.07,3,3.8,2.92,5.5,2.55,3.27,1.73,2.64,2.3,3,3.3,1.91,2.92,1.64,1.73,1.82,1.64,2.09,2.18],[0.312,0.412,0.548,0.393,0.715,0.566,0.295,0.628,0.636,0.437,0.615,0.595,0.5,0.535,0.5,0.675,0.545,0.536,0.609,0.514,0.655,0.641],[122.65,169.71,365,202.69,451,331.67,117,460.91,463.64,234.09,314.09,295.5,289.55,293.5,294.09,383.75,302.73,272.27,334.55,286.36,421.36,395.91],[12.08,12.07,20.54,14.64,20.84,16.89,11.54,22.11,22.53,15.84,16.47,15.8,20.45,18.97,20.36,19.51,18.5,16.19,18.21,17.35,21.46,19.65],[113.85,154.36,372.01,167.15,354.78,250.58,95.2,497.23,501,204.36,303.19,277.22,351.94,268.97,347.11,375.79,281.32,256.23,313.25,285.2,406.63,385.01]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>Tournament<\/th>\n      <th>Team<\/th>\n      <th>Players<\/th>\n      <th>Finish<\/th>\n      <th>GP<\/th>\n      <th>W-L<\/th>\n      <th>TUH<\/th>\n      <th>15<\/th>\n      <th>10<\/th>\n      <th>-5<\/th>\n      <th>15/G<\/th>\n      <th>10/G<\/th>\n      <th>-5/G<\/th>\n      <th>TU%<\/th>\n      <th>PPG<\/th>\n      <th>PPB<\/th>\n      <th>A-Value<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"dom":"tp","rowGroup":{"dataSrc":0},"columnDefs":[{"targets":13,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatPercentage(data, 0, 3, \",\", \".\", null);\n  }"},{"targets":10,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 2, 3, \",\", \".\", null);\n  }"},{"targets":11,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 2, 3, \",\", \".\", null);\n  }"},{"targets":12,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 2, 3, \",\", \".\", null);\n  }"},{"targets":14,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 2, 3, \",\", \".\", null);\n  }"},{"targets":15,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 2, 3, \",\", \".\", null);\n  }"},{"targets":16,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 2, 3, \",\", \".\", null);\n  }"},{"visible":false,"targets":0},{"className":"dt-right","targets":[4,6,7,8,9,10,11,12,13,14,15,16]}],"rowCallback":"function(row, data){\n  for(var i=0; i<data.length; i++){\n    if(data[i] === null){\n      $('td:eq('+(i-1)+')', row).html('-')\n        .css({'font-style': 'italic'});\n    }\n  }\nvar value=data[3]; $(this.api().cell(row, 3).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[4]; $(this.api().cell(row, 4).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[5]; $(this.api().cell(row, 5).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[6]; $(this.api().cell(row, 6).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[7]; $(this.api().cell(row, 7).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[8]; $(this.api().cell(row, 8).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[9]; $(this.api().cell(row, 9).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[10]; $(this.api().cell(row, 10).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[11]; $(this.api().cell(row, 11).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[12]; $(this.api().cell(row, 12).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[13]; $(this.api().cell(row, 13).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[14]; $(this.api().cell(row, 14).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[15]; $(this.api().cell(row, 15).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[16]; $(this.api().cell(row, 16).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[1]; $(this.api().cell(row, 1).node()).css({'border-right':'1.5px solid #d3d3d3'});\nvar value=data[2]; $(this.api().cell(row, 2).node()).css({'border-right':'1.5px solid #d3d3d3'});\nvar value=data[3]; $(this.api().cell(row, 3).node()).css({'border-right':'1.5px solid #d3d3d3'});\nvar value=data[5]; $(this.api().cell(row, 5).node()).css({'border-right':'1.5px solid #d3d3d3'});\nvar value=data[9]; $(this.api().cell(row, 9).node()).css({'border-right':'1.5px solid #d3d3d3'});\nvar value=data[12]; $(this.api().cell(row, 12).node()).css({'border-right':'1.5px solid #d3d3d3'});\nvar value=data[15]; $(this.api().cell(row, 15).node()).css({'border-right':'1.5px solid #d3d3d3'});\n}","order":[],"autoWidth":false,"orderClasses":false}},"evals":["options.columnDefs.0.render","options.columnDefs.1.render","options.columnDefs.2.render","options.columnDefs.3.render","options.columnDefs.4.render","options.columnDefs.5.render","options.columnDefs.6.render","options.rowCallback"],"jsHooks":[]}</script>
+</div>
+<div id="hosting" class="section level2">
+<h2>Hosting</h2>
+<div id="htmlwidget-e787520b1787fa7c55b7" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-e787520b1787fa7c55b7">{"x":{"filter":"none","vertical":false,"extensions":["RowGroup"],"data":[["21-22","21-22","21-22","21-22","21-22","21-22","21-22"],["2022-04-09","2022-02-05","2022-02-05","2022-01-29","2021-11-06","2021-10-16","2021-10-02"],["<a href = \"../sets/21-22-acf-nationals.html\">ACF Nationals<\/a>","<a href = \"../sets/21-22-di-sct.html\">DI SCT<\/a>","<a href = \"../sets/21-22-dii-sct.html\">DII SCT<\/a>","<a href = \"../sets/21-22-acf-regionals.html\">ACF Regionals<\/a>","<a href = \"../sets/21-22-acf-winter.html\">ACF Winter<\/a>","<a href = \"../sets/21-22-acf-fall.html\">ACF Fall<\/a>","<a href = \"../sets/21-22-naqt-collegiate-novice.html\">NAQT Collegiate Novice<\/a>"],["<a href = \"../tournaments/21-22-acf-nationals-minnesota\">51<\/a>","<a href = \"../tournaments/21-22-di-sct-minnesota\">6<\/a>","<a href = \"../tournaments/21-22-dii-sct-minnesota\">8<\/a>","<a href = \"../tournaments/21-22-acf-regionals-minnesota\">6<\/a>","<a href = \"../tournaments/21-22-acf-winter-minnesota\">14<\/a>","<a href = \"../tournaments/21-22-acf-fall-minnesota\">12<\/a>","<a href = \"../tournaments/21-22-naqt-collegiate-novice-minnesota\">12<\/a>"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>Year<\/th>\n      <th>Date<\/th>\n      <th>Set<\/th>\n      <th>Teams<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"dom":"tp","rowGroup":{"dataSrc":0},"columnDefs":[{"visible":false,"targets":0}],"rowCallback":"function(row, data){\n  for(var i=0; i<data.length; i++){\n    if(data[i] === null){\n      $('td:eq('+(i-1)+')', row).html('-')\n        .css({'font-style': 'italic'});\n    }\n  }\nvar value=data[1]; $(this.api().cell(row, 1).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[1]; $(this.api().cell(row, 1).node()).css({'border-right':'1.5px solid #d3d3d3'});\nvar value=data[2]; $(this.api().cell(row, 2).node()).css({'border-right':'1.5px solid #d3d3d3'});\n}","order":[],"autoWidth":false,"orderClasses":false}},"evals":["options.rowCallback"],"jsHooks":[]}</script>
+</div>
+</div>
+</div>
+
+
+<script>
+
+var source = new Bloodhound({
+  datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
+  queryTokenizer: Bloodhound.tokenizers.whitespace,
+  prefetch: {
+    url: '../test-index.json',
+    cache: false
+  }
+});
+
+source.initialize();
+
+$('#custom-templates .typeahead').typeahead(null, {
+  name: 'matched-links',
+  displayKey: 'name',
+  source: source.ttAdapter(),
+  templates: {
+    empty: [
+      '<div class="empty-message">',
+      'unable to find any search results that match the current query',
+      '</div>'
+    ].join('\n'),
+      suggestion: Handlebars.compile('<p><a href="{{id}}">{{name}}</a></p>')
+  }
+});
+</script>
+
+<script>
+  $(function() {
+  var navSelector = '#toc';
+  var $myNav = $(navSelector);
+  Toc.init($myNav);
+  $('body').scrollspy({
+    target: navSelector
+  });
+});
+</script>
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+
+</body>
+</html>

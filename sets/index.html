@@ -1,0 +1,977 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>Sets | College Quizbowl Stats</title>
+
+<script src="libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="libs/navigation-1.1/tabsets.js"></script>
+<link href="libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="libs/highlightjs-9.12.0/highlight.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Alegreya+Sans&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inconsolata&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+<script src="https://twitter.github.io/typeahead.js/releases/latest/typeahead.bundle.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.7/handlebars.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-sidebar/3.3.1/jquery.sticky-sidebar.min.js" integrity="sha512-iVhJqV0j477IrAkkzsn/tVJWXYsEqAj4PSS7AG+z1F7eD6uLKQxYBg09x13viaJ1Z5yYhlpyx0zLAUUErdHM6A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<!-- add after bootstrap.min.css -->
+<link rel="stylesheet" href="https://cdn.rawgit.com/afeld/bootstrap-toc/v0.4.1/dist/bootstrap-toc.min.css">
+<!-- add after bootstrap.min.js -->
+<script src="https://cdn.rawgit.com/afeld/bootstrap-toc/v0.4.1/dist/bootstrap-toc.min.js"></script>
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+      .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+
+
+<link rel="stylesheet" href="../css/style.css" type="text/css" />
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+
+<nav class = 'top-nav'>
+  <ul>
+    <li><p class = "site-title"><a href="/index.html">College Quizbowl Stats</a></p>
+    </li>
+    <li><a class = "navbar-link" href="/seasons/">Seasons</a></li>
+    <li><a class = "navbar-link" href="/sets/">Sets</a></li>
+    <li><a class = "navbar-link" href="/circuits/">Circuits</a></li>
+    <li><a class = "navbar-link" href="/records.html">Records</a></li>
+    <li><a class = "navbar-link" href="/about.html">About</a></li>
+
+<div id="custom-templates">
+  <input class="typeahead" type="text" placeholder="Player/Team Search">
+</div>
+  </ul>
+</nav>
+
+<div id="header">
+
+
+
+
+</div>
+
+
+<p class="page-title">
+Sets Index
+</p>
+<div id="okqmpszimj" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>html {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+}
+
+#okqmpszimj .gt_table {
+  display: table;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 75%;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#okqmpszimj .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#okqmpszimj .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 1px;
+  padding-bottom: 1px;
+  padding-left: 6px;
+  padding-right: 6px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#okqmpszimj .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 0;
+  padding-bottom: 3px;
+  padding-left: 6px;
+  padding-right: 6px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#okqmpszimj .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#okqmpszimj .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#okqmpszimj .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 1.25px;
+  padding-bottom: 2.25px;
+  padding-left: 6px;
+  padding-right: 6px;
+  overflow-x: hidden;
+}
+
+#okqmpszimj .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#okqmpszimj .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#okqmpszimj .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#okqmpszimj .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 1.25px;
+  padding-bottom: 1.25px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#okqmpszimj .gt_group_heading {
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-left: 6px;
+  padding-right: 6px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#okqmpszimj .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#okqmpszimj .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#okqmpszimj .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#okqmpszimj .gt_row {
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-left: 6px;
+  padding-right: 6px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#okqmpszimj .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 6px;
+  padding-right: 6px;
+}
+
+#okqmpszimj .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 6px;
+  padding-right: 6px;
+  vertical-align: top;
+}
+
+#okqmpszimj .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#okqmpszimj .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-left: 6px;
+  padding-right: 6px;
+}
+
+#okqmpszimj .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#okqmpszimj .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#okqmpszimj .gt_last_summary_row {
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-left: 6px;
+  padding-right: 6px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#okqmpszimj .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-left: 6px;
+  padding-right: 6px;
+}
+
+#okqmpszimj .gt_first_grand_summary_row {
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-left: 6px;
+  padding-right: 6px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#okqmpszimj .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#okqmpszimj .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#okqmpszimj .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#okqmpszimj .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-left: 1px;
+  padding-right: 1px;
+  padding-left: 6px;
+  padding-right: 6px;
+}
+
+#okqmpszimj .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#okqmpszimj .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 1px;
+  padding-bottom: 1px;
+  padding-left: 6px;
+  padding-right: 6px;
+}
+
+#okqmpszimj .gt_left {
+  text-align: left;
+}
+
+#okqmpszimj .gt_center {
+  text-align: center;
+}
+
+#okqmpszimj .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#okqmpszimj .gt_font_normal {
+  font-weight: normal;
+}
+
+#okqmpszimj .gt_font_bold {
+  font-weight: bold;
+}
+
+#okqmpszimj .gt_font_italic {
+  font-style: italic;
+}
+
+#okqmpszimj .gt_super {
+  font-size: 65%;
+}
+
+#okqmpszimj .gt_two_val_uncert {
+  display: inline-block;
+  line-height: 1em;
+  text-align: right;
+  font-size: 60%;
+  vertical-align: -0.25em;
+  margin-left: 0.1em;
+}
+
+#okqmpszimj .gt_footnote_marks {
+  font-style: italic;
+  font-weight: normal;
+  font-size: 75%;
+  vertical-align: 0.4em;
+}
+
+#okqmpszimj .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#okqmpszimj .gt_slash_mark {
+  font-size: 0.7em;
+  line-height: 0.7em;
+  vertical-align: 0.15em;
+}
+
+#okqmpszimj .gt_fraction_numerator {
+  font-size: 0.6em;
+  line-height: 0.6em;
+  vertical-align: 0.45em;
+}
+
+#okqmpszimj .gt_fraction_denominator {
+  font-size: 0.6em;
+  line-height: 0.6em;
+  vertical-align: -0.05em;
+}
+</style>
+<table class="gt_table" style="table-layout: fixed;">
+  <colgroup>
+    <col/>
+    <col/>
+    <col/>
+    <col/>
+    <col/>
+    <col/>
+    <col/>
+    <col/>
+    <col/>
+    <col style="width:15%;"/>
+  </colgroup>
+  
+  <thead class="gt_col_headings">
+    <tr>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;">Set</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;">Difficulty</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;">Head Editor</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;">Literature</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;">History</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;">Science</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;">Arts</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;">Beliefs</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;">Thought</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;">Other</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr class="gt_group_heading_row">
+      <td colspan="10" class="gt_group_heading">2021-22</td>
+    </tr>
+    <tr class="gt_row_group_first"><td class="gt_row gt_left" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;"><a href = '21-22-acf-fall.html'>ACF Fall</a></td>
+<td class="gt_row gt_left" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;">easy</td>
+<td class="gt_row gt_left" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;"><div class='gt_from_md'><p><a href = "../players/katherine-lei.html">Katherine Lei</a></p>
+</div></td>
+<td class="gt_row gt_left" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;"><div class='gt_from_md'><p><a href = "../players/mitch-mccullar.html">Mitch McCullar</a> <i style = "font-size:80%">Literature</i></p>
+</div></td>
+<td class="gt_row gt_left" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;"><div class='gt_from_md'><p>Govind Prabhakar <i style = "font-size:80%">History</i></p>
+</div></td>
+<td class="gt_row gt_left" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;"><div class='gt_from_md'><p><a href = "../players/karan-gurazada.html">Karan Gurazada</a> <i style = "font-size:80%">Science</i></p>
+</div></td>
+<td class="gt_row gt_left" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;"><div class='gt_from_md'><p><a href = "../players/ethan-strombeck.html">Ethan Strombeck</a> <i style = "font-size:80%">Arts</i></p>
+</div></td>
+<td class="gt_row gt_left" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;"><div class='gt_from_md'><p><a href = "../players/justin-duffy.html">Justin Duffy</a> <i style = "font-size:80%">Mythology</i><br><a href = "../players/ned-tagtmeier.html">Ned Tagtmeier</a> <i style = "font-size:80%">Religion</i></p>
+</div></td>
+<td class="gt_row gt_left" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;"><div class='gt_from_md'><p><a href = "../players/ned-tagtmeier.html">Ned Tagtmeier</a> <i style = "font-size:80%">Thought</i></p>
+</div></td>
+<td class="gt_row gt_left" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;"><div class='gt_from_md'><p><a href = "../players/ethan-strombeck.html">Ethan Strombeck</a> <i style = "font-size:80%">Current Events</i><br><a href = "../players/sarah-benner.html">Sarah Benner</a> <i style = "font-size:80%">Pop Culture</i></p>
+</div></td></tr>
+    <tr><td class="gt_row gt_left gt_striped" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;"><a href = '21-22-boilermaker-spring-novice.html'>Boilermaker Spring Novice</a></td>
+<td class="gt_row gt_left gt_striped" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;">easy</td>
+<td class="gt_row gt_left gt_striped" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;"><div class='gt_from_md'><p><a href = "../players/lalit-maharjan.html">Lalit Maharjan</a><br><a href = "../players/quynh-phung.html">Quynh Phung</a><br><a href = "../players/sarah-benner.html">Sarah Benner</a></p>
+</div></td>
+<td class="gt_row gt_left gt_striped" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;"><div class='gt_from_md'><p><a href = "../players/payton-schubel.html">Payton Schubel</a> <i style = "font-size:80%">Literature</i></p>
+</div></td>
+<td class="gt_row gt_left gt_striped" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;"><div class='gt_from_md'><p><a href = "../players/daniel-cronin.html">Daniel Cronin</a> <i style = "font-size:80%">History</i></p>
+</div></td>
+<td class="gt_row gt_left gt_striped" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;"><div class='gt_from_md'><p><a href = "../players/david-bass.html">David Bass</a> <i style = "font-size:80%">Science</i><br><a href = "../players/jim-fan.html">Jim Fan</a> <i style = "font-size:80%">Science</i><br><a href = "../players/matt-schiavone.html">Matt Schiavone</a> <i style = "font-size:80%">Chemistry</i></p>
+</div></td>
+<td class="gt_row gt_left gt_striped" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;"><div class='gt_from_md'><p><a href = "../players/daniel-cronin.html">Daniel Cronin</a> <i style = "font-size:80%">Visual</i></p>
+</div></td>
+<td class="gt_row gt_left gt_striped" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;"><div class='gt_from_md'><p><a href = "../players/matt-schiavone.html">Matt Schiavone</a> <i style = "font-size:80%">Beliefs</i></p>
+</div></td>
+<td class="gt_row gt_left gt_striped" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;"><div class='gt_from_md'><p><a href = "../players/kevin-jiang.html">Kevin Jiang</a> <i style = "font-size:80%">Thought</i><br><a href = "../players/ryan-rosenberg.html">Ryan Rosenberg</a> <i style = "font-size:80%">Social Science</i></p>
+</div></td>
+<td class="gt_row gt_left gt_striped" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;"><div class='gt_from_md'><p><a href = "../players/kevin-jiang.html">Kevin Jiang</a> <i style = "font-size:80%">Pop Culture</i><br><a href = "../players/ryan-rosenberg.html">Ryan Rosenberg</a> <i style = "font-size:80%">Pop Culture</i></p>
+</div></td></tr>
+    <tr><td class="gt_row gt_left" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;"><a href = '21-22-dii-sct.html'>DII SCT</a></td>
+<td class="gt_row gt_left" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;">easy</td>
+<td class="gt_row gt_left" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;"><div class='gt_from_md'><p>NAQT</p>
+</div></td>
+<td class="gt_row gt_left" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;"><div class='gt_from_md'></div></td>
+<td class="gt_row gt_left" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;"><div class='gt_from_md'></div></td>
+<td class="gt_row gt_left" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;"><div class='gt_from_md'></div></td>
+<td class="gt_row gt_left" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;"><div class='gt_from_md'></div></td>
+<td class="gt_row gt_left" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;"><div class='gt_from_md'></div></td>
+<td class="gt_row gt_left" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;"><div class='gt_from_md'></div></td>
+<td class="gt_row gt_left" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;"><div class='gt_from_md'></div></td></tr>
+    <tr><td class="gt_row gt_left gt_striped" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;"><a href = '21-22-naqt-collegiate-novice.html'>NAQT Collegiate Novice</a></td>
+<td class="gt_row gt_left gt_striped" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;">easy</td>
+<td class="gt_row gt_left gt_striped" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;"><div class='gt_from_md'><p>NAQT</p>
+</div></td>
+<td class="gt_row gt_left gt_striped" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;"><div class='gt_from_md'></div></td>
+<td class="gt_row gt_left gt_striped" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;"><div class='gt_from_md'></div></td>
+<td class="gt_row gt_left gt_striped" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;"><div class='gt_from_md'></div></td>
+<td class="gt_row gt_left gt_striped" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;"><div class='gt_from_md'></div></td>
+<td class="gt_row gt_left gt_striped" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;"><div class='gt_from_md'></div></td>
+<td class="gt_row gt_left gt_striped" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;"><div class='gt_from_md'></div></td>
+<td class="gt_row gt_left gt_striped" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;"><div class='gt_from_md'></div></td></tr>
+    <tr><td class="gt_row gt_left" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;"><a href = '21-22-acf-winter.html'>ACF Winter</a></td>
+<td class="gt_row gt_left" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;">medium</td>
+<td class="gt_row gt_left" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;"><div class='gt_from_md'><p><a href = "../players/tim-morrison.html">Tim Morrison</a></p>
+</div></td>
+<td class="gt_row gt_left" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;"><div class='gt_from_md'><p><a href = "../players/angela-lin.html">Angela Lin</a> <i style = "font-size:80%">American, British</i><br><a href = "../players/ethan-ashbrook.html">Ethan Ashbrook</a> <i style = "font-size:80%">European</i><br><a href = "../players/joseph-krol.html">Joseph Krol</a> <i style = "font-size:80%">World</i></p>
+</div></td>
+<td class="gt_row gt_left" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;"><div class='gt_from_md'><p><a href = "../players/nick-jensen.html">Nick Jensen</a> <i style = "font-size:80%">American, European, Other</i><br><a href = "../players/vikshar-athreya.html">Vikshar Athreya</a> <i style = "font-size:80%">World</i></p>
+</div></td>
+<td class="gt_row gt_left" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;"><div class='gt_from_md'><p><a href = "../players/eric-mukherjee.html">Eric Mukherjee</a> <i style = "font-size:80%">Biology, Chemistry</i><br><a href = "../players/nick-jensen.html">Nick Jensen</a> <i style = "font-size:80%">Other</i><br><a href = "../players/steven-liu.html">Steven Liu</a> <i style = "font-size:80%">Physics, Other</i></p>
+</div></td>
+<td class="gt_row gt_left" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;"><div class='gt_from_md'><p><a href = "../players/chris-sims.html">Chris Sims</a> <i style = "font-size:80%">Auditory</i><br><a href = "../players/joseph-krol.html">Joseph Krol</a> <i style = "font-size:80%">Visual, Other</i></p>
+</div></td>
+<td class="gt_row gt_left" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;"><div class='gt_from_md'><p><a href = "../players/benjamin-mcavoy-bickford.html">Benjamin McAvoy-Bickford</a> <i style = "font-size:80%">Religion</i><br><a href = "../players/ethan-ashbrook.html">Ethan Ashbrook</a> <i style = "font-size:80%">Mythology</i></p>
+</div></td>
+<td class="gt_row gt_left" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;"><div class='gt_from_md'><p><a href = "../players/chris-sims.html">Chris Sims</a> <i style = "font-size:80%">Social Science</i><br><a href = "../players/ethan-ashbrook.html">Ethan Ashbrook</a> <i style = "font-size:80%">Philosophy</i></p>
+</div></td>
+<td class="gt_row gt_left" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;"><div class='gt_from_md'><p><a href = "../players/benjamin-mcavoy-bickford.html">Benjamin McAvoy-Bickford</a> <i style = "font-size:80%">Geography, Current Events</i><br><a href = "../players/nick-jensen.html">Nick Jensen</a> <i style = "font-size:80%">Other Academic</i></p>
+</div></td></tr>
+    <tr><td class="gt_row gt_left gt_striped" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;"><a href = '21-22-arcadia.html'>ARCADIA</a></td>
+<td class="gt_row gt_left gt_striped" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;">medium</td>
+<td class="gt_row gt_left gt_striped" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;"><div class='gt_from_md'><p><a href = "../players/ryan-rosenberg.html">Ryan Rosenberg</a></p>
+</div></td>
+<td class="gt_row gt_left gt_striped" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;"><div class='gt_from_md'><p><a href = "../players/henry-goff.html">Henry Goff</a> <i style = "font-size:80%">World, British</i><br><a href = "../players/payton-schubel.html">Payton Schubel</a> <i style = "font-size:80%">American, European</i></p>
+</div></td>
+<td class="gt_row gt_left gt_striped" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;"><div class='gt_from_md'><p><a href = "../players/grant-peet.html">Grant Peet</a> <i style = "font-size:80%">European, World, Other</i><br><a href = "../players/kevin-thomas.html">Kevin Thomas</a> <i style = "font-size:80%">Ancient</i><br><a href = "../players/ryan-rosenberg.html">Ryan Rosenberg</a> <i style = "font-size:80%">American</i></p>
+</div></td>
+<td class="gt_row gt_left gt_striped" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;"><div class='gt_from_md'><p><a href = "../players/hasna-karim.html">Hasna Karim</a> <i style = "font-size:80%">Biology</i><br><a href = "../players/ryan-rosenberg.html">Ryan Rosenberg</a> <i style = "font-size:80%">Other</i><br><a href = "../players/vincent-du.html">Vincent Du</a> <i style = "font-size:80%">Chemistry, Physics, Other</i></p>
+</div></td>
+<td class="gt_row gt_left gt_striped" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;"><div class='gt_from_md'><p><a href = "../players/annabelle-yang.html">Annabelle Yang</a> <i style = "font-size:80%">Visual, Other</i><br><a href = "../players/jacob-egol.html">Jacob Egol</a> <i style = "font-size:80%">Auditory, Other</i></p>
+</div></td>
+<td class="gt_row gt_left gt_striped" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;"><div class='gt_from_md'><p><a href = "../players/annabelle-yang.html">Annabelle Yang</a> <i style = "font-size:80%">Religion, Mythology</i><br><a href = "../players/hasna-karim.html">Hasna Karim</a> <i style = "font-size:80%">Religion</i><br><a href = "../players/kevin-thomas.html">Kevin Thomas</a> <i style = "font-size:80%">Religion</i></p>
+</div></td>
+<td class="gt_row gt_left gt_striped" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;"><div class='gt_from_md'><p><a href = "../players/ryan-rosenberg.html">Ryan Rosenberg</a> <i style = "font-size:80%">Social Science</i><br><a href = "../players/vincent-du.html">Vincent Du</a> <i style = "font-size:80%">Philosophy</i></p>
+</div></td>
+<td class="gt_row gt_left gt_striped" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;"><div class='gt_from_md'><p><a href = "../players/grant-peet.html">Grant Peet</a> <i style = "font-size:80%">Geography, Current Events</i></p>
+</div></td></tr>
+    <tr><td class="gt_row gt_left" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;"><a href = '21-22-ccct.html'>CCCT</a></td>
+<td class="gt_row gt_left" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;">medium</td>
+<td class="gt_row gt_left" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;"><div class='gt_from_md'><p>NAQT</p>
+</div></td>
+<td class="gt_row gt_left" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;"><div class='gt_from_md'></div></td>
+<td class="gt_row gt_left" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;"><div class='gt_from_md'></div></td>
+<td class="gt_row gt_left" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;"><div class='gt_from_md'></div></td>
+<td class="gt_row gt_left" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;"><div class='gt_from_md'></div></td>
+<td class="gt_row gt_left" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;"><div class='gt_from_md'></div></td>
+<td class="gt_row gt_left" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;"><div class='gt_from_md'></div></td>
+<td class="gt_row gt_left" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;"><div class='gt_from_md'></div></td></tr>
+    <tr><td class="gt_row gt_left gt_striped" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;"><a href = '21-22-hari.html'>HARI</a></td>
+<td class="gt_row gt_left gt_striped" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;">medium</td>
+<td class="gt_row gt_left gt_striped" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;"><div class='gt_from_md'><p><a href = "../players/natan-holtzman.html">Natan Holtzman</a></p>
+</div></td>
+<td class="gt_row gt_left gt_striped" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;"><div class='gt_from_md'><p><a href = "../players/anson-berns.html">Anson Berns</a> <i style = "font-size:80%">Literature</i></p>
+</div></td>
+<td class="gt_row gt_left gt_striped" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;"><div class='gt_from_md'><p><a href = "../players/hari-parameswaran.html">Hari Parameswaran</a> <i style = "font-size:80%">History</i></p>
+</div></td>
+<td class="gt_row gt_left gt_striped" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;"><div class='gt_from_md'><p><a href = "../players/chris-tong.html">Chris Tong</a> <i style = "font-size:80%">Chemistry</i><br><a href = "../players/geoffrey-chen.html">Geoffrey Chen</a> <i style = "font-size:80%">Biology, Physics, Other</i><br><a href = "../players/walter-zhang.html">Walter Zhang</a> <i style = "font-size:80%">Other</i></p>
+</div></td>
+<td class="gt_row gt_left gt_striped" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;"><div class='gt_from_md'><p><a href = "../players/ethan-strombeck.html">Ethan Strombeck</a> <i style = "font-size:80%">Visual, Other</i><br><a href = "../players/michael-li.html">Michael Li</a> <i style = "font-size:80%">Auditory, Other</i></p>
+</div></td>
+<td class="gt_row gt_left gt_striped" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;"><div class='gt_from_md'><p><a href = "../players/william-groger.html">William Groger</a> <i style = "font-size:80%">Religion, Mythology</i></p>
+</div></td>
+<td class="gt_row gt_left gt_striped" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;"><div class='gt_from_md'><p><a href = "../players/geoffrey-chen.html">Geoffrey Chen</a> <i style = "font-size:80%">Philosophy, Social Science</i></p>
+</div></td>
+<td class="gt_row gt_left gt_striped" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;"><div class='gt_from_md'><p><a href = "../players/walter-zhang.html">Walter Zhang</a> <i style = "font-size:80%">Geography, Current Events, Other Academic</i></p>
+</div></td></tr>
+    <tr><td class="gt_row gt_left" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;"><a href = '21-22-mrna-vaccine.html'>MRNA VACCINE</a></td>
+<td class="gt_row gt_left" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;">medium</td>
+<td class="gt_row gt_left" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;"><div class='gt_from_md'><p><a href = "../players/eric-mukherjee.html">Eric Mukherjee</a></p>
+</div></td>
+<td class="gt_row gt_left" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;"><div class='gt_from_md'><p><a href = "../players/chandler-west.html">Chandler West</a> <i style = "font-size:80%">American, World</i><br><a href = "../players/henry-atkins.html">Henry Atkins</a> <i style = "font-size:80%">British</i><br><a href = "../players/jacob-orourke.html">Jacob O'Rourke</a> <i style = "font-size:80%">European</i></p>
+</div></td>
+<td class="gt_row gt_left" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;"><div class='gt_from_md'><p><a href = "../players/erik-christensen.html">Erik Christensen</a> <i style = "font-size:80%">European, Other</i><br><a href = "../players/ganon-evans.html">Ganon Evans</a> <i style = "font-size:80%">World, American</i></p>
+</div></td>
+<td class="gt_row gt_left" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;"><div class='gt_from_md'><p><a href = "../players/conor-thompson.html">Conor Thompson</a> <i style = "font-size:80%">Other</i><br><a href = "../players/eric-mukherjee.html">Eric Mukherjee</a> <i style = "font-size:80%">Biology, Chemistry, Physics</i></p>
+</div></td>
+<td class="gt_row gt_left" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;"><div class='gt_from_md'><p><a href = "../players/chandler-west.html">Chandler West</a> <i style = "font-size:80%">Visual</i><br><a href = "../players/chris-sims.html">Chris Sims</a> <i style = "font-size:80%">Auditory</i><br><a href = "../players/will-grossman.html">Will Grossman</a> <i style = "font-size:80%">Other</i></p>
+</div></td>
+<td class="gt_row gt_left" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;"><div class='gt_from_md'><p><a href = "../players/conor-thompson.html">Conor Thompson</a> <i style = "font-size:80%">Religion</i><br><a href = "../players/jaimie-carlson.html">Jaimie Carlson</a> <i style = "font-size:80%">Mythology</i></p>
+</div></td>
+<td class="gt_row gt_left" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;"><div class='gt_from_md'><p><a href = "../players/erik-christensen.html">Erik Christensen</a> <i style = "font-size:80%">Philosophy</i><br><a href = "../players/sam-bailey.html">Sam Bailey</a> <i style = "font-size:80%">Social Science</i></p>
+</div></td>
+<td class="gt_row gt_left" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;"><div class='gt_from_md'><p><a href = "../players/conor-thompson.html">Conor Thompson</a> <i style = "font-size:80%">Other</i></p>
+</div></td></tr>
+    <tr><td class="gt_row gt_left gt_striped" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;"><a href = '21-22-acf-regionals.html'>ACF Regionals</a></td>
+<td class="gt_row gt_left gt_striped" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;">regionals</td>
+<td class="gt_row gt_left gt_striped" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;"><div class='gt_from_md'><p><a href = "../players/taylor-harvey.html">Taylor Harvey</a></p>
+</div></td>
+<td class="gt_row gt_left gt_striped" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;"><div class='gt_from_md'><p><a href = "../players/alex-hardwick.html">Alex Hardwick</a> <i style = "font-size:80%">World</i><br><a href = "../players/chandler-west.html">Chandler West</a> <i style = "font-size:80%">American</i><br><a href = "../players/jaimie-carlson.html">Jaimie Carlson</a> <i style = "font-size:80%">British, European</i></p>
+</div></td>
+<td class="gt_row gt_left gt_striped" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;"><div class='gt_from_md'><p><a href = "../players/arjun-nageswaran.html">Arjun Nageswaran</a> <i style = "font-size:80%">American</i><br><a href = "../players/grant-peet.html">Grant Peet</a> <i style = "font-size:80%">European, Other</i><br><a href = "../players/nick-jensen.html">Nick Jensen</a> <i style = "font-size:80%">World</i></p>
+</div></td>
+<td class="gt_row gt_left gt_striped" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;"><div class='gt_from_md'><p><a href = "../players/graham-reid.html">Graham Reid</a> <i style = "font-size:80%">Chemistry</i><br><a href = "../players/jonathen-settle.html">Jonathen Settle</a> <i style = "font-size:80%">Physics, Other</i><br><a href = "../players/nick-jensen.html">Nick Jensen</a> <i style = "font-size:80%">Biology</i></p>
+</div></td>
+<td class="gt_row gt_left gt_striped" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;"><div class='gt_from_md'><p><a href = "../players/chandler-west.html">Chandler West</a> <i style = "font-size:80%">Visual</i><br><a href = "../players/ganon-evans.html">Ganon Evans</a> <i style = "font-size:80%">Other</i><br><a href = "../players/taylor-harvey.html">Taylor Harvey</a> <i style = "font-size:80%">Other, Auditory</i></p>
+</div></td>
+<td class="gt_row gt_left gt_striped" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;"><div class='gt_from_md'><p><a href = "../players/annabelle-yang.html">Annabelle Yang</a> <i style = "font-size:80%">Mythology</i><br><a href = "../players/taylor-harvey.html">Taylor Harvey</a> <i style = "font-size:80%">Religion</i></p>
+</div></td>
+<td class="gt_row gt_left gt_striped" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;"><div class='gt_from_md'><p><a href = "../players/alex-hardwick.html">Alex Hardwick</a> <i style = "font-size:80%">Social Science</i><br><a href = "../players/nick-jensen.html">Nick Jensen</a> <i style = "font-size:80%">Social Science</i><br><a href = "../players/taylor-harvey.html">Taylor Harvey</a> <i style = "font-size:80%">Philosophy</i></p>
+</div></td>
+<td class="gt_row gt_left gt_striped" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;"><div class='gt_from_md'><p><a href = "../players/ganon-evans.html">Ganon Evans</a> <i style = "font-size:80%">Geography, Pop Culture, Other Academic</i><br><a href = "../players/jonathen-settle.html">Jonathen Settle</a> <i style = "font-size:80%">Current Events</i></p>
+</div></td></tr>
+    <tr><td class="gt_row gt_left" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;"><a href = '21-22-di-sct.html'>DI SCT</a></td>
+<td class="gt_row gt_left" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;">regionals</td>
+<td class="gt_row gt_left" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;"><div class='gt_from_md'><p>NAQT</p>
+</div></td>
+<td class="gt_row gt_left" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;"><div class='gt_from_md'></div></td>
+<td class="gt_row gt_left" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;"><div class='gt_from_md'></div></td>
+<td class="gt_row gt_left" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;"><div class='gt_from_md'></div></td>
+<td class="gt_row gt_left" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;"><div class='gt_from_md'></div></td>
+<td class="gt_row gt_left" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;"><div class='gt_from_md'></div></td>
+<td class="gt_row gt_left" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;"><div class='gt_from_md'></div></td>
+<td class="gt_row gt_left" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;"><div class='gt_from_md'></div></td></tr>
+    <tr><td class="gt_row gt_left gt_striped" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;"><a href = '21-22-dii-ict.html'>DII ICT</a></td>
+<td class="gt_row gt_left gt_striped" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;">regionals</td>
+<td class="gt_row gt_left gt_striped" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;"><div class='gt_from_md'><p>NAQT</p>
+</div></td>
+<td class="gt_row gt_left gt_striped" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;"><div class='gt_from_md'></div></td>
+<td class="gt_row gt_left gt_striped" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;"><div class='gt_from_md'></div></td>
+<td class="gt_row gt_left gt_striped" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;"><div class='gt_from_md'></div></td>
+<td class="gt_row gt_left gt_striped" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;"><div class='gt_from_md'></div></td>
+<td class="gt_row gt_left gt_striped" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;"><div class='gt_from_md'></div></td>
+<td class="gt_row gt_left gt_striped" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;"><div class='gt_from_md'></div></td>
+<td class="gt_row gt_left gt_striped" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;"><div class='gt_from_md'></div></td></tr>
+    <tr><td class="gt_row gt_left" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;"><a href = '21-22-penn-bowl.html'>Penn Bowl</a></td>
+<td class="gt_row gt_left" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;">regionals</td>
+<td class="gt_row gt_left" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;"><div class='gt_from_md'><p><a href = "../players/nitin-rao.html">Nitin Rao</a></p>
+</div></td>
+<td class="gt_row gt_left" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;"><div class='gt_from_md'><p><a href = "../players/jordan-brownstein.html">Jordan Brownstein</a> <i style = "font-size:80%">World</i><br><a href = "../players/margaret-tebbe.html">Margaret Tebbe</a> <i style = "font-size:80%">British, European</i><br><a href = "../players/taylor-harvey.html">Taylor Harvey</a> <i style = "font-size:80%">American</i></p>
+</div></td>
+<td class="gt_row gt_left" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;"><div class='gt_from_md'><p><a href = "../players/emmett-laurie.html">Emmett Laurie</a> <i style = "font-size:80%">American, World</i><br><a href = "../players/tracy-mirkin.html">Tracy Mirkin</a> <i style = "font-size:80%">European, Other</i></p>
+</div></td>
+<td class="gt_row gt_left" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;"><div class='gt_from_md'><p><a href = "../players/jonathen-settle.html">Jonathen Settle</a> <i style = "font-size:80%">Physics</i><br><a href = "../players/paul-lee.html">Paul Lee</a> <i style = "font-size:80%">Chemistry</i><br><a href = "../players/shan-kothari.html">Shan Kothari</a> <i style = "font-size:80%">Biology, Other</i></p>
+</div></td>
+<td class="gt_row gt_left" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;"><div class='gt_from_md'><p><a href = "../players/aseem-keyal.html">Aseem Keyal</a> <i style = "font-size:80%">Visual, Other</i><br><a href = "../players/michael-yue.html">Michael Yue</a> <i style = "font-size:80%">Auditory, Other</i><br><a href = "../players/taylor-harvey.html">Taylor Harvey</a> <i style = "font-size:80%">Other</i></p>
+</div></td>
+<td class="gt_row gt_left" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;"><div class='gt_from_md'><p><a href = "../players/noureddine-hijazi.html">NourEddine Hijazi</a> <i style = "font-size:80%">Religion, Mythology</i></p>
+</div></td>
+<td class="gt_row gt_left" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;"><div class='gt_from_md'><p><a href = "../players/harris-bunker.html">Harris Bunker</a> <i style = "font-size:80%">Social Science</i><br><a href = "../players/jordan-brownstein.html">Jordan Brownstein</a> <i style = "font-size:80%">Philosophy</i></p>
+</div></td>
+<td class="gt_row gt_left" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;"><div class='gt_from_md'><p><a href = "../players/nitin-rao.html">Nitin Rao</a> <i style = "font-size:80%">Other</i></p>
+</div></td></tr>
+    <tr><td class="gt_row gt_left gt_striped" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;"><a href = '21-22-workshop.html'>WORKSHOP</a></td>
+<td class="gt_row gt_left gt_striped" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;">regionals</td>
+<td class="gt_row gt_left gt_striped" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;"><div class='gt_from_md'><p><a href = "../players/jordan-brownstein.html">Jordan Brownstein</a><br><a href = "../players/kevin-wang.html">Kevin Wang</a><br><a href = "../players/olivia-murton.html">Olivia Murton</a></p>
+</div></td>
+<td class="gt_row gt_left gt_striped" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;"><div class='gt_from_md'><p><a href = "../players/caroline-mao.html">Caroline Mao</a> <i style = "font-size:80%">Literature</i></p>
+</div></td>
+<td class="gt_row gt_left gt_striped" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;"><div class='gt_from_md'><p><a href = "../players/chris-sims.html">Chris Sims</a> <i style = "font-size:80%">History</i><br><a href = "../players/michael-kearney.html">Michael Kearney</a> <i style = "font-size:80%">History</i><br><a href = "../players/nick-jensen.html">Nick Jensen</a> <i style = "font-size:80%">History</i></p>
+</div></td>
+<td class="gt_row gt_left gt_striped" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;"><div class='gt_from_md'><p><a href = "../players/adam-fine.html">Adam Fine</a> <i style = "font-size:80%">Physics, Biology</i><br><a href = "../players/kevin-wang.html">Kevin Wang</a> <i style = "font-size:80%">Chemistry, Other</i></p>
+</div></td>
+<td class="gt_row gt_left gt_striped" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;"><div class='gt_from_md'><p><a href = "../players/athena-kern.html">Athena Kern</a> <i style = "font-size:80%">Visual</i><br><a href = "../players/wonyoung-jang.html">Wonyoung Jang</a> <i style = "font-size:80%">Auditory, Other</i></p>
+</div></td>
+<td class="gt_row gt_left gt_striped" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;"><div class='gt_from_md'><p><a href = "../players/athena-kern.html">Athena Kern</a> <i style = "font-size:80%">Religion</i><br><a href = "../players/kevin-wang.html">Kevin Wang</a> <i style = "font-size:80%">Mythology</i></p>
+</div></td>
+<td class="gt_row gt_left gt_striped" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;"><div class='gt_from_md'><p><a href = "../players/chris-sims.html">Chris Sims</a> <i style = "font-size:80%">Social Science</i><br><a href = "../players/jordan-brownstein.html">Jordan Brownstein</a> <i style = "font-size:80%">Philosophy, Social Science</i></p>
+</div></td>
+<td class="gt_row gt_left gt_striped" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;"><div class='gt_from_md'><p><a href = "../players/chris-sims.html">Chris Sims</a> <i style = "font-size:80%">Other Academic</i></p>
+</div></td></tr>
+    <tr><td class="gt_row gt_left" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;"><a href = '21-22-acf-nationals.html'>ACF Nationals</a></td>
+<td class="gt_row gt_left" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;">nationals</td>
+<td class="gt_row gt_left" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;"><div class='gt_from_md'><p><a href = "../players/john-lawrence.html">John Lawrence</a></p>
+</div></td>
+<td class="gt_row gt_left" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;"><div class='gt_from_md'><p><a href = "../players/john-lawrence.html">John Lawrence</a> <i style = "font-size:80%">Literature</i></p>
+</div></td>
+<td class="gt_row gt_left" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;"><div class='gt_from_md'><p><a href = "../players/will-alston.html">Will Alston</a> <i style = "font-size:80%">History</i></p>
+</div></td>
+<td class="gt_row gt_left" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;"><div class='gt_from_md'><p><a href = "../players/adam-silverman.html">Adam Silverman</a> <i style = "font-size:80%">Chemistry</i><br><a href = "../players/eric-mukherjee.html">Eric Mukherjee</a> <i style = "font-size:80%">Biology</i><br><a href = "../players/stephen-eltinge.html">Stephen Eltinge</a> <i style = "font-size:80%">Physics, Other</i></p>
+</div></td>
+<td class="gt_row gt_left" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;"><div class='gt_from_md'><p><a href = "../players/john-lawrence.html">John Lawrence</a> <i style = "font-size:80%">Auditory, Other</i><br><a href = "../players/stephen-liu.html">Stephen Liu</a> <i style = "font-size:80%">Visual, Other</i></p>
+</div></td>
+<td class="gt_row gt_left" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;"><div class='gt_from_md'><p><a href = "../players/stephen-liu.html">Stephen Liu</a> <i style = "font-size:80%">Mythology</i><br><a href = "../players/will-alston.html">Will Alston</a> <i style = "font-size:80%">Religion</i></p>
+</div></td>
+<td class="gt_row gt_left" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;"><div class='gt_from_md'><p><a href = "../players/john-lawrence.html">John Lawrence</a> <i style = "font-size:80%">Philosophy</i><br><a href = "../players/will-alston.html">Will Alston</a> <i style = "font-size:80%">Social Science</i></p>
+</div></td>
+<td class="gt_row gt_left" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;"><div class='gt_from_md'><p><a href = "../players/will-alston.html">Will Alston</a> <i style = "font-size:80%">Other</i></p>
+</div></td></tr>
+    <tr><td class="gt_row gt_left gt_striped" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;"><a href = '21-22-di-ict.html'>DI ICT</a></td>
+<td class="gt_row gt_left gt_striped" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;">nationals</td>
+<td class="gt_row gt_left gt_striped" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;"><div class='gt_from_md'><p>NAQT</p>
+</div></td>
+<td class="gt_row gt_left gt_striped" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;"><div class='gt_from_md'></div></td>
+<td class="gt_row gt_left gt_striped" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;"><div class='gt_from_md'></div></td>
+<td class="gt_row gt_left gt_striped" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;"><div class='gt_from_md'></div></td>
+<td class="gt_row gt_left gt_striped" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;"><div class='gt_from_md'></div></td>
+<td class="gt_row gt_left gt_striped" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;"><div class='gt_from_md'></div></td>
+<td class="gt_row gt_left gt_striped" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;"><div class='gt_from_md'></div></td>
+<td class="gt_row gt_left gt_striped" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;"><div class='gt_from_md'></div></td></tr>
+  </tbody>
+  
+  
+</table>
+</div>
+
+
+<script>
+
+var source = new Bloodhound({
+  datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
+  queryTokenizer: Bloodhound.tokenizers.whitespace,
+  prefetch: {
+    url: '../test-index.json',
+    cache: false
+  }
+});
+
+source.initialize();
+
+$('#custom-templates .typeahead').typeahead(null, {
+  name: 'matched-links',
+  displayKey: 'name',
+  source: source.ttAdapter(),
+  templates: {
+    empty: [
+      '<div class="empty-message">',
+      'unable to find any search results that match the current query',
+      '</div>'
+    ].join('\n'),
+      suggestion: Handlebars.compile('<p><a href="{{id}}">{{name}}</a></p>')
+  }
+});
+</script>
+
+<script>
+  $(function() {
+  var navSelector = '#toc';
+  var $myNav = $(navSelector);
+  Toc.init($myNav);
+  $('body').scrollspy({
+    target: navSelector
+  });
+});
+</script>
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+
+</body>
+</html>

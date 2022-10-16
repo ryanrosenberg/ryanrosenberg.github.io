@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>Chicago | College Quizbowl Stats</title>
+
+<script src="libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="libs/navigation-1.1/tabsets.js"></script>
+<link href="libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="libs/highlightjs-9.12.0/highlight.js"></script>
+<script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script>
+<link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
+<script src="libs/datatables-binding-0.24/datatables.js"></script>
+<link href="libs/dt-core-1.11.3/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="libs/dt-core-1.11.3/css/jquery.dataTables.extra.css" rel="stylesheet" />
+<script src="libs/dt-core-1.11.3/js/jquery.dataTables.min.js"></script>
+<link href="libs/crosstalk-1.1.1/css/crosstalk.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.1.1/js/crosstalk.min.js"></script>
+<link href="libs/dt-ext-rowgroup-1.11.3/css/rowGroup.dataTables.min.css" rel="stylesheet" />
+<script src="libs/dt-ext-rowgroup-1.11.3/js/dataTables.rowGroup.min.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Alegreya+Sans&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inconsolata&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+<script src="https://twitter.github.io/typeahead.js/releases/latest/typeahead.bundle.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.7/handlebars.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-sidebar/3.3.1/jquery.sticky-sidebar.min.js" integrity="sha512-iVhJqV0j477IrAkkzsn/tVJWXYsEqAj4PSS7AG+z1F7eD6uLKQxYBg09x13viaJ1Z5yYhlpyx0zLAUUErdHM6A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<!-- add after bootstrap.min.css -->
+<link rel="stylesheet" href="https://cdn.rawgit.com/afeld/bootstrap-toc/v0.4.1/dist/bootstrap-toc.min.css">
+<!-- add after bootstrap.min.js -->
+<script src="https://cdn.rawgit.com/afeld/bootstrap-toc/v0.4.1/dist/bootstrap-toc.min.js"></script>
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+      .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+
+
+<link rel="stylesheet" href="../css/style.css" type="text/css" />
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+
+<nav class = 'top-nav'>
+  <ul>
+    <li><p class = "site-title"><a href="/index.html">College Quizbowl Stats</a></p>
+    </li>
+    <li><a class = "navbar-link" href="/seasons/">Seasons</a></li>
+    <li><a class = "navbar-link" href="/sets/">Sets</a></li>
+    <li><a class = "navbar-link" href="/circuits/">Circuits</a></li>
+    <li><a class = "navbar-link" href="/records.html">Records</a></li>
+    <li><a class = "navbar-link" href="/about.html">About</a></li>
+
+<div id="custom-templates">
+  <input class="typeahead" type="text" placeholder="Player/Team Search">
+</div>
+  </ul>
+</nav>
+
+<div id="header">
+
+
+
+
+</div>
+
+
+<div class = 'main-flex'>
+<div class="toc-div col-sm-2">
+<nav class="side-nav" id="toc">
+</nav>
+</div>
+<div class = 'main-content col-sm-10'>
+
+
+<p class="page-title">
+Chicago
+</p>
+<p class="page-subtitle">
+Midwest
+</p>
+<div id="seasons" class="section level2">
+<h2>Seasons</h2>
+<div id="mizlepiuwy" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>html {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+}
+
+#mizlepiuwy .gt_table {
+  display: table;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#mizlepiuwy .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#mizlepiuwy .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 1px;
+  padding-bottom: 1px;
+  padding-left: 6px;
+  padding-right: 6px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#mizlepiuwy .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 0;
+  padding-bottom: 3px;
+  padding-left: 6px;
+  padding-right: 6px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#mizlepiuwy .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#mizlepiuwy .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#mizlepiuwy .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 1.25px;
+  padding-bottom: 2.25px;
+  padding-left: 6px;
+  padding-right: 6px;
+  overflow-x: hidden;
+}
+
+#mizlepiuwy .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#mizlepiuwy .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#mizlepiuwy .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#mizlepiuwy .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 1.25px;
+  padding-bottom: 1.25px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#mizlepiuwy .gt_group_heading {
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-left: 6px;
+  padding-right: 6px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#mizlepiuwy .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#mizlepiuwy .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#mizlepiuwy .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#mizlepiuwy .gt_row {
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-left: 6px;
+  padding-right: 6px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#mizlepiuwy .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 6px;
+  padding-right: 6px;
+}
+
+#mizlepiuwy .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 6px;
+  padding-right: 6px;
+  vertical-align: top;
+}
+
+#mizlepiuwy .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#mizlepiuwy .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-left: 6px;
+  padding-right: 6px;
+}
+
+#mizlepiuwy .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#mizlepiuwy .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#mizlepiuwy .gt_last_summary_row {
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-left: 6px;
+  padding-right: 6px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#mizlepiuwy .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-left: 6px;
+  padding-right: 6px;
+}
+
+#mizlepiuwy .gt_first_grand_summary_row {
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-left: 6px;
+  padding-right: 6px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#mizlepiuwy .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#mizlepiuwy .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#mizlepiuwy .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#mizlepiuwy .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-left: 1px;
+  padding-right: 1px;
+  padding-left: 6px;
+  padding-right: 6px;
+}
+
+#mizlepiuwy .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#mizlepiuwy .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 1px;
+  padding-bottom: 1px;
+  padding-left: 6px;
+  padding-right: 6px;
+}
+
+#mizlepiuwy .gt_left {
+  text-align: left;
+}
+
+#mizlepiuwy .gt_center {
+  text-align: center;
+}
+
+#mizlepiuwy .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#mizlepiuwy .gt_font_normal {
+  font-weight: normal;
+}
+
+#mizlepiuwy .gt_font_bold {
+  font-weight: bold;
+}
+
+#mizlepiuwy .gt_font_italic {
+  font-style: italic;
+}
+
+#mizlepiuwy .gt_super {
+  font-size: 65%;
+}
+
+#mizlepiuwy .gt_two_val_uncert {
+  display: inline-block;
+  line-height: 1em;
+  text-align: right;
+  font-size: 60%;
+  vertical-align: -0.25em;
+  margin-left: 0.1em;
+}
+
+#mizlepiuwy .gt_footnote_marks {
+  font-style: italic;
+  font-weight: normal;
+  font-size: 75%;
+  vertical-align: 0.4em;
+}
+
+#mizlepiuwy .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#mizlepiuwy .gt_slash_mark {
+  font-size: 0.7em;
+  line-height: 0.7em;
+  vertical-align: 0.15em;
+}
+
+#mizlepiuwy .gt_fraction_numerator {
+  font-size: 0.6em;
+  line-height: 0.6em;
+  vertical-align: 0.45em;
+}
+
+#mizlepiuwy .gt_fraction_denominator {
+  font-size: 0.6em;
+  line-height: 0.6em;
+  vertical-align: -0.05em;
+}
+</style>
+<table class="gt_table">
+  
+  <thead class="gt_col_headings">
+    <tr>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;">Season</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;">Tmnts</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">Teams</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;">Players</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">ACF Nats</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">DI ICT</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr><td class="gt_row gt_center" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;"><a href = "../seasons/21-22.html">21-22</a></td>
+<td class="gt_row gt_right" style="font-family: var(--table-font); font-size: 110%; border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;">13</td>
+<td class="gt_row gt_right" style="font-family: var(--table-font); font-size: 110%;">7</td>
+<td class="gt_row gt_right" style="font-family: var(--table-font); font-size: 110%; border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;">50</td>
+<td class="gt_row gt_right" style="font-family: var(--table-font); font-size: 110%;">10</td>
+<td class="gt_row gt_right" style="font-family: var(--table-font); font-size: 110%;">4</td></tr>
+  </tbody>
+  
+  
+</table>
+</div>
+<hr>
+</div>
+<div id="teams" class="section level2">
+<h2>Teams</h2>
+<div id="htmlwidget-70945315ecff20163123" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-70945315ecff20163123">{"x":{"filter":"none","vertical":false,"data":[["Chicago A","Chicago B","Chicago C","Chicago D","Chicago E","Chicago F","Chicago G"],[11,10,8,7,4,3,2],[125,111,89,78,38,29,20],["92-33","71-40","39-50","40-38","16-22","10-19","6-14"],[0.736,0.64,0.438,0.513,0.421,0.345,0.3],[2542,2261,1816,1613,780,600,420],[259,159,54,130,26,21,9],[1193,1034,738,621,316,204,136],[280,269,199,189,79,48,39],[2.07,1.43,0.61,1.67,0.68,0.72,0.45],[9.54,9.32,8.29,7.96,8.32,7.03,6.8],[2.24,2.42,2.24,2.42,2.08,1.66,1.95],[0.571,0.528,0.436,0.466,0.438,0.375,0.345],[332.56,293.96,216.91,254.87,240.92,190.86,168.5],[18.7,17.81,15.29,16.86,17.54,15.2,14.28]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>Team<\/th>\n      <th>Tmnts<\/th>\n      <th>GP<\/th>\n      <th>W-L<\/th>\n      <th>Win%<\/th>\n      <th>TUH<\/th>\n      <th>15<\/th>\n      <th>10<\/th>\n      <th>-5<\/th>\n      <th>15/G<\/th>\n      <th>10/G<\/th>\n      <th>-5/G<\/th>\n      <th>TU%<\/th>\n      <th>PPG<\/th>\n      <th>PPB<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"dom":"tp","rowCallback":"function(row, data){\n  for(var i=0; i<data.length; i++){\n    if(data[i] === null){\n      $('td:eq('+(i)+')', row).html('-')\n        .css({'font-style': 'italic', 'text-align': 'center'});\n    }\n  }\nvar value=data[1]; $(this.api().cell(row, 1).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[2]; $(this.api().cell(row, 2).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[3]; $(this.api().cell(row, 3).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[4]; $(this.api().cell(row, 4).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[5]; $(this.api().cell(row, 5).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[6]; $(this.api().cell(row, 6).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[7]; $(this.api().cell(row, 7).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[8]; $(this.api().cell(row, 8).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[9]; $(this.api().cell(row, 9).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[10]; $(this.api().cell(row, 10).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[11]; $(this.api().cell(row, 11).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[12]; $(this.api().cell(row, 12).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[13]; $(this.api().cell(row, 13).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[14]; $(this.api().cell(row, 14).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[0]; $(this.api().cell(row, 0).node()).css({'border-right':'1.5px solid #d3d3d3'});\nvar value=data[2]; $(this.api().cell(row, 2).node()).css({'border-right':'1.5px solid #d3d3d3'});\nvar value=data[3]; $(this.api().cell(row, 3).node()).css({'border-right':'1.5px solid #d3d3d3'});\nvar value=data[8]; $(this.api().cell(row, 8).node()).css({'border-right':'1.5px solid #d3d3d3'});\nvar value=data[11]; $(this.api().cell(row, 11).node()).css({'border-right':'1.5px solid #d3d3d3'});\nvar value=data[12]; $(this.api().cell(row, 12).node()).css({'border-right':'1.5px solid #d3d3d3'});\nvar value=data[3]; $(this.api().cell(row, 3).node()).css({'text-align':'right'});\n}","columnDefs":[{"targets":12,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatPercentage(data, 0, 3, \",\", \".\", null);\n  }"},{"targets":4,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"targets":9,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 2, 3, \",\", \".\", null);\n  }"},{"targets":10,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 2, 3, \",\", \".\", null);\n  }"},{"targets":11,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 2, 3, \",\", \".\", null);\n  }"},{"targets":13,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 2, 3, \",\", \".\", null);\n  }"},{"targets":14,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 2, 3, \",\", \".\", null);\n  }"},{"className":"dt-right","targets":[1,2,4,5,6,7,8,9,10,11,12,13,14]}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":["options.rowCallback","options.columnDefs.0.render","options.columnDefs.1.render","options.columnDefs.2.render","options.columnDefs.3.render","options.columnDefs.4.render","options.columnDefs.5.render","options.columnDefs.6.render"],"jsHooks":[]}</script>
+<hr>
+</div>
+<div id="players" class="section level2">
+<h2>Players</h2>
+<div id="htmlwidget-f441505f80791acf5df2" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-f441505f80791acf5df2">{"x":{"filter":"none","vertical":false,"data":[["<a href = \"../players/aayush-goodapaty.html\">Aayush Goodapaty<\/a>","<a href = \"../players/abigail-reynolds.html\">Abigail Reynolds<\/a>","<a href = \"../players/adam-fine.html\">Adam Fine<\/a>","<a href = \"../players/adam-klein.html\">Adam Klein<\/a>","<a href = \"../players/alejandro-rodriguez.html\">Alejandro Rodriguez<\/a>","<a href = \"../players/amogh-kulkarni.html\">Amogh Kulkarni<\/a>","<a href = \"../players/andi-sun.html\">Andi Sun<\/a>","<a href = \"../players/andre-emery.html\">Andre Emery<\/a>","<a href = \"../players/ben-miller.html\">Ben Miller<\/a>","<a href = \"../players/brian-hu.html\">Brian Hu<\/a>","<a href = \"../players/buduka-ogonor.html\">Buduka Ogonor<\/a>","<a href = \"../players/charlie-garroway.html\">Charlie Garroway<\/a>","<a href = \"../players/claire-jones.html\">Claire Jones<\/a>","<a href = \"../players/cooper-komatsu.html\">Cooper Komatsu<\/a>","<a href = \"../players/daniel-yang.html\">Daniel Yang<\/a>","<a href = \"../players/dennis-reppen.html\">Dennis Reppen<\/a>","<a href = \"../players/emily-zen.html\">Emily Zen<\/a>","<a href = \"../players/ev-sun.html\">Ev Sun<\/a>","<a href = \"../players/grant-li.html\">Grant Li<\/a>","<a href = \"../players/henry-cafaro.html\">Henry Cafaro<\/a>","<a href = \"../players/ian-baram.html\">Ian Baram<\/a>","<a href = \"../players/isabella-perez.html\">Isabella Perez<\/a>","<a href = \"../players/jay-kim-2.html\">Jay Kim<\/a>","<a href = \"../players/jeffery-han.html\">Jeffery Han<\/a>","<a href = \"../players/jeffrey-han.html\">Jeffrey Han<\/a>","<a href = \"../players/jennifer-spinoglio.html\">Jennifer Spinoglio<\/a>","<a href = \"../players/john-marvin-sipp.html\">John Marvin Sipp<\/a>","<a href = \"../players/justin-posner.html\">Justin Posner<\/a>","<a href = \"../players/kiran-duggirala.html\">Kiran Duggirala<\/a>","<a href = \"../players/lena-birkholz.html\">Lena Birkholz<\/a>","<a href = \"../players/liam-starnes.html\">Liam Starnes<\/a>","<a href = \"../players/lucy-horowitz.html\">Lucy Horowitz<\/a>","<a href = \"../players/max-hodes.html\">Max Hodes<\/a>","<a href = \"../players/michelle-yang.html\">Michelle Yang<\/a>","<a href = \"../players/ned-tagtmeier.html\">Ned Tagtmeier<\/a>","<a href = \"../players/olivia-chiacone.html\">Olivia Chiacone<\/a>","<a href = \"../players/raymond-qian.html\">Raymond Qian<\/a>","<a href = \"../players/robert-condron.html\">Robert Condron<\/a>","<a href = \"../players/ryan-wandsnider.html\">Ryan Wandsnider<\/a>","<a href = \"../players/sabrina-dobney.html\">Sabrina Dobney<\/a>","<a href = \"../players/shiv-seshan.html\">Shiv Seshan<\/a>","<a href = \"../players/sparsho-de.html\">Sparsho De<\/a>","<a href = \"../players/stone-garcia.html\">Stone Garcia<\/a>","<a href = \"../players/thomas-kralik.html\">Thomas Kralik<\/a>","<a href = \"../players/vivek-sasse.html\">Vivek Sasse<\/a>","<a href = \"../players/wonyoung-jang.html\">Wonyoung Jang<\/a>","<a href = \"../players/yasha-kharrati.html\">Yasha Kharrati<\/a>","<a href = \"../players/yohhan-kumarasinghe.html\">Yohhan Kumarasinghe<\/a>"],["2021-2022","2021-2022","2021-2022","2021-2022","2022","2021-2022","2021","2021","2021-2022","2021-2022","2021-2022","2021-2022","2021-2022","2021-2022","2021-2022","2021-2022","2021","2021","2022","2021-2022","2022","2021","2021-2022","2021","2021-2022","2021-2022","2021-2022","2021-2022","2022","2021-2022","2021-2022","2021","2021-2022","2021-2022","2021-2022","2021","2021","2021-2022","2021-2022","2021","2021","2022","2021","2021","2021-2022","2021-2022","2021-2022","2021-2022"],[2,2,5,7,1,4,2,1,5,3,5,2,5,4,7,6,1,2,4,8,2,2,3,1,3,3,8,6,2,2,6,1,4,2,9,1,1,6,5,2,2,1,2,1,7,3,3,7],[18,20,63,77,10,44,19,9,63,28,49,18,64,39,79,63,9,19,54,89,27,20,29,10,31,29,96,62,18,18,69,9,38,18,103,10,9,70,48,20,16,10,19,9,84,32,29,72],[360,420,1302,1576,220,880,380,180,1302,560,1000,360,1321,790,1616,1313,180,380,1121,1833,560,390,590,200,640,600,1961,1293,380,360,1433,180,780,360,2102,200,180,1442,980,400,320,220,380,180,1721,656,600,1476],[0,4,44,26,4,16,0,0,29,1,13,0,20,6,19,30,0,0,11,55,5,0,4,0,8,5,57,47,2,0,42,0,7,0,111,0,0,17,5,0,0,0,0,2,47,4,9,8],[42,26,177,137,8,201,46,18,181,45,102,34,170,54,169,155,4,36,93,194,63,14,23,51,52,58,236,183,42,35,158,46,162,83,364,1,0,163,14,4,49,29,22,17,235,53,61,132],[10,2,29,14,1,40,8,5,21,22,41,3,33,25,31,25,0,8,32,55,11,6,1,13,15,7,116,83,13,5,66,10,28,31,97,1,0,36,15,1,23,5,1,3,51,14,17,29],[0,0.2,0.7,0.34,0.4,0.36,0,0,0.46,0.04,0.27,0,0.31,0.15,0.24,0.48,0,0,0.2,0.62,0.19,0,0.14,0,0.26,0.17,0.59,0.76,0.11,0,0.61,0,0.18,0,1.08,0,0,0.24,0.1,0,0,0,0,0.22,0.56,0.13,0.31,0.11],[2.33,1.3,2.81,1.78,0.8,4.57,2.42,2,2.87,1.61,2.08,1.89,2.66,1.38,2.14,2.46,0.44,1.89,1.72,2.18,2.33,0.7,0.79,5.1,1.68,2,2.46,2.95,2.33,1.94,2.29,5.11,4.26,4.61,3.53,0.1,0,2.33,0.29,0.2,3.06,2.9,1.16,1.89,2.8,1.66,2.1,1.83],[0.56,0.1,0.46,0.18,0.1,0.91,0.42,0.56,0.33,0.79,0.84,0.17,0.52,0.64,0.39,0.4,0,0.42,0.59,0.62,0.41,0.3,0.03,1.3,0.48,0.24,1.21,1.34,0.72,0.28,0.96,1.11,0.74,1.72,0.94,0.1,0,0.51,0.31,0.05,1.44,0.5,0.05,0.33,0.61,0.44,0.59,0.4],[0.117,0.071,0.17,0.103,0.055,0.247,0.121,0.1,0.161,0.082,0.115,0.094,0.144,0.076,0.116,0.141,0.022,0.095,0.093,0.136,0.121,0.036,0.046,0.255,0.094,0.105,0.149,0.178,0.116,0.097,0.14,0.256,0.217,0.231,0.226,0.005,0,0.125,0.019,0.01,0.153,0.132,0.058,0.106,0.164,0.087,0.117,0.095],[20.56,15.5,36.27,21.95,13.5,46.59,22.11,17.22,33.97,12.68,20.61,18.06,28.67,12.95,23.04,29.76,4.44,16.84,17.31,27.98,24.07,5.5,9.83,44.5,18.23,21.38,27.45,34.19,21.39,18.06,27.25,45.56,41.71,37.5,46.8,0.5,0,24.36,2.92,1.75,23.44,26.5,11.32,20.56,33.33,16.25,22.76,17.99]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>Player<\/th>\n      <th>Yrs<\/th>\n      <th>Tmnts<\/th>\n      <th>GP<\/th>\n      <th>TUH<\/th>\n      <th>15<\/th>\n      <th>10<\/th>\n      <th>-5<\/th>\n      <th>15/G<\/th>\n      <th>10/G<\/th>\n      <th>-5/G<\/th>\n      <th>TU%<\/th>\n      <th>PPG<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"dom":"tp","rowCallback":"function(row, data){\n  for(var i=0; i<data.length; i++){\n    if(data[i] === null){\n      $('td:eq('+(i)+')', row).html('-')\n        .css({'font-style': 'italic', 'text-align': 'center'});\n    }\n  }\nvar value=data[2]; $(this.api().cell(row, 2).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[3]; $(this.api().cell(row, 3).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[4]; $(this.api().cell(row, 4).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[5]; $(this.api().cell(row, 5).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[6]; $(this.api().cell(row, 6).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[7]; $(this.api().cell(row, 7).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[8]; $(this.api().cell(row, 8).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[9]; $(this.api().cell(row, 9).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[10]; $(this.api().cell(row, 10).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[11]; $(this.api().cell(row, 11).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[12]; $(this.api().cell(row, 12).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[0]; $(this.api().cell(row, 0).node()).css({'border-right':'1.5px solid #d3d3d3'});\nvar value=data[3]; $(this.api().cell(row, 3).node()).css({'border-right':'1.5px solid #d3d3d3'});\nvar value=data[7]; $(this.api().cell(row, 7).node()).css({'border-right':'1.5px solid #d3d3d3'});\nvar value=data[10]; $(this.api().cell(row, 10).node()).css({'border-right':'1.5px solid #d3d3d3'});\nvar value=data[11]; $(this.api().cell(row, 11).node()).css({'border-right':'1.5px solid #d3d3d3'});\n}","columnDefs":[{"targets":11,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatPercentage(data, 0, 3, \",\", \".\", null);\n  }"},{"targets":8,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 2, 3, \",\", \".\", null);\n  }"},{"targets":9,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 2, 3, \",\", \".\", null);\n  }"},{"targets":10,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 2, 3, \",\", \".\", null);\n  }"},{"targets":12,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 2, 3, \",\", \".\", null);\n  }"},{"className":"dt-right","targets":[2,3,4,5,6,7,8,9,10,11,12]}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":["options.rowCallback","options.columnDefs.0.render","options.columnDefs.1.render","options.columnDefs.2.render","options.columnDefs.3.render","options.columnDefs.4.render"],"jsHooks":[]}</script>
+<hr>
+</div>
+<div id="tournaments" class="section level2">
+<h2>Tournaments</h2>
+<div id="htmlwidget-e1d94e82cbd259138a42" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-e1d94e82cbd259138a42">{"x":{"filter":"none","vertical":false,"extensions":["RowGroup"],"data":[["2022-04-09: ACF Nationals  at Minnesota","2022-04-09: ACF Nationals  at Minnesota","2022-04-09: ACF Nationals  at Minnesota","2022-04-09: ACF Nationals  at Minnesota","2022-04-02: DI ICT  at Hyatt Regency O'Hare","2022-04-02: DI ICT  at Hyatt Regency O'Hare","2022-04-02: DI ICT  at Hyatt Regency O'Hare","2022-04-02: DII ICT  at Hyatt Regency O'Hare","2022-03-12: WORKSHOP  at Yale","2022-02-12: MRNA VACCINE  at Northwestern","2022-02-12: MRNA VACCINE  at Northwestern","2022-02-12: MRNA VACCINE  at Northwestern","2022-02-05: DI SCT  at Illinois","2022-02-05: DI SCT  at Illinois","2022-02-05: DI SCT  at Illinois","2022-02-05: DII SCT  at Illinois","2022-02-05: DII SCT  at Illinois","2022-02-05: DII SCT  at Illinois","2022-02-05: DII SCT  at Illinois","2022-01-29: ACF Regionals  at Chicago","2022-01-29: ACF Regionals  at Chicago","2022-01-29: ACF Regionals  at Chicago","2022-01-29: ACF Regionals  at Chicago","2022-01-29: ACF Regionals  at Chicago","2022-01-29: ACF Regionals  at Chicago","2021-12-04: HARI  at Illinois","2021-12-04: HARI  at Illinois","2021-11-20: ARCADIA  at Northwestern","2021-11-20: ARCADIA  at Northwestern","2021-11-06: ACF Winter  at Minnesota","2021-11-06: ACF Winter  at Minnesota","2021-11-06: ACF Winter  at Minnesota","2021-11-06: ACF Winter  at Minnesota","2021-11-06: ACF Winter  at Minnesota","2021-11-06: ACF Winter  at Minnesota","2021-11-06: ACF Winter  at Minnesota","2021-10-30: Penn Bowl  at Chicago","2021-10-30: Penn Bowl  at Chicago","2021-10-30: Penn Bowl  at Chicago","2021-10-30: Penn Bowl  at Chicago","2021-10-16: ACF Fall  at Illinois","2021-10-16: ACF Fall  at Illinois","2021-10-16: ACF Fall  at Illinois","2021-10-16: ACF Fall  at Illinois","2021-10-16: ACF Fall  at Illinois"],["<a href = \"../tournaments/21-22-acf-nationals-minnesota#chicago-a\">Chicago A<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#chicago-b\">Chicago B<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#chicago-c\">Chicago C<\/a>","<a href = \"../tournaments/21-22-acf-nationals-minnesota#chicago-d\">Chicago D<\/a>","<a href = \"../tournaments/21-22-di-ict-hyatt-regency-o'hare#chicago-a\">Chicago A<\/a>","<a href = \"../tournaments/21-22-di-ict-hyatt-regency-o'hare#chicago-b\">Chicago B<\/a>","<a href = \"../tournaments/21-22-di-ict-hyatt-regency-o'hare#chicago-c\">Chicago C<\/a>","<a href = \"../tournaments/21-22-dii-ict-hyatt-regency-o'hare#chicago-d\">Chicago D<\/a>","<a href = \"../tournaments/21-22-workshop-yale#chicago-a\">Chicago A<\/a>","<a href = \"../tournaments/21-22-mrna-vaccine-northwestern#chicago-a\">Chicago A<\/a>","<a href = \"../tournaments/21-22-mrna-vaccine-northwestern#chicago-b\">Chicago B<\/a>","<a href = \"../tournaments/21-22-mrna-vaccine-northwestern#chicago-c\">Chicago C<\/a>","<a href = \"../tournaments/21-22-di-sct-illinois#chicago-a\">Chicago A<\/a>","<a href = \"../tournaments/21-22-di-sct-illinois#chicago-b\">Chicago B<\/a>","<a href = \"../tournaments/21-22-di-sct-illinois#chicago-c\">Chicago C<\/a>","<a href = \"../tournaments/21-22-dii-sct-illinois#chicago-d\">Chicago D<\/a>","<a href = \"../tournaments/21-22-dii-sct-illinois#chicago-e\">Chicago E<\/a>","<a href = \"../tournaments/21-22-dii-sct-illinois#chicago-f\">Chicago F<\/a>","<a href = \"../tournaments/21-22-dii-sct-illinois#chicago-g\">Chicago G<\/a>","<a href = \"../tournaments/21-22-acf-regionals-chicago#chicago-a\">Chicago A<\/a>","<a href = \"../tournaments/21-22-acf-regionals-chicago#chicago-b\">Chicago B<\/a>","<a href = \"../tournaments/21-22-acf-regionals-chicago#chicago-c\">Chicago C<\/a>","<a href = \"../tournaments/21-22-acf-regionals-chicago#chicago-d\">Chicago D<\/a>","<a href = \"../tournaments/21-22-acf-regionals-chicago#chicago-e\">Chicago E<\/a>","<a href = \"../tournaments/21-22-acf-regionals-chicago#chicago-f\">Chicago F<\/a>","<a href = \"../tournaments/21-22-hari-illinois#chicago-a\">Chicago A<\/a>","<a href = \"../tournaments/21-22-hari-illinois#chicago-b\">Chicago B<\/a>","<a href = \"../tournaments/21-22-arcadia-northwestern#chicago-a\">Chicago A<\/a>","<a href = \"../tournaments/21-22-arcadia-northwestern#chicago-b\">Chicago B<\/a>","<a href = \"../tournaments/21-22-acf-winter-minnesota#chicago-a\">Chicago A<\/a>","<a href = \"../tournaments/21-22-acf-winter-minnesota#chicago-b\">Chicago B<\/a>","<a href = \"../tournaments/21-22-acf-winter-minnesota#chicago-c\">Chicago C<\/a>","<a href = \"../tournaments/21-22-acf-winter-minnesota#chicago-d\">Chicago D<\/a>","<a href = \"../tournaments/21-22-acf-winter-minnesota#chicago-e\">Chicago E<\/a>","<a href = \"../tournaments/21-22-acf-winter-minnesota#chicago-f\">Chicago F<\/a>","<a href = \"../tournaments/21-22-acf-winter-minnesota#chicago-g\">Chicago G<\/a>","<a href = \"../tournaments/21-22-penn-bowl-chicago#chicago-a\">Chicago A<\/a>","<a href = \"../tournaments/21-22-penn-bowl-chicago#chicago-b\">Chicago B<\/a>","<a href = \"../tournaments/21-22-penn-bowl-chicago#chicago-c\">Chicago C<\/a>","<a href = \"../tournaments/21-22-penn-bowl-chicago#chicago-d\">Chicago D<\/a>","<a href = \"../tournaments/21-22-acf-fall-illinois#chicago-a\">Chicago A<\/a>","<a href = \"../tournaments/21-22-acf-fall-illinois#chicago-b\">Chicago B<\/a>","<a href = \"../tournaments/21-22-acf-fall-illinois#chicago-c\">Chicago C<\/a>","<a href = \"../tournaments/21-22-acf-fall-illinois#chicago-d\">Chicago D<\/a>","<a href = \"../tournaments/21-22-acf-fall-illinois#chicago-e\">Chicago E<\/a>"],[" Adam Fine, Ben Miller, Ned Tagtmeier, Robert Condron"," Claire Jones, Grant Li, John Marvin Sipp, Vivek Sasse"," Adam Klein, Daniel Yang, Henry Cafaro, Justin Posner"," Amogh Kulkarni, Ian Baram, Liam Starnes"," Adam Fine, Ben Miller, Ned Tagtmeier, Robert Condron"," Claire Jones, Grant Li, John Marvin Sipp, Vivek Sasse"," Adam Klein, Daniel Yang, Wonyoung Jang, Yohhan Kumarasinghe"," Dennis Reppen, Henry Cafaro, Justin Posner, Liam Starnes"," Amogh Kulkarni"," Adam Klein, Daniel Yang, John Marvin Sipp, Yohhan Kumarasinghe"," Henry Cafaro, Ned Tagtmeier"," Brian Hu, Dennis Reppen, Liam Starnes, Ryan Wandsnider"," Adam Fine, Ben Miller, Ned Tagtmeier, Robert Condron"," Claire Jones, Grant Li, John Marvin Sipp, Vivek Sasse"," Adam Klein, Daniel Yang, Ian Baram, Yohhan Kumarasinghe"," Dennis Reppen, Henry Cafaro, Justin Posner, Liam Starnes"," Buduka Ogonor, Jeffrey Han, Jennifer Spinoglio, Max Hodes"," Abigail Reynolds, Cooper Komatsu, Jay Kim, Yasha Kharrati"," Alejandro Rodriguez, Kiran Duggirala, Ryan Wandsnider, Sparsho De"," Adam Fine, Ben Miller, Ned Tagtmeier, Robert Condron"," Claire Jones, Grant Li, John Marvin Sipp, Vivek Sasse"," Adam Klein, Daniel Yang, Justin Posner, Wonyoung Jang"," Aayush Goodapaty, Amogh Kulkarni, Henry Cafaro, Liam Starnes"," Charlie Garroway, Dennis Reppen, Michelle Yang, Ryan Wandsnider"," Brian Hu, Buduka Ogonor, Kiran Duggirala, Lena Birkholz"," Buduka Ogonor, Henry Cafaro, John Marvin Sipp, Ned Tagtmeier"," Cooper Komatsu, Dennis Reppen, Jeffrey Han, Yohhan Kumarasinghe"," Adam Fine, Ben Miller, Ned Tagtmeier"," Adam Klein, Cooper Komatsu, Emily Zen, Vivek Sasse"," Daniel Yang, John Marvin Sipp, Robert Condron, Vivek Sasse"," Henry Cafaro, Justin Posner, Ned Tagtmeier"," Aayush Goodapaty, Jeffrey Han, Lena Birkholz, Shiv Seshan"," Brian Hu, Isabella Perez, Jennifer Spinoglio, Yohhan Kumarasinghe"," Andi Sun, Ev Sun, Michelle Yang, Sabrina Dobney"," Charlie Garroway, Dennis Reppen, Stone Garcia, Yasha Kharrati"," Cooper Komatsu, Jay Kim, Max Hodes, Ryan Wandsnider"," Claire Jones, John Marvin Sipp, Vivek Sasse, Wonyoung Jang"," Adam Klein, Amogh Kulkarni, Daniel Yang, Ned Tagtmeier"," Henry Cafaro, Justin Posner, Liam Starnes, Robert Condron, Shiv Seshan"," Buduka Ogonor, Max Hodes, Thomas Kralik, Yohhan Kumarasinghe"," Jeffery Han, Sabrina Dobney, Yohhan Kumarasinghe"," Max Hodes, Ryan Wandsnider, Yasha Kharrati"," Abigail Reynolds, Buduka Ogonor, Isabella Perez, Olivia Chiacone"," Andre Emery, Ev Sun, Jennifer Spinoglio, Stone Garcia"," Andi Sun, Jay Kim, Lucy Horowitz, Raymond Qian"],["10/51","20/51","32/51","31/51","4/32","14/32","24/32","5/32","7/8","1/11","2/11","6/11",null,null,null,null,null,null,null,"1/16","2/16","11/16","4/16","15/16","6/16","1/12","6/12","1/16","3/16","3/14","1/14","5/14","13/14","10/14","9/14","12/14","1/10","4/10","6/10","9/10","9/23","11/23","16/23","13/23","14/23"],[18,19,17,17,14,13,13,13,10,10,9,10,11,12,10,11,10,10,10,11,10,9,9,9,9,11,10,9,9,11,11,11,10,10,10,10,10,9,9,9,10,9,10,9,9],["9-9","11-8","6-11","9-8","10-4","6-7","3-10","9-4","2-8","10-0","7-2","4-6","9-2","9-3","6-4","9-2","5-5","4-6","4-6","9-2","6-4","6-3","5-4","3-6","2-7","10-1","3-7","9-0","7-2","9-2","11-0","6-5","2-8","4-6","4-6","2-8","9-1","6-3","4-5","1-8","6-4","5-4","4-6","5-4","4-5"],[360,380,340,340,300,277,276,291,200,200,180,200,242,264,220,242,220,220,220,220,200,180,180,180,180,220,200,180,180,220,220,220,200,200,200,200,200,180,180,180,200,180,200,180,180],[null,null,null,null,33,26,5,52,10,40,45,16,42,34,19,71,26,21,9,null,null,null,null,null,null,61,11,46,21,null,null,null,null,null,null,null,27,22,14,7,null,null,null,null,null],[164,172,112,151,118,92,87,102,67,93,73,82,110,105,103,72,81,62,74,149,109,100,85,70,60,76,70,77,88,153,140,104,74,77,82,62,86,80,75,51,100,105,75,86,88],[33,38,45,34,26,35,16,39,15,33,22,26,24,38,12,40,23,15,18,15,27,25,25,13,14,39,22,19,19,29,29,28,19,30,19,21,27,24,31,17,20,15,16,15,13],[null,null,null,null,2.36,2,0.38,4,1,4,5,1.6,3.82,2.83,1.9,6.45,2.6,2.1,0.9,null,null,null,null,null,null,5.55,1.1,5.11,2.33,null,null,null,null,null,null,null,2.7,2.44,1.56,0.78,null,null,null,null,null],[9.11,9.05,6.59,8.88,8.43,7.08,6.69,7.85,6.7,9.3,8.11,8.2,10,8.75,10.3,6.55,8.1,6.2,7.4,13.55,10.9,11.11,9.44,7.78,6.67,6.91,7,8.56,9.78,13.91,12.73,9.45,7.4,7.7,8.2,6.2,8.6,8.89,8.33,5.67,10,11.67,7.5,9.56,9.78],[1.83,2,2.65,2,1.86,2.69,1.23,3,1.5,3.3,2.44,2.6,2.18,3.17,1.2,3.64,2.3,1.5,1.8,1.36,2.7,2.78,2.78,1.44,1.56,3.55,2.2,2.11,2.11,2.64,2.64,2.55,1.9,3,1.9,2.1,2.7,2.67,3.44,1.89,2,1.67,1.6,1.67,1.44],[0.456,0.453,0.329,0.444,0.503,0.426,0.333,0.529,0.385,0.665,0.656,0.49,0.628,0.527,0.555,0.591,0.486,0.377,0.377,0.677,0.545,0.556,0.472,0.389,0.333,0.623,0.405,0.683,0.606,0.695,0.636,0.473,0.37,0.385,0.41,0.31,0.565,0.567,0.494,0.322,0.5,0.583,0.375,0.478,0.489],[225.83,218.95,137.94,190,275.36,228.08,153.46,345,170.5,390.5,371.67,234,412.73,334.17,328.5,440.45,335.5,224,209.5,391.36,314.5,292.78,238.89,183.89,146.67,401.82,209.5,423.89,342.22,430.45,374.09,246.36,168.5,175,197.5,127.5,330.5,321.11,246.11,133.33,292,313.89,178,253.89,266.11],[15.79,15.29,12.95,12.52,15.3,15.51,12.28,18.7,12.47,19.1,17.37,14.39,19.28,18.99,16.64,22.8,21.21,16.63,15.78,19.4,20.09,17.6,16.76,14.57,13.17,21.46,16.54,19.92,18.17,21.9,20.43,17.4,14.05,14.68,15.24,12.26,19.25,18.43,15.84,11.55,20.2,17.62,14.8,17.44,17.95],[277.62,228.84,130.87,183.48,297.4,221.15,143.75,336.42,183.18,386.27,408.17,237.68,397.61,351.46,264.62,477.6,323.41,235.84,192.3,473.72,359.81,300.55,239.11,195.65,155.99,464.97,229.1,432.56,350.42,482.06,446.48,298.31,160.06,166.42,185.43,123.15,353.59,326.42,256.33,142.35,332.08,269.45,170.91,243.61,258.19]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>Tournament<\/th>\n      <th>Team<\/th>\n      <th>Players<\/th>\n      <th>Finish<\/th>\n      <th>GP<\/th>\n      <th>W-L<\/th>\n      <th>TUH<\/th>\n      <th>15<\/th>\n      <th>10<\/th>\n      <th>-5<\/th>\n      <th>15/G<\/th>\n      <th>10/G<\/th>\n      <th>-5/G<\/th>\n      <th>TU%<\/th>\n      <th>PPG<\/th>\n      <th>PPB<\/th>\n      <th>A-Value<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"dom":"tp","rowGroup":{"dataSrc":0},"columnDefs":[{"targets":13,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatPercentage(data, 0, 3, \",\", \".\", null);\n  }"},{"targets":10,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 2, 3, \",\", \".\", null);\n  }"},{"targets":11,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 2, 3, \",\", \".\", null);\n  }"},{"targets":12,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 2, 3, \",\", \".\", null);\n  }"},{"targets":14,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 2, 3, \",\", \".\", null);\n  }"},{"targets":15,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 2, 3, \",\", \".\", null);\n  }"},{"targets":16,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 2, 3, \",\", \".\", null);\n  }"},{"visible":false,"targets":0},{"className":"dt-right","targets":[4,6,7,8,9,10,11,12,13,14,15,16]}],"rowCallback":"function(row, data){\n  for(var i=0; i<data.length; i++){\n    if(data[i] === null){\n      $('td:eq('+(i-1)+')', row).html('-')\n        .css({'font-style': 'italic'});\n    }\n  }\nvar value=data[3]; $(this.api().cell(row, 3).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[4]; $(this.api().cell(row, 4).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[5]; $(this.api().cell(row, 5).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[6]; $(this.api().cell(row, 6).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[7]; $(this.api().cell(row, 7).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[8]; $(this.api().cell(row, 8).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[9]; $(this.api().cell(row, 9).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[10]; $(this.api().cell(row, 10).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[11]; $(this.api().cell(row, 11).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[12]; $(this.api().cell(row, 12).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[13]; $(this.api().cell(row, 13).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[14]; $(this.api().cell(row, 14).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[15]; $(this.api().cell(row, 15).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[16]; $(this.api().cell(row, 16).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[1]; $(this.api().cell(row, 1).node()).css({'border-right':'1.5px solid #d3d3d3'});\nvar value=data[2]; $(this.api().cell(row, 2).node()).css({'border-right':'1.5px solid #d3d3d3'});\nvar value=data[3]; $(this.api().cell(row, 3).node()).css({'border-right':'1.5px solid #d3d3d3'});\nvar value=data[5]; $(this.api().cell(row, 5).node()).css({'border-right':'1.5px solid #d3d3d3'});\nvar value=data[9]; $(this.api().cell(row, 9).node()).css({'border-right':'1.5px solid #d3d3d3'});\nvar value=data[12]; $(this.api().cell(row, 12).node()).css({'border-right':'1.5px solid #d3d3d3'});\nvar value=data[15]; $(this.api().cell(row, 15).node()).css({'border-right':'1.5px solid #d3d3d3'});\n}","order":[],"autoWidth":false,"orderClasses":false}},"evals":["options.columnDefs.0.render","options.columnDefs.1.render","options.columnDefs.2.render","options.columnDefs.3.render","options.columnDefs.4.render","options.columnDefs.5.render","options.columnDefs.6.render","options.rowCallback"],"jsHooks":[]}</script>
+</div>
+<div id="hosting" class="section level2">
+<h2>Hosting</h2>
+<div id="htmlwidget-1e4902d028d14d3d9f87" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-1e4902d028d14d3d9f87">{"x":{"filter":"none","vertical":false,"extensions":["RowGroup"],"data":[["21-22","21-22"],["2022-01-29","2021-10-30"],["<a href = \"../sets/21-22-acf-regionals.html\">ACF Regionals<\/a>","<a href = \"../sets/21-22-penn-bowl.html\">Penn Bowl<\/a>"],["<a href = \"../tournaments/21-22-acf-regionals-chicago\">16<\/a>","<a href = \"../tournaments/21-22-penn-bowl-chicago\">10<\/a>"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>Year<\/th>\n      <th>Date<\/th>\n      <th>Set<\/th>\n      <th>Teams<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"dom":"tp","rowGroup":{"dataSrc":0},"columnDefs":[{"visible":false,"targets":0}],"rowCallback":"function(row, data){\n  for(var i=0; i<data.length; i++){\n    if(data[i] === null){\n      $('td:eq('+(i-1)+')', row).html('-')\n        .css({'font-style': 'italic'});\n    }\n  }\nvar value=data[1]; $(this.api().cell(row, 1).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[1]; $(this.api().cell(row, 1).node()).css({'border-right':'1.5px solid #d3d3d3'});\nvar value=data[2]; $(this.api().cell(row, 2).node()).css({'border-right':'1.5px solid #d3d3d3'});\n}","order":[],"autoWidth":false,"orderClasses":false}},"evals":["options.rowCallback"],"jsHooks":[]}</script>
+</div>
+</div>
+</div>
+
+
+<script>
+
+var source = new Bloodhound({
+  datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
+  queryTokenizer: Bloodhound.tokenizers.whitespace,
+  prefetch: {
+    url: '../test-index.json',
+    cache: false
+  }
+});
+
+source.initialize();
+
+$('#custom-templates .typeahead').typeahead(null, {
+  name: 'matched-links',
+  displayKey: 'name',
+  source: source.ttAdapter(),
+  templates: {
+    empty: [
+      '<div class="empty-message">',
+      'unable to find any search results that match the current query',
+      '</div>'
+    ].join('\n'),
+      suggestion: Handlebars.compile('<p><a href="{{id}}">{{name}}</a></p>')
+  }
+});
+</script>
+
+<script>
+  $(function() {
+  var navSelector = '#toc';
+  var $myNav = $(navSelector);
+  Toc.init($myNav);
+  $('body').scrollspy({
+    target: navSelector
+  });
+});
+</script>
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+
+</body>
+</html>

@@ -1,0 +1,1201 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>IS-210 | College Quizbowl Stats</title>
+
+<script src="libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="libs/navigation-1.1/tabsets.js"></script>
+<link href="libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="libs/highlightjs-9.12.0/highlight.js"></script>
+<script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script>
+<link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
+<script src="libs/datatables-binding-0.24/datatables.js"></script>
+<link href="libs/dt-core-1.11.3/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="libs/dt-core-1.11.3/css/jquery.dataTables.extra.css" rel="stylesheet" />
+<script src="libs/dt-core-1.11.3/js/jquery.dataTables.min.js"></script>
+<link href="libs/crosstalk-1.1.1/css/crosstalk.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.1.1/js/crosstalk.min.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Alegreya+Sans&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inconsolata&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+<script src="https://twitter.github.io/typeahead.js/releases/latest/typeahead.bundle.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.7/handlebars.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-sidebar/3.3.1/jquery.sticky-sidebar.min.js" integrity="sha512-iVhJqV0j477IrAkkzsn/tVJWXYsEqAj4PSS7AG+z1F7eD6uLKQxYBg09x13viaJ1Z5yYhlpyx0zLAUUErdHM6A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<!-- add after bootstrap.min.css -->
+<link rel="stylesheet" href="https://cdn.rawgit.com/afeld/bootstrap-toc/v0.4.1/dist/bootstrap-toc.min.css">
+<!-- add after bootstrap.min.js -->
+<script src="https://cdn.rawgit.com/afeld/bootstrap-toc/v0.4.1/dist/bootstrap-toc.min.js"></script>
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+      .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+
+
+<link rel="stylesheet" href="../css/style.css" type="text/css" />
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+
+<nav class = 'top-nav'>
+  <ul>
+    <li><p class = "site-title"><a href="/index.html">College Quizbowl Stats</a></p>
+    </li>
+    <li><a class = "navbar-link" href="/seasons/">Seasons</a></li>
+    <li><a class = "navbar-link" href="/sets/">Sets</a></li>
+    <li><a class = "navbar-link" href="/circuits/">Circuits</a></li>
+    <li><a class = "navbar-link" href="/records.html">Records</a></li>
+    <li><a class = "navbar-link" href="/about.html">About</a></li>
+
+<div id="custom-templates">
+  <input class="typeahead" type="text" placeholder="Player/Team Search">
+</div>
+  </ul>
+</nav>
+
+<div id="header">
+
+
+
+
+</div>
+
+
+<div class = 'main-flex'>
+<div class="toc-div col-sm-2">
+<nav class="side-nav" id="toc">
+</nav>
+</div>
+<div class = 'main-content col-sm-10'>
+<p class="page-title">
+21-22 IS-210
+</p>
+<p class="page-subtitle">
+Head Editor: NA
+</p>
+<hr>
+<div id="editors" class="section level2">
+<h2>Editors</h2>
+<div id="avyqfgkkyx" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>html {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+}
+
+#avyqfgkkyx .gt_table {
+  display: table;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#avyqfgkkyx .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#avyqfgkkyx .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 1px;
+  padding-bottom: 1px;
+  padding-left: 6px;
+  padding-right: 6px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#avyqfgkkyx .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 0;
+  padding-bottom: 3px;
+  padding-left: 6px;
+  padding-right: 6px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#avyqfgkkyx .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#avyqfgkkyx .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#avyqfgkkyx .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 1.25px;
+  padding-bottom: 2.25px;
+  padding-left: 6px;
+  padding-right: 6px;
+  overflow-x: hidden;
+}
+
+#avyqfgkkyx .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#avyqfgkkyx .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#avyqfgkkyx .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#avyqfgkkyx .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 1.25px;
+  padding-bottom: 1.25px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#avyqfgkkyx .gt_group_heading {
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-left: 6px;
+  padding-right: 6px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#avyqfgkkyx .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#avyqfgkkyx .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#avyqfgkkyx .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#avyqfgkkyx .gt_row {
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-left: 6px;
+  padding-right: 6px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#avyqfgkkyx .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 6px;
+  padding-right: 6px;
+}
+
+#avyqfgkkyx .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 6px;
+  padding-right: 6px;
+  vertical-align: top;
+}
+
+#avyqfgkkyx .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#avyqfgkkyx .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-left: 6px;
+  padding-right: 6px;
+}
+
+#avyqfgkkyx .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#avyqfgkkyx .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#avyqfgkkyx .gt_last_summary_row {
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-left: 6px;
+  padding-right: 6px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#avyqfgkkyx .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-left: 6px;
+  padding-right: 6px;
+}
+
+#avyqfgkkyx .gt_first_grand_summary_row {
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-left: 6px;
+  padding-right: 6px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#avyqfgkkyx .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#avyqfgkkyx .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#avyqfgkkyx .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#avyqfgkkyx .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-left: 1px;
+  padding-right: 1px;
+  padding-left: 6px;
+  padding-right: 6px;
+}
+
+#avyqfgkkyx .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#avyqfgkkyx .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 1px;
+  padding-bottom: 1px;
+  padding-left: 6px;
+  padding-right: 6px;
+}
+
+#avyqfgkkyx .gt_left {
+  text-align: left;
+}
+
+#avyqfgkkyx .gt_center {
+  text-align: center;
+}
+
+#avyqfgkkyx .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#avyqfgkkyx .gt_font_normal {
+  font-weight: normal;
+}
+
+#avyqfgkkyx .gt_font_bold {
+  font-weight: bold;
+}
+
+#avyqfgkkyx .gt_font_italic {
+  font-style: italic;
+}
+
+#avyqfgkkyx .gt_super {
+  font-size: 65%;
+}
+
+#avyqfgkkyx .gt_two_val_uncert {
+  display: inline-block;
+  line-height: 1em;
+  text-align: right;
+  font-size: 60%;
+  vertical-align: -0.25em;
+  margin-left: 0.1em;
+}
+
+#avyqfgkkyx .gt_footnote_marks {
+  font-style: italic;
+  font-weight: normal;
+  font-size: 75%;
+  vertical-align: 0.4em;
+}
+
+#avyqfgkkyx .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#avyqfgkkyx .gt_slash_mark {
+  font-size: 0.7em;
+  line-height: 0.7em;
+  vertical-align: 0.15em;
+}
+
+#avyqfgkkyx .gt_fraction_numerator {
+  font-size: 0.6em;
+  line-height: 0.6em;
+  vertical-align: 0.45em;
+}
+
+#avyqfgkkyx .gt_fraction_denominator {
+  font-size: 0.6em;
+  line-height: 0.6em;
+  vertical-align: -0.05em;
+}
+</style>
+<table class="gt_table">
+  
+  <thead class="gt_col_headings">
+    <tr>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;">Subcategory</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1">Editors</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body"></tbody>
+  
+  
+</table>
+</div>
+<hr>
+</div>
+<div id="tournaments" class="section level2">
+<h2>Tournaments</h2>
+<div id="mjbcrepkgn" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>html {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+}
+
+#mjbcrepkgn .gt_table {
+  display: table;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#mjbcrepkgn .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#mjbcrepkgn .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 1px;
+  padding-bottom: 1px;
+  padding-left: 6px;
+  padding-right: 6px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#mjbcrepkgn .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 0;
+  padding-bottom: 3px;
+  padding-left: 6px;
+  padding-right: 6px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#mjbcrepkgn .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#mjbcrepkgn .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#mjbcrepkgn .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 1.25px;
+  padding-bottom: 2.25px;
+  padding-left: 6px;
+  padding-right: 6px;
+  overflow-x: hidden;
+}
+
+#mjbcrepkgn .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#mjbcrepkgn .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#mjbcrepkgn .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#mjbcrepkgn .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 1.25px;
+  padding-bottom: 1.25px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#mjbcrepkgn .gt_group_heading {
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-left: 6px;
+  padding-right: 6px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#mjbcrepkgn .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#mjbcrepkgn .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#mjbcrepkgn .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#mjbcrepkgn .gt_row {
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-left: 6px;
+  padding-right: 6px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#mjbcrepkgn .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 6px;
+  padding-right: 6px;
+}
+
+#mjbcrepkgn .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 6px;
+  padding-right: 6px;
+  vertical-align: top;
+}
+
+#mjbcrepkgn .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#mjbcrepkgn .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-left: 6px;
+  padding-right: 6px;
+}
+
+#mjbcrepkgn .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#mjbcrepkgn .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#mjbcrepkgn .gt_last_summary_row {
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-left: 6px;
+  padding-right: 6px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#mjbcrepkgn .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-left: 6px;
+  padding-right: 6px;
+}
+
+#mjbcrepkgn .gt_first_grand_summary_row {
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-left: 6px;
+  padding-right: 6px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#mjbcrepkgn .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#mjbcrepkgn .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#mjbcrepkgn .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#mjbcrepkgn .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-left: 1px;
+  padding-right: 1px;
+  padding-left: 6px;
+  padding-right: 6px;
+}
+
+#mjbcrepkgn .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#mjbcrepkgn .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 1px;
+  padding-bottom: 1px;
+  padding-left: 6px;
+  padding-right: 6px;
+}
+
+#mjbcrepkgn .gt_left {
+  text-align: left;
+}
+
+#mjbcrepkgn .gt_center {
+  text-align: center;
+}
+
+#mjbcrepkgn .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#mjbcrepkgn .gt_font_normal {
+  font-weight: normal;
+}
+
+#mjbcrepkgn .gt_font_bold {
+  font-weight: bold;
+}
+
+#mjbcrepkgn .gt_font_italic {
+  font-style: italic;
+}
+
+#mjbcrepkgn .gt_super {
+  font-size: 65%;
+}
+
+#mjbcrepkgn .gt_two_val_uncert {
+  display: inline-block;
+  line-height: 1em;
+  text-align: right;
+  font-size: 60%;
+  vertical-align: -0.25em;
+  margin-left: 0.1em;
+}
+
+#mjbcrepkgn .gt_footnote_marks {
+  font-style: italic;
+  font-weight: normal;
+  font-size: 75%;
+  vertical-align: 0.4em;
+}
+
+#mjbcrepkgn .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#mjbcrepkgn .gt_slash_mark {
+  font-size: 0.7em;
+  line-height: 0.7em;
+  vertical-align: 0.15em;
+}
+
+#mjbcrepkgn .gt_fraction_numerator {
+  font-size: 0.6em;
+  line-height: 0.6em;
+  vertical-align: 0.45em;
+}
+
+#mjbcrepkgn .gt_fraction_denominator {
+  font-size: 0.6em;
+  line-height: 0.6em;
+  vertical-align: -0.05em;
+}
+</style>
+<table class="gt_table">
+  
+  <thead class="gt_col_headings">
+    <tr>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;">Site</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">Teams</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;">Schools</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">15%</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;">Conv%</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">PPB</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr class="gt_group_heading_row">
+      <td colspan="6" class="gt_group_heading">2012-01-22</td>
+    </tr>
+    <tr class="gt_row_group_first"><td class="gt_row gt_left" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;"><a href = "../tournaments/21-22-is-210-florida-gateway">Florida Gateway</a></td>
+<td class="gt_row gt_right" style="font-family: var(--table-font); font-size: 110%;">5</td>
+<td class="gt_row gt_right" style="font-family: var(--table-font); font-size: 110%; border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;">4</td>
+<td class="gt_row gt_right" style="font-family: var(--table-font); font-size: 110%;">0.079</td>
+<td class="gt_row gt_right" style="font-family: var(--table-font); font-size: 110%; border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;">0.815</td>
+<td class="gt_row gt_right" style="font-family: var(--table-font); font-size: 110%;">13.77</td></tr>
+    <tr><td class="gt_row gt_left gt_striped" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;"><a href = "../tournaments/21-22-is-210-jefferson-ctc">Jefferson CTC</a></td>
+<td class="gt_row gt_right gt_striped" style="font-family: var(--table-font); font-size: 110%;">4</td>
+<td class="gt_row gt_right gt_striped" style="font-family: var(--table-font); font-size: 110%; border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;">2</td>
+<td class="gt_row gt_right gt_striped" style="font-family: var(--table-font); font-size: 110%;">0.126</td>
+<td class="gt_row gt_right gt_striped" style="font-family: var(--table-font); font-size: 110%; border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;">0.836</td>
+<td class="gt_row gt_right gt_striped" style="font-family: var(--table-font); font-size: 110%;">15.95</td></tr>
+    <tr><td class="gt_row gt_left" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;"><a href = "../tournaments/21-22-is-210-johnson-county">Johnson County</a></td>
+<td class="gt_row gt_right" style="font-family: var(--table-font); font-size: 110%;">7</td>
+<td class="gt_row gt_right" style="font-family: var(--table-font); font-size: 110%; border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;">4</td>
+<td class="gt_row gt_right" style="font-family: var(--table-font); font-size: 110%;">0.048</td>
+<td class="gt_row gt_right" style="font-family: var(--table-font); font-size: 110%; border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;">0.664</td>
+<td class="gt_row gt_right" style="font-family: var(--table-font); font-size: 110%;">9.44</td></tr>
+    <tr><td class="gt_row gt_left gt_striped" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;"><a href = "../tournaments/21-22-is-210-online">Online</a></td>
+<td class="gt_row gt_right gt_striped" style="font-family: var(--table-font); font-size: 110%;">12</td>
+<td class="gt_row gt_right gt_striped" style="font-family: var(--table-font); font-size: 110%; border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;">11</td>
+<td class="gt_row gt_right gt_striped" style="font-family: var(--table-font); font-size: 110%;">0.058</td>
+<td class="gt_row gt_right gt_striped" style="font-family: var(--table-font); font-size: 110%; border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;">0.744</td>
+<td class="gt_row gt_right gt_striped" style="font-family: var(--table-font); font-size: 110%;">12.41</td></tr>
+  </tbody>
+  
+  
+</table>
+</div>
+<hr>
+</div>
+<div id="teams" class="section level2">
+<h2>Teams</h2>
+<div id="htmlwidget-f412ac8a28d4b1907f25" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-f412ac8a28d4b1907f25">{"x":{"filter":"none","vertical":false,"data":[["<a href = \"../tournaments/21-22-is-210-jefferson-ctc#jefferson-ctc-a\">Jefferson CTC A<\/a>","<a href = \"../tournaments/21-22-is-210-jefferson-ctc#suffolk-county-cc-a\">Suffolk County CC A<\/a>","<a href = \"../tournaments/21-22-is-210-online#inver-hills-a\">Inver Hills A<\/a>","<a href = \"../tournaments/21-22-is-210-florida-gateway#chipola-a\">Chipola A<\/a>","<a href = \"../tournaments/21-22-is-210-florida-gateway#valencia-a\">Valencia A<\/a>","<a href = \"../tournaments/21-22-is-210-online#redlands-cc-a\">Redlands CC A<\/a>","<a href = \"../tournaments/21-22-is-210-florida-gateway#chipola-b\">Chipola B<\/a>","<a href = \"../tournaments/21-22-is-210-online#san-diego-miramar-a\">San Diego Miramar A<\/a>","<a href = \"../tournaments/21-22-is-210-online#lamar-orange-a\">Lamar-Orange A<\/a>","<a href = \"../tournaments/21-22-is-210-online#northern-virginia-a\">Northern Virginia A<\/a>","<a href = \"../tournaments/21-22-is-210-jefferson-ctc#jefferson-ctc-b\">Jefferson CTC B<\/a>","<a href = \"../tournaments/21-22-is-210-johnson-county#coffeyville-a\">Coffeyville A<\/a>","<a href = \"../tournaments/21-22-is-210-online#santa-fe-a\">Santa Fe A<\/a>","<a href = \"../tournaments/21-22-is-210-online#seward-county-a\">Seward County A<\/a>","<a href = \"../tournaments/21-22-is-210-johnson-county#garden-city-a\">Garden City A<\/a>","<a href = \"../tournaments/21-22-is-210-florida-gateway#tallahassee-a\">Tallahassee A<\/a>","<a href = \"../tournaments/21-22-is-210-johnson-county#cowley-a\">Cowley A<\/a>","<a href = \"../tournaments/21-22-is-210-jefferson-ctc#jefferson-ctc-c\">Jefferson CTC C<\/a>","<a href = \"../tournaments/21-22-is-210-online#redlands-cc-b\">Redlands CC B<\/a>","<a href = \"../tournaments/21-22-is-210-online#jefferson-state-a\">Jefferson State A<\/a>","<a href = \"../tournaments/21-22-is-210-johnson-county#johnson-county-a\">Johnson County A<\/a>","<a href = \"../tournaments/21-22-is-210-online#scf-a\">SCF A<\/a>","<a href = \"../tournaments/21-22-is-210-johnson-county#allen-county-a\">Allen County A<\/a>","<a href = \"../tournaments/21-22-is-210-online#pensacola-a\">Pensacola A<\/a>","<a href = \"../tournaments/21-22-is-210-florida-gateway#florida-gateway-a\">Florida Gateway A<\/a>","<a href = \"../tournaments/21-22-is-210-johnson-county#garden-city-c\">Garden City C<\/a>","<a href = \"../tournaments/21-22-is-210-johnson-county#garden-city-b\">Garden City B<\/a>","<a href = \"../tournaments/21-22-is-210-online#southern-union-a\">Southern Union A<\/a>"],["<a href = \"../tournaments/21-22-is-210-jefferson-ctc\">Jefferson CTC<\/a>","<a href = \"../tournaments/21-22-is-210-jefferson-ctc\">Jefferson CTC<\/a>","<a href = \"../tournaments/21-22-is-210-online\">Online<\/a>","<a href = \"../tournaments/21-22-is-210-florida-gateway\">Florida Gateway<\/a>","<a href = \"../tournaments/21-22-is-210-florida-gateway\">Florida Gateway<\/a>","<a href = \"../tournaments/21-22-is-210-online\">Online<\/a>","<a href = \"../tournaments/21-22-is-210-florida-gateway\">Florida Gateway<\/a>","<a href = \"../tournaments/21-22-is-210-online\">Online<\/a>","<a href = \"../tournaments/21-22-is-210-online\">Online<\/a>","<a href = \"../tournaments/21-22-is-210-online\">Online<\/a>","<a href = \"../tournaments/21-22-is-210-jefferson-ctc\">Jefferson CTC<\/a>","<a href = \"../tournaments/21-22-is-210-johnson-county\">Johnson County<\/a>","<a href = \"../tournaments/21-22-is-210-online\">Online<\/a>","<a href = \"../tournaments/21-22-is-210-online\">Online<\/a>","<a href = \"../tournaments/21-22-is-210-johnson-county\">Johnson County<\/a>","<a href = \"../tournaments/21-22-is-210-florida-gateway\">Florida Gateway<\/a>","<a href = \"../tournaments/21-22-is-210-johnson-county\">Johnson County<\/a>","<a href = \"../tournaments/21-22-is-210-jefferson-ctc\">Jefferson CTC<\/a>","<a href = \"../tournaments/21-22-is-210-online\">Online<\/a>","<a href = \"../tournaments/21-22-is-210-online\">Online<\/a>","<a href = \"../tournaments/21-22-is-210-johnson-county\">Johnson County<\/a>","<a href = \"../tournaments/21-22-is-210-online\">Online<\/a>","<a href = \"../tournaments/21-22-is-210-johnson-county\">Johnson County<\/a>","<a href = \"../tournaments/21-22-is-210-online\">Online<\/a>","<a href = \"../tournaments/21-22-is-210-florida-gateway\">Florida Gateway<\/a>","<a href = \"../tournaments/21-22-is-210-johnson-county\">Johnson County<\/a>","<a href = \"../tournaments/21-22-is-210-johnson-county\">Johnson County<\/a>","<a href = \"../tournaments/21-22-is-210-online\">Online<\/a>"],[9,9,8,8,8,8,8,8,8,8,9,9,7,8,9,8,9,9,8,7,9,8,11,7,8,8,9,5],["8-1","7-2","8-0","7-1","5-3","6-2","6-2","6-2","5-3","5-3","2-7","9-0","4-3","3-5","6-3","2-6","6-3","1-8","3-5","2-5","3-6","2-6","4-7","1-6","0-8","2-6","2-7","0-5"],[180,180,160,160,160,163,160,160,160,163,180,196,140,160,183,160,192,180,160,140,175,160,208,140,160,172,170,100],[43,40,51,14,18,9,20,16,9,3,7,20,4,2,10,7,9,1,2,2,7,3,8,4,4,4,4,0],[71,69,53,81,68,77,58,52,59,64,43,72,57,52,67,33,61,27,45,36,49,36,50,26,23,34,35,10],[27,25,24,16,14,13,24,18,13,11,13,38,7,5,14,11,12,8,13,3,8,8,17,7,2,1,7,3],[4.78,4.44,6.38,1.75,2.25,1.13,2.5,2,1.13,0.38,0.78,2.22,0.57,0.25,1.11,0.88,1,0.11,0.25,0.29,0.78,0.38,0.73,0.57,0.5,0.5,0.44,0],[7.89,7.67,6.63,10.13,8.5,9.63,7.25,6.5,7.38,8,4.78,8,8.14,6.5,7.44,4.13,6.78,3,5.63,5.14,5.44,4.5,4.55,3.71,2.88,4.25,3.89,2],[3,2.78,3,2,1.75,1.63,3,2.25,1.63,1.38,1.44,4.22,1,0.63,1.56,1.38,1.33,0.89,1.63,0.43,0.89,1,1.55,1,0.25,0.13,0.78,0.6],[0.633333333333333,0.605555555555556,0.65,0.59375,0.5375,0.52760736196319,0.4875,0.425,0.425,0.411042944785276,0.277777777777778,0.469387755102041,0.435714285714286,0.3375,0.420765027322404,0.25,0.364583333333333,0.155555555555556,0.29375,0.271428571428571,0.32,0.24375,0.278846153846154,0.214285714285714,0.16875,0.22093023255814,0.229411764705882,0.1],[374.44,325,408.13,308.75,282.5,255,227.5,205,187.5,180,118.89,207.78,185,136.88,182.22,101.25,153.89,59.44,95.63,87.86,118.33,88.13,85.91,70.71,46.25,83.13,68.33,21],[18.86,16.15,20.1,16.11,16.05,13.95,13.59,14.26,12.35,12.09,12,11.3,11.48,10.56,11.56,10.75,10,10.36,7.45,6.32,9.11,8.72,7.07,7,3.33,7.11,6.15,2],[423.4,416.46,374.75,329.69,290.79,282.72,270.62,228.31,213.11,185.44,168.68,155.14,154.75,143.94,131.03,123.96,113.41,83.26,82.51,79.12,78.91,74.65,71.67,66.21,57.71,56.34,50.82,21.83]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>Team<\/th>\n      <th>Site<\/th>\n      <th>GP<\/th>\n      <th>W-L<\/th>\n      <th>TUH<\/th>\n      <th>15<\/th>\n      <th>10<\/th>\n      <th>-5<\/th>\n      <th>15/G<\/th>\n      <th>10/G<\/th>\n      <th>-5/G<\/th>\n      <th>TU%<\/th>\n      <th>PPG<\/th>\n      <th>PPB<\/th>\n      <th>A-Value<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"dom":"tp","rowCallback":"function(row, data){\n  for(var i=0; i<data.length; i++){\n    if(data[i] === null){\n      $('td:eq('+(i)+')', row).html('-')\n        .css({'font-style': 'italic', 'text-align': 'center'});\n    }\n  }\nvar value=data[2]; $(this.api().cell(row, 2).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[3]; $(this.api().cell(row, 3).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[4]; $(this.api().cell(row, 4).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[5]; $(this.api().cell(row, 5).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[6]; $(this.api().cell(row, 6).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[7]; $(this.api().cell(row, 7).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[8]; $(this.api().cell(row, 8).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[9]; $(this.api().cell(row, 9).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[10]; $(this.api().cell(row, 10).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[11]; $(this.api().cell(row, 11).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[12]; $(this.api().cell(row, 12).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[13]; $(this.api().cell(row, 13).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[14]; $(this.api().cell(row, 14).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[3]; $(this.api().cell(row, 3).node()).css({'text-align':'right'});\nvar value=data[0]; $(this.api().cell(row, 0).node()).css({'border-right':'2px solid #d3d3d3'});\nvar value=data[1]; $(this.api().cell(row, 1).node()).css({'border-right':'2px solid #d3d3d3'});\nvar value=data[3]; $(this.api().cell(row, 3).node()).css({'border-right':'2px solid #d3d3d3'});\nvar value=data[4]; $(this.api().cell(row, 4).node()).css({'border-right':'2px solid #d3d3d3'});\nvar value=data[7]; $(this.api().cell(row, 7).node()).css({'border-right':'2px solid #d3d3d3'});\nvar value=data[10]; $(this.api().cell(row, 10).node()).css({'border-right':'2px solid #d3d3d3'});\nvar value=data[11]; $(this.api().cell(row, 11).node()).css({'border-right':'2px solid #d3d3d3'});\n}","columnDefs":[{"targets":8,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 2, 3, \",\", \".\", null);\n  }"},{"targets":9,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 2, 3, \",\", \".\", null);\n  }"},{"targets":10,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 2, 3, \",\", \".\", null);\n  }"},{"targets":12,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 2, 3, \",\", \".\", null);\n  }"},{"targets":13,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 2, 3, \",\", \".\", null);\n  }"},{"targets":14,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 2, 3, \",\", \".\", null);\n  }"},{"targets":11,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatPercentage(data, 0, 3, \",\", \".\", null);\n  }"},{"className":"dt-right","targets":[2,4,5,6,7,8,9,10,11,12,13,14]}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":["options.rowCallback","options.columnDefs.0.render","options.columnDefs.1.render","options.columnDefs.2.render","options.columnDefs.3.render","options.columnDefs.4.render","options.columnDefs.5.render","options.columnDefs.6.render"],"jsHooks":[]}</script>
+<hr>
+</div>
+<div id="players" class="section level2">
+<h2>Players</h2>
+<div id="htmlwidget-1a42c7d1cf4f96affa71" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-1a42c7d1cf4f96affa71">{"x":{"filter":"none","vertical":false,"data":[["<a href = \"../players/owen-riley.html\">Owen Riley<\/a>","<a href = \"../players/joe-feldman.html\">Joe Feldman<\/a>","<a href = \"../players/frederic-o'hara.html\">Frederic O'Hara<\/a>","<a href = \"../players/alex-dennis.html\">Alex Dennis<\/a>","<a href = \"../players/veer-bhatt.html\">Veer Bhatt<\/a>","<a href = \"../players/taylor-young.html\">Taylor Young<\/a>","<a href = \"../players/a.-j.-kohler.html\">A. J. Kohler<\/a>","<a href = \"../players/robert-simpson.html\">Robert Simpson<\/a>","<a href = \"../players/alexa-rivers.html\">Alexa Rivers<\/a>","<a href = \"../players/trenton-elliott.html\">Trenton Elliott<\/a>","<a href = \"../players/xander-dillman-meyers.html\">Xander Dillman-Meyers<\/a>","<a href = \"../players/daniel-starks.html\">Daniel Starks<\/a>","<a href = \"../players/cade-seay.html\">Cade Seay<\/a>","<a href = \"../players/jon-proctor.html\">Jon Proctor<\/a>","<a href = \"../players/elizabeth-horinek.html\">Elizabeth Horinek<\/a>","<a href = \"../players/jack-connolly.html\">Jack Connolly<\/a>","<a href = \"../players/lindsay-wheeler.html\">Lindsay Wheeler<\/a>","<a href = \"../players/britain-godwin.html\">Britain Godwin<\/a>","<a href = \"../players/colby-williams.html\">Colby Williams<\/a>","<a href = \"../players/jacob-denholm.html\">Jacob Denholm<\/a>","<a href = \"../players/zane-hubble.html\">Zane Hubble<\/a>","<a href = \"../players/emily-o'neal.html\">Emily O'Neal<\/a>","<a href = \"../players/aaron-kubacka.html\">Aaron Kubacka<\/a>","<a href = \"../players/jennifer-stone.html\">Jennifer Stone<\/a>","<a href = \"../players/marli-watson.html\">Marli Watson<\/a>","<a href = \"../players/rohan-khelani.html\">Rohan Khelani<\/a>","<a href = \"../players/caleb-tewell.html\">Caleb Tewell<\/a>","<a href = \"../players/william-taylor.html\">William Taylor<\/a>","<a href = \"../players/angel-rios.html\">Angel Rios<\/a>","<a href = \"../players/zachary-heidenreich.html\">Zachary Heidenreich<\/a>","<a href = \"../players/biruk-hundie.html\">Biruk Hundie<\/a>","<a href = \"../players/hannah-armstrong.html\">Hannah Armstrong<\/a>","<a href = \"../players/andrew-abner.html\">Andrew Abner<\/a>","<a href = \"../players/daphne-wolfe.html\">Daphne Wolfe<\/a>","<a href = \"../players/joshua-mitchell.html\">Joshua Mitchell<\/a>","<a href = \"../players/dennis-le.html\">Dennis Le<\/a>","<a href = \"../players/alex-wiser.html\">Alex Wiser<\/a>","<a href = \"../players/taylor-munroe.html\">Taylor Munroe<\/a>","<a href = \"../players/tyler-dennis.html\">Tyler Dennis<\/a>","<a href = \"../players/christian-guterz.html\">Christian Guterz<\/a>","<a href = \"../players/raymond-muller.html\">Raymond Muller<\/a>","<a href = \"../players/jacob-kayl.html\">Jacob Kayl<\/a>","<a href = \"../players/ethan-weiner.html\">Ethan Weiner<\/a>","<a href = \"../players/jillian-mcgauley.html\">Jillian McGauley<\/a>","<a href = \"../players/tyler-watt.html\">Tyler Watt<\/a>","<a href = \"../players/mackenzie-holmes.html\">Mackenzie Holmes<\/a>","<a href = \"../players/frankie-urueta.html\">Frankie Urueta<\/a>","<a href = \"../players/kesy-uhomba.html\">Kesy Uhomba<\/a>","<a href = \"../players/ryan-carmichael.html\">Ryan Carmichael<\/a>","<a href = \"../players/danielle-clark.html\">Danielle Clark<\/a>","<a href = \"../players/lily-dilbeck.html\">Lily Dilbeck<\/a>","<a href = \"../players/christopher-perkins.html\">Christopher Perkins<\/a>","<a href = \"../players/nathaniel-massicotte.html\">Nathaniel Massicotte<\/a>","<a href = \"../players/laura-swartz.html\">Laura Swartz<\/a>","<a href = \"../players/aubrey-simon.html\">Aubrey Simon<\/a>","<a href = \"../players/jayson-renobato.html\">Jayson Renobato<\/a>","<a href = \"../players/cindy-rundell.html\">Cindy Rundell<\/a>","<a href = \"../players/ilia-belosludtsev.html\">Ilia Belosludtsev<\/a>","<a href = \"../players/dorian-del-toro.html\">Dorian Del Toro<\/a>","<a href = \"../players/chloey-ramsey.html\">Chloey Ramsey<\/a>","<a href = \"../players/elizabeth-stuckenborg.html\">Elizabeth Stuckenborg<\/a>","<a href = \"../players/caleb-hayes.html\">Caleb Hayes<\/a>","<a href = \"../players/zaza-boutdara.html\">Zaza Boutdara<\/a>","<a href = \"../players/kati-saxton.html\">Kati Saxton<\/a>","<a href = \"../players/grace-salmon.html\">Grace Salmon<\/a>","<a href = \"../players/cayden-cundiff.html\">Cayden Cundiff<\/a>","<a href = \"../players/kaleb-todd.html\">Kaleb Todd<\/a>","<a href = \"../players/cameron-tristan.html\">Cameron Tristan<\/a>","<a href = \"../players/jonathan-brown.html\">Jonathan Brown<\/a>","<a href = \"../players/melissa-henderson.html\">Melissa Henderson<\/a>","<a href = \"../players/shaybree-hanes.html\">Shaybree Hanes<\/a>","<a href = \"../players/milagro-berberena-rand.html\">Milagro Berberena-Rand<\/a>","<a href = \"../players/rebekah-constance.html\">Rebekah Constance<\/a>","<a href = \"../players/madison-smith.html\">Madison Smith<\/a>","<a href = \"../players/joshua-brown.html\">Joshua Brown<\/a>","<a href = \"../players/melvin-le.html\">Melvin Le<\/a>","<a href = \"../players/jaylen-lindsay.html\">Jaylen Lindsay<\/a>","<a href = \"../players/anthony-barnes.html\">Anthony Barnes<\/a>","<a href = \"../players/kimi-wright.html\">Kimi Wright<\/a>","<a href = \"../players/josh-swanson.html\">Josh Swanson<\/a>","<a href = \"../players/katie-hollingsworth.html\">Katie Hollingsworth<\/a>","<a href = \"../players/kolton-gates.html\">Kolton Gates<\/a>","<a href = \"../players/cheyenne-glass.html\">Cheyenne Glass<\/a>","<a href = \"../players/ksenia-riegle.html\">Ksenia Riegle<\/a>","<a href = \"../players/jailynn-goforth.html\">Jailynn Goforth<\/a>","<a href = \"../players/caden-thompson.html\">Caden Thompson<\/a>","<a href = \"../players/harley-bingham.html\">Harley Bingham<\/a>","<a href = \"../players/grace-mackin.html\">Grace Mackin<\/a>","<a href = \"../players/nikhita-meier.html\">Nikhita Meier<\/a>","<a href = \"../players/dawn-parker.html\">Dawn Parker<\/a>","<a href = \"../players/breanna-stamper.html\">Breanna Stamper<\/a>","<a href = \"../players/dakota-holladay.html\">Dakota Holladay<\/a>","<a href = \"../players/danielle-deller.html\">Danielle Deller<\/a>","<a href = \"../players/kasandra-harris.html\">Kasandra Harris<\/a>","<a href = \"../players/kristin-boeckmann.html\">Kristin Boeckmann<\/a>","<a href = \"../players/shelby-fuqua.html\">Shelby Fuqua<\/a>","<a href = \"../players/sydney-neidigh.html\">Sydney Neidigh<\/a>","<a href = \"../players/joseph-anglin.html\">Joseph Anglin<\/a>","<a href = \"../players/matthew-crowder.html\">Matthew Crowder<\/a>","<a href = \"../players/sydney-thompson.html\">Sydney Thompson<\/a>","<a href = \"../players/garret-coleman.html\">Garret Coleman<\/a>","<a href = \"../players/cristina-de-la-vieja-medina.html\">Cristina de la Vieja Medina<\/a>","<a href = \"../players/amelia-hayes.html\">Amelia Hayes<\/a>"],["<a href = \"../tournaments/21-22-is-210-online#inver-hills-a\">Inver Hills A<\/a>","<a href = \"../tournaments/21-22-is-210-jefferson-ctc#suffolk-county-cc-a\">Suffolk County CC A<\/a>","<a href = \"../tournaments/21-22-is-210-online#san-diego-miramar-a\">San Diego Miramar A<\/a>","<a href = \"../tournaments/21-22-is-210-jefferson-ctc#jefferson-ctc-a\">Jefferson CTC A<\/a>","<a href = \"../tournaments/21-22-is-210-online#northern-virginia-a\">Northern Virginia A<\/a>","<a href = \"../tournaments/21-22-is-210-florida-gateway#chipola-a\">Chipola A<\/a>","<a href = \"../tournaments/21-22-is-210-johnson-county#coffeyville-a\">Coffeyville A<\/a>","<a href = \"../tournaments/21-22-is-210-online#lamar-orange-a\">Lamar-Orange A<\/a>","<a href = \"../tournaments/21-22-is-210-online#santa-fe-a\">Santa Fe A<\/a>","<a href = \"../tournaments/21-22-is-210-johnson-county#johnson-county-a\">Johnson County A<\/a>","<a href = \"../tournaments/21-22-is-210-florida-gateway#valencia-a\">Valencia A<\/a>","<a href = \"../tournaments/21-22-is-210-online#redlands-cc-a\">Redlands CC A<\/a>","<a href = \"../tournaments/21-22-is-210-online#redlands-cc-a\">Redlands CC A<\/a>","<a href = \"../tournaments/21-22-is-210-florida-gateway#chipola-b\">Chipola B<\/a>","<a href = \"../tournaments/21-22-is-210-online#seward-county-a\">Seward County A<\/a>","<a href = \"../tournaments/21-22-is-210-florida-gateway#chipola-a\">Chipola A<\/a>","<a href = \"../tournaments/21-22-is-210-florida-gateway#florida-gateway-a\">Florida Gateway A<\/a>","<a href = \"../tournaments/21-22-is-210-florida-gateway#tallahassee-a\">Tallahassee A<\/a>","<a href = \"../tournaments/21-22-is-210-florida-gateway#chipola-b\">Chipola B<\/a>","<a href = \"../tournaments/21-22-is-210-johnson-county#cowley-a\">Cowley A<\/a>","<a href = \"../tournaments/21-22-is-210-johnson-county#cowley-a\">Cowley A<\/a>","<a href = \"../tournaments/21-22-is-210-johnson-county#garden-city-a\">Garden City A<\/a>","<a href = \"../tournaments/21-22-is-210-johnson-county#allen-county-a\">Allen County A<\/a>","<a href = \"../tournaments/21-22-is-210-online#scf-a\">SCF A<\/a>","<a href = \"../tournaments/21-22-is-210-florida-gateway#valencia-a\">Valencia A<\/a>","<a href = \"../tournaments/21-22-is-210-florida-gateway#valencia-a\">Valencia A<\/a>","<a href = \"../tournaments/21-22-is-210-johnson-county#garden-city-c\">Garden City C<\/a>","<a href = \"../tournaments/21-22-is-210-online#redlands-cc-b\">Redlands CC B<\/a>","<a href = \"../tournaments/21-22-is-210-johnson-county#garden-city-a\">Garden City A<\/a>","<a href = \"../tournaments/21-22-is-210-johnson-county#coffeyville-a\">Coffeyville A<\/a>","<a href = \"../tournaments/21-22-is-210-online#santa-fe-a\">Santa Fe A<\/a>","<a href = \"../tournaments/21-22-is-210-online#jefferson-state-a\">Jefferson State A<\/a>","<a href = \"../tournaments/21-22-is-210-jefferson-ctc#jefferson-ctc-a\">Jefferson CTC A<\/a>","<a href = \"../tournaments/21-22-is-210-jefferson-ctc#jefferson-ctc-a\">Jefferson CTC A<\/a>","<a href = \"../tournaments/21-22-is-210-johnson-county#garden-city-b\">Garden City B<\/a>","<a href = \"../tournaments/21-22-is-210-online#seward-county-a\">Seward County A<\/a>","<a href = \"../tournaments/21-22-is-210-online#pensacola-a\">Pensacola A<\/a>","<a href = \"../tournaments/21-22-is-210-florida-gateway#chipola-b\">Chipola B<\/a>","<a href = \"../tournaments/21-22-is-210-jefferson-ctc#jefferson-ctc-c\">Jefferson CTC C<\/a>","<a href = \"../tournaments/21-22-is-210-johnson-county#garden-city-a\">Garden City A<\/a>","<a href = \"../tournaments/21-22-is-210-jefferson-ctc#jefferson-ctc-b\">Jefferson CTC B<\/a>","<a href = \"../tournaments/21-22-is-210-online#pensacola-a\">Pensacola A<\/a>","<a href = \"../tournaments/21-22-is-210-johnson-county#allen-county-a\">Allen County A<\/a>","<a href = \"../tournaments/21-22-is-210-jefferson-ctc#jefferson-ctc-b\">Jefferson CTC B<\/a>","<a href = \"../tournaments/21-22-is-210-johnson-county#garden-city-c\">Garden City C<\/a>","<a href = \"../tournaments/21-22-is-210-online#redlands-cc-b\">Redlands CC B<\/a>","<a href = \"../tournaments/21-22-is-210-online#jefferson-state-a\">Jefferson State A<\/a>","<a href = \"../tournaments/21-22-is-210-online#jefferson-state-a\">Jefferson State A<\/a>","<a href = \"../tournaments/21-22-is-210-florida-gateway#tallahassee-a\">Tallahassee A<\/a>","<a href = \"../tournaments/21-22-is-210-online#scf-a\">SCF A<\/a>","<a href = \"../tournaments/21-22-is-210-online#redlands-cc-b\">Redlands CC B<\/a>","<a href = \"../tournaments/21-22-is-210-online#lamar-orange-a\">Lamar-Orange A<\/a>","<a href = \"../tournaments/21-22-is-210-online#redlands-cc-a\">Redlands CC A<\/a>","<a href = \"../tournaments/21-22-is-210-jefferson-ctc#jefferson-ctc-b\">Jefferson CTC B<\/a>","<a href = \"../tournaments/21-22-is-210-johnson-county#garden-city-a\">Garden City A<\/a>","<a href = \"../tournaments/21-22-is-210-online#southern-union-a\">Southern Union A<\/a>","<a href = \"../tournaments/21-22-is-210-johnson-county#garden-city-b\">Garden City B<\/a>","<a href = \"../tournaments/21-22-is-210-johnson-county#cowley-a\">Cowley A<\/a>","<a href = \"../tournaments/21-22-is-210-online#jefferson-state-a\">Jefferson State A<\/a>","<a href = \"../tournaments/21-22-is-210-jefferson-ctc#jefferson-ctc-a\">Jefferson CTC A<\/a>","<a href = \"../tournaments/21-22-is-210-jefferson-ctc#jefferson-ctc-b\">Jefferson CTC B<\/a>","<a href = \"../tournaments/21-22-is-210-johnson-county#johnson-county-a\">Johnson County A<\/a>","<a href = \"../tournaments/21-22-is-210-johnson-county#garden-city-c\">Garden City C<\/a>","<a href = \"../tournaments/21-22-is-210-online#redlands-cc-a\">Redlands CC A<\/a>","<a href = \"../tournaments/21-22-is-210-jefferson-ctc#jefferson-ctc-c\">Jefferson CTC C<\/a>","<a href = \"../tournaments/21-22-is-210-johnson-county#garden-city-b\">Garden City B<\/a>","<a href = \"../tournaments/21-22-is-210-florida-gateway#chipola-a\">Chipola A<\/a>","<a href = \"../tournaments/21-22-is-210-online#lamar-orange-a\">Lamar-Orange A<\/a>","<a href = \"../tournaments/21-22-is-210-online#southern-union-a\">Southern Union A<\/a>","<a href = \"../tournaments/21-22-is-210-johnson-county#cowley-a\">Cowley A<\/a>","<a href = \"../tournaments/21-22-is-210-johnson-county#cowley-a\">Cowley A<\/a>","<a href = \"../tournaments/21-22-is-210-online#santa-fe-a\">Santa Fe A<\/a>","<a href = \"../tournaments/21-22-is-210-online#pensacola-a\">Pensacola A<\/a>","<a href = \"../tournaments/21-22-is-210-johnson-county#garden-city-b\">Garden City B<\/a>","<a href = \"../tournaments/21-22-is-210-online#scf-a\">SCF A<\/a>","<a href = \"../tournaments/21-22-is-210-online#seward-county-a\">Seward County A<\/a>","<a href = \"../tournaments/21-22-is-210-online#pensacola-a\">Pensacola A<\/a>","<a href = \"../tournaments/21-22-is-210-online#lamar-orange-a\">Lamar-Orange A<\/a>","<a href = \"../tournaments/21-22-is-210-florida-gateway#valencia-a\">Valencia A<\/a>","<a href = \"../tournaments/21-22-is-210-online#seward-county-a\">Seward County A<\/a>","<a href = \"../tournaments/21-22-is-210-online#jefferson-state-a\">Jefferson State A<\/a>","<a href = \"../tournaments/21-22-is-210-johnson-county#allen-county-a\">Allen County A<\/a>","<a href = \"../tournaments/21-22-is-210-florida-gateway#chipola-a\">Chipola A<\/a>","<a href = \"../tournaments/21-22-is-210-florida-gateway#chipola-b\">Chipola B<\/a>","<a href = \"../tournaments/21-22-is-210-johnson-county#allen-county-a\">Allen County A<\/a>","<a href = \"../tournaments/21-22-is-210-online#lamar-orange-a\">Lamar-Orange A<\/a>","<a href = \"../tournaments/21-22-is-210-online#redlands-cc-b\">Redlands CC B<\/a>","<a href = \"../tournaments/21-22-is-210-jefferson-ctc#jefferson-ctc-c\">Jefferson CTC C<\/a>","<a href = \"../tournaments/21-22-is-210-online#santa-fe-a\">Santa Fe A<\/a>","<a href = \"../tournaments/21-22-is-210-johnson-county#coffeyville-a\">Coffeyville A<\/a>","<a href = \"../tournaments/21-22-is-210-florida-gateway#tallahassee-a\">Tallahassee A<\/a>","<a href = \"../tournaments/21-22-is-210-jefferson-ctc#jefferson-ctc-c\">Jefferson CTC C<\/a>","<a href = \"../tournaments/21-22-is-210-johnson-county#coffeyville-a\">Coffeyville A<\/a>","<a href = \"../tournaments/21-22-is-210-johnson-county#coffeyville-a\">Coffeyville A<\/a>","<a href = \"../tournaments/21-22-is-210-johnson-county#johnson-county-a\">Johnson County A<\/a>","<a href = \"../tournaments/21-22-is-210-johnson-county#cowley-a\">Cowley A<\/a>","<a href = \"../tournaments/21-22-is-210-johnson-county#coffeyville-a\">Coffeyville A<\/a>","<a href = \"../tournaments/21-22-is-210-online#southern-union-a\">Southern Union A<\/a>","<a href = \"../tournaments/21-22-is-210-online#southern-union-a\">Southern Union A<\/a>","<a href = \"../tournaments/21-22-is-210-online#jefferson-state-a\">Jefferson State A<\/a>","<a href = \"../tournaments/21-22-is-210-florida-gateway#tallahassee-a\">Tallahassee A<\/a>","<a href = \"../tournaments/21-22-is-210-johnson-county#allen-county-a\">Allen County A<\/a>","<a href = \"../tournaments/21-22-is-210-online#redlands-cc-b\">Redlands CC B<\/a>"],["<a href = \"../tournaments/21-22-IS-210-online\">Online<\/a>","<a href = \"../tournaments/21-22-IS-210-jefferson-ctc\">Jefferson CTC<\/a>","<a href = \"../tournaments/21-22-IS-210-online\">Online<\/a>","<a href = \"../tournaments/21-22-IS-210-jefferson-ctc\">Jefferson CTC<\/a>","<a href = \"../tournaments/21-22-IS-210-online\">Online<\/a>","<a href = \"../tournaments/21-22-IS-210-florida-gateway\">Florida Gateway<\/a>","<a href = \"../tournaments/21-22-IS-210-johnson-county\">Johnson County<\/a>","<a href = \"../tournaments/21-22-IS-210-online\">Online<\/a>","<a href = \"../tournaments/21-22-IS-210-online\">Online<\/a>","<a href = \"../tournaments/21-22-IS-210-johnson-county\">Johnson County<\/a>","<a href = \"../tournaments/21-22-IS-210-florida-gateway\">Florida Gateway<\/a>","<a href = \"../tournaments/21-22-IS-210-online\">Online<\/a>","<a href = \"../tournaments/21-22-IS-210-online\">Online<\/a>","<a href = \"../tournaments/21-22-IS-210-florida-gateway\">Florida Gateway<\/a>","<a href = \"../tournaments/21-22-IS-210-online\">Online<\/a>","<a href = \"../tournaments/21-22-IS-210-florida-gateway\">Florida Gateway<\/a>","<a href = \"../tournaments/21-22-IS-210-florida-gateway\">Florida Gateway<\/a>","<a href = \"../tournaments/21-22-IS-210-florida-gateway\">Florida Gateway<\/a>","<a href = \"../tournaments/21-22-IS-210-florida-gateway\">Florida Gateway<\/a>","<a href = \"../tournaments/21-22-IS-210-johnson-county\">Johnson County<\/a>","<a href = \"../tournaments/21-22-IS-210-johnson-county\">Johnson County<\/a>","<a href = \"../tournaments/21-22-IS-210-johnson-county\">Johnson County<\/a>","<a href = \"../tournaments/21-22-IS-210-johnson-county\">Johnson County<\/a>","<a href = \"../tournaments/21-22-IS-210-online\">Online<\/a>","<a href = \"../tournaments/21-22-IS-210-florida-gateway\">Florida Gateway<\/a>","<a href = \"../tournaments/21-22-IS-210-florida-gateway\">Florida Gateway<\/a>","<a href = \"../tournaments/21-22-IS-210-johnson-county\">Johnson County<\/a>","<a href = \"../tournaments/21-22-IS-210-online\">Online<\/a>","<a href = \"../tournaments/21-22-IS-210-johnson-county\">Johnson County<\/a>","<a href = \"../tournaments/21-22-IS-210-johnson-county\">Johnson County<\/a>","<a href = \"../tournaments/21-22-IS-210-online\">Online<\/a>","<a href = \"../tournaments/21-22-IS-210-online\">Online<\/a>","<a href = \"../tournaments/21-22-IS-210-jefferson-ctc\">Jefferson CTC<\/a>","<a href = \"../tournaments/21-22-IS-210-jefferson-ctc\">Jefferson CTC<\/a>","<a href = \"../tournaments/21-22-IS-210-johnson-county\">Johnson County<\/a>","<a href = \"../tournaments/21-22-IS-210-online\">Online<\/a>","<a href = \"../tournaments/21-22-IS-210-online\">Online<\/a>","<a href = \"../tournaments/21-22-IS-210-florida-gateway\">Florida Gateway<\/a>","<a href = \"../tournaments/21-22-IS-210-jefferson-ctc\">Jefferson CTC<\/a>","<a href = \"../tournaments/21-22-IS-210-johnson-county\">Johnson County<\/a>","<a href = \"../tournaments/21-22-IS-210-jefferson-ctc\">Jefferson CTC<\/a>","<a href = \"../tournaments/21-22-IS-210-online\">Online<\/a>","<a href = \"../tournaments/21-22-IS-210-johnson-county\">Johnson County<\/a>","<a href = \"../tournaments/21-22-IS-210-jefferson-ctc\">Jefferson CTC<\/a>","<a href = \"../tournaments/21-22-IS-210-johnson-county\">Johnson County<\/a>","<a href = \"../tournaments/21-22-IS-210-online\">Online<\/a>","<a href = \"../tournaments/21-22-IS-210-online\">Online<\/a>","<a href = \"../tournaments/21-22-IS-210-online\">Online<\/a>","<a href = \"../tournaments/21-22-IS-210-florida-gateway\">Florida Gateway<\/a>","<a href = \"../tournaments/21-22-IS-210-online\">Online<\/a>","<a href = \"../tournaments/21-22-IS-210-online\">Online<\/a>","<a href = \"../tournaments/21-22-IS-210-online\">Online<\/a>","<a href = \"../tournaments/21-22-IS-210-online\">Online<\/a>","<a href = \"../tournaments/21-22-IS-210-jefferson-ctc\">Jefferson CTC<\/a>","<a href = \"../tournaments/21-22-IS-210-johnson-county\">Johnson County<\/a>","<a href = \"../tournaments/21-22-IS-210-online\">Online<\/a>","<a href = \"../tournaments/21-22-IS-210-johnson-county\">Johnson County<\/a>","<a href = \"../tournaments/21-22-IS-210-johnson-county\">Johnson County<\/a>","<a href = \"../tournaments/21-22-IS-210-online\">Online<\/a>","<a href = \"../tournaments/21-22-IS-210-jefferson-ctc\">Jefferson CTC<\/a>","<a href = \"../tournaments/21-22-IS-210-jefferson-ctc\">Jefferson CTC<\/a>","<a href = \"../tournaments/21-22-IS-210-johnson-county\">Johnson County<\/a>","<a href = \"../tournaments/21-22-IS-210-johnson-county\">Johnson County<\/a>","<a href = \"../tournaments/21-22-IS-210-online\">Online<\/a>","<a href = \"../tournaments/21-22-IS-210-jefferson-ctc\">Jefferson CTC<\/a>","<a href = \"../tournaments/21-22-IS-210-johnson-county\">Johnson County<\/a>","<a href = \"../tournaments/21-22-IS-210-florida-gateway\">Florida Gateway<\/a>","<a href = \"../tournaments/21-22-IS-210-online\">Online<\/a>","<a href = \"../tournaments/21-22-IS-210-online\">Online<\/a>","<a href = \"../tournaments/21-22-IS-210-johnson-county\">Johnson County<\/a>","<a href = \"../tournaments/21-22-IS-210-johnson-county\">Johnson County<\/a>","<a href = \"../tournaments/21-22-IS-210-online\">Online<\/a>","<a href = \"../tournaments/21-22-IS-210-online\">Online<\/a>","<a href = \"../tournaments/21-22-IS-210-johnson-county\">Johnson County<\/a>","<a href = \"../tournaments/21-22-IS-210-online\">Online<\/a>","<a href = \"../tournaments/21-22-IS-210-online\">Online<\/a>","<a href = \"../tournaments/21-22-IS-210-online\">Online<\/a>","<a href = \"../tournaments/21-22-IS-210-online\">Online<\/a>","<a href = \"../tournaments/21-22-IS-210-florida-gateway\">Florida Gateway<\/a>","<a href = \"../tournaments/21-22-IS-210-online\">Online<\/a>","<a href = \"../tournaments/21-22-IS-210-online\">Online<\/a>","<a href = \"../tournaments/21-22-IS-210-johnson-county\">Johnson County<\/a>","<a href = \"../tournaments/21-22-IS-210-florida-gateway\">Florida Gateway<\/a>","<a href = \"../tournaments/21-22-IS-210-florida-gateway\">Florida Gateway<\/a>","<a href = \"../tournaments/21-22-IS-210-johnson-county\">Johnson County<\/a>","<a href = \"../tournaments/21-22-IS-210-online\">Online<\/a>","<a href = \"../tournaments/21-22-IS-210-online\">Online<\/a>","<a href = \"../tournaments/21-22-IS-210-jefferson-ctc\">Jefferson CTC<\/a>","<a href = \"../tournaments/21-22-IS-210-online\">Online<\/a>","<a href = \"../tournaments/21-22-IS-210-johnson-county\">Johnson County<\/a>","<a href = \"../tournaments/21-22-IS-210-florida-gateway\">Florida Gateway<\/a>","<a href = \"../tournaments/21-22-IS-210-jefferson-ctc\">Jefferson CTC<\/a>","<a href = \"../tournaments/21-22-IS-210-johnson-county\">Johnson County<\/a>","<a href = \"../tournaments/21-22-IS-210-johnson-county\">Johnson County<\/a>","<a href = \"../tournaments/21-22-IS-210-johnson-county\">Johnson County<\/a>","<a href = \"../tournaments/21-22-IS-210-johnson-county\">Johnson County<\/a>","<a href = \"../tournaments/21-22-IS-210-johnson-county\">Johnson County<\/a>","<a href = \"../tournaments/21-22-IS-210-online\">Online<\/a>","<a href = \"../tournaments/21-22-IS-210-online\">Online<\/a>","<a href = \"../tournaments/21-22-IS-210-online\">Online<\/a>","<a href = \"../tournaments/21-22-IS-210-florida-gateway\">Florida Gateway<\/a>","<a href = \"../tournaments/21-22-IS-210-johnson-county\">Johnson County<\/a>","<a href = \"../tournaments/21-22-IS-210-online\">Online<\/a>"],[8,9,8,9,8,8,9,8,7,9,8,8,8,8,8,8,8,8,8,9,9,9,11,8,8,8,8,8,9,9,7,7,9,9,9,8,6,8,9,9,9,7,11,9,8,8,5,6,8,8,8,8,8,9,9,5,9,8,5,9,9,9,8,8,9,9,8,8,5,6,2,7,4,9,8,8,7,5,8,8,4,6,8,8,10,4,2,9,7,3,8,3,6,4,5,3,5,2,2,1,8,6,6],[160,180,160,180,163,160,196,160,140,175,160,163,163,160,160,160,160,160,160,192,192,183,208,160,160,160,172,160,183,196,140,140,180,180,170,160,120,160,180,183,180,140,208,180,172,160,100,120,160,160,160,151,163,180,183,100,170,157,100,180,180,175,172,163,180,170,160,160,100,127,48,140,80,170,160,160,140,100,160,160,80,132,160,160,187,69,40,180,140,70,160,60,126,91,108,52,105,40,40,20,160,97,120],[51,40,16,26,3,10,12,9,1,6,7,3,5,11,1,4,4,5,6,2,7,2,7,2,8,3,3,1,2,8,3,1,5,9,3,1,2,3,1,3,3,2,1,3,1,1,0,0,2,1,0,0,1,1,3,0,1,0,1,3,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[53,69,52,44,64,46,51,38,37,43,34,31,29,23,30,27,23,23,22,27,22,27,27,21,13,17,17,21,21,20,14,15,15,7,17,15,11,11,18,13,13,10,18,13,11,11,7,8,9,10,12,11,11,9,6,7,7,8,4,5,8,6,6,6,7,7,6,7,3,3,1,4,2,4,5,4,3,2,4,3,2,2,2,2,3,1,1,2,2,1,1,0,0,0,0,0,0,0,0,0,0,0,0],[24,25,18,17,11,9,16,7,1,7,5,1,7,14,2,6,2,7,8,3,8,6,13,3,7,0,0,5,4,21,4,0,3,4,6,2,5,2,7,3,4,2,2,7,1,2,0,0,3,2,3,2,5,0,1,3,0,1,2,3,2,1,0,0,1,1,1,4,0,0,0,1,0,0,3,1,0,0,2,0,1,0,0,0,1,0,1,0,1,1,0,0,0,0,0,0,0,0,0,0,1,1,2],[6.38,4.44,2,2.89,0.38,1.25,1.33,1.13,0.14,0.67,0.88,0.38,0.63,1.38,0.13,0.5,0.5,0.63,0.75,0.22,0.78,0.22,0.64,0.25,1,0.38,0.38,0.13,0.22,0.89,0.43,0.14,0.56,1,0.33,0.13,0.33,0.38,0.11,0.33,0.33,0.29,0.09,0.33,0.13,0.13,0,0,0.25,0.13,0,0,0.13,0.11,0.33,0,0.11,0,0.2,0.33,0,0.11,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[6.63,7.67,6.5,4.89,8,5.75,5.67,4.75,5.29,4.78,4.25,3.88,3.63,2.88,3.75,3.38,2.88,2.88,2.75,3,2.44,3,2.45,2.63,1.63,2.13,2.13,2.63,2.33,2.22,2,2.14,1.67,0.78,1.89,1.88,1.83,1.38,2,1.44,1.44,1.43,1.64,1.44,1.38,1.38,1.4,1.33,1.13,1.25,1.5,1.38,1.38,1,0.67,1.4,0.78,1,0.8,0.56,0.89,0.67,0.75,0.75,0.78,0.78,0.75,0.88,0.6,0.5,0.5,0.57,0.5,0.44,0.63,0.5,0.43,0.4,0.5,0.38,0.5,0.33,0.25,0.25,0.3,0.25,0.5,0.22,0.29,0.33,0.13,0,0,0,0,0,0,0,0,0,0,0,0],[3,2.78,2.25,1.89,1.38,1.13,1.78,0.88,0.14,0.78,0.63,0.13,0.88,1.75,0.25,0.75,0.25,0.88,1,0.33,0.89,0.67,1.18,0.38,0.88,0,0,0.63,0.44,2.33,0.57,0,0.33,0.44,0.67,0.25,0.83,0.25,0.78,0.33,0.44,0.29,0.18,0.78,0.13,0.25,0,0,0.38,0.25,0.38,0.25,0.63,0,0.11,0.6,0,0.13,0.4,0.33,0.22,0.11,0,0,0.11,0.11,0.13,0.5,0,0,0,0.14,0,0,0.38,0.13,0,0,0.25,0,0.25,0,0,0,0.1,0,0.5,0,0.14,0.33,0,0,0,0,0,0,0,0,0,0,0.13,0.17,0.33],[2.13,1.6,0.89,1.53,0.27,1.11,0.75,1.29,1,0.86,1.4,3,0.71,0.79,0.5,0.67,2,0.71,0.75,0.67,0.88,0.33,0.54,0.67,1.14,null,null,0.2,0.5,0.38,0.75,null,1.67,2.25,0.5,0.5,0.4,1.5,0.14,1,0.75,1,0.5,0.43,1,0.5,null,null,0.67,0.5,0,0,0.2,null,3,0,null,0,0.5,1,0,1,null,null,0,0,0,0,null,null,null,0,null,null,0,0,null,null,0,null,0,null,null,null,0,null,0,null,0,0,null,null,null,null,null,null,null,null,null,null,0,0,0],[4.33,4.36,3.78,4.12,6.09,6.22,3.94,6.71,38,7,8.2,34,4.86,2.43,15.5,5.17,13.5,4,3.5,9.67,3.63,4.83,2.62,7.67,3,null,null,4.4,5.75,1.33,4.25,null,6.67,4,3.33,8,2.6,7,2.71,5.33,4,6,9.5,2.29,12,6,null,null,3.67,5.5,4,5.5,2.4,null,9,2.33,null,8,2.5,2.67,4,7,null,null,7,7,6,1.75,null,null,null,4,null,null,1.67,4,null,null,2,null,2,null,null,null,3,null,1,null,2,1,null,null,null,null,null,null,null,null,null,null,0,0,0],[146.88,129.44,83.75,82.78,78.75,70.63,67.78,60,54.29,53.89,52.5,43.75,41.25,40.63,38.13,37.5,35,33.75,33.75,31.67,31.67,30,28.18,28.13,26.88,26.88,26.88,25,24.44,23.89,23.57,23.57,23.33,20.56,20.56,19.38,19.17,18.13,17.78,17.78,17.22,17.14,16.82,15.56,15,14.38,14,13.33,13.13,13.13,13.13,12.5,12.5,11.67,11.11,11,9.44,9.38,9,8.89,7.78,7.78,7.5,7.5,7.22,7.22,6.88,6.25,6,5,5,5,5,4.44,4.38,4.38,4.29,4,3.75,3.75,3.75,3.33,2.5,2.5,2.5,2.5,2.5,2.22,2.14,1.67,1.25,0,0,0,0,0,0,0,0,0,-0.63,-0.83,-1.67]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>Player<\/th>\n      <th>Team<\/th>\n      <th>Site<\/th>\n      <th>GP<\/th>\n      <th>TUH<\/th>\n      <th>15<\/th>\n      <th>10<\/th>\n      <th>-5<\/th>\n      <th>15/G<\/th>\n      <th>10/G<\/th>\n      <th>-5/G<\/th>\n      <th>P/N<\/th>\n      <th>G/N<\/th>\n      <th>PPG<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"dom":"tp","rowCallback":"function(row, data){\n  for(var i=0; i<data.length; i++){\n    if(data[i] === null){\n      $('td:eq('+(i)+')', row).html('-')\n        .css({'font-style': 'italic', 'text-align': 'center'});\n    }\n  }\nvar value=data[3]; $(this.api().cell(row, 3).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[4]; $(this.api().cell(row, 4).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[5]; $(this.api().cell(row, 5).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[6]; $(this.api().cell(row, 6).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[7]; $(this.api().cell(row, 7).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[8]; $(this.api().cell(row, 8).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[9]; $(this.api().cell(row, 9).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[10]; $(this.api().cell(row, 10).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[11]; $(this.api().cell(row, 11).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[12]; $(this.api().cell(row, 12).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[13]; $(this.api().cell(row, 13).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[0]; $(this.api().cell(row, 0).node()).css({'border-right':'2px solid #d3d3d3'});\nvar value=data[1]; $(this.api().cell(row, 1).node()).css({'border-right':'2px solid #d3d3d3'});\nvar value=data[2]; $(this.api().cell(row, 2).node()).css({'border-right':'2px solid #d3d3d3'});\nvar value=data[4]; $(this.api().cell(row, 4).node()).css({'border-right':'2px solid #d3d3d3'});\nvar value=data[7]; $(this.api().cell(row, 7).node()).css({'border-right':'2px solid #d3d3d3'});\nvar value=data[10]; $(this.api().cell(row, 10).node()).css({'border-right':'2px solid #d3d3d3'});\n}","columnDefs":[{"targets":8,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 2, 3, \",\", \".\", null);\n  }"},{"targets":9,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 2, 3, \",\", \".\", null);\n  }"},{"targets":10,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 2, 3, \",\", \".\", null);\n  }"},{"targets":13,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 2, 3, \",\", \".\", null);\n  }"},{"targets":11,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 2, 3, \",\", \".\", null);\n  }"},{"targets":12,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 2, 3, \",\", \".\", null);\n  }"},{"className":"dt-right","targets":[3,4,5,6,7,8,9,10,11,12,13]}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":["options.rowCallback","options.columnDefs.0.render","options.columnDefs.1.render","options.columnDefs.2.render","options.columnDefs.3.render","options.columnDefs.4.render","options.columnDefs.5.render"],"jsHooks":[]}</script>
+</div>
+
+
+<script>
+
+var source = new Bloodhound({
+  datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
+  queryTokenizer: Bloodhound.tokenizers.whitespace,
+  prefetch: {
+    url: '../test-index.json',
+    cache: false
+  }
+});
+
+source.initialize();
+
+$('#custom-templates .typeahead').typeahead(null, {
+  name: 'matched-links',
+  displayKey: 'name',
+  source: source.ttAdapter(),
+  templates: {
+    empty: [
+      '<div class="empty-message">',
+      'unable to find any search results that match the current query',
+      '</div>'
+    ].join('\n'),
+      suggestion: Handlebars.compile('<p><a href="{{id}}">{{name}}</a></p>')
+  }
+});
+</script>
+
+<script>
+  $(function() {
+  var navSelector = '#toc';
+  var $myNav = $(navSelector);
+  Toc.init($myNav);
+  $('body').scrollspy({
+    target: navSelector
+  });
+});
+</script>
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+
+</body>
+</html>

@@ -1,0 +1,1272 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>HARI | College Quizbowl Stats</title>
+
+<script src="libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="libs/navigation-1.1/tabsets.js"></script>
+<link href="libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="libs/highlightjs-9.12.0/highlight.js"></script>
+<script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script>
+<link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
+<script src="libs/datatables-binding-0.24/datatables.js"></script>
+<link href="libs/dt-core-1.11.3/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="libs/dt-core-1.11.3/css/jquery.dataTables.extra.css" rel="stylesheet" />
+<script src="libs/dt-core-1.11.3/js/jquery.dataTables.min.js"></script>
+<link href="libs/crosstalk-1.1.1/css/crosstalk.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.1.1/js/crosstalk.min.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Alegreya+Sans&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inconsolata&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+<script src="https://twitter.github.io/typeahead.js/releases/latest/typeahead.bundle.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.7/handlebars.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-sidebar/3.3.1/jquery.sticky-sidebar.min.js" integrity="sha512-iVhJqV0j477IrAkkzsn/tVJWXYsEqAj4PSS7AG+z1F7eD6uLKQxYBg09x13viaJ1Z5yYhlpyx0zLAUUErdHM6A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<!-- add after bootstrap.min.css -->
+<link rel="stylesheet" href="https://cdn.rawgit.com/afeld/bootstrap-toc/v0.4.1/dist/bootstrap-toc.min.css">
+<!-- add after bootstrap.min.js -->
+<script src="https://cdn.rawgit.com/afeld/bootstrap-toc/v0.4.1/dist/bootstrap-toc.min.js"></script>
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+      .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+
+
+<link rel="stylesheet" href="../css/style.css" type="text/css" />
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+
+<nav class = 'top-nav'>
+  <ul>
+    <li><p class = "site-title"><a href="/index.html">College Quizbowl Stats</a></p>
+    </li>
+    <li><a class = "navbar-link" href="/seasons/">Seasons</a></li>
+    <li><a class = "navbar-link" href="/sets/">Sets</a></li>
+    <li><a class = "navbar-link" href="/circuits/">Circuits</a></li>
+    <li><a class = "navbar-link" href="/records.html">Records</a></li>
+    <li><a class = "navbar-link" href="/about.html">About</a></li>
+
+<div id="custom-templates">
+  <input class="typeahead" type="text" placeholder="Player/Team Search">
+</div>
+  </ul>
+</nav>
+
+<div id="header">
+
+
+
+
+</div>
+
+
+<div class = 'main-flex'>
+<div class="toc-div col-sm-2">
+<nav class="side-nav" id="toc">
+</nav>
+</div>
+<div class = 'main-content col-sm-10'>
+<p class="page-title">
+21-22 HARI
+</p>
+<p class="page-subtitle">
+Head Editor: Natan Holtzman
+</p>
+<hr>
+<div id="editors" class="section level2">
+<h2>Editors</h2>
+<div id="aojvxhgtxn" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>html {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+}
+
+#aojvxhgtxn .gt_table {
+  display: table;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#aojvxhgtxn .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#aojvxhgtxn .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 1px;
+  padding-bottom: 1px;
+  padding-left: 6px;
+  padding-right: 6px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#aojvxhgtxn .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 0;
+  padding-bottom: 3px;
+  padding-left: 6px;
+  padding-right: 6px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#aojvxhgtxn .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#aojvxhgtxn .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#aojvxhgtxn .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 1.25px;
+  padding-bottom: 2.25px;
+  padding-left: 6px;
+  padding-right: 6px;
+  overflow-x: hidden;
+}
+
+#aojvxhgtxn .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#aojvxhgtxn .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#aojvxhgtxn .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#aojvxhgtxn .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 1.25px;
+  padding-bottom: 1.25px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#aojvxhgtxn .gt_group_heading {
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-left: 6px;
+  padding-right: 6px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#aojvxhgtxn .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#aojvxhgtxn .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#aojvxhgtxn .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#aojvxhgtxn .gt_row {
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-left: 6px;
+  padding-right: 6px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#aojvxhgtxn .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 6px;
+  padding-right: 6px;
+}
+
+#aojvxhgtxn .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 6px;
+  padding-right: 6px;
+  vertical-align: top;
+}
+
+#aojvxhgtxn .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#aojvxhgtxn .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-left: 6px;
+  padding-right: 6px;
+}
+
+#aojvxhgtxn .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#aojvxhgtxn .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#aojvxhgtxn .gt_last_summary_row {
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-left: 6px;
+  padding-right: 6px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#aojvxhgtxn .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-left: 6px;
+  padding-right: 6px;
+}
+
+#aojvxhgtxn .gt_first_grand_summary_row {
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-left: 6px;
+  padding-right: 6px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#aojvxhgtxn .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#aojvxhgtxn .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#aojvxhgtxn .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#aojvxhgtxn .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-left: 1px;
+  padding-right: 1px;
+  padding-left: 6px;
+  padding-right: 6px;
+}
+
+#aojvxhgtxn .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#aojvxhgtxn .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 1px;
+  padding-bottom: 1px;
+  padding-left: 6px;
+  padding-right: 6px;
+}
+
+#aojvxhgtxn .gt_left {
+  text-align: left;
+}
+
+#aojvxhgtxn .gt_center {
+  text-align: center;
+}
+
+#aojvxhgtxn .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#aojvxhgtxn .gt_font_normal {
+  font-weight: normal;
+}
+
+#aojvxhgtxn .gt_font_bold {
+  font-weight: bold;
+}
+
+#aojvxhgtxn .gt_font_italic {
+  font-style: italic;
+}
+
+#aojvxhgtxn .gt_super {
+  font-size: 65%;
+}
+
+#aojvxhgtxn .gt_two_val_uncert {
+  display: inline-block;
+  line-height: 1em;
+  text-align: right;
+  font-size: 60%;
+  vertical-align: -0.25em;
+  margin-left: 0.1em;
+}
+
+#aojvxhgtxn .gt_footnote_marks {
+  font-style: italic;
+  font-weight: normal;
+  font-size: 75%;
+  vertical-align: 0.4em;
+}
+
+#aojvxhgtxn .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#aojvxhgtxn .gt_slash_mark {
+  font-size: 0.7em;
+  line-height: 0.7em;
+  vertical-align: 0.15em;
+}
+
+#aojvxhgtxn .gt_fraction_numerator {
+  font-size: 0.6em;
+  line-height: 0.6em;
+  vertical-align: 0.45em;
+}
+
+#aojvxhgtxn .gt_fraction_denominator {
+  font-size: 0.6em;
+  line-height: 0.6em;
+  vertical-align: -0.05em;
+}
+</style>
+<table class="gt_table">
+  
+  <thead class="gt_col_headings">
+    <tr>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;">Subcategory</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1">Editors</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr class="gt_group_heading_row">
+      <td colspan="2" class="gt_group_heading">Literature</td>
+    </tr>
+    <tr class="gt_row_group_first"><td class="gt_row gt_left" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;">Literature</td>
+<td class="gt_row gt_left"><a href = "../players/anson-berns.html">Anson Berns</a></td></tr>
+    <tr class="gt_group_heading_row">
+      <td colspan="2" class="gt_group_heading">History</td>
+    </tr>
+    <tr class="gt_row_group_first"><td class="gt_row gt_left gt_striped" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;">History</td>
+<td class="gt_row gt_left gt_striped"><a href = "../players/hari-parameswaran.html">Hari Parameswaran</a></td></tr>
+    <tr class="gt_group_heading_row">
+      <td colspan="2" class="gt_group_heading">Science</td>
+    </tr>
+    <tr class="gt_row_group_first"><td class="gt_row gt_left" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;">Biology, Physics</td>
+<td class="gt_row gt_left"><a href = "../players/geoffrey-chen.html">Geoffrey Chen</a></td></tr>
+    <tr><td class="gt_row gt_left gt_striped" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;">Chemistry</td>
+<td class="gt_row gt_left gt_striped"><a href = "../players/chris-tong.html">Chris Tong</a></td></tr>
+    <tr><td class="gt_row gt_left" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;">Other Science</td>
+<td class="gt_row gt_left"><a href = "../players/geoffrey-chen.html">Geoffrey Chen</a>, <a href = "../players/walter-zhang.html">Walter Zhang</a></td></tr>
+    <tr class="gt_group_heading_row">
+      <td colspan="2" class="gt_group_heading">Arts</td>
+    </tr>
+    <tr class="gt_row_group_first"><td class="gt_row gt_left gt_striped" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;">Auditory Arts</td>
+<td class="gt_row gt_left gt_striped"><a href = "../players/michael-li.html">Michael Li</a></td></tr>
+    <tr><td class="gt_row gt_left" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;">Other Arts</td>
+<td class="gt_row gt_left"><a href = "../players/ethan-strombeck.html">Ethan Strombeck</a>, <a href = "../players/michael-li.html">Michael Li</a></td></tr>
+    <tr><td class="gt_row gt_left gt_striped" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;">Visual Arts</td>
+<td class="gt_row gt_left gt_striped"><a href = "../players/ethan-strombeck.html">Ethan Strombeck</a></td></tr>
+    <tr class="gt_group_heading_row">
+      <td colspan="2" class="gt_group_heading">Beliefs</td>
+    </tr>
+    <tr class="gt_row_group_first"><td class="gt_row gt_left" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;">Mythology, Religion</td>
+<td class="gt_row gt_left"><a href = "../players/william-groger.html">William Groger</a></td></tr>
+    <tr class="gt_group_heading_row">
+      <td colspan="2" class="gt_group_heading">Thought</td>
+    </tr>
+    <tr class="gt_row_group_first"><td class="gt_row gt_left gt_striped" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;">Philosophy, Social Science</td>
+<td class="gt_row gt_left gt_striped"><a href = "../players/geoffrey-chen.html">Geoffrey Chen</a></td></tr>
+    <tr class="gt_group_heading_row">
+      <td colspan="2" class="gt_group_heading">Other</td>
+    </tr>
+    <tr class="gt_row_group_first"><td class="gt_row gt_left" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;">Current Events, Geography, Other Academic</td>
+<td class="gt_row gt_left"><a href = "../players/walter-zhang.html">Walter Zhang</a></td></tr>
+  </tbody>
+  
+  
+</table>
+</div>
+<hr>
+</div>
+<div id="tournaments" class="section level2">
+<h2>Tournaments</h2>
+<div id="uuwvtztfnz" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>html {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+}
+
+#uuwvtztfnz .gt_table {
+  display: table;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#uuwvtztfnz .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#uuwvtztfnz .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 1px;
+  padding-bottom: 1px;
+  padding-left: 6px;
+  padding-right: 6px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#uuwvtztfnz .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 0;
+  padding-bottom: 3px;
+  padding-left: 6px;
+  padding-right: 6px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#uuwvtztfnz .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#uuwvtztfnz .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#uuwvtztfnz .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 1.25px;
+  padding-bottom: 2.25px;
+  padding-left: 6px;
+  padding-right: 6px;
+  overflow-x: hidden;
+}
+
+#uuwvtztfnz .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#uuwvtztfnz .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#uuwvtztfnz .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#uuwvtztfnz .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 1.25px;
+  padding-bottom: 1.25px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#uuwvtztfnz .gt_group_heading {
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-left: 6px;
+  padding-right: 6px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#uuwvtztfnz .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#uuwvtztfnz .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#uuwvtztfnz .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#uuwvtztfnz .gt_row {
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-left: 6px;
+  padding-right: 6px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#uuwvtztfnz .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 6px;
+  padding-right: 6px;
+}
+
+#uuwvtztfnz .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 6px;
+  padding-right: 6px;
+  vertical-align: top;
+}
+
+#uuwvtztfnz .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#uuwvtztfnz .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-left: 6px;
+  padding-right: 6px;
+}
+
+#uuwvtztfnz .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#uuwvtztfnz .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#uuwvtztfnz .gt_last_summary_row {
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-left: 6px;
+  padding-right: 6px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#uuwvtztfnz .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-left: 6px;
+  padding-right: 6px;
+}
+
+#uuwvtztfnz .gt_first_grand_summary_row {
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-left: 6px;
+  padding-right: 6px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#uuwvtztfnz .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#uuwvtztfnz .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#uuwvtztfnz .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#uuwvtztfnz .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-left: 1px;
+  padding-right: 1px;
+  padding-left: 6px;
+  padding-right: 6px;
+}
+
+#uuwvtztfnz .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#uuwvtztfnz .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 1px;
+  padding-bottom: 1px;
+  padding-left: 6px;
+  padding-right: 6px;
+}
+
+#uuwvtztfnz .gt_left {
+  text-align: left;
+}
+
+#uuwvtztfnz .gt_center {
+  text-align: center;
+}
+
+#uuwvtztfnz .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#uuwvtztfnz .gt_font_normal {
+  font-weight: normal;
+}
+
+#uuwvtztfnz .gt_font_bold {
+  font-weight: bold;
+}
+
+#uuwvtztfnz .gt_font_italic {
+  font-style: italic;
+}
+
+#uuwvtztfnz .gt_super {
+  font-size: 65%;
+}
+
+#uuwvtztfnz .gt_two_val_uncert {
+  display: inline-block;
+  line-height: 1em;
+  text-align: right;
+  font-size: 60%;
+  vertical-align: -0.25em;
+  margin-left: 0.1em;
+}
+
+#uuwvtztfnz .gt_footnote_marks {
+  font-style: italic;
+  font-weight: normal;
+  font-size: 75%;
+  vertical-align: 0.4em;
+}
+
+#uuwvtztfnz .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#uuwvtztfnz .gt_slash_mark {
+  font-size: 0.7em;
+  line-height: 0.7em;
+  vertical-align: 0.15em;
+}
+
+#uuwvtztfnz .gt_fraction_numerator {
+  font-size: 0.6em;
+  line-height: 0.6em;
+  vertical-align: 0.45em;
+}
+
+#uuwvtztfnz .gt_fraction_denominator {
+  font-size: 0.6em;
+  line-height: 0.6em;
+  vertical-align: -0.05em;
+}
+</style>
+<table class="gt_table">
+  
+  <thead class="gt_col_headings">
+    <tr>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;">Site</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">Teams</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;">Schools</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">15%</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;">Conv%</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">PPB</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr class="gt_group_heading_row">
+      <td colspan="6" class="gt_group_heading">2021-10-30</td>
+    </tr>
+    <tr class="gt_row_group_first"><td class="gt_row gt_left" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;"><a href = "../tournaments/21-22-hari-georgia-tech">Georgia Tech</a></td>
+<td class="gt_row gt_right" style="font-family: var(--table-font); font-size: 110%;">12</td>
+<td class="gt_row gt_right" style="font-family: var(--table-font); font-size: 110%; border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;">7</td>
+<td class="gt_row gt_right" style="font-family: var(--table-font); font-size: 110%;">0.116</td>
+<td class="gt_row gt_right" style="font-family: var(--table-font); font-size: 110%; border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;">0.937</td>
+<td class="gt_row gt_right" style="font-family: var(--table-font); font-size: 110%;">16.98</td></tr>
+    <tr class="gt_group_heading_row">
+      <td colspan="6" class="gt_group_heading">2021-11-20</td>
+    </tr>
+    <tr class="gt_row_group_first"><td class="gt_row gt_left gt_striped" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;"><a href = "../tournaments/21-22-hari-brown">Brown</a></td>
+<td class="gt_row gt_right gt_striped" style="font-family: var(--table-font); font-size: 110%;">8</td>
+<td class="gt_row gt_right gt_striped" style="font-family: var(--table-font); font-size: 110%; border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;">6</td>
+<td class="gt_row gt_right gt_striped" style="font-family: var(--table-font); font-size: 110%;">0.142</td>
+<td class="gt_row gt_right gt_striped" style="font-family: var(--table-font); font-size: 110%; border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;">0.963</td>
+<td class="gt_row gt_right gt_striped" style="font-family: var(--table-font); font-size: 110%;">18.25</td></tr>
+    <tr class="gt_group_heading_row">
+      <td colspan="6" class="gt_group_heading">2021-11-27</td>
+    </tr>
+    <tr class="gt_row_group_first"><td class="gt_row gt_left" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;"><a href = "../tournaments/21-22-hari-manchester">Manchester</a></td>
+<td class="gt_row gt_right" style="font-family: var(--table-font); font-size: 110%;">10</td>
+<td class="gt_row gt_right" style="font-family: var(--table-font); font-size: 110%; border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;">6</td>
+<td class="gt_row gt_right" style="font-family: var(--table-font); font-size: 110%;">0.116</td>
+<td class="gt_row gt_right" style="font-family: var(--table-font); font-size: 110%; border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;">0.964</td>
+<td class="gt_row gt_right" style="font-family: var(--table-font); font-size: 110%;">18.28</td></tr>
+    <tr class="gt_group_heading_row">
+      <td colspan="6" class="gt_group_heading">2021-12-04</td>
+    </tr>
+    <tr class="gt_row_group_first"><td class="gt_row gt_left gt_striped" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;"><a href = "../tournaments/21-22-hari-canada">Canada</a></td>
+<td class="gt_row gt_right gt_striped" style="font-family: var(--table-font); font-size: 110%;">10</td>
+<td class="gt_row gt_right gt_striped" style="font-family: var(--table-font); font-size: 110%; border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;">9</td>
+<td class="gt_row gt_right gt_striped" style="font-family: var(--table-font); font-size: 110%;">0.131</td>
+<td class="gt_row gt_right gt_striped" style="font-family: var(--table-font); font-size: 110%; border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;">0.970</td>
+<td class="gt_row gt_right gt_striped" style="font-family: var(--table-font); font-size: 110%;">17.56</td></tr>
+    <tr><td class="gt_row gt_left" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;"><a href = "../tournaments/21-22-hari-illinois">Illinois</a></td>
+<td class="gt_row gt_right" style="font-family: var(--table-font); font-size: 110%;">12</td>
+<td class="gt_row gt_right" style="font-family: var(--table-font); font-size: 110%; border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;">6</td>
+<td class="gt_row gt_right" style="font-family: var(--table-font); font-size: 110%;">0.115</td>
+<td class="gt_row gt_right" style="font-family: var(--table-font); font-size: 110%; border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;">0.943</td>
+<td class="gt_row gt_right" style="font-family: var(--table-font); font-size: 110%;">17.06</td></tr>
+    <tr><td class="gt_row gt_left gt_striped" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;"><a href = "../tournaments/21-22-hari-maryland">Maryland</a></td>
+<td class="gt_row gt_right gt_striped" style="font-family: var(--table-font); font-size: 110%;">10</td>
+<td class="gt_row gt_right gt_striped" style="font-family: var(--table-font); font-size: 110%; border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;">6</td>
+<td class="gt_row gt_right gt_striped" style="font-family: var(--table-font); font-size: 110%;">0.114</td>
+<td class="gt_row gt_right gt_striped" style="font-family: var(--table-font); font-size: 110%; border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;">0.929</td>
+<td class="gt_row gt_right gt_striped" style="font-family: var(--table-font); font-size: 110%;">16.48</td></tr>
+    <tr><td class="gt_row gt_left" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;"><a href = "../tournaments/21-22-hari-rit">RIT</a></td>
+<td class="gt_row gt_right" style="font-family: var(--table-font); font-size: 110%;">4</td>
+<td class="gt_row gt_right" style="font-family: var(--table-font); font-size: 110%; border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;">2</td>
+<td class="gt_row gt_right" style="font-family: var(--table-font); font-size: 110%;">0.043</td>
+<td class="gt_row gt_right" style="font-family: var(--table-font); font-size: 110%; border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;">0.839</td>
+<td class="gt_row gt_right" style="font-family: var(--table-font); font-size: 110%;">12.25</td></tr>
+  </tbody>
+  
+  
+</table>
+</div>
+<hr>
+</div>
+<div id="teams" class="section level2">
+<h2>Teams</h2>
+<div id="htmlwidget-b137533975a51a2fcf57" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-b137533975a51a2fcf57">{"x":{"filter":"none","vertical":false,"data":[["<a href = \"../tournaments/21-22-hari-brown#harvard-a\">Harvard A<\/a>","<a href = \"../tournaments/21-22-hari-georgia-tech#florida-a\">Florida A<\/a>","<a href = \"../tournaments/21-22-hari-georgia-tech#georgia-tech-a\">Georgia Tech A<\/a>","<a href = \"../tournaments/21-22-hari-illinois#chicago-a\">Chicago A<\/a>","<a href = \"../tournaments/21-22-hari-brown#harvard-b\">Harvard B<\/a>","<a href = \"../tournaments/21-22-hari-maryland#maryland-a\">Maryland A<\/a>","<a href = \"../tournaments/21-22-hari-manchester#southampton-a\">Southampton A<\/a>","<a href = \"../tournaments/21-22-hari-maryland#rutgers-a\">Rutgers A<\/a>","<a href = \"../tournaments/21-22-hari-manchester#oxford-a\">Oxford A<\/a>","<a href = \"../tournaments/21-22-hari-canada#ubc-a\">UBC A<\/a>","<a href = \"../tournaments/21-22-hari-manchester#cambridge-a\">Cambridge A<\/a>","<a href = \"../tournaments/21-22-hari-manchester#edinburgh-a\">Edinburgh A<\/a>","<a href = \"../tournaments/21-22-hari-illinois#michigan-a\">Michigan A<\/a>","<a href = \"../tournaments/21-22-hari-canada#toronto-b\">Toronto B<\/a>","<a href = \"../tournaments/21-22-hari-illinois#wustl-a\">WUSTL A<\/a>","<a href = \"../tournaments/21-22-hari-georgia-tech#lambert-a\">Lambert A<\/a>","<a href = \"../tournaments/21-22-hari-maryland#north-carolina-a\">North Carolina A<\/a>","<a href = \"../tournaments/21-22-hari-illinois#indiana-a\">Indiana A<\/a>","<a href = \"../tournaments/21-22-hari-brown#mit-b\">MIT B<\/a>","<a href = \"../tournaments/21-22-hari-illinois#purdue-a\">Purdue A<\/a>","<a href = \"../tournaments/21-22-hari-canada#washington-a\">Washington A<\/a>","<a href = \"../tournaments/21-22-hari-canada#warwick-a\">Warwick A<\/a>","<a href = \"../tournaments/21-22-hari-brown#amherst-a\">Amherst A<\/a>","<a href = \"../tournaments/21-22-hari-brown#mit-a\">MIT A<\/a>","<a href = \"../tournaments/21-22-hari-manchester#oxford-b\">Oxford B<\/a>","<a href = \"../tournaments/21-22-hari-georgia-tech#kentucky-a\">Kentucky A<\/a>","<a href = \"../tournaments/21-22-hari-canada#waterloo-a\">Waterloo A<\/a>","<a href = \"../tournaments/21-22-hari-maryland#uc-berkeley-a\">UC Berkeley A<\/a>","<a href = \"../tournaments/21-22-hari-georgia-tech#south-carolina-a\">South Carolina A<\/a>","<a href = \"../tournaments/21-22-hari-canada#toronto-a\">Toronto A<\/a>","<a href = \"../tournaments/21-22-hari-maryland#william-&-mary-a\">William & Mary A<\/a>","<a href = \"../tournaments/21-22-hari-georgia-tech#alabama-a\">Alabama A<\/a>","<a href = \"../tournaments/21-22-hari-manchester#bristol-a\">Bristol A<\/a>","<a href = \"../tournaments/21-22-hari-canada#mcgill-a\">McGill A<\/a>","<a href = \"../tournaments/21-22-hari-illinois#chicago-b\">Chicago B<\/a>","<a href = \"../tournaments/21-22-hari-canada#western-a\">Western A<\/a>","<a href = \"../tournaments/21-22-hari-illinois#illinois-a\">Illinois A<\/a>","<a href = \"../tournaments/21-22-hari-canada#inver-hills-a\">Inver Hills A<\/a>","<a href = \"../tournaments/21-22-hari-georgia-tech#georgia-a\">Georgia A<\/a>","<a href = \"../tournaments/21-22-hari-rit#rit-a\">RIT A<\/a>","<a href = \"../tournaments/21-22-hari-manchester#oxford-c\">Oxford C<\/a>","<a href = \"../tournaments/21-22-hari-maryland#maryland-b\">Maryland B<\/a>","<a href = \"../tournaments/21-22-hari-manchester#sheffboldt\">Sheffboldt<\/a>","<a href = \"../tournaments/21-22-hari-maryland#gettysburg-a\">Gettysburg A<\/a>","<a href = \"../tournaments/21-22-hari-illinois#purdue-b\">Purdue B<\/a>","<a href = \"../tournaments/21-22-hari-illinois#purdue-c\">Purdue C<\/a>","<a href = \"../tournaments/21-22-hari-illinois#illinois-b\">Illinois B<\/a>","<a href = \"../tournaments/21-22-hari-manchester#cambridge-b\">Cambridge B<\/a>","<a href = \"../tournaments/21-22-hari-brown#northeastern-a\">Northeastern A<\/a>","<a href = \"../tournaments/21-22-hari-georgia-tech#georgia-tech-b\">Georgia Tech B<\/a>","<a href = \"../tournaments/21-22-hari-canada#mcmaster-a\">McMaster A<\/a>","<a href = \"../tournaments/21-22-hari-illinois#michigan-b\">Michigan B<\/a>","<a href = \"../tournaments/21-22-hari-manchester#durham-a\">Durham A<\/a>","<a href = \"../tournaments/21-22-hari-georgia-tech#tennessee-a\">Tennessee A<\/a>","<a href = \"../tournaments/21-22-hari-georgia-tech#south-carolina-b\">South Carolina B<\/a>","<a href = \"../tournaments/21-22-hari-georgia-tech#south-carolina-c\">South Carolina C<\/a>","<a href = \"../tournaments/21-22-hari-brown#bowdoin-a\">Bowdoin A<\/a>","<a href = \"../tournaments/21-22-hari-maryland#william-&-mary-b\">William & Mary B<\/a>","<a href = \"../tournaments/21-22-hari-rit#colgate-a\">Colgate A<\/a>","<a href = \"../tournaments/21-22-hari-maryland#gettysburg-b\">Gettysburg B<\/a>","<a href = \"../tournaments/21-22-hari-illinois#indiana-b\">Indiana B<\/a>","<a href = \"../tournaments/21-22-hari-rit#rit-b\">RIT B<\/a>","<a href = \"../tournaments/21-22-hari-brown#uconn-a\">UConn A<\/a>","<a href = \"../tournaments/21-22-hari-georgia-tech#tennessee-b\">Tennessee B<\/a>","<a href = \"../tournaments/21-22-hari-maryland#maryland-c\">Maryland C<\/a>","<a href = \"../tournaments/21-22-hari-rit#colgate-b\">Colgate B<\/a>"],["<a href = \"../tournaments/21-22-hari-brown\">Brown<\/a>","<a href = \"../tournaments/21-22-hari-georgia-tech\">Georgia Tech<\/a>","<a href = \"../tournaments/21-22-hari-georgia-tech\">Georgia Tech<\/a>","<a href = \"../tournaments/21-22-hari-illinois\">Illinois<\/a>","<a href = \"../tournaments/21-22-hari-brown\">Brown<\/a>","<a href = \"../tournaments/21-22-hari-maryland\">Maryland<\/a>","<a href = \"../tournaments/21-22-hari-manchester\">Manchester<\/a>","<a href = \"../tournaments/21-22-hari-maryland\">Maryland<\/a>","<a href = \"../tournaments/21-22-hari-manchester\">Manchester<\/a>","<a href = \"../tournaments/21-22-hari-canada\">Canada<\/a>","<a href = \"../tournaments/21-22-hari-manchester\">Manchester<\/a>","<a href = \"../tournaments/21-22-hari-manchester\">Manchester<\/a>","<a href = \"../tournaments/21-22-hari-illinois\">Illinois<\/a>","<a href = \"../tournaments/21-22-hari-canada\">Canada<\/a>","<a href = \"../tournaments/21-22-hari-illinois\">Illinois<\/a>","<a href = \"../tournaments/21-22-hari-georgia-tech\">Georgia Tech<\/a>","<a href = \"../tournaments/21-22-hari-maryland\">Maryland<\/a>","<a href = \"../tournaments/21-22-hari-illinois\">Illinois<\/a>","<a href = \"../tournaments/21-22-hari-brown\">Brown<\/a>","<a href = \"../tournaments/21-22-hari-illinois\">Illinois<\/a>","<a href = \"../tournaments/21-22-hari-canada\">Canada<\/a>","<a href = \"../tournaments/21-22-hari-canada\">Canada<\/a>","<a href = \"../tournaments/21-22-hari-brown\">Brown<\/a>","<a href = \"../tournaments/21-22-hari-brown\">Brown<\/a>","<a href = \"../tournaments/21-22-hari-manchester\">Manchester<\/a>","<a href = \"../tournaments/21-22-hari-georgia-tech\">Georgia Tech<\/a>","<a href = \"../tournaments/21-22-hari-canada\">Canada<\/a>","<a href = \"../tournaments/21-22-hari-maryland\">Maryland<\/a>","<a href = \"../tournaments/21-22-hari-georgia-tech\">Georgia Tech<\/a>","<a href = \"../tournaments/21-22-hari-canada\">Canada<\/a>","<a href = \"../tournaments/21-22-hari-maryland\">Maryland<\/a>","<a href = \"../tournaments/21-22-hari-georgia-tech\">Georgia Tech<\/a>","<a href = \"../tournaments/21-22-hari-manchester\">Manchester<\/a>","<a href = \"../tournaments/21-22-hari-canada\">Canada<\/a>","<a href = \"../tournaments/21-22-hari-illinois\">Illinois<\/a>","<a href = \"../tournaments/21-22-hari-canada\">Canada<\/a>","<a href = \"../tournaments/21-22-hari-illinois\">Illinois<\/a>","<a href = \"../tournaments/21-22-hari-canada\">Canada<\/a>","<a href = \"../tournaments/21-22-hari-georgia-tech\">Georgia Tech<\/a>","<a href = \"../tournaments/21-22-hari-rit\">RIT<\/a>","<a href = \"../tournaments/21-22-hari-manchester\">Manchester<\/a>","<a href = \"../tournaments/21-22-hari-maryland\">Maryland<\/a>","<a href = \"../tournaments/21-22-hari-manchester\">Manchester<\/a>","<a href = \"../tournaments/21-22-hari-maryland\">Maryland<\/a>","<a href = \"../tournaments/21-22-hari-illinois\">Illinois<\/a>","<a href = \"../tournaments/21-22-hari-illinois\">Illinois<\/a>","<a href = \"../tournaments/21-22-hari-illinois\">Illinois<\/a>","<a href = \"../tournaments/21-22-hari-manchester\">Manchester<\/a>","<a href = \"../tournaments/21-22-hari-brown\">Brown<\/a>","<a href = \"../tournaments/21-22-hari-georgia-tech\">Georgia Tech<\/a>","<a href = \"../tournaments/21-22-hari-canada\">Canada<\/a>","<a href = \"../tournaments/21-22-hari-illinois\">Illinois<\/a>","<a href = \"../tournaments/21-22-hari-manchester\">Manchester<\/a>","<a href = \"../tournaments/21-22-hari-georgia-tech\">Georgia Tech<\/a>","<a href = \"../tournaments/21-22-hari-georgia-tech\">Georgia Tech<\/a>","<a href = \"../tournaments/21-22-hari-georgia-tech\">Georgia Tech<\/a>","<a href = \"../tournaments/21-22-hari-brown\">Brown<\/a>","<a href = \"../tournaments/21-22-hari-maryland\">Maryland<\/a>","<a href = \"../tournaments/21-22-hari-rit\">RIT<\/a>","<a href = \"../tournaments/21-22-hari-maryland\">Maryland<\/a>","<a href = \"../tournaments/21-22-hari-illinois\">Illinois<\/a>","<a href = \"../tournaments/21-22-hari-rit\">RIT<\/a>","<a href = \"../tournaments/21-22-hari-brown\">Brown<\/a>","<a href = \"../tournaments/21-22-hari-georgia-tech\">Georgia Tech<\/a>","<a href = \"../tournaments/21-22-hari-maryland\">Maryland<\/a>","<a href = \"../tournaments/21-22-hari-rit\">RIT<\/a>"],[11,12,12,11,11,13,10,13,9,9,9,10,11,9,10,10,12,10,10,10,9,9,10,10,9,10,9,12,10,9,12,10,9,9,10,9,10,9,10,9,9,12,9,12,10,10,10,9,10,10,9,10,9,10,10,10,9,12,9,12,10,9,9,10,12,9],["10-1","11-1","10-2","10-1","8-3","12-1","8-2","10-3","7-2","9-0","6-3","9-1","9-2","7-2","6-4","6-4","9-3","6-4","6-4","6-4","7-2","6-3","5-5","6-4","6-3","5-5","4-5","6-6","4-6","4-5","8-4","4-6","4-5","1-8","3-7","3-6","5-5","3-6","5-5","8-1","3-6","6-6","1-8","4-8","5-5","3-7","4-6","1-8","3-7","6-4","1-8","2-8","1-8","3-7","4-6","3-7","1-8","3-9","5-4","2-10","2-8","3-6","1-8","1-9","1-11","2-7"],[220,240,240,220,220,260,200,260,180,180,180,200,220,180,200,200,240,200,200,200,180,180,200,200,180,200,181,240,200,181,240,200,180,180,200,180,200,180,200,180,180,240,180,240,200,200,200,180,200,200,180,200,180,200,200,200,180,240,180,240,200,180,180,200,240,180],[69,79,53,61,58,74,45,61,36,50,39,28,43,31,32,49,46,21,19,26,32,20,25,27,22,20,23,25,16,19,31,20,16,21,11,10,18,20,7,12,9,7,4,9,15,14,21,4,17,11,10,10,10,7,10,10,3,12,5,9,8,6,9,5,5,8],[85,87,94,76,74,90,82,99,75,70,74,89,80,72,77,60,92,79,83,82,65,74,66,98,72,72,66,91,76,67,101,69,64,58,70,69,79,52,97,100,57,97,63,85,77,66,65,52,54,74,45,64,46,68,68,60,48,77,67,66,55,55,35,50,56,49],[12,24,31,39,32,32,18,28,23,21,12,28,30,20,14,36,35,17,21,17,21,20,17,24,23,16,10,15,30,23,19,22,20,22,22,25,23,20,11,27,11,23,24,7,30,16,22,7,15,12,15,11,22,10,22,27,10,26,22,18,22,8,19,18,20,14],[6.27,6.58,4.42,5.55,5.27,5.69,4.5,4.69,4,5.56,4.33,2.8,3.91,3.44,3.2,4.9,3.83,2.1,1.9,2.6,3.56,2.22,2.5,2.7,2.44,2,2.56,2.08,1.6,2.11,2.58,2,1.78,2.33,1.1,1.11,1.8,2.22,0.7,1.33,1,0.58,0.44,0.75,1.5,1.4,2.1,0.44,1.7,1.1,1.11,1,1.11,0.7,1,1,0.33,1,0.56,0.75,0.8,0.67,1,0.5,0.42,0.89],[7.73,7.25,7.83,6.91,6.73,6.92,8.2,7.62,8.33,7.78,8.22,8.9,7.27,8,7.7,6,7.67,7.9,8.3,8.2,7.22,8.22,6.6,9.8,8,7.2,7.33,7.58,7.6,7.44,8.42,6.9,7.11,6.44,7,7.67,7.9,5.78,9.7,11.11,6.33,8.08,7,7.08,7.7,6.6,6.5,5.78,5.4,7.4,5,6.4,5.11,6.8,6.8,6,5.33,6.42,7.44,5.5,5.5,6.11,3.89,5,4.67,5.44],[1.09,2,2.58,3.55,2.91,2.46,1.8,2.15,2.56,2.33,1.33,2.8,2.73,2.22,1.4,3.6,2.92,1.7,2.1,1.7,2.33,2.22,1.7,2.4,2.56,1.6,1.11,1.25,3,2.56,1.58,2.2,2.22,2.44,2.2,2.78,2.3,2.22,1.1,3,1.22,1.92,2.67,0.58,3,1.6,2.2,0.78,1.5,1.2,1.67,1.1,2.44,1,2.2,2.7,1.11,2.17,2.44,1.5,2.2,0.89,2.11,1.8,1.67,1.56],[0.7,0.691666666666667,0.6125,0.622727272727273,0.6,0.630769230769231,0.635,0.615384615384615,0.616666666666667,0.666666666666667,0.627777777777778,0.585,0.559090909090909,0.572222222222222,0.545,0.545,0.575,0.5,0.51,0.54,0.538888888888889,0.522222222222222,0.455,0.625,0.522222222222222,0.46,0.49171270718232,0.483333333333333,0.46,0.475138121546961,0.55,0.445,0.444444444444444,0.438888888888889,0.405,0.438888888888889,0.485,0.4,0.52,0.622222222222222,0.366666666666667,0.433333333333333,0.372222222222222,0.391666666666667,0.46,0.4,0.43,0.311111111111111,0.355,0.425,0.305555555555556,0.37,0.311111111111111,0.375,0.39,0.35,0.283333333333333,0.370833333333333,0.4,0.3125,0.315,0.338888888888889,0.244444444444444,0.275,0.254166666666667,0.316666666666667],[474.09,473.75,392.5,401.82,368.18,416.15,413.5,375,401.67,396.11,389.44,352,346.82,366.11,331,335.5,339.58,300,294,308.5,312.78,307.78,270,359.5,290.56,265,275,258.33,245,263.33,302.5,218,232.22,222.78,209.5,215,246.5,192.22,259,299.44,173.33,200,170,198.33,217.5,188,204.5,151.67,170,193.5,147.22,166.5,141.11,172.5,164,153.5,118.33,151.67,169.44,117.08,125,141.11,96.67,103.5,98.75,114.44],[22.01,22.59,21.29,21.46,19.7,21.71,21.5,19.44,21.98,18.5,19.82,20.09,20.49,21.46,19.54,20.18,19.13,19.8,18.92,18.15,18.45,19.47,19.23,18.64,17.87,18.59,17.08,16.29,17.39,17.79,17.05,14.61,16.38,15.44,16.54,15.44,15.67,14.03,15.1,14.73,13.79,13.85,14.33,15.21,14.46,13.63,13.84,14.64,13.8,12.82,14.55,12.57,13.75,13.2,11.79,13.14,11.57,11.24,12.36,9.33,10.95,10.98,10.91,10,10.66,8.6],[542.67,541.03,491.92,464.97,458.84,451.63,444.65,412.76,411.23,408,403.11,393.07,386.02,375.13,368.84,366.38,358.69,346.55,343.22,329.05,327.68,321.29,317.89,316.48,307.64,294.23,286.25,281.3,279.09,274.38,267.07,253.81,246.16,234.92,229.1,227.98,217.05,206,205.21,189.09,187.45,185.36,182.22,179.77,176.11,173.34,165.66,163.38,160.03,157.05,156.76,155.82,152.29,140.62,137.57,127.67,124.89,122.13,119.27,111.17,109.32,108.18,100.19,90.01,84.12,82.17]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>Team<\/th>\n      <th>Site<\/th>\n      <th>GP<\/th>\n      <th>W-L<\/th>\n      <th>TUH<\/th>\n      <th>15<\/th>\n      <th>10<\/th>\n      <th>-5<\/th>\n      <th>15/G<\/th>\n      <th>10/G<\/th>\n      <th>-5/G<\/th>\n      <th>TU%<\/th>\n      <th>PPG<\/th>\n      <th>PPB<\/th>\n      <th>A-Value<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"dom":"tp","rowCallback":"function(row, data){\n  for(var i=0; i<data.length; i++){\n    if(data[i] === null){\n      $('td:eq('+(i)+')', row).html('-')\n        .css({'font-style': 'italic', 'text-align': 'center'});\n    }\n  }\nvar value=data[2]; $(this.api().cell(row, 2).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[3]; $(this.api().cell(row, 3).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[4]; $(this.api().cell(row, 4).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[5]; $(this.api().cell(row, 5).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[6]; $(this.api().cell(row, 6).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[7]; $(this.api().cell(row, 7).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[8]; $(this.api().cell(row, 8).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[9]; $(this.api().cell(row, 9).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[10]; $(this.api().cell(row, 10).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[11]; $(this.api().cell(row, 11).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[12]; $(this.api().cell(row, 12).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[13]; $(this.api().cell(row, 13).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[14]; $(this.api().cell(row, 14).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[3]; $(this.api().cell(row, 3).node()).css({'text-align':'right'});\nvar value=data[0]; $(this.api().cell(row, 0).node()).css({'border-right':'2px solid #d3d3d3'});\nvar value=data[1]; $(this.api().cell(row, 1).node()).css({'border-right':'2px solid #d3d3d3'});\nvar value=data[3]; $(this.api().cell(row, 3).node()).css({'border-right':'2px solid #d3d3d3'});\nvar value=data[4]; $(this.api().cell(row, 4).node()).css({'border-right':'2px solid #d3d3d3'});\nvar value=data[7]; $(this.api().cell(row, 7).node()).css({'border-right':'2px solid #d3d3d3'});\nvar value=data[10]; $(this.api().cell(row, 10).node()).css({'border-right':'2px solid #d3d3d3'});\nvar value=data[11]; $(this.api().cell(row, 11).node()).css({'border-right':'2px solid #d3d3d3'});\n}","columnDefs":[{"targets":8,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 2, 3, \",\", \".\", null);\n  }"},{"targets":9,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 2, 3, \",\", \".\", null);\n  }"},{"targets":10,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 2, 3, \",\", \".\", null);\n  }"},{"targets":12,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 2, 3, \",\", \".\", null);\n  }"},{"targets":13,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 2, 3, \",\", \".\", null);\n  }"},{"targets":14,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 2, 3, \",\", \".\", null);\n  }"},{"targets":11,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatPercentage(data, 0, 3, \",\", \".\", null);\n  }"},{"className":"dt-right","targets":[2,4,5,6,7,8,9,10,11,12,13,14]}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":["options.rowCallback","options.columnDefs.0.render","options.columnDefs.1.render","options.columnDefs.2.render","options.columnDefs.3.render","options.columnDefs.4.render","options.columnDefs.5.render","options.columnDefs.6.render"],"jsHooks":[]}</script>
+<hr>
+</div>
+<div id="players" class="section level2">
+<h2>Players</h2>
+<div id="htmlwidget-d35ab1e5e6750887ec72" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-d35ab1e5e6750887ec72">{"x":{"filter":"none","vertical":false,"data":[["<a href = \"../players/jason-golfinos.html\">Jason Golfinos<\/a>","<a href = \"../players/evan-lynch.html\">Evan Lynch<\/a>","<a href = \"../players/lia-rathburn.html\">Lia Rathburn<\/a>","<a href = \"../players/vikshar-athreya.html\">Vikshar Athreya<\/a>","<a href = \"../players/michael-coates.html\">Michael Coates<\/a>","<a href = \"../players/caleb-kendrick.html\">Caleb Kendrick<\/a>","<a href = \"../players/tracy-mirkin.html\">Tracy Mirkin<\/a>","<a href = \"../players/aadi-karthik.html\">Aadi Karthik<\/a>","<a href = \"../players/cade-reinberger.html\">Cade Reinberger<\/a>","<a href = \"../players/owen-riley.html\">Owen Riley<\/a>","<a href = \"../players/tony-chen.html\">Tony Chen<\/a>","<a href = \"../players/brandon-jones.html\">Brandon Jones<\/a>","<a href = \"../players/seoan-webb.html\">Seoan Webb<\/a>","<a href = \"../players/cormac-beirne.html\">Cormac Beirne<\/a>","<a href = \"../players/ricky-li.html\">Ricky Li<\/a>","<a href = \"../players/ned-tagtmeier.html\">Ned Tagtmeier<\/a>","<a href = \"../players/henry-goff.html\">Henry Goff<\/a>","<a href = \"../players/thomas-gioia.html\">Thomas Gioia<\/a>","<a href = \"../players/karthik-prasad.html\">Karthik Prasad<\/a>","<a href = \"../players/swapnil-garg.html\">Swapnil Garg<\/a>","<a href = \"../players/arjun-panickssery.html\">Arjun Panickssery<\/a>","<a href = \"../players/tegan-kapadia.html\">Tegan Kapadia<\/a>","<a href = \"../players/ben-russell-jones.html\">Ben Russell Jones<\/a>","<a href = \"../players/sky-li.html\">Sky Li<\/a>","<a href = \"../players/andrew-fisher.html\">Andrew Fisher<\/a>","<a href = \"../players/adrian-wong.html\">Adrian Wong<\/a>","<a href = \"../players/michael-kohn.html\">Michael Kohn<\/a>","<a href = \"../players/stan-melkumian.html\">Stan Melkumian<\/a>","<a href = \"../players/todd-maslyk.html\">Todd Maslyk<\/a>","<a href = \"../players/ian-chow.html\">Ian Chow<\/a>","<a href = \"../players/enes-kristo.html\">Enes Kristo<\/a>","<a href = \"../players/justin-hawkins.html\">Justin Hawkins<\/a>","<a href = \"../players/vishnu-srinivas.html\">Vishnu Srinivas<\/a>","<a href = \"../players/ryzeson-maravich.html\">Ryzeson Maravich<\/a>","<a href = \"../players/lexi-terman.html\">Lexi Terman<\/a>","<a href = \"../players/liam-kusalik.html\">Liam Kusalik<\/a>","<a href = \"../players/cory-smith.html\">Cory Smith<\/a>","<a href = \"../players/dennis-reppen.html\">Dennis Reppen<\/a>","<a href = \"../players/ashrit-jada.html\">Ashrit Jada<\/a>","<a href = \"../players/jacob-mclaughlin.html\">Jacob McLaughlin<\/a>","<a href = \"../players/bob-freedman.html\">Bob Freedman<\/a>","<a href = \"../players/ben-chapman.html\">Ben Chapman<\/a>","<a href = \"../players/aum-mundhe.html\">Aum Mundhe<\/a>","<a href = \"../players/isak-jatoi.html\">Isak Jatoi<\/a>","<a href = \"../players/ella-warde.html\">Ella Warde<\/a>","<a href = \"../players/sumedh-garimella.html\">Sumedh Garimella<\/a>","<a href = \"../players/eric-yin.html\">Eric Yin<\/a>","<a href = \"../players/alex-howe.html\">Alex Howe<\/a>","<a href = \"../players/tony-ford.html\">Tony Ford<\/a>","<a href = \"../players/tejas-santanam.html\">Tejas Santanam<\/a>","<a href = \"../players/nick-kross.html\">Nick Kross<\/a>","<a href = \"../players/david-gomez.html\">David Gomez<\/a>","<a href = \"../players/william-barnes.html\">William Barnes<\/a>","<a href = \"../players/mehmet-tatoglu.html\">Mehmet Tatoglu<\/a>","<a href = \"../players/jeffrey-ma.html\">Jeffrey Ma<\/a>","<a href = \"../players/aidan-leahy.html\">Aidan Leahy<\/a>","<a href = \"../players/judson-lam.html\">Judson Lam<\/a>","<a href = \"../players/raymond-chen.html\">Raymond Chen<\/a>","<a href = \"../players/conrad-freidson.html\">Conrad Freidson<\/a>","<a href = \"../players/jonathan-hsieh.html\">Jonathan Hsieh<\/a>","<a href = \"../players/sam-maloney.html\">Sam Maloney<\/a>","<a href = \"../players/jake-schapiro.html\">Jake Schapiro<\/a>","<a href = \"../players/isabelle-papa.html\">Isabelle Papa<\/a>","<a href = \"../players/alex-akridge.html\">Alex Akridge<\/a>","<a href = \"../players/darren-petrosino.html\">Darren Petrosino<\/a>","<a href = \"../players/kane-nguyen.html\">Kane Nguyen<\/a>","<a href = \"../players/dan-hawkins.html\">Dan Hawkins<\/a>","<a href = \"../players/liam-hughes.html\">Liam Hughes<\/a>","<a href = \"../players/henry-cafaro.html\">Henry Cafaro<\/a>","<a href = \"../players/isaiah-silvers.html\">Isaiah Silvers<\/a>","<a href = \"../players/kevin-thomas.html\">Kevin Thomas<\/a>","<a href = \"../players/gaian-valdegamo.html\">Gaian Valdegamo<\/a>","<a href = \"../players/lily-kearney.html\">Lily Kearney<\/a>","<a href = \"../players/austin-smith.html\">Austin Smith<\/a>","<a href = \"../players/sarah-kennedy.html\">Sarah Kennedy<\/a>","<a href = \"../players/zaid-siddiqui.html\">Zaid Siddiqui<\/a>","<a href = \"../players/ziv-carmi.html\">Ziv Carmi<\/a>","<a href = \"../players/vincent-fan.html\">Vincent Fan<\/a>","<a href = \"../players/john-marvin-sipp.html\">John Marvin Sipp<\/a>","<a href = \"../players/andrew-rout.html\">Andrew Rout<\/a>","<a href = \"../players/sarah-henderson.html\">Sarah Henderson<\/a>","<a href = \"../players/toby-goldberg.html\">Toby Goldberg<\/a>","<a href = \"../players/seth-honngiford.html\">Seth Honngiford<\/a>","<a href = \"../players/duncan-brickner.html\">Duncan Brickner<\/a>","<a href = \"../players/nicholas-winter.html\">Nicholas Winter<\/a>","<a href = \"../players/alexander-remington.html\">Alexander Remington<\/a>","<a href = \"../players/zhenglin-liu.html\">Zhenglin Liu<\/a>","<a href = \"../players/ethan-webb.html\">Ethan Webb<\/a>","<a href = \"../players/oliver-hargrave.html\">Oliver Hargrave<\/a>","<a href = \"../players/ian-swain.html\">Ian Swain<\/a>","<a href = \"../players/bryan-wan.html\">Bryan Wan<\/a>","<a href = \"../players/carson-ching.html\">Carson Ching<\/a>","<a href = \"../players/neal-joshi.html\">Neal Joshi<\/a>","<a href = \"../players/james-carrigy.html\">James Carrigy<\/a>","<a href = \"../players/david-wang.html\">David Wang<\/a>","<a href = \"../players/khushi-umarwadia.html\">Khushi Umarwadia<\/a>","<a href = \"../players/ryan-conti.html\">Ryan Conti<\/a>","<a href = \"../players/sean-higgins.html\">Sean Higgins<\/a>","<a href = \"../players/laura-cooper.html\">Laura Cooper<\/a>","<a href = \"../players/david-do.html\">David Do<\/a>","<a href = \"../players/leah-honsinger.html\">Leah Honsinger<\/a>","<a href = \"../players/julian-gatch.html\">Julian Gatch<\/a>","<a href = \"../players/zane-kierzyk.html\">Zane Kierzyk<\/a>","<a href = \"../players/jj-tsai.html\">JJ Tsai<\/a>","<a href = \"../players/parth-jagtap.html\">Parth Jagtap<\/a>","<a href = \"../players/alex-li.html\">Alex Li<\/a>","<a href = \"../players/nathan-reed.html\">Nathan Reed<\/a>","<a href = \"../players/harry-regan.html\">Harry Regan<\/a>","<a href = \"../players/max-gedajlovic.html\">Max Gedajlovic<\/a>","<a href = \"../players/jeremy-cummings.html\">Jeremy Cummings<\/a>","<a href = \"../players/mason-minnich.html\">Mason Minnich<\/a>","<a href = \"../players/leo-law.html\">Leo Law<\/a>","<a href = \"../players/munir-siddiqui.html\">Munir Siddiqui<\/a>","<a href = \"../players/kiran-rachamallu.html\">Kiran Rachamallu<\/a>","<a href = \"../players/zach-scruggs.html\">Zach Scruggs<\/a>","<a href = \"../players/felix-mo.html\">Felix Mo<\/a>","<a href = \"../players/kevin-pham.html\">Kevin Pham<\/a>","<a href = \"../players/ben-dahl.html\">Ben Dahl<\/a>","<a href = \"../players/juliet-mayer.html\">Juliet Mayer<\/a>","<a href = \"../players/cole-franklin.html\">Cole Franklin<\/a>","<a href = \"../players/tim-he.html\">Tim He<\/a>","<a href = \"../players/aniket-dixit.html\">Aniket Dixit<\/a>","<a href = \"../players/yashas-anil.html\">Yashas Anil<\/a>","<a href = \"../players/aidan-garrity.html\">Aidan Garrity<\/a>","<a href = \"../players/gabe-batista.html\">Gabe Batista<\/a>","<a href = \"../players/griffin-elder.html\">Griffin Elder<\/a>","<a href = \"../players/caleb-wood.html\">Caleb Wood<\/a>","<a href = \"../players/holly-parkinson.html\">Holly Parkinson<\/a>","<a href = \"../players/solenne-scholefield.html\">Solenne Scholefield<\/a>","<a href = \"../players/caleb-rosenman.html\">Caleb Rosenman<\/a>","<a href = \"../players/grayson-wolf.html\">Grayson Wolf<\/a>","<a href = \"../players/vishal-sareddy.html\">Vishal Sareddy<\/a>","<a href = \"../players/matt-schiavone.html\">Matt Schiavone<\/a>","<a href = \"../players/quynh-phung.html\">Quynh Phung<\/a>","<a href = \"../players/peyton-cabral.html\">Peyton Cabral<\/a>","<a href = \"../players/rahul-komatineni.html\">Rahul Komatineni<\/a>","<a href = \"../players/connor-mayers.html\">Connor Mayers<\/a>","<a href = \"../players/jacob-van-oorschot.html\">Jacob van Oorschot<\/a>","<a href = \"../players/konstantinos-adamopoulos.html\">Konstantinos Adamopoulos<\/a>","<a href = \"../players/luke-wilkes.html\">Luke Wilkes<\/a>","<a href = \"../players/alex-radcliffe.html\">Alex Radcliffe<\/a>","<a href = \"../players/jack-hartley.html\">Jack Hartley<\/a>","<a href = \"../players/jerome-snesil.html\">Jerome Snesil<\/a>","<a href = \"../players/graham-cope.html\">Graham Cope<\/a>","<a href = \"../players/emil-saban.html\">Emil Saban<\/a>","<a href = \"../players/noah-macbride.html\">Noah MacBride<\/a>","<a href = \"../players/rohit-swain.html\">Rohit Swain<\/a>","<a href = \"../players/avery-ellis.html\">Avery Ellis<\/a>","<a href = \"../players/nate-cohen.html\">Nate Cohen<\/a>","<a href = \"../players/leo-tao.html\">Leo Tao<\/a>","<a href = \"../players/justis-dixon.html\">Justis Dixon<\/a>","<a href = \"../players/yohhan-kumarasinghe.html\">Yohhan Kumarasinghe<\/a>","<a href = \"../players/raymond-hua.html\">Raymond Hua<\/a>","<a href = \"../players/will-hoover.html\">Will Hoover<\/a>","<a href = \"../players/dominic-reynolds.html\">Dominic Reynolds<\/a>","<a href = \"../players/matthew-mccoig.html\">Matthew McCoig<\/a>","<a href = \"../players/emily-greetis.html\">Emily Greetis<\/a>","<a href = \"../players/abigail-tan.html\">Abigail Tan<\/a>","<a href = \"../players/ali-izzatdust.html\">Ali Izzatdust<\/a>","<a href = \"../players/kyle-shaw.html\">Kyle Shaw<\/a>","<a href = \"../players/katherine-li.html\">Katherine Li<\/a>","<a href = \"../players/elena-hernandez.html\">Elena Hernandez<\/a>","<a href = \"../players/fardad-asghari-zadeh.html\">Fardad Asghari Zadeh<\/a>","<a href = \"../players/darshan-krishnaswamy.html\">Darshan Krishnaswamy<\/a>","<a href = \"../players/jackson-ginn.html\">Jackson Ginn<\/a>","<a href = \"../players/tommy-foster.html\">Tommy Foster<\/a>","<a href = \"../players/jonathan-shauf.html\">Jonathan Shauf<\/a>","<a href = \"../players/rachel-bentham.html\">Rachel Bentham<\/a>","<a href = \"../players/justin-kennedy.html\">Justin Kennedy<\/a>","<a href = \"../players/brody-marshall.html\">Brody Marshall<\/a>","<a href = \"../players/elijah-odunade.html\">Elijah Odunade<\/a>","<a href = \"../players/jeffrey-han.html\">Jeffrey Han<\/a>","<a href = \"../players/kevin-major.html\">Kevin Major<\/a>","<a href = \"../players/sanjay-srihari.html\">Sanjay Srihari<\/a>","<a href = \"../players/krissy-brzycki.html\">Krissy Brzycki<\/a>","<a href = \"../players/krishnan-mulholland.html\">Krishnan Mulholland<\/a>","<a href = \"../players/reuben-meredith-luthi.html\">Reuben Meredith-Luthi<\/a>","<a href = \"../players/ethan-medwetsky.html\">Ethan Medwetsky<\/a>","<a href = \"../players/russell-nip.html\">Russell Nip<\/a>","<a href = \"../players/ed-feeney.html\">Ed Feeney<\/a>","<a href = \"../players/john-slater.html\">John Slater<\/a>","<a href = \"../players/nathan-bickel.html\">Nathan Bickel<\/a>","<a href = \"../players/toyesh-jayaswal.html\">Toyesh Jayaswal<\/a>","<a href = \"../players/jacqui-morin.html\">Jacqui Morin<\/a>","<a href = \"../players/chloe-salveson.html\">Chloe Salveson<\/a>","<a href = \"../players/subhamitra-banerjee-roychoudhury.html\">Subhamitra Banerjee Roychoudhury<\/a>","<a href = \"../players/robert-crawley.html\">Robert Crawley<\/a>","<a href = \"../players/morgan-usselman.html\">Morgan Usselman<\/a>","<a href = \"../players/jennifer-webb.html\">Jennifer Webb<\/a>","<a href = \"../players/lindsay-nottingham.html\">Lindsay Nottingham<\/a>","<a href = \"../players/michael-eng.html\">Michael Eng<\/a>","<a href = \"../players/james-hadley.html\">James Hadley<\/a>","<a href = \"../players/jerrick-liu.html\">Jerrick Liu<\/a>","<a href = \"../players/nicholas-yelland.html\">Nicholas Yelland<\/a>","<a href = \"../players/colin-lyman.html\">Colin Lyman<\/a>","<a href = \"../players/matthew-lloyd.html\">Matthew Lloyd<\/a>","<a href = \"../players/osamah-sufyan.html\">Osamah Sufyan<\/a>","<a href = \"../players/anna-brian.html\">Anna Brian<\/a>","<a href = \"../players/kai-madgwick.html\">Kai Madgwick<\/a>","<a href = \"../players/ragulan-sivakumar.html\">Ragulan Sivakumar<\/a>","<a href = \"../players/chris-scheri.html\">Chris Scheri<\/a>","<a href = \"../players/zack-buerger.html\">Zack Buerger<\/a>","<a href = \"../players/jared-he.html\">Jared He<\/a>","<a href = \"../players/joey-sun.html\">Joey Sun<\/a>","<a href = \"../players/danny-tran.html\">Danny Tran<\/a>","<a href = \"../players/alice-fisher.html\">Alice Fisher<\/a>","<a href = \"../players/desmond-shea.html\">Desmond Shea<\/a>","<a href = \"../players/jessie-kirschman.html\">Jessie Kirschman<\/a>","<a href = \"../players/david-mathew.html\">David Mathew<\/a>","<a href = \"../players/drew-jensen.html\">Drew Jensen<\/a>","<a href = \"../players/min-curtis.html\">Min Curtis<\/a>","<a href = \"../players/tyler-yup.html\">Tyler Yup<\/a>","<a href = \"../players/buduka-ogonor.html\">Buduka Ogonor<\/a>","<a href = \"../players/jack-oberman.html\">Jack Oberman<\/a>","<a href = \"../players/joe-tankersley.html\">Joe Tankersley<\/a>","<a href = \"../players/sofia-rodriguez.html\">Sofia Rodriguez<\/a>","<a href = \"../players/daniel-villani.html\">Daniel Villani<\/a>","<a href = \"../players/nate-williams.html\">Nate Williams<\/a>","<a href = \"../players/quinn-doud.html\">Quinn Doud<\/a>","<a href = \"../players/laura-ellyn-smith.html\">Laura Ellyn Smith<\/a>","<a href = \"../players/jonathan-xing.html\">Jonathan Xing<\/a>","<a href = \"../players/cullen-beman.html\">Cullen Beman<\/a>","<a href = \"../players/diego-almaraz.html\">Diego Almaraz<\/a>","<a href = \"../players/eli-heakins.html\">Eli Heakins<\/a>","<a href = \"../players/vignesh-kamath.html\">Vignesh Kamath<\/a>","<a href = \"../players/jacob-fanikos.html\">Jacob Fanikos<\/a>","<a href = \"../players/nadia-dakdouki.html\">Nadia Dakdouki<\/a>","<a href = \"../players/salma-alawi.html\">Salma Alawi<\/a>","<a href = \"../players/cooper-komatsu.html\">Cooper Komatsu<\/a>","<a href = \"../players/jessica-cooper.html\">Jessica Cooper<\/a>","<a href = \"../players/peter-li.html\">Peter Li<\/a>","<a href = \"../players/malea-floyd.html\">Malea Floyd<\/a>","<a href = \"../players/wesley-wu.html\">Wesley Wu<\/a>","<a href = \"../players/tya-raikundalia.html\">Tya Raikundalia<\/a>"],["<a href = \"../tournaments/21-22-hari-brown#harvard-a\">Harvard A<\/a>","<a href = \"../tournaments/21-22-hari-manchester#southampton-a\">Southampton A<\/a>","<a href = \"../tournaments/21-22-hari-canada#ubc-a\">UBC A<\/a>","<a href = \"../tournaments/21-22-hari-canada#washington-a\">Washington A<\/a>","<a href = \"../tournaments/21-22-hari-maryland#uc-berkeley-a\">UC Berkeley A<\/a>","<a href = \"../tournaments/21-22-hari-maryland#maryland-a\">Maryland A<\/a>","<a href = \"../tournaments/21-22-hari-georgia-tech#florida-a\">Florida A<\/a>","<a href = \"../tournaments/21-22-hari-georgia-tech#lambert-a\">Lambert A<\/a>","<a href = \"../tournaments/21-22-hari-rit#rit-a\">RIT A<\/a>","<a href = \"../tournaments/21-22-hari-canada#inver-hills-a\">Inver Hills A<\/a>","<a href = \"../tournaments/21-22-hari-canada#western-a\">Western A<\/a>","<a href = \"../tournaments/21-22-hari-georgia-tech#alabama-a\">Alabama A<\/a>","<a href = \"../tournaments/21-22-hari-manchester#oxford-a\">Oxford A<\/a>","<a href = \"../tournaments/21-22-hari-canada#mcgill-a\">McGill A<\/a>","<a href = \"../tournaments/21-22-hari-brown#harvard-b\">Harvard B<\/a>","<a href = \"../tournaments/21-22-hari-illinois#chicago-a\">Chicago A<\/a>","<a href = \"../tournaments/21-22-hari-maryland#north-carolina-a\">North Carolina A<\/a>","<a href = \"../tournaments/21-22-hari-brown#harvard-b\">Harvard B<\/a>","<a href = \"../tournaments/21-22-hari-illinois#illinois-b\">Illinois B<\/a>","<a href = \"../tournaments/21-22-hari-brown#mit-a\">MIT A<\/a>","<a href = \"../tournaments/21-22-hari-illinois#illinois-a\">Illinois A<\/a>","<a href = \"../tournaments/21-22-hari-georgia-tech#georgia-tech-a\">Georgia Tech A<\/a>","<a href = \"../tournaments/21-22-hari-manchester#edinburgh-a\">Edinburgh A<\/a>","<a href = \"../tournaments/21-22-hari-canada#toronto-b\">Toronto B<\/a>","<a href = \"../tournaments/21-22-hari-manchester#sheffboldt\">Sheffboldt<\/a>","<a href = \"../tournaments/21-22-hari-canada#mcmaster-a\">McMaster A<\/a>","<a href = \"../tournaments/21-22-hari-manchester#cambridge-a\">Cambridge A<\/a>","<a href = \"../tournaments/21-22-hari-illinois#purdue-a\">Purdue A<\/a>","<a href = \"../tournaments/21-22-hari-illinois#michigan-a\">Michigan A<\/a>","<a href = \"../tournaments/21-22-hari-canada#toronto-b\">Toronto B<\/a>","<a href = \"../tournaments/21-22-hari-brown#amherst-a\">Amherst A<\/a>","<a href = \"../tournaments/21-22-hari-illinois#indiana-a\">Indiana A<\/a>","<a href = \"../tournaments/21-22-hari-illinois#purdue-b\">Purdue B<\/a>","<a href = \"../tournaments/21-22-hari-maryland#gettysburg-a\">Gettysburg A<\/a>","<a href = \"../tournaments/21-22-hari-maryland#rutgers-a\">Rutgers A<\/a>","<a href = \"../tournaments/21-22-hari-canada#waterloo-a\">Waterloo A<\/a>","<a href = \"../tournaments/21-22-hari-georgia-tech#kentucky-a\">Kentucky A<\/a>","<a href = \"../tournaments/21-22-hari-illinois#chicago-b\">Chicago B<\/a>","<a href = \"../tournaments/21-22-hari-georgia-tech#georgia-a\">Georgia A<\/a>","<a href = \"../tournaments/21-22-hari-manchester#bristol-a\">Bristol A<\/a>","<a href = \"../tournaments/21-22-hari-georgia-tech#georgia-a\">Georgia A<\/a>","<a href = \"../tournaments/21-22-hari-canada#toronto-a\">Toronto A<\/a>","<a href = \"../tournaments/21-22-hari-maryland#rutgers-a\">Rutgers A<\/a>","<a href = \"../tournaments/21-22-hari-georgia-tech#south-carolina-a\">South Carolina A<\/a>","<a href = \"../tournaments/21-22-hari-manchester#oxford-c\">Oxford C<\/a>","<a href = \"../tournaments/21-22-hari-georgia-tech#georgia-tech-b\">Georgia Tech B<\/a>","<a href = \"../tournaments/21-22-hari-illinois#wustl-a\">WUSTL A<\/a>","<a href = \"../tournaments/21-22-hari-maryland#william-&-mary-a\">William & Mary A<\/a>","<a href = \"../tournaments/21-22-hari-manchester#cambridge-a\">Cambridge A<\/a>","<a href = \"../tournaments/21-22-hari-georgia-tech#georgia-tech-a\">Georgia Tech A<\/a>","<a href = \"../tournaments/21-22-hari-rit#rit-b\">RIT B<\/a>","<a href = \"../tournaments/21-22-hari-brown#mit-a\">MIT A<\/a>","<a href = \"../tournaments/21-22-hari-georgia-tech#tennessee-a\">Tennessee A<\/a>","<a href = \"../tournaments/21-22-hari-manchester#oxford-b\">Oxford B<\/a>","<a href = \"../tournaments/21-22-hari-brown#amherst-a\">Amherst A<\/a>","<a href = \"../tournaments/21-22-hari-manchester#oxford-a\">Oxford A<\/a>","<a href = \"../tournaments/21-22-hari-brown#mit-b\">MIT B<\/a>","<a href = \"../tournaments/21-22-hari-canada#toronto-b\">Toronto B<\/a>","<a href = \"../tournaments/21-22-hari-canada#warwick-a\">Warwick A<\/a>","<a href = \"../tournaments/21-22-hari-brown#northeastern-a\">Northeastern A<\/a>","<a href = \"../tournaments/21-22-hari-georgia-tech#south-carolina-c\">South Carolina C<\/a>","<a href = \"../tournaments/21-22-hari-maryland#william-&-mary-a\">William & Mary A<\/a>","<a href = \"../tournaments/21-22-hari-brown#northeastern-a\">Northeastern A<\/a>","<a href = \"../tournaments/21-22-hari-illinois#indiana-a\">Indiana A<\/a>","<a href = \"../tournaments/21-22-hari-maryland#rutgers-a\">Rutgers A<\/a>","<a href = \"../tournaments/21-22-hari-canada#mcmaster-a\">McMaster A<\/a>","<a href = \"../tournaments/21-22-hari-manchester#bristol-a\">Bristol A<\/a>","<a href = \"../tournaments/21-22-hari-manchester#cambridge-a\">Cambridge A<\/a>","<a href = \"../tournaments/21-22-hari-illinois#chicago-a\">Chicago A<\/a>","<a href = \"../tournaments/21-22-hari-manchester#durham-a\">Durham A<\/a>","<a href = \"../tournaments/21-22-hari-maryland#north-carolina-a\">North Carolina A<\/a>","<a href = \"../tournaments/21-22-hari-canada#waterloo-a\">Waterloo A<\/a>","<a href = \"../tournaments/21-22-hari-manchester#cambridge-b\">Cambridge B<\/a>","<a href = \"../tournaments/21-22-hari-georgia-tech#kentucky-a\">Kentucky A<\/a>","<a href = \"../tournaments/21-22-hari-maryland#william-&-mary-b\">William & Mary B<\/a>","<a href = \"../tournaments/21-22-hari-illinois#michigan-a\">Michigan A<\/a>","<a href = \"../tournaments/21-22-hari-maryland#gettysburg-a\">Gettysburg A<\/a>","<a href = \"../tournaments/21-22-hari-brown#mit-b\">MIT B<\/a>","<a href = \"../tournaments/21-22-hari-illinois#chicago-a\">Chicago A<\/a>","<a href = \"../tournaments/21-22-hari-canada#warwick-a\">Warwick A<\/a>","<a href = \"../tournaments/21-22-hari-manchester#cambridge-b\">Cambridge B<\/a>","<a href = \"../tournaments/21-22-hari-illinois#wustl-a\">WUSTL A<\/a>","<a href = \"../tournaments/21-22-hari-illinois#purdue-c\">Purdue C<\/a>","<a href = \"../tournaments/21-22-hari-rit#rit-b\">RIT B<\/a>","<a href = \"../tournaments/21-22-hari-manchester#edinburgh-a\">Edinburgh A<\/a>","<a href = \"../tournaments/21-22-hari-maryland#gettysburg-b\">Gettysburg B<\/a>","<a href = \"../tournaments/21-22-hari-manchester#cambridge-b\">Cambridge B<\/a>","<a href = \"../tournaments/21-22-hari-canada#warwick-a\">Warwick A<\/a>","<a href = \"../tournaments/21-22-hari-manchester#oxford-b\">Oxford B<\/a>","<a href = \"../tournaments/21-22-hari-rit#colgate-a\">Colgate A<\/a>","<a href = \"../tournaments/21-22-hari-illinois#purdue-b\">Purdue B<\/a>","<a href = \"../tournaments/21-22-hari-illinois#michigan-b\">Michigan B<\/a>","<a href = \"../tournaments/21-22-hari-illinois#wustl-a\">WUSTL A<\/a>","<a href = \"../tournaments/21-22-hari-manchester#southampton-a\">Southampton A<\/a>","<a href = \"../tournaments/21-22-hari-maryland#maryland-b\">Maryland B<\/a>","<a href = \"../tournaments/21-22-hari-georgia-tech#south-carolina-a\">South Carolina A<\/a>","<a href = \"../tournaments/21-22-hari-brown#mit-b\">MIT B<\/a>","<a href = \"../tournaments/21-22-hari-illinois#michigan-a\">Michigan A<\/a>","<a href = \"../tournaments/21-22-hari-manchester#edinburgh-a\">Edinburgh A<\/a>","<a href = \"../tournaments/21-22-hari-brown#mit-a\">MIT A<\/a>","<a href = \"../tournaments/21-22-hari-georgia-tech#florida-a\">Florida A<\/a>","<a href = \"../tournaments/21-22-hari-georgia-tech#south-carolina-b\">South Carolina B<\/a>","<a href = \"../tournaments/21-22-hari-illinois#indiana-b\">Indiana B<\/a>","<a href = \"../tournaments/21-22-hari-maryland#maryland-a\">Maryland A<\/a>","<a href = \"../tournaments/21-22-hari-canada#toronto-a\">Toronto A<\/a>","<a href = \"../tournaments/21-22-hari-georgia-tech#georgia-tech-a\">Georgia Tech A<\/a>","<a href = \"../tournaments/21-22-hari-illinois#purdue-c\">Purdue C<\/a>","<a href = \"../tournaments/21-22-hari-manchester#durham-a\">Durham A<\/a>","<a href = \"../tournaments/21-22-hari-canada#ubc-a\">UBC A<\/a>","<a href = \"../tournaments/21-22-hari-illinois#wustl-a\">WUSTL A<\/a>","<a href = \"../tournaments/21-22-hari-illinois#purdue-c\">Purdue C<\/a>","<a href = \"../tournaments/21-22-hari-georgia-tech#florida-a\">Florida A<\/a>","<a href = \"../tournaments/21-22-hari-maryland#maryland-b\">Maryland B<\/a>","<a href = \"../tournaments/21-22-hari-maryland#william-&-mary-a\">William & Mary A<\/a>","<a href = \"../tournaments/21-22-hari-brown#uconn-a\">UConn A<\/a>","<a href = \"../tournaments/21-22-hari-rit#colgate-b\">Colgate B<\/a>","<a href = \"../tournaments/21-22-hari-georgia-tech#tennessee-b\">Tennessee B<\/a>","<a href = \"../tournaments/21-22-hari-illinois#purdue-a\">Purdue A<\/a>","<a href = \"../tournaments/21-22-hari-brown#harvard-a\">Harvard A<\/a>","<a href = \"../tournaments/21-22-hari-canada#toronto-a\">Toronto A<\/a>","<a href = \"../tournaments/21-22-hari-canada#waterloo-a\">Waterloo A<\/a>","<a href = \"../tournaments/21-22-hari-illinois#michigan-b\">Michigan B<\/a>","<a href = \"../tournaments/21-22-hari-maryland#maryland-b\">Maryland B<\/a>","<a href = \"../tournaments/21-22-hari-brown#uconn-a\">UConn A<\/a>","<a href = \"../tournaments/21-22-hari-brown#bowdoin-a\">Bowdoin A<\/a>","<a href = \"../tournaments/21-22-hari-georgia-tech#tennessee-b\">Tennessee B<\/a>","<a href = \"../tournaments/21-22-hari-illinois#indiana-b\">Indiana B<\/a>","<a href = \"../tournaments/21-22-hari-manchester#edinburgh-a\">Edinburgh A<\/a>","<a href = \"../tournaments/21-22-hari-manchester#oxford-b\">Oxford B<\/a>","<a href = \"../tournaments/21-22-hari-maryland#gettysburg-b\">Gettysburg B<\/a>","<a href = \"../tournaments/21-22-hari-maryland#maryland-c\">Maryland C<\/a>","<a href = \"../tournaments/21-22-hari-georgia-tech#lambert-a\">Lambert A<\/a>","<a href = \"../tournaments/21-22-hari-illinois#purdue-a\">Purdue A<\/a>","<a href = \"../tournaments/21-22-hari-illinois#purdue-a\">Purdue A<\/a>","<a href = \"../tournaments/21-22-hari-maryland#william-&-mary-b\">William & Mary B<\/a>","<a href = \"../tournaments/21-22-hari-georgia-tech#georgia-tech-b\">Georgia Tech B<\/a>","<a href = \"../tournaments/21-22-hari-maryland#maryland-a\">Maryland A<\/a>","<a href = \"../tournaments/21-22-hari-canada#mcgill-a\">McGill A<\/a>","<a href = \"../tournaments/21-22-hari-manchester#oxford-b\">Oxford B<\/a>","<a href = \"../tournaments/21-22-hari-manchester#oxford-c\">Oxford C<\/a>","<a href = \"../tournaments/21-22-hari-manchester#durham-a\">Durham A<\/a>","<a href = \"../tournaments/21-22-hari-maryland#william-&-mary-b\">William & Mary B<\/a>","<a href = \"../tournaments/21-22-hari-maryland#william-&-mary-a\">William & Mary A<\/a>","<a href = \"../tournaments/21-22-hari-georgia-tech#florida-a\">Florida A<\/a>","<a href = \"../tournaments/21-22-hari-georgia-tech#kentucky-a\">Kentucky A<\/a>","<a href = \"../tournaments/21-22-hari-georgia-tech#south-carolina-b\">South Carolina B<\/a>","<a href = \"../tournaments/21-22-hari-georgia-tech#south-carolina-b\">South Carolina B<\/a>","<a href = \"../tournaments/21-22-hari-brown#bowdoin-a\">Bowdoin A<\/a>","<a href = \"../tournaments/21-22-hari-rit#colgate-a\">Colgate A<\/a>","<a href = \"../tournaments/21-22-hari-illinois#michigan-b\">Michigan B<\/a>","<a href = \"../tournaments/21-22-hari-brown#bowdoin-a\">Bowdoin A<\/a>","<a href = \"../tournaments/21-22-hari-illinois#chicago-b\">Chicago B<\/a>","<a href = \"../tournaments/21-22-hari-rit#colgate-a\">Colgate A<\/a>","<a href = \"../tournaments/21-22-hari-rit#rit-a\">RIT A<\/a>","<a href = \"../tournaments/21-22-hari-georgia-tech#tennessee-a\">Tennessee A<\/a>","<a href = \"../tournaments/21-22-hari-georgia-tech#tennessee-a\">Tennessee A<\/a>","<a href = \"../tournaments/21-22-hari-illinois#illinois-b\">Illinois B<\/a>","<a href = \"../tournaments/21-22-hari-manchester#cambridge-a\">Cambridge A<\/a>","<a href = \"../tournaments/21-22-hari-manchester#oxford-a\">Oxford A<\/a>","<a href = \"../tournaments/21-22-hari-rit#colgate-b\">Colgate B<\/a>","<a href = \"../tournaments/21-22-hari-maryland#maryland-c\">Maryland C<\/a>","<a href = \"../tournaments/21-22-hari-georgia-tech#south-carolina-b\">South Carolina B<\/a>","<a href = \"../tournaments/21-22-hari-canada#ubc-a\">UBC A<\/a>","<a href = \"../tournaments/21-22-hari-georgia-tech#georgia-tech-b\">Georgia Tech B<\/a>","<a href = \"../tournaments/21-22-hari-georgia-tech#south-carolina-c\">South Carolina C<\/a>","<a href = \"../tournaments/21-22-hari-illinois#indiana-a\">Indiana A<\/a>","<a href = \"../tournaments/21-22-hari-maryland#north-carolina-a\">North Carolina A<\/a>","<a href = \"../tournaments/21-22-hari-manchester#cambridge-b\">Cambridge B<\/a>","<a href = \"../tournaments/21-22-hari-georgia-tech#south-carolina-a\">South Carolina A<\/a>","<a href = \"../tournaments/21-22-hari-georgia-tech#alabama-a\">Alabama A<\/a>","<a href = \"../tournaments/21-22-hari-georgia-tech#georgia-a\">Georgia A<\/a>","<a href = \"../tournaments/21-22-hari-illinois#chicago-b\">Chicago B<\/a>","<a href = \"../tournaments/21-22-hari-canada#washington-a\">Washington A<\/a>","<a href = \"../tournaments/21-22-hari-georgia-tech#georgia-tech-a\">Georgia Tech A<\/a>","<a href = \"../tournaments/21-22-hari-illinois#indiana-b\">Indiana B<\/a>","<a href = \"../tournaments/21-22-hari-manchester#cambridge-b\">Cambridge B<\/a>","<a href = \"../tournaments/21-22-hari-manchester#edinburgh-a\">Edinburgh A<\/a>","<a href = \"../tournaments/21-22-hari-maryland#maryland-b\">Maryland B<\/a>","<a href = \"../tournaments/21-22-hari-canada#ubc-a\">UBC A<\/a>","<a href = \"../tournaments/21-22-hari-rit#colgate-b\">Colgate B<\/a>","<a href = \"../tournaments/21-22-hari-rit#colgate-a\">Colgate A<\/a>","<a href = \"../tournaments/21-22-hari-georgia-tech#south-carolina-c\">South Carolina C<\/a>","<a href = \"../tournaments/21-22-hari-georgia-tech#georgia-tech-b\">Georgia Tech B<\/a>","<a href = \"../tournaments/21-22-hari-maryland#gettysburg-b\">Gettysburg B<\/a>","<a href = \"../tournaments/21-22-hari-illinois#illinois-a\">Illinois A<\/a>","<a href = \"../tournaments/21-22-hari-illinois#michigan-a\">Michigan A<\/a>","<a href = \"../tournaments/21-22-hari-canada#warwick-a\">Warwick A<\/a>","<a href = \"../tournaments/21-22-hari-rit#colgate-b\">Colgate B<\/a>","<a href = \"../tournaments/21-22-hari-illinois#michigan-b\">Michigan B<\/a>","<a href = \"../tournaments/21-22-hari-illinois#illinois-a\">Illinois A<\/a>","<a href = \"../tournaments/21-22-hari-maryland#north-carolina-a\">North Carolina A<\/a>","<a href = \"../tournaments/21-22-hari-maryland#rutgers-a\">Rutgers A<\/a>","<a href = \"../tournaments/21-22-hari-illinois#illinois-a\">Illinois A<\/a>","<a href = \"../tournaments/21-22-hari-manchester#durham-a\">Durham A<\/a>","<a href = \"../tournaments/21-22-hari-manchester#oxford-c\">Oxford C<\/a>","<a href = \"../tournaments/21-22-hari-manchester#oxford-a\">Oxford A<\/a>","<a href = \"../tournaments/21-22-hari-manchester#sheffboldt\">Sheffboldt<\/a>","<a href = \"../tournaments/21-22-hari-manchester#bristol-a\">Bristol A<\/a>","<a href = \"../tournaments/21-22-hari-manchester#durham-a\">Durham A<\/a>","<a href = \"../tournaments/21-22-hari-brown#mit-b\">MIT B<\/a>","<a href = \"../tournaments/21-22-hari-rit#rit-a\">RIT A<\/a>","<a href = \"../tournaments/21-22-hari-rit#rit-b\">RIT B<\/a>","<a href = \"../tournaments/21-22-hari-canada#waterloo-a\">Waterloo A<\/a>","<a href = \"../tournaments/21-22-hari-canada#toronto-a\">Toronto A<\/a>","<a href = \"../tournaments/21-22-hari-georgia-tech#tennessee-b\">Tennessee B<\/a>","<a href = \"../tournaments/21-22-hari-maryland#maryland-c\">Maryland C<\/a>","<a href = \"../tournaments/21-22-hari-brown#amherst-a\">Amherst A<\/a>","<a href = \"../tournaments/21-22-hari-georgia-tech#alabama-a\">Alabama A<\/a>","<a href = \"../tournaments/21-22-hari-illinois#purdue-c\">Purdue C<\/a>","<a href = \"../tournaments/21-22-hari-illinois#purdue-b\">Purdue B<\/a>","<a href = \"../tournaments/21-22-hari-illinois#purdue-b\">Purdue B<\/a>","<a href = \"../tournaments/21-22-hari-maryland#maryland-c\">Maryland C<\/a>","<a href = \"../tournaments/21-22-hari-illinois#chicago-a\">Chicago A<\/a>","<a href = \"../tournaments/21-22-hari-georgia-tech#south-carolina-a\">South Carolina A<\/a>","<a href = \"../tournaments/21-22-hari-illinois#indiana-a\">Indiana A<\/a>","<a href = \"../tournaments/21-22-hari-illinois#illinois-b\">Illinois B<\/a>","<a href = \"../tournaments/21-22-hari-brown#harvard-a\">Harvard A<\/a>","<a href = \"../tournaments/21-22-hari-georgia-tech#tennessee-a\">Tennessee A<\/a>","<a href = \"../tournaments/21-22-hari-illinois#illinois-b\">Illinois B<\/a>","<a href = \"../tournaments/21-22-hari-manchester#oxford-c\">Oxford C<\/a>","<a href = \"../tournaments/21-22-hari-brown#amherst-a\">Amherst A<\/a>","<a href = \"../tournaments/21-22-hari-brown#uconn-a\">UConn A<\/a>","<a href = \"../tournaments/21-22-hari-maryland#north-carolina-a\">North Carolina A<\/a>","<a href = \"../tournaments/21-22-hari-rit#colgate-b\">Colgate B<\/a>","<a href = \"../tournaments/21-22-hari-manchester#cambridge-b\">Cambridge B<\/a>","<a href = \"../tournaments/21-22-hari-georgia-tech#tennessee-b\">Tennessee B<\/a>","<a href = \"../tournaments/21-22-hari-canada#mcgill-a\">McGill A<\/a>","<a href = \"../tournaments/21-22-hari-brown#northeastern-a\">Northeastern A<\/a>","<a href = \"../tournaments/21-22-hari-illinois#chicago-b\">Chicago B<\/a>","<a href = \"../tournaments/21-22-hari-brown#uconn-a\">UConn A<\/a>","<a href = \"../tournaments/21-22-hari-brown#northeastern-a\">Northeastern A<\/a>","<a href = \"../tournaments/21-22-hari-illinois#indiana-b\">Indiana B<\/a>","<a href = \"../tournaments/21-22-hari-illinois#illinois-b\">Illinois B<\/a>","<a href = \"../tournaments/21-22-hari-manchester#durham-a\">Durham A<\/a>"],["<a href = \"../tournaments/21-22-HARI-brown\">Brown<\/a>","<a href = \"../tournaments/21-22-HARI-manchester\">Manchester<\/a>","<a href = \"../tournaments/21-22-HARI-canada\">Canada<\/a>","<a href = \"../tournaments/21-22-HARI-canada\">Canada<\/a>","<a href = \"../tournaments/21-22-HARI-maryland\">Maryland<\/a>","<a href = \"../tournaments/21-22-HARI-maryland\">Maryland<\/a>","<a href = \"../tournaments/21-22-HARI-georgia-tech\">Georgia Tech<\/a>","<a href = \"../tournaments/21-22-HARI-georgia-tech\">Georgia Tech<\/a>","<a href = \"../tournaments/21-22-HARI-rit\">RIT<\/a>","<a href = \"../tournaments/21-22-HARI-canada\">Canada<\/a>","<a href = \"../tournaments/21-22-HARI-canada\">Canada<\/a>","<a href = \"../tournaments/21-22-HARI-georgia-tech\">Georgia Tech<\/a>","<a href = \"../tournaments/21-22-HARI-manchester\">Manchester<\/a>","<a href = \"../tournaments/21-22-HARI-canada\">Canada<\/a>","<a href = \"../tournaments/21-22-HARI-brown\">Brown<\/a>","<a href = \"../tournaments/21-22-HARI-illinois\">Illinois<\/a>","<a href = \"../tournaments/21-22-HARI-maryland\">Maryland<\/a>","<a href = \"../tournaments/21-22-HARI-brown\">Brown<\/a>","<a href = \"../tournaments/21-22-HARI-illinois\">Illinois<\/a>","<a href = \"../tournaments/21-22-HARI-brown\">Brown<\/a>","<a href = \"../tournaments/21-22-HARI-illinois\">Illinois<\/a>","<a href = \"../tournaments/21-22-HARI-georgia-tech\">Georgia Tech<\/a>","<a href = \"../tournaments/21-22-HARI-manchester\">Manchester<\/a>","<a href = \"../tournaments/21-22-HARI-canada\">Canada<\/a>","<a href = \"../tournaments/21-22-HARI-manchester\">Manchester<\/a>","<a href = \"../tournaments/21-22-HARI-canada\">Canada<\/a>","<a href = \"../tournaments/21-22-HARI-manchester\">Manchester<\/a>","<a href = \"../tournaments/21-22-HARI-illinois\">Illinois<\/a>","<a href = \"../tournaments/21-22-HARI-illinois\">Illinois<\/a>","<a href = \"../tournaments/21-22-HARI-canada\">Canada<\/a>","<a href = \"../tournaments/21-22-HARI-brown\">Brown<\/a>","<a href = \"../tournaments/21-22-HARI-illinois\">Illinois<\/a>","<a href = \"../tournaments/21-22-HARI-illinois\">Illinois<\/a>","<a href = \"../tournaments/21-22-HARI-maryland\">Maryland<\/a>","<a href = \"../tournaments/21-22-HARI-maryland\">Maryland<\/a>","<a href = \"../tournaments/21-22-HARI-canada\">Canada<\/a>","<a href = \"../tournaments/21-22-HARI-georgia-tech\">Georgia Tech<\/a>","<a href = \"../tournaments/21-22-HARI-illinois\">Illinois<\/a>","<a href = \"../tournaments/21-22-HARI-georgia-tech\">Georgia Tech<\/a>","<a href = \"../tournaments/21-22-HARI-manchester\">Manchester<\/a>","<a href = \"../tournaments/21-22-HARI-georgia-tech\">Georgia Tech<\/a>","<a href = \"../tournaments/21-22-HARI-canada\">Canada<\/a>","<a href = \"../tournaments/21-22-HARI-maryland\">Maryland<\/a>","<a href = \"../tournaments/21-22-HARI-georgia-tech\">Georgia Tech<\/a>","<a href = \"../tournaments/21-22-HARI-manchester\">Manchester<\/a>","<a href = \"../tournaments/21-22-HARI-georgia-tech\">Georgia Tech<\/a>","<a href = \"../tournaments/21-22-HARI-illinois\">Illinois<\/a>","<a href = \"../tournaments/21-22-HARI-maryland\">Maryland<\/a>","<a href = \"../tournaments/21-22-HARI-manchester\">Manchester<\/a>","<a href = \"../tournaments/21-22-HARI-georgia-tech\">Georgia Tech<\/a>","<a href = \"../tournaments/21-22-HARI-rit\">RIT<\/a>","<a href = \"../tournaments/21-22-HARI-brown\">Brown<\/a>","<a href = \"../tournaments/21-22-HARI-georgia-tech\">Georgia Tech<\/a>","<a href = \"../tournaments/21-22-HARI-manchester\">Manchester<\/a>","<a href = \"../tournaments/21-22-HARI-brown\">Brown<\/a>","<a href = \"../tournaments/21-22-HARI-manchester\">Manchester<\/a>","<a href = \"../tournaments/21-22-HARI-brown\">Brown<\/a>","<a href = \"../tournaments/21-22-HARI-canada\">Canada<\/a>","<a href = \"../tournaments/21-22-HARI-canada\">Canada<\/a>","<a href = \"../tournaments/21-22-HARI-brown\">Brown<\/a>","<a href = \"../tournaments/21-22-HARI-georgia-tech\">Georgia Tech<\/a>","<a href = \"../tournaments/21-22-HARI-maryland\">Maryland<\/a>","<a href = \"../tournaments/21-22-HARI-brown\">Brown<\/a>","<a href = \"../tournaments/21-22-HARI-illinois\">Illinois<\/a>","<a href = \"../tournaments/21-22-HARI-maryland\">Maryland<\/a>","<a href = \"../tournaments/21-22-HARI-canada\">Canada<\/a>","<a href = \"../tournaments/21-22-HARI-manchester\">Manchester<\/a>","<a href = \"../tournaments/21-22-HARI-manchester\">Manchester<\/a>","<a href = \"../tournaments/21-22-HARI-illinois\">Illinois<\/a>","<a href = \"../tournaments/21-22-HARI-manchester\">Manchester<\/a>","<a href = \"../tournaments/21-22-HARI-maryland\">Maryland<\/a>","<a href = \"../tournaments/21-22-HARI-canada\">Canada<\/a>","<a href = \"../tournaments/21-22-HARI-manchester\">Manchester<\/a>","<a href = \"../tournaments/21-22-HARI-georgia-tech\">Georgia Tech<\/a>","<a href = \"../tournaments/21-22-HARI-maryland\">Maryland<\/a>","<a href = \"../tournaments/21-22-HARI-illinois\">Illinois<\/a>","<a href = \"../tournaments/21-22-HARI-maryland\">Maryland<\/a>","<a href = \"../tournaments/21-22-HARI-brown\">Brown<\/a>","<a href = \"../tournaments/21-22-HARI-illinois\">Illinois<\/a>","<a href = \"../tournaments/21-22-HARI-canada\">Canada<\/a>","<a href = \"../tournaments/21-22-HARI-manchester\">Manchester<\/a>","<a href = \"../tournaments/21-22-HARI-illinois\">Illinois<\/a>","<a href = \"../tournaments/21-22-HARI-illinois\">Illinois<\/a>","<a href = \"../tournaments/21-22-HARI-rit\">RIT<\/a>","<a href = \"../tournaments/21-22-HARI-manchester\">Manchester<\/a>","<a href = \"../tournaments/21-22-HARI-maryland\">Maryland<\/a>","<a href = \"../tournaments/21-22-HARI-manchester\">Manchester<\/a>","<a href = \"../tournaments/21-22-HARI-canada\">Canada<\/a>","<a href = \"../tournaments/21-22-HARI-manchester\">Manchester<\/a>","<a href = \"../tournaments/21-22-HARI-rit\">RIT<\/a>","<a href = \"../tournaments/21-22-HARI-illinois\">Illinois<\/a>","<a href = \"../tournaments/21-22-HARI-illinois\">Illinois<\/a>","<a href = \"../tournaments/21-22-HARI-illinois\">Illinois<\/a>","<a href = \"../tournaments/21-22-HARI-manchester\">Manchester<\/a>","<a href = \"../tournaments/21-22-HARI-maryland\">Maryland<\/a>","<a href = \"../tournaments/21-22-HARI-georgia-tech\">Georgia Tech<\/a>","<a href = \"../tournaments/21-22-HARI-brown\">Brown<\/a>","<a href = \"../tournaments/21-22-HARI-illinois\">Illinois<\/a>","<a href = \"../tournaments/21-22-HARI-manchester\">Manchester<\/a>","<a href = \"../tournaments/21-22-HARI-brown\">Brown<\/a>","<a href = \"../tournaments/21-22-HARI-georgia-tech\">Georgia Tech<\/a>","<a href = \"../tournaments/21-22-HARI-georgia-tech\">Georgia Tech<\/a>","<a href = \"../tournaments/21-22-HARI-illinois\">Illinois<\/a>","<a href = \"../tournaments/21-22-HARI-maryland\">Maryland<\/a>","<a href = \"../tournaments/21-22-HARI-canada\">Canada<\/a>","<a href = \"../tournaments/21-22-HARI-georgia-tech\">Georgia Tech<\/a>","<a href = \"../tournaments/21-22-HARI-illinois\">Illinois<\/a>","<a href = \"../tournaments/21-22-HARI-manchester\">Manchester<\/a>","<a href = \"../tournaments/21-22-HARI-canada\">Canada<\/a>","<a href = \"../tournaments/21-22-HARI-illinois\">Illinois<\/a>","<a href = \"../tournaments/21-22-HARI-illinois\">Illinois<\/a>","<a href = \"../tournaments/21-22-HARI-georgia-tech\">Georgia Tech<\/a>","<a href = \"../tournaments/21-22-HARI-maryland\">Maryland<\/a>","<a href = \"../tournaments/21-22-HARI-maryland\">Maryland<\/a>","<a href = \"../tournaments/21-22-HARI-brown\">Brown<\/a>","<a href = \"../tournaments/21-22-HARI-rit\">RIT<\/a>","<a href = \"../tournaments/21-22-HARI-georgia-tech\">Georgia Tech<\/a>","<a href = \"../tournaments/21-22-HARI-illinois\">Illinois<\/a>","<a href = \"../tournaments/21-22-HARI-brown\">Brown<\/a>","<a href = \"../tournaments/21-22-HARI-canada\">Canada<\/a>","<a href = \"../tournaments/21-22-HARI-canada\">Canada<\/a>","<a href = \"../tournaments/21-22-HARI-illinois\">Illinois<\/a>","<a href = \"../tournaments/21-22-HARI-maryland\">Maryland<\/a>","<a href = \"../tournaments/21-22-HARI-brown\">Brown<\/a>","<a href = \"../tournaments/21-22-HARI-brown\">Brown<\/a>","<a href = \"../tournaments/21-22-HARI-georgia-tech\">Georgia Tech<\/a>","<a href = \"../tournaments/21-22-HARI-illinois\">Illinois<\/a>","<a href = \"../tournaments/21-22-HARI-manchester\">Manchester<\/a>","<a href = \"../tournaments/21-22-HARI-manchester\">Manchester<\/a>","<a href = \"../tournaments/21-22-HARI-maryland\">Maryland<\/a>","<a href = \"../tournaments/21-22-HARI-maryland\">Maryland<\/a>","<a href = \"../tournaments/21-22-HARI-georgia-tech\">Georgia Tech<\/a>","<a href = \"../tournaments/21-22-HARI-illinois\">Illinois<\/a>","<a href = \"../tournaments/21-22-HARI-illinois\">Illinois<\/a>","<a href = \"../tournaments/21-22-HARI-maryland\">Maryland<\/a>","<a href = \"../tournaments/21-22-HARI-georgia-tech\">Georgia Tech<\/a>","<a href = \"../tournaments/21-22-HARI-maryland\">Maryland<\/a>","<a href = \"../tournaments/21-22-HARI-canada\">Canada<\/a>","<a href = \"../tournaments/21-22-HARI-manchester\">Manchester<\/a>","<a href = \"../tournaments/21-22-HARI-manchester\">Manchester<\/a>","<a href = \"../tournaments/21-22-HARI-manchester\">Manchester<\/a>","<a href = \"../tournaments/21-22-HARI-maryland\">Maryland<\/a>","<a href = \"../tournaments/21-22-HARI-maryland\">Maryland<\/a>","<a href = \"../tournaments/21-22-HARI-georgia-tech\">Georgia Tech<\/a>","<a href = \"../tournaments/21-22-HARI-georgia-tech\">Georgia Tech<\/a>","<a href = \"../tournaments/21-22-HARI-georgia-tech\">Georgia Tech<\/a>","<a href = \"../tournaments/21-22-HARI-georgia-tech\">Georgia Tech<\/a>","<a href = \"../tournaments/21-22-HARI-brown\">Brown<\/a>","<a href = \"../tournaments/21-22-HARI-rit\">RIT<\/a>","<a href = \"../tournaments/21-22-HARI-illinois\">Illinois<\/a>","<a href = \"../tournaments/21-22-HARI-brown\">Brown<\/a>","<a href = \"../tournaments/21-22-HARI-illinois\">Illinois<\/a>","<a href = \"../tournaments/21-22-HARI-rit\">RIT<\/a>","<a href = \"../tournaments/21-22-HARI-rit\">RIT<\/a>","<a href = \"../tournaments/21-22-HARI-georgia-tech\">Georgia Tech<\/a>","<a href = \"../tournaments/21-22-HARI-georgia-tech\">Georgia Tech<\/a>","<a href = \"../tournaments/21-22-HARI-illinois\">Illinois<\/a>","<a href = \"../tournaments/21-22-HARI-manchester\">Manchester<\/a>","<a href = \"../tournaments/21-22-HARI-manchester\">Manchester<\/a>","<a href = \"../tournaments/21-22-HARI-rit\">RIT<\/a>","<a href = \"../tournaments/21-22-HARI-maryland\">Maryland<\/a>","<a href = \"../tournaments/21-22-HARI-georgia-tech\">Georgia Tech<\/a>","<a href = \"../tournaments/21-22-HARI-canada\">Canada<\/a>","<a href = \"../tournaments/21-22-HARI-georgia-tech\">Georgia Tech<\/a>","<a href = \"../tournaments/21-22-HARI-georgia-tech\">Georgia Tech<\/a>","<a href = \"../tournaments/21-22-HARI-illinois\">Illinois<\/a>","<a href = \"../tournaments/21-22-HARI-maryland\">Maryland<\/a>","<a href = \"../tournaments/21-22-HARI-manchester\">Manchester<\/a>","<a href = \"../tournaments/21-22-HARI-georgia-tech\">Georgia Tech<\/a>","<a href = \"../tournaments/21-22-HARI-georgia-tech\">Georgia Tech<\/a>","<a href = \"../tournaments/21-22-HARI-georgia-tech\">Georgia Tech<\/a>","<a href = \"../tournaments/21-22-HARI-illinois\">Illinois<\/a>","<a href = \"../tournaments/21-22-HARI-canada\">Canada<\/a>","<a href = \"../tournaments/21-22-HARI-georgia-tech\">Georgia Tech<\/a>","<a href = \"../tournaments/21-22-HARI-illinois\">Illinois<\/a>","<a href = \"../tournaments/21-22-HARI-manchester\">Manchester<\/a>","<a href = \"../tournaments/21-22-HARI-manchester\">Manchester<\/a>","<a href = \"../tournaments/21-22-HARI-maryland\">Maryland<\/a>","<a href = \"../tournaments/21-22-HARI-canada\">Canada<\/a>","<a href = \"../tournaments/21-22-HARI-rit\">RIT<\/a>","<a href = \"../tournaments/21-22-HARI-rit\">RIT<\/a>","<a href = \"../tournaments/21-22-HARI-georgia-tech\">Georgia Tech<\/a>","<a href = \"../tournaments/21-22-HARI-georgia-tech\">Georgia Tech<\/a>","<a href = \"../tournaments/21-22-HARI-maryland\">Maryland<\/a>","<a href = \"../tournaments/21-22-HARI-illinois\">Illinois<\/a>","<a href = \"../tournaments/21-22-HARI-illinois\">Illinois<\/a>","<a href = \"../tournaments/21-22-HARI-canada\">Canada<\/a>","<a href = \"../tournaments/21-22-HARI-rit\">RIT<\/a>","<a href = \"../tournaments/21-22-HARI-illinois\">Illinois<\/a>","<a href = \"../tournaments/21-22-HARI-illinois\">Illinois<\/a>","<a href = \"../tournaments/21-22-HARI-maryland\">Maryland<\/a>","<a href = \"../tournaments/21-22-HARI-maryland\">Maryland<\/a>","<a href = \"../tournaments/21-22-HARI-illinois\">Illinois<\/a>","<a href = \"../tournaments/21-22-HARI-manchester\">Manchester<\/a>","<a href = \"../tournaments/21-22-HARI-manchester\">Manchester<\/a>","<a href = \"../tournaments/21-22-HARI-manchester\">Manchester<\/a>","<a href = \"../tournaments/21-22-HARI-manchester\">Manchester<\/a>","<a href = \"../tournaments/21-22-HARI-manchester\">Manchester<\/a>","<a href = \"../tournaments/21-22-HARI-manchester\">Manchester<\/a>","<a href = \"../tournaments/21-22-HARI-brown\">Brown<\/a>","<a href = \"../tournaments/21-22-HARI-rit\">RIT<\/a>","<a href = \"../tournaments/21-22-HARI-rit\">RIT<\/a>","<a href = \"../tournaments/21-22-HARI-canada\">Canada<\/a>","<a href = \"../tournaments/21-22-HARI-canada\">Canada<\/a>","<a href = \"../tournaments/21-22-HARI-georgia-tech\">Georgia Tech<\/a>","<a href = \"../tournaments/21-22-HARI-maryland\">Maryland<\/a>","<a href = \"../tournaments/21-22-HARI-brown\">Brown<\/a>","<a href = \"../tournaments/21-22-HARI-georgia-tech\">Georgia Tech<\/a>","<a href = \"../tournaments/21-22-HARI-illinois\">Illinois<\/a>","<a href = \"../tournaments/21-22-HARI-illinois\">Illinois<\/a>","<a href = \"../tournaments/21-22-HARI-illinois\">Illinois<\/a>","<a href = \"../tournaments/21-22-HARI-maryland\">Maryland<\/a>","<a href = \"../tournaments/21-22-HARI-illinois\">Illinois<\/a>","<a href = \"../tournaments/21-22-HARI-georgia-tech\">Georgia Tech<\/a>","<a href = \"../tournaments/21-22-HARI-illinois\">Illinois<\/a>","<a href = \"../tournaments/21-22-HARI-illinois\">Illinois<\/a>","<a href = \"../tournaments/21-22-HARI-brown\">Brown<\/a>","<a href = \"../tournaments/21-22-HARI-georgia-tech\">Georgia Tech<\/a>","<a href = \"../tournaments/21-22-HARI-illinois\">Illinois<\/a>","<a href = \"../tournaments/21-22-HARI-manchester\">Manchester<\/a>","<a href = \"../tournaments/21-22-HARI-brown\">Brown<\/a>","<a href = \"../tournaments/21-22-HARI-brown\">Brown<\/a>","<a href = \"../tournaments/21-22-HARI-maryland\">Maryland<\/a>","<a href = \"../tournaments/21-22-HARI-rit\">RIT<\/a>","<a href = \"../tournaments/21-22-HARI-manchester\">Manchester<\/a>","<a href = \"../tournaments/21-22-HARI-georgia-tech\">Georgia Tech<\/a>","<a href = \"../tournaments/21-22-HARI-canada\">Canada<\/a>","<a href = \"../tournaments/21-22-HARI-brown\">Brown<\/a>","<a href = \"../tournaments/21-22-HARI-illinois\">Illinois<\/a>","<a href = \"../tournaments/21-22-HARI-brown\">Brown<\/a>","<a href = \"../tournaments/21-22-HARI-brown\">Brown<\/a>","<a href = \"../tournaments/21-22-HARI-illinois\">Illinois<\/a>","<a href = \"../tournaments/21-22-HARI-illinois\">Illinois<\/a>","<a href = \"../tournaments/21-22-HARI-manchester\">Manchester<\/a>"],[11,10,9,9,12,13,12,10,9,9,9,10,9,9,11,11,12,11,10,10,10,12,9,9,9,4,9,10,11,9,10,10,10,12,13,9,10,10,10,9,10,9,13,10,9,10,10,12,9,12,7,10,10,9,10,9,10,4,9,10,10,12,10,10,13,9,9,9,11,4,12,9,6,10,12,11,12,10,11,9,3,10,10,9,10,12,2,9,9,9,10,10,10,10,12,10,10,11,9,10,12,10,10,13,9,12,10,5,8,10,10,12,12,12,9,9,10,10,11,9,9,10,12,9,9,10,10,3,9,12,12,10,10,10,12,10,13,9,9,9,5,12,12,12,10,10,10,9,9,10,9,10,9,9,10,10,10,9,9,9,12,10,6,10,10,10,9,7,10,10,10,10,9,12,10,9,9,12,9,9,9,10,10,12,10,11,9,9,10,10,10,13,10,9,9,9,9,9,9,10,9,9,9,9,10,11,10,10,10,10,10,12,11,10,10,10,11,10,4,9,10,9,9,8,3,10,9,10,10,9,10,10,4,4],[220,200,180,180,240,260,240,200,180,180,180,200,180,180,220,220,240,220,200,200,200,240,180,180,180,80,180,200,220,180,200,200,200,240,260,181,200,200,200,180,200,181,260,200,180,200,200,240,180,240,140,200,200,180,200,180,200,80,180,200,200,240,200,200,260,180,180,180,220,80,240,181,106,200,240,220,240,200,220,180,56,200,200,180,200,240,40,180,180,180,200,200,200,200,240,200,200,220,180,200,240,200,200,260,181,240,200,100,160,200,200,240,240,240,180,180,200,200,220,181,181,200,240,180,180,200,200,60,180,240,240,200,200,200,240,200,260,180,180,180,100,240,240,240,200,200,190,180,180,200,180,200,180,180,200,200,200,180,180,180,240,200,120,200,200,200,180,140,200,200,200,200,180,230,200,180,180,240,180,180,180,200,200,240,200,220,180,180,200,200,200,260,200,180,180,180,172,180,180,200,180,180,181,181,200,220,200,200,200,200,200,240,220,200,200,200,220,200,80,180,200,180,180,160,60,200,180,200,200,180,200,200,80,80],[63,36,38,30,25,54,54,38,9,20,10,12,19,17,26,33,26,32,16,17,10,22,13,17,2,5,16,16,19,10,14,8,10,4,19,9,8,9,3,8,3,7,16,7,1,5,11,8,9,13,3,4,3,12,8,11,8,4,10,10,6,14,7,8,19,5,8,13,8,1,15,10,1,5,3,11,5,4,16,6,2,10,8,3,5,6,0,3,2,2,5,3,4,9,3,7,5,9,7,6,10,1,4,11,5,11,4,3,6,7,2,11,1,2,3,2,1,4,6,6,4,3,3,6,1,2,2,1,3,1,2,11,3,3,4,2,9,3,5,7,3,5,7,4,7,1,2,2,3,2,0,2,0,1,3,1,3,1,5,0,2,6,3,0,2,4,3,0,2,6,1,0,2,7,2,1,2,0,3,3,0,2,4,2,4,4,1,3,2,3,2,7,1,2,1,1,2,0,0,2,2,0,0,1,2,0,3,2,0,0,0,1,4,0,1,1,0,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,0,1],[66,66,47,56,91,62,47,49,79,52,69,60,37,44,43,29,46,31,48,44,56,41,32,28,51,14,26,32,34,35,33,43,43,54,39,30,34,35,43,31,41,34,34,36,37,35,26,40,25,32,23,37,34,20,27,22,28,9,20,27,38,25,25,24,19,31,25,11,26,12,25,16,19,28,39,24,31,29,18,23,6,15,22,23,26,29,6,23,23,24,21,22,22,16,31,16,20,14,14,17,14,23,24,15,18,14,17,11,12,14,22,11,25,23,16,17,22,16,14,11,14,19,22,14,17,18,20,5,16,26,22,11,17,17,19,17,13,13,13,9,7,19,13,15,10,19,17,14,16,15,17,15,15,14,13,15,14,12,8,17,17,9,4,14,12,9,11,10,17,7,13,16,9,7,11,10,12,19,7,6,12,10,8,11,7,8,8,6,8,7,8,7,9,6,8,8,12,8,10,6,7,9,6,4,8,8,3,2,5,8,5,9,3,7,3,3,5,6,0,3,3,4,2,3,1,2,1,1,4,1,1,0,0,0],[11,11,13,20,15,25,19,20,18,20,25,16,8,17,18,11,11,14,16,12,16,11,5,10,11,0,4,7,13,10,9,13,19,4,10,1,1,6,5,5,3,11,6,10,3,4,4,8,7,10,1,9,0,7,2,9,5,0,4,12,22,6,1,2,4,15,14,1,3,1,17,5,3,8,12,13,3,9,17,10,0,1,10,3,10,9,1,6,3,6,5,1,4,7,9,2,5,0,4,3,1,2,13,2,9,5,0,8,6,5,6,3,1,1,3,2,5,2,0,3,3,6,4,10,1,2,6,1,5,8,3,16,4,4,4,3,5,2,8,6,5,10,4,1,7,7,6,4,11,3,5,4,2,3,4,2,6,0,4,7,5,7,0,0,2,2,6,1,13,6,3,6,1,5,3,1,8,9,2,0,3,3,5,1,4,4,0,2,1,2,1,8,1,0,2,2,13,1,5,2,6,4,1,0,10,3,5,0,0,6,0,9,8,5,0,0,1,4,0,0,1,4,0,3,1,1,3,0,6,2,2,0,0,3],[5.73,3.6,4.22,3.33,2.08,4.15,4.5,3.8,1,2.22,1.11,1.2,2.11,1.89,2.36,3,2.17,2.91,1.6,1.7,1,1.83,1.44,1.89,0.22,1.25,1.78,1.6,1.73,1.11,1.4,0.8,1,0.33,1.46,1,0.8,0.9,0.3,0.89,0.3,0.78,1.23,0.7,0.11,0.5,1.1,0.67,1,1.08,0.43,0.4,0.3,1.33,0.8,1.22,0.8,1,1.11,1,0.6,1.17,0.7,0.8,1.46,0.56,0.89,1.44,0.73,0.25,1.25,1.11,0.17,0.5,0.25,1,0.42,0.4,1.45,0.67,0.67,1,0.8,0.33,0.5,0.5,0,0.33,0.22,0.22,0.5,0.3,0.4,0.9,0.25,0.7,0.5,0.82,0.78,0.6,0.83,0.1,0.4,0.85,0.56,0.92,0.4,0.6,0.75,0.7,0.2,0.92,0.08,0.17,0.33,0.22,0.1,0.4,0.55,0.67,0.44,0.3,0.25,0.67,0.11,0.2,0.2,0.33,0.33,0.08,0.17,1.1,0.3,0.3,0.33,0.2,0.69,0.33,0.56,0.78,0.6,0.42,0.58,0.33,0.7,0.1,0.2,0.22,0.33,0.2,0,0.2,0,0.11,0.3,0.1,0.3,0.11,0.56,0,0.17,0.6,0.5,0,0.2,0.4,0.33,0,0.2,0.6,0.1,0,0.22,0.58,0.2,0.11,0.22,0,0.33,0.33,0,0.2,0.4,0.17,0.4,0.36,0.11,0.33,0.2,0.3,0.2,0.54,0.1,0.22,0.11,0.11,0.22,0,0,0.2,0.22,0,0,0.11,0.2,0,0.3,0.2,0,0,0,0.08,0.36,0,0.1,0.1,0,0,0.25,0,0,0,0,0,0,0,0.11,0,0,0,0,0,0,0.25],[6,6.6,5.22,6.22,7.58,4.77,3.92,4.9,8.78,5.78,7.67,6,4.11,4.89,3.91,2.64,3.83,2.82,4.8,4.4,5.6,3.42,3.56,3.11,5.67,3.5,2.89,3.2,3.09,3.89,3.3,4.3,4.3,4.5,3,3.33,3.4,3.5,4.3,3.44,4.1,3.78,2.62,3.6,4.11,3.5,2.6,3.33,2.78,2.67,3.29,3.7,3.4,2.22,2.7,2.44,2.8,2.25,2.22,2.7,3.8,2.08,2.5,2.4,1.46,3.44,2.78,1.22,2.36,3,2.08,1.78,3.17,2.8,3.25,2.18,2.58,2.9,1.64,2.56,2,1.5,2.2,2.56,2.6,2.42,3,2.56,2.56,2.67,2.1,2.2,2.2,1.6,2.58,1.6,2,1.27,1.56,1.7,1.17,2.3,2.4,1.15,2,1.17,1.7,2.2,1.5,1.4,2.2,0.92,2.08,1.92,1.78,1.89,2.2,1.6,1.27,1.22,1.56,1.9,1.83,1.56,1.89,1.8,2,1.67,1.78,2.17,1.83,1.1,1.7,1.7,1.58,1.7,1,1.44,1.44,1,1.4,1.58,1.08,1.25,1,1.9,1.7,1.56,1.78,1.5,1.89,1.5,1.67,1.56,1.3,1.5,1.4,1.33,0.89,1.89,1.42,0.9,0.67,1.4,1.2,0.9,1.22,1.43,1.7,0.7,1.3,1.6,1,0.58,1.1,1.11,1.33,1.58,0.78,0.67,1.33,1,0.8,0.92,0.7,0.73,0.89,0.67,0.8,0.7,0.8,0.54,0.9,0.67,0.89,0.89,1.33,0.89,1.11,0.6,0.78,1,0.67,0.44,0.8,0.73,0.3,0.2,0.5,0.8,0.5,0.75,0.27,0.7,0.3,0.3,0.45,0.6,0,0.33,0.3,0.44,0.22,0.38,0.33,0.2,0.11,0.1,0.4,0.11,0.1,0,0,0],[1,1.1,1.44,2.22,1.25,1.92,1.58,2,2,2.22,2.78,1.6,0.89,1.89,1.64,1,0.92,1.27,1.6,1.2,1.6,0.92,0.56,1.11,1.22,0,0.44,0.7,1.18,1.11,0.9,1.3,1.9,0.33,0.77,0.11,0.1,0.6,0.5,0.56,0.3,1.22,0.46,1,0.33,0.4,0.4,0.67,0.78,0.83,0.14,0.9,0,0.78,0.2,1,0.5,0,0.44,1.2,2.2,0.5,0.1,0.2,0.31,1.67,1.56,0.11,0.27,0.25,1.42,0.56,0.5,0.8,1,1.18,0.25,0.9,1.55,1.11,0,0.1,1,0.33,1,0.75,0.5,0.67,0.33,0.67,0.5,0.1,0.4,0.7,0.75,0.2,0.5,0,0.44,0.3,0.08,0.2,1.3,0.15,1,0.42,0,1.6,0.75,0.5,0.6,0.25,0.08,0.08,0.33,0.22,0.5,0.2,0,0.33,0.33,0.6,0.33,1.11,0.11,0.2,0.6,0.33,0.56,0.67,0.25,1.6,0.4,0.4,0.33,0.3,0.38,0.22,0.89,0.67,1,0.83,0.33,0.08,0.7,0.7,0.6,0.44,1.22,0.3,0.56,0.4,0.22,0.33,0.4,0.2,0.6,0,0.44,0.78,0.42,0.7,0,0,0.2,0.2,0.67,0.14,1.3,0.6,0.3,0.6,0.11,0.42,0.3,0.11,0.89,0.75,0.22,0,0.33,0.3,0.5,0.08,0.4,0.36,0,0.22,0.1,0.2,0.1,0.62,0.1,0,0.22,0.22,1.44,0.11,0.56,0.2,0.67,0.44,0.11,0,1,0.27,0.5,0,0,0.6,0,0.75,0.73,0.5,0,0,0.09,0.4,0,0,0.1,0.44,0,0.38,0.33,0.1,0.33,0,0.6,0.22,0.2,0,0,0.75],[5.73,3.27,2.92,1.5,1.67,2.16,2.84,1.9,0.5,1,0.4,0.75,2.38,1,1.44,3,2.36,2.29,1,1.42,0.63,2,2.6,1.7,0.18,null,4,2.29,1.46,1,1.56,0.62,0.53,1,1.9,9,8,1.5,0.6,1.6,1,0.64,2.67,0.7,0.33,1.25,2.75,1,1.29,1.3,3,0.44,null,1.71,4,1.22,1.6,null,2.5,0.83,0.27,2.33,7,4,4.75,0.33,0.57,13,2.67,1,0.88,2,0.33,0.63,0.25,0.85,1.67,0.44,0.94,0.6,null,10,0.8,1,0.5,0.67,0,0.5,0.67,0.33,1,3,1,1.29,0.33,3.5,1,null,1.75,2,10,0.5,0.31,5.5,0.56,2.2,null,0.38,1,1.4,0.33,3.67,1,2,1,1,0.2,2,null,2,1.33,0.5,0.75,0.6,1,1,0.33,1,0.6,0.13,0.67,0.69,0.75,0.75,1,0.67,1.8,1.5,0.63,1.17,0.6,0.5,1.75,4,1,0.14,0.33,0.5,0.27,0.67,0,0.5,0,0.33,0.75,0.5,0.5,null,1.25,0,0.4,0.86,null,null,1,2,0.5,0,0.15,1,0.33,0,2,1.4,0.67,1,0.25,0,1.5,null,0,0.67,0.8,2,1,1,null,1.5,2,1.5,2,0.88,1,null,0.5,0.5,0.15,0,0,1,0.33,0,0,null,0.2,0,0.6,null,null,0,null,0.11,0.5,0,null,null,0,0,null,null,0,0,null,0,0,0,0.33,null,0,0,0,null,null,0.33],[11.73,9.27,6.54,4.3,7.73,4.64,5.32,4.35,4.89,3.6,3.16,4.5,7,3.59,3.83,5.64,6.55,4.5,4,5.08,4.13,5.73,9,4.5,4.82,null,10.5,6.86,4.08,4.5,5.22,3.92,2.79,14.5,5.8,39,42,7.33,9.2,7.8,14.67,3.73,8.33,4.3,12.67,10,9.25,6,4.86,4.5,26,4.56,null,4.57,17.5,3.67,7.2,null,7.5,3.08,2,6.5,32,16,9.5,2.4,2.36,24,11.33,13,2.35,5.2,6.67,4.13,3.5,2.69,12,3.67,2,2.9,null,25,3,8.67,3.1,3.89,6,4.33,8.33,4.33,5.2,25,6.5,3.57,3.78,11.5,5,null,5.25,7.67,24,12,2.15,13,2.56,5,null,1.75,3,4.2,4,7.33,26,25,6.33,9.5,4.6,10,null,5.67,6,3.67,6.25,2,18,10,3.67,6,3.8,3.38,8,1.38,5,5,5.75,6.33,4.4,8,2.25,2.67,2,2.4,5,19,2.43,2.86,3.17,4,1.73,5.67,3.4,4.25,7.5,5,4,8,2.83,null,3.25,2.43,3.8,2.14,null,null,7,6.5,2.33,10,1.46,2.17,4.67,2.67,11,2.8,4.33,11,1.75,2.11,5,null,4,4,2.4,13,2.75,3,null,4.5,10,5,10,1.75,10,null,4.5,4.5,1.08,8,2,4,1.5,2.25,6,null,1,2.67,1.2,null,null,1.33,null,1.11,0.88,1.4,null,null,5,1.5,null,null,3,1,null,1,1,2,0.67,null,0.67,0.5,0.5,null,null,0.33],[140.91,114.5,108.33,101.11,100.83,100.38,98.75,96,92.78,80,79.44,70,68.33,67.78,66.36,66.36,66.25,65.45,64,63.5,63,57.08,54.44,53.89,53.89,53.75,53.33,52.5,50.91,50,49.5,48.5,48.5,48.33,48.08,47.78,45.5,45.5,45,45,44,43.33,42.31,41.5,41.11,40.5,40.5,40,38.89,38.75,38.57,38.5,38.5,38.33,38,37.78,37.5,37.5,36.67,36,36,35.83,35,35,35,34.44,33.33,33.33,33.18,32.5,32.5,31.67,31.67,31.5,31.25,30.91,30.83,30.5,30.45,30,30,29.5,29,28.89,28.5,27.92,27.5,27.22,27.22,26.67,26,26,26,26,25.83,25.5,25,25,25,24.5,23.75,23.5,23.5,23.46,23.33,23.33,23,23,22.5,22,22,21.67,21.67,21.25,21.11,21.11,21,21,20.91,20.56,20.56,20.5,20.42,20,20,20,20,20,20,19.58,19.58,19.5,19.5,19.5,19.17,18.5,18.46,18.33,18.33,18.33,18,17.92,17.92,17.08,17,17,17,16.67,16.67,16.5,16.11,16,15.56,15.56,15.5,15.5,15.5,15,15,15,14.58,14.5,14.17,14,14,14,13.89,13.57,13.5,13,13,13,12.78,12.5,12.5,12.22,12.22,12.08,11.67,11.67,11.67,11.5,11.5,11.25,11,10.91,10.56,10.56,10.5,10.5,10.5,10.38,10,10,9.44,9.44,9.44,8.33,8.33,8,7.78,7.78,6.11,6.11,6,5.91,5,5,5,5,5,5,4.55,4.5,4.5,4.5,4.09,4,3.75,3.33,2.5,2.22,2.22,1.88,1.67,1.5,1.11,1,1,0,0,0,0,0]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>Player<\/th>\n      <th>Team<\/th>\n      <th>Site<\/th>\n      <th>GP<\/th>\n      <th>TUH<\/th>\n      <th>15<\/th>\n      <th>10<\/th>\n      <th>-5<\/th>\n      <th>15/G<\/th>\n      <th>10/G<\/th>\n      <th>-5/G<\/th>\n      <th>P/N<\/th>\n      <th>G/N<\/th>\n      <th>PPG<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"dom":"tp","rowCallback":"function(row, data){\n  for(var i=0; i<data.length; i++){\n    if(data[i] === null){\n      $('td:eq('+(i)+')', row).html('-')\n        .css({'font-style': 'italic', 'text-align': 'center'});\n    }\n  }\nvar value=data[3]; $(this.api().cell(row, 3).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[4]; $(this.api().cell(row, 4).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[5]; $(this.api().cell(row, 5).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[6]; $(this.api().cell(row, 6).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[7]; $(this.api().cell(row, 7).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[8]; $(this.api().cell(row, 8).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[9]; $(this.api().cell(row, 9).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[10]; $(this.api().cell(row, 10).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[11]; $(this.api().cell(row, 11).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[12]; $(this.api().cell(row, 12).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[13]; $(this.api().cell(row, 13).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[0]; $(this.api().cell(row, 0).node()).css({'border-right':'2px solid #d3d3d3'});\nvar value=data[1]; $(this.api().cell(row, 1).node()).css({'border-right':'2px solid #d3d3d3'});\nvar value=data[2]; $(this.api().cell(row, 2).node()).css({'border-right':'2px solid #d3d3d3'});\nvar value=data[4]; $(this.api().cell(row, 4).node()).css({'border-right':'2px solid #d3d3d3'});\nvar value=data[7]; $(this.api().cell(row, 7).node()).css({'border-right':'2px solid #d3d3d3'});\nvar value=data[10]; $(this.api().cell(row, 10).node()).css({'border-right':'2px solid #d3d3d3'});\n}","columnDefs":[{"targets":8,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 2, 3, \",\", \".\", null);\n  }"},{"targets":9,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 2, 3, \",\", \".\", null);\n  }"},{"targets":10,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 2, 3, \",\", \".\", null);\n  }"},{"targets":13,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 2, 3, \",\", \".\", null);\n  }"},{"targets":11,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 2, 3, \",\", \".\", null);\n  }"},{"targets":12,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 2, 3, \",\", \".\", null);\n  }"},{"className":"dt-right","targets":[3,4,5,6,7,8,9,10,11,12,13]}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":["options.rowCallback","options.columnDefs.0.render","options.columnDefs.1.render","options.columnDefs.2.render","options.columnDefs.3.render","options.columnDefs.4.render","options.columnDefs.5.render"],"jsHooks":[]}</script>
+</div>
+
+
+<script>
+
+var source = new Bloodhound({
+  datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
+  queryTokenizer: Bloodhound.tokenizers.whitespace,
+  prefetch: {
+    url: '../test-index.json',
+    cache: false
+  }
+});
+
+source.initialize();
+
+$('#custom-templates .typeahead').typeahead(null, {
+  name: 'matched-links',
+  displayKey: 'name',
+  source: source.ttAdapter(),
+  templates: {
+    empty: [
+      '<div class="empty-message">',
+      'unable to find any search results that match the current query',
+      '</div>'
+    ].join('\n'),
+      suggestion: Handlebars.compile('<p><a href="{{id}}">{{name}}</a></p>')
+  }
+});
+</script>
+
+<script>
+  $(function() {
+  var navSelector = '#toc';
+  var $myNav = $(navSelector);
+  Toc.init($myNav);
+  $('body').scrollspy({
+    target: navSelector
+  });
+});
+</script>
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+
+</body>
+</html>

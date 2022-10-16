@@ -1,0 +1,1271 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>Boilermaker Spring Novice | College Quizbowl Stats</title>
+
+<script src="libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="libs/navigation-1.1/tabsets.js"></script>
+<link href="libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="libs/highlightjs-9.12.0/highlight.js"></script>
+<script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script>
+<link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
+<script src="libs/datatables-binding-0.24/datatables.js"></script>
+<link href="libs/dt-core-1.11.3/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="libs/dt-core-1.11.3/css/jquery.dataTables.extra.css" rel="stylesheet" />
+<script src="libs/dt-core-1.11.3/js/jquery.dataTables.min.js"></script>
+<link href="libs/crosstalk-1.1.1/css/crosstalk.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.1.1/js/crosstalk.min.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Alegreya+Sans&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inconsolata&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+<script src="https://twitter.github.io/typeahead.js/releases/latest/typeahead.bundle.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.7/handlebars.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-sidebar/3.3.1/jquery.sticky-sidebar.min.js" integrity="sha512-iVhJqV0j477IrAkkzsn/tVJWXYsEqAj4PSS7AG+z1F7eD6uLKQxYBg09x13viaJ1Z5yYhlpyx0zLAUUErdHM6A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<!-- add after bootstrap.min.css -->
+<link rel="stylesheet" href="https://cdn.rawgit.com/afeld/bootstrap-toc/v0.4.1/dist/bootstrap-toc.min.css">
+<!-- add after bootstrap.min.js -->
+<script src="https://cdn.rawgit.com/afeld/bootstrap-toc/v0.4.1/dist/bootstrap-toc.min.js"></script>
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+      .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+
+
+<link rel="stylesheet" href="../css/style.css" type="text/css" />
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+
+<nav class = 'top-nav'>
+  <ul>
+    <li><p class = "site-title"><a href="/index.html">College Quizbowl Stats</a></p>
+    </li>
+    <li><a class = "navbar-link" href="/seasons/">Seasons</a></li>
+    <li><a class = "navbar-link" href="/sets/">Sets</a></li>
+    <li><a class = "navbar-link" href="/circuits/">Circuits</a></li>
+    <li><a class = "navbar-link" href="/records.html">Records</a></li>
+    <li><a class = "navbar-link" href="/about.html">About</a></li>
+
+<div id="custom-templates">
+  <input class="typeahead" type="text" placeholder="Player/Team Search">
+</div>
+  </ul>
+</nav>
+
+<div id="header">
+
+
+
+
+</div>
+
+
+<div class = 'main-flex'>
+<div class="toc-div col-sm-2">
+<nav class="side-nav" id="toc">
+</nav>
+</div>
+<div class = 'main-content col-sm-10'>
+<p class="page-title">
+21-22 Boilermaker Spring Novice
+</p>
+<p class="page-subtitle">
+Head Editor: Quynh Phung, Lalit Maharjan, Sarah Benner
+</p>
+<hr>
+<div id="editors" class="section level2">
+<h2>Editors</h2>
+<div id="ljcwraytcn" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>html {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+}
+
+#ljcwraytcn .gt_table {
+  display: table;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#ljcwraytcn .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#ljcwraytcn .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 1px;
+  padding-bottom: 1px;
+  padding-left: 6px;
+  padding-right: 6px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#ljcwraytcn .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 0;
+  padding-bottom: 3px;
+  padding-left: 6px;
+  padding-right: 6px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#ljcwraytcn .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#ljcwraytcn .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#ljcwraytcn .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 1.25px;
+  padding-bottom: 2.25px;
+  padding-left: 6px;
+  padding-right: 6px;
+  overflow-x: hidden;
+}
+
+#ljcwraytcn .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#ljcwraytcn .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#ljcwraytcn .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#ljcwraytcn .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 1.25px;
+  padding-bottom: 1.25px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#ljcwraytcn .gt_group_heading {
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-left: 6px;
+  padding-right: 6px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#ljcwraytcn .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#ljcwraytcn .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#ljcwraytcn .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#ljcwraytcn .gt_row {
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-left: 6px;
+  padding-right: 6px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#ljcwraytcn .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 6px;
+  padding-right: 6px;
+}
+
+#ljcwraytcn .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 6px;
+  padding-right: 6px;
+  vertical-align: top;
+}
+
+#ljcwraytcn .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#ljcwraytcn .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-left: 6px;
+  padding-right: 6px;
+}
+
+#ljcwraytcn .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#ljcwraytcn .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#ljcwraytcn .gt_last_summary_row {
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-left: 6px;
+  padding-right: 6px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#ljcwraytcn .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-left: 6px;
+  padding-right: 6px;
+}
+
+#ljcwraytcn .gt_first_grand_summary_row {
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-left: 6px;
+  padding-right: 6px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#ljcwraytcn .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#ljcwraytcn .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#ljcwraytcn .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#ljcwraytcn .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-left: 1px;
+  padding-right: 1px;
+  padding-left: 6px;
+  padding-right: 6px;
+}
+
+#ljcwraytcn .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#ljcwraytcn .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 1px;
+  padding-bottom: 1px;
+  padding-left: 6px;
+  padding-right: 6px;
+}
+
+#ljcwraytcn .gt_left {
+  text-align: left;
+}
+
+#ljcwraytcn .gt_center {
+  text-align: center;
+}
+
+#ljcwraytcn .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#ljcwraytcn .gt_font_normal {
+  font-weight: normal;
+}
+
+#ljcwraytcn .gt_font_bold {
+  font-weight: bold;
+}
+
+#ljcwraytcn .gt_font_italic {
+  font-style: italic;
+}
+
+#ljcwraytcn .gt_super {
+  font-size: 65%;
+}
+
+#ljcwraytcn .gt_two_val_uncert {
+  display: inline-block;
+  line-height: 1em;
+  text-align: right;
+  font-size: 60%;
+  vertical-align: -0.25em;
+  margin-left: 0.1em;
+}
+
+#ljcwraytcn .gt_footnote_marks {
+  font-style: italic;
+  font-weight: normal;
+  font-size: 75%;
+  vertical-align: 0.4em;
+}
+
+#ljcwraytcn .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#ljcwraytcn .gt_slash_mark {
+  font-size: 0.7em;
+  line-height: 0.7em;
+  vertical-align: 0.15em;
+}
+
+#ljcwraytcn .gt_fraction_numerator {
+  font-size: 0.6em;
+  line-height: 0.6em;
+  vertical-align: 0.45em;
+}
+
+#ljcwraytcn .gt_fraction_denominator {
+  font-size: 0.6em;
+  line-height: 0.6em;
+  vertical-align: -0.05em;
+}
+</style>
+<table class="gt_table">
+  
+  <thead class="gt_col_headings">
+    <tr>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;">Subcategory</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1">Editors</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr class="gt_group_heading_row">
+      <td colspan="2" class="gt_group_heading">Literature</td>
+    </tr>
+    <tr class="gt_row_group_first"><td class="gt_row gt_left" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;">Literature</td>
+<td class="gt_row gt_left"><a href = "../players/payton-schubel.html">Payton Schubel</a></td></tr>
+    <tr class="gt_group_heading_row">
+      <td colspan="2" class="gt_group_heading">History</td>
+    </tr>
+    <tr class="gt_row_group_first"><td class="gt_row gt_left gt_striped" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;">History</td>
+<td class="gt_row gt_left gt_striped"><a href = "../players/daniel-cronin.html">Daniel Cronin</a></td></tr>
+    <tr class="gt_group_heading_row">
+      <td colspan="2" class="gt_group_heading">Science</td>
+    </tr>
+    <tr class="gt_row_group_first"><td class="gt_row gt_left" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;">Chemistry</td>
+<td class="gt_row gt_left"><a href = "../players/matt-schiavone.html">Matt Schiavone</a></td></tr>
+    <tr><td class="gt_row gt_left gt_striped" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;">Science</td>
+<td class="gt_row gt_left gt_striped"><a href = "../players/david-bass.html">David Bass</a>, <a href = "../players/jim-fan.html">Jim Fan</a></td></tr>
+    <tr class="gt_group_heading_row">
+      <td colspan="2" class="gt_group_heading">Arts</td>
+    </tr>
+    <tr class="gt_row_group_first"><td class="gt_row gt_left" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;">Visual Arts</td>
+<td class="gt_row gt_left"><a href = "../players/daniel-cronin.html">Daniel Cronin</a></td></tr>
+    <tr class="gt_group_heading_row">
+      <td colspan="2" class="gt_group_heading">Beliefs</td>
+    </tr>
+    <tr class="gt_row_group_first"><td class="gt_row gt_left gt_striped" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;">Beliefs</td>
+<td class="gt_row gt_left gt_striped"><a href = "../players/matt-schiavone.html">Matt Schiavone</a></td></tr>
+    <tr class="gt_group_heading_row">
+      <td colspan="2" class="gt_group_heading">Thought</td>
+    </tr>
+    <tr class="gt_row_group_first"><td class="gt_row gt_left" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;">Social Science</td>
+<td class="gt_row gt_left"><a href = "../players/ryan-rosenberg.html">Ryan Rosenberg</a></td></tr>
+    <tr><td class="gt_row gt_left gt_striped" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;">Thought</td>
+<td class="gt_row gt_left gt_striped"><a href = "../players/kevin-jiang.html">Kevin Jiang</a></td></tr>
+    <tr class="gt_group_heading_row">
+      <td colspan="2" class="gt_group_heading">Other</td>
+    </tr>
+    <tr class="gt_row_group_first"><td class="gt_row gt_left" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;">Pop Culture</td>
+<td class="gt_row gt_left"><a href = "../players/kevin-jiang.html">Kevin Jiang</a>, <a href = "../players/ryan-rosenberg.html">Ryan Rosenberg</a></td></tr>
+  </tbody>
+  
+  
+</table>
+</div>
+<hr>
+</div>
+<div id="tournaments" class="section level2">
+<h2>Tournaments</h2>
+<div id="ivocmnijqi" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>html {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+}
+
+#ivocmnijqi .gt_table {
+  display: table;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#ivocmnijqi .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#ivocmnijqi .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 1px;
+  padding-bottom: 1px;
+  padding-left: 6px;
+  padding-right: 6px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#ivocmnijqi .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 0;
+  padding-bottom: 3px;
+  padding-left: 6px;
+  padding-right: 6px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#ivocmnijqi .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#ivocmnijqi .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#ivocmnijqi .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 1.25px;
+  padding-bottom: 2.25px;
+  padding-left: 6px;
+  padding-right: 6px;
+  overflow-x: hidden;
+}
+
+#ivocmnijqi .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#ivocmnijqi .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#ivocmnijqi .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#ivocmnijqi .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 1.25px;
+  padding-bottom: 1.25px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#ivocmnijqi .gt_group_heading {
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-left: 6px;
+  padding-right: 6px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#ivocmnijqi .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#ivocmnijqi .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#ivocmnijqi .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#ivocmnijqi .gt_row {
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-left: 6px;
+  padding-right: 6px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#ivocmnijqi .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 6px;
+  padding-right: 6px;
+}
+
+#ivocmnijqi .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 6px;
+  padding-right: 6px;
+  vertical-align: top;
+}
+
+#ivocmnijqi .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#ivocmnijqi .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-left: 6px;
+  padding-right: 6px;
+}
+
+#ivocmnijqi .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#ivocmnijqi .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#ivocmnijqi .gt_last_summary_row {
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-left: 6px;
+  padding-right: 6px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#ivocmnijqi .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-left: 6px;
+  padding-right: 6px;
+}
+
+#ivocmnijqi .gt_first_grand_summary_row {
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-left: 6px;
+  padding-right: 6px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#ivocmnijqi .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#ivocmnijqi .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#ivocmnijqi .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#ivocmnijqi .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-left: 1px;
+  padding-right: 1px;
+  padding-left: 6px;
+  padding-right: 6px;
+}
+
+#ivocmnijqi .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#ivocmnijqi .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 1px;
+  padding-bottom: 1px;
+  padding-left: 6px;
+  padding-right: 6px;
+}
+
+#ivocmnijqi .gt_left {
+  text-align: left;
+}
+
+#ivocmnijqi .gt_center {
+  text-align: center;
+}
+
+#ivocmnijqi .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#ivocmnijqi .gt_font_normal {
+  font-weight: normal;
+}
+
+#ivocmnijqi .gt_font_bold {
+  font-weight: bold;
+}
+
+#ivocmnijqi .gt_font_italic {
+  font-style: italic;
+}
+
+#ivocmnijqi .gt_super {
+  font-size: 65%;
+}
+
+#ivocmnijqi .gt_two_val_uncert {
+  display: inline-block;
+  line-height: 1em;
+  text-align: right;
+  font-size: 60%;
+  vertical-align: -0.25em;
+  margin-left: 0.1em;
+}
+
+#ivocmnijqi .gt_footnote_marks {
+  font-style: italic;
+  font-weight: normal;
+  font-size: 75%;
+  vertical-align: 0.4em;
+}
+
+#ivocmnijqi .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#ivocmnijqi .gt_slash_mark {
+  font-size: 0.7em;
+  line-height: 0.7em;
+  vertical-align: 0.15em;
+}
+
+#ivocmnijqi .gt_fraction_numerator {
+  font-size: 0.6em;
+  line-height: 0.6em;
+  vertical-align: 0.45em;
+}
+
+#ivocmnijqi .gt_fraction_denominator {
+  font-size: 0.6em;
+  line-height: 0.6em;
+  vertical-align: -0.05em;
+}
+</style>
+<table class="gt_table">
+  
+  <thead class="gt_col_headings">
+    <tr>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;">Site</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">Teams</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;">Schools</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">15%</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;">Conv%</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">PPB</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr class="gt_group_heading_row">
+      <td colspan="6" class="gt_group_heading">2022-03-19</td>
+    </tr>
+    <tr class="gt_row_group_first"><td class="gt_row gt_left" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;"><a href = "../tournaments/21-22-boilermaker-spring-novice-georgia">Georgia</a></td>
+<td class="gt_row gt_right" style="font-family: var(--table-font); font-size: 110%;">4</td>
+<td class="gt_row gt_right" style="font-family: var(--table-font); font-size: 110%; border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;">3</td>
+<td class="gt_row gt_right" style="font-family: var(--table-font); font-size: 110%;">0.154</td>
+<td class="gt_row gt_right" style="font-family: var(--table-font); font-size: 110%; border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;">0.952</td>
+<td class="gt_row gt_right" style="font-family: var(--table-font); font-size: 110%;">18.14</td></tr>
+    <tr class="gt_group_heading_row">
+      <td colspan="6" class="gt_group_heading">2022-03-26</td>
+    </tr>
+    <tr class="gt_row_group_first"><td class="gt_row gt_left gt_striped" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;"><a href = "../tournaments/21-22-boilermaker-spring-novice-florida">Florida</a></td>
+<td class="gt_row gt_right gt_striped" style="font-family: var(--table-font); font-size: 110%;">8</td>
+<td class="gt_row gt_right gt_striped" style="font-family: var(--table-font); font-size: 110%; border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;">5</td>
+<td class="gt_row gt_right gt_striped" style="font-family: var(--table-font); font-size: 110%;">0.140</td>
+<td class="gt_row gt_right gt_striped" style="font-family: var(--table-font); font-size: 110%; border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;">0.927</td>
+<td class="gt_row gt_right gt_striped" style="font-family: var(--table-font); font-size: 110%;">16.34</td></tr>
+    <tr><td class="gt_row gt_left" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;"><a href = "../tournaments/21-22-boilermaker-spring-novice-ohio-state">Ohio State</a></td>
+<td class="gt_row gt_right" style="font-family: var(--table-font); font-size: 110%;">10</td>
+<td class="gt_row gt_right" style="font-family: var(--table-font); font-size: 110%; border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;">7</td>
+<td class="gt_row gt_right" style="font-family: var(--table-font); font-size: 110%;">0.145</td>
+<td class="gt_row gt_right" style="font-family: var(--table-font); font-size: 110%; border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;">0.926</td>
+<td class="gt_row gt_right" style="font-family: var(--table-font); font-size: 110%;">17.18</td></tr>
+    <tr><td class="gt_row gt_left gt_striped" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;"><a href = "../tournaments/21-22-boilermaker-spring-novice-purdue">Purdue</a></td>
+<td class="gt_row gt_right gt_striped" style="font-family: var(--table-font); font-size: 110%;">5</td>
+<td class="gt_row gt_right gt_striped" style="font-family: var(--table-font); font-size: 110%; border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;">3</td>
+<td class="gt_row gt_right gt_striped" style="font-family: var(--table-font); font-size: 110%;">0.157</td>
+<td class="gt_row gt_right gt_striped" style="font-family: var(--table-font); font-size: 110%; border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;">0.964</td>
+<td class="gt_row gt_right gt_striped" style="font-family: var(--table-font); font-size: 110%;">18.25</td></tr>
+    <tr><td class="gt_row gt_left" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;"><a href = "../tournaments/21-22-boilermaker-spring-novice-rit">RIT</a></td>
+<td class="gt_row gt_right" style="font-family: var(--table-font); font-size: 110%;">4</td>
+<td class="gt_row gt_right" style="font-family: var(--table-font); font-size: 110%; border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;">3</td>
+<td class="gt_row gt_right" style="font-family: var(--table-font); font-size: 110%;">0.178</td>
+<td class="gt_row gt_right" style="font-family: var(--table-font); font-size: 110%; border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;">0.947</td>
+<td class="gt_row gt_right" style="font-family: var(--table-font); font-size: 110%;">18.19</td></tr>
+    <tr><td class="gt_row gt_left gt_striped" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;"><a href = "../tournaments/21-22-boilermaker-spring-novice-toronto">Toronto</a></td>
+<td class="gt_row gt_right gt_striped" style="font-family: var(--table-font); font-size: 110%;">4</td>
+<td class="gt_row gt_right gt_striped" style="font-family: var(--table-font); font-size: 110%; border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;">3</td>
+<td class="gt_row gt_right gt_striped" style="font-family: var(--table-font); font-size: 110%;">0.190</td>
+<td class="gt_row gt_right gt_striped" style="font-family: var(--table-font); font-size: 110%; border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;">0.970</td>
+<td class="gt_row gt_right gt_striped" style="font-family: var(--table-font); font-size: 110%;">19.24</td></tr>
+    <tr><td class="gt_row gt_left" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;"><a href = "../tournaments/21-22-boilermaker-spring-novice-ubc">UBC</a></td>
+<td class="gt_row gt_right" style="font-family: var(--table-font); font-size: 110%;">8</td>
+<td class="gt_row gt_right" style="font-family: var(--table-font); font-size: 110%; border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;">8</td>
+<td class="gt_row gt_right" style="font-family: var(--table-font); font-size: 110%;">0.109</td>
+<td class="gt_row gt_right" style="font-family: var(--table-font); font-size: 110%; border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;">0.772</td>
+<td class="gt_row gt_right" style="font-family: var(--table-font); font-size: 110%;">16.25</td></tr>
+    <tr class="gt_group_heading_row">
+      <td colspan="6" class="gt_group_heading">2022-04-23</td>
+    </tr>
+    <tr class="gt_row_group_first"><td class="gt_row gt_left gt_striped" style="border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;"><a href = "../tournaments/21-22-boilermaker-spring-novice-james-madison">James Madison</a></td>
+<td class="gt_row gt_right gt_striped" style="font-family: var(--table-font); font-size: 110%;">18</td>
+<td class="gt_row gt_right gt_striped" style="font-family: var(--table-font); font-size: 110%; border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;">11</td>
+<td class="gt_row gt_right gt_striped" style="font-family: var(--table-font); font-size: 110%;">0.087</td>
+<td class="gt_row gt_right gt_striped" style="font-family: var(--table-font); font-size: 110%; border-right-width: 1.5px; border-right-style: solid; border-right-color: #d1d3d4;">0.739</td>
+<td class="gt_row gt_right gt_striped" style="font-family: var(--table-font); font-size: 110%;">15.38</td></tr>
+  </tbody>
+  
+  
+</table>
+</div>
+<hr>
+</div>
+<div id="teams" class="section level2">
+<h2>Teams</h2>
+<div id="htmlwidget-0e771d5366d71a83631f" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-0e771d5366d71a83631f">{"x":{"filter":"none","vertical":false,"data":[["<a href = \"../tournaments/21-22-boilermaker-spring-novice-purdue#notre-dame-a\">Notre Dame A<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-rit#cornell-a\">Cornell A<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-purdue#nebraska-a\">Nebraska A<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-ohio-state#michigan-a\">Michigan A<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-toronto#queens-a\">Queens A<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-toronto#toronto-blue\">Toronto Blue<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-georgia#georgia-2\">Georgia 2<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-georgia#georgia-tech-a\">Georgia Tech A<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-rit#rit-a\">RIT A<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-ohio-state#miami-ohio-a\">Miami-Ohio A<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-toronto#mcgill-a\">McGill A<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-ohio-state#kenyon-a\">Kenyon A<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-ohio-state#michigan-state-a\">Michigan State A<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-georgia#georgia-1\">Georgia 1<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-toronto#toronto-white\">Toronto White<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-florida#florida-a\">Florida A<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-ohio-state#case-western-a\">Case Western A<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-james-madison#william-&-mary-a\">William & Mary A<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-james-madison#virginia-a\">Virginia A<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-florida#yale-a\">Yale A<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-purdue#nebraska-b\">Nebraska B<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-james-madison#pitt-a\">Pitt A<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-ohio-state#ohio-state-a\">Ohio State A<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-james-madison#centre-a\">Centre A<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-florida#florida-state-a\">Florida State A<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-florida#central-florida-b\">Central Florida B<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-florida#north-florida-a\">North Florida A<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-rit#colgate-a\">Colgate A<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-florida#central-florida-a\">Central Florida A<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-ubc#washington-a\">Washington A<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-ubc#claremont-colleges-a\">Claremont Colleges A<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-purdue#indiana-a\">Indiana A<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-florida#florida-b\">Florida B<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-james-madison#catholic-b\">Catholic B<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-purdue#notre-dame-b\">Notre Dame B<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-ubc#uc-berkeley-a\">UC Berkeley A<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-james-madison#lehigh-a\">Lehigh A<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-ohio-state#ohio-state-b\">Ohio State B<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-ohio-state#wayne-state-a\">Wayne State A<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-ubc#south-carolina-a\">South Carolina A<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-ohio-state#michigan-b\">Michigan B<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-rit#rit-b\">RIT B<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-florida#florida-state-b\">Florida State B<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-ubc#iowa-a\">Iowa A<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-georgia#auburn-a\">Auburn A<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-ubc#uc-san-diego-a\">UC San Diego A<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-james-madison#centre-b\">Centre B<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-ubc#arizona-state-a\">Arizona State A<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-james-madison#carnegie-mellon-a\">Carnegie Mellon A<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-ohio-state#michigan-c\">Michigan C<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-james-madison#delaware-a\">Delaware A<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-ubc#south-dakota-mines-a\">South Dakota Mines A<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-james-madison#centre-d\">Centre D<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-james-madison#james-madison-c\">James Madison C<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-james-madison#james-madison-a\">James Madison A<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-james-madison#vcu-a\">VCU A<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-james-madison#catholic-a\">Catholic A<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-james-madison#james-madison-b\">James Madison B<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-james-madison#centre-c\">Centre C<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-james-madison#centre-e\">Centre E<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-james-madison#gettysburg-a\">Gettysburg A<\/a>"],["<a href = \"../tournaments/21-22-boilermaker-spring-novice-purdue\">Purdue<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-rit\">RIT<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-purdue\">Purdue<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-ohio-state\">Ohio State<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-toronto\">Toronto<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-toronto\">Toronto<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-georgia\">Georgia<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-georgia\">Georgia<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-rit\">RIT<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-ohio-state\">Ohio State<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-toronto\">Toronto<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-ohio-state\">Ohio State<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-ohio-state\">Ohio State<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-georgia\">Georgia<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-toronto\">Toronto<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-florida\">Florida<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-ohio-state\">Ohio State<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-james-madison\">James Madison<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-james-madison\">James Madison<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-florida\">Florida<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-purdue\">Purdue<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-james-madison\">James Madison<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-ohio-state\">Ohio State<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-james-madison\">James Madison<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-florida\">Florida<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-florida\">Florida<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-florida\">Florida<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-rit\">RIT<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-florida\">Florida<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-ubc\">UBC<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-ubc\">UBC<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-purdue\">Purdue<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-florida\">Florida<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-james-madison\">James Madison<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-purdue\">Purdue<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-ubc\">UBC<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-james-madison\">James Madison<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-ohio-state\">Ohio State<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-ohio-state\">Ohio State<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-ubc\">UBC<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-ohio-state\">Ohio State<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-rit\">RIT<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-florida\">Florida<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-ubc\">UBC<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-georgia\">Georgia<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-ubc\">UBC<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-james-madison\">James Madison<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-ubc\">UBC<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-james-madison\">James Madison<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-ohio-state\">Ohio State<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-james-madison\">James Madison<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-ubc\">UBC<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-james-madison\">James Madison<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-james-madison\">James Madison<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-james-madison\">James Madison<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-james-madison\">James Madison<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-james-madison\">James Madison<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-james-madison\">James Madison<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-james-madison\">James Madison<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-james-madison\">James Madison<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-james-madison\">James Madison<\/a>"],[9,9,9,10,9,9,11,11,9,11,9,10,9,9,9,10,9,10,9,10,8,10,9,8,10,10,10,9,10,11,11,8,10,8,8,10,9,9,9,10,9,9,10,10,9,10,9,10,9,9,9,10,7,7,9,9,9,8,8,8,2],["8-1","9-0","7-2","9-1","3-6","7-2","8-3","7-4","6-3","8-3","3-6","7-3","6-3","5-4","5-4","9-1","6-3","10-0","6-3","8-2","4-4","8-2","5-4","6-2","5-5","5-5","6-4","3-6","4-6","8-3","9-2","1-7","3-7","4-4","1-7","7-3","4-5","2-7","2-7","3-7","1-8","0-9","0-10","3-7","0-9","3-7","5-4","4-6","4-5","1-8","6-3","4-6","3-4","3-4","5-4","3-6","4-5","2-6","0-8","1-7","0-2"],[216,216,216,240,216,216,264,264,216,264,216,240,216,216,216,240,216,240,216,240,192,240,216,192,240,240,240,216,240,264,264,192,240,192,192,240,216,216,216,240,216,216,240,240,216,240,216,240,216,216,216,240,168,168,216,216,216,192,192,192,48],[46,79,45,53,42,48,46,43,36,40,38,37,47,44,36,51,32,47,42,43,21,35,31,32,35,30,29,18,29,42,33,31,32,20,15,33,26,25,27,19,23,21,20,24,15,15,14,32,9,13,12,17,8,12,16,7,11,9,6,4,0],[84,54,77,92,69,59,96,102,87,100,69,92,66,67,58,75,83,76,65,85,70,90,79,67,74,79,84,69,84,82,88,43,76,63,54,71,58,57,54,61,51,45,64,66,44,64,69,52,73,42,65,61,49,46,62,60,68,34,35,22,0],[20,27,24,26,9,37,28,29,39,17,26,16,24,20,12,22,17,10,23,38,10,17,12,18,12,16,23,9,33,26,18,16,30,8,8,18,21,19,27,15,40,27,22,18,32,8,31,27,16,12,7,18,10,10,17,5,18,14,7,22,0],[5.11,8.78,5,5.3,4.67,5.33,4.18,3.91,4,3.64,4.22,3.7,5.22,4.89,4,5.1,3.56,4.7,4.67,4.3,2.63,3.5,3.44,4,3.5,3,2.9,2,2.9,3.82,3,3.88,3.2,2.5,1.88,3.3,2.89,2.78,3,1.9,2.56,2.33,2,2.4,1.67,1.5,1.56,3.2,1,1.44,1.33,1.7,1.14,1.71,1.78,0.78,1.22,1.13,0.75,0.5,0],[9.33,6,8.56,9.2,7.67,6.56,8.73,9.27,9.67,9.09,7.67,9.2,7.33,7.44,6.44,7.5,9.22,7.6,7.22,8.5,8.75,9,8.78,8.38,7.4,7.9,8.4,7.67,8.4,7.45,8,5.38,7.6,7.88,6.75,7.1,6.44,6.33,6,6.1,5.67,5,6.4,6.6,4.89,6.4,7.67,5.2,8.11,4.67,7.22,6.1,7,6.57,6.89,6.67,7.56,4.25,4.38,2.75,0],[2.22,3,2.67,2.6,1,4.11,2.55,2.64,4.33,1.55,2.89,1.6,2.67,2.22,1.33,2.2,1.89,1,2.56,3.8,1.25,1.7,1.33,2.25,1.2,1.6,2.3,1,3.3,2.36,1.64,2,3,1,1,1.8,2.33,2.11,3,1.5,4.44,3,2.2,1.8,3.56,0.8,3.44,2.7,1.78,1.33,0.78,1.8,1.43,1.43,1.89,0.56,2,1.75,0.88,2.75,0],[0.601851851851852,0.615740740740741,0.564814814814815,0.604166666666667,0.513888888888889,0.49537037037037,0.537878787878788,0.549242424242424,0.569444444444444,0.53030303030303,0.49537037037037,0.5375,0.523148148148148,0.513888888888889,0.435185185185185,0.525,0.532407407407407,0.5125,0.49537037037037,0.533333333333333,0.473958333333333,0.520833333333333,0.509259259259259,0.515625,0.454166666666667,0.454166666666667,0.470833333333333,0.402777777777778,0.470833333333333,0.46969696969697,0.458333333333333,0.385416666666667,0.45,0.432291666666667,0.359375,0.433333333333333,0.388888888888889,0.37962962962963,0.375,0.333333333333333,0.342592592592593,0.305555555555556,0.35,0.375,0.273148148148148,0.329166666666667,0.384259259259259,0.35,0.37962962962963,0.25462962962963,0.356481481481481,0.325,0.339285714285714,0.345238095238095,0.361111111111111,0.310185185185185,0.365740740740741,0.223958333333333,0.213541666666667,0.135416666666667,0],[456.67,497.78,417.22,436.5,378.33,373.89,386.36,385.45,395,385.91,338.89,382.5,379.44,360,314.44,369.5,361.67,392.5,382.78,345.5,316.88,365,323.89,360,317.5,286,301,253.89,307,329.09,312.27,246.88,270,273.75,219.38,286.5,243.89,225.56,218.89,221,189.44,163.33,184,224,147.22,213.5,226.11,200.5,207.22,138.33,207.22,177.5,187.14,188.57,193.89,164.44,171.67,103.13,101.88,61.25,0],[20.62,21.73,19.92,19.17,19.19,20.93,19.3,18.76,19.02,19.5,17.94,18.84,19.2,18.11,18.83,18.17,17.65,20.41,21.31,16.8,17.25,18.48,15.64,18.38,18.07,15.6,16.37,15.75,17.35,18.55,17.77,15.68,14.91,15.66,14.93,16.83,15.83,14.39,14.32,17.38,14.19,12.73,12.02,14.56,13.9,16.58,15.54,13.57,13.17,12.55,13.9,12.82,13.16,12.59,12.44,11.94,10,9.77,10,12.31,null],[446.38,429.41,428.48,396.31,386.89,384.79,382.43,378.96,373.96,369.53,354.02,352.34,333.65,325.1,324.9,324.17,317.3,316.82,313.48,312.28,309.7,296.35,290.64,282.76,282.34,260.32,257.54,256.94,255.37,254.72,245.78,244.48,229.98,219.62,219.11,215.63,206.97,203.97,199.44,172.49,171.76,167.83,159.03,151.3,147.61,142.72,140.55,137.69,129.01,125.77,124.94,124.92,112.82,107.71,103.19,102.66,86.63,63.11,53.98,37.67,null]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>Team<\/th>\n      <th>Site<\/th>\n      <th>GP<\/th>\n      <th>W-L<\/th>\n      <th>TUH<\/th>\n      <th>15<\/th>\n      <th>10<\/th>\n      <th>-5<\/th>\n      <th>15/G<\/th>\n      <th>10/G<\/th>\n      <th>-5/G<\/th>\n      <th>TU%<\/th>\n      <th>PPG<\/th>\n      <th>PPB<\/th>\n      <th>A-Value<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"dom":"tp","rowCallback":"function(row, data){\n  for(var i=0; i<data.length; i++){\n    if(data[i] === null){\n      $('td:eq('+(i)+')', row).html('-')\n        .css({'font-style': 'italic', 'text-align': 'center'});\n    }\n  }\nvar value=data[2]; $(this.api().cell(row, 2).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[3]; $(this.api().cell(row, 3).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[4]; $(this.api().cell(row, 4).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[5]; $(this.api().cell(row, 5).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[6]; $(this.api().cell(row, 6).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[7]; $(this.api().cell(row, 7).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[8]; $(this.api().cell(row, 8).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[9]; $(this.api().cell(row, 9).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[10]; $(this.api().cell(row, 10).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[11]; $(this.api().cell(row, 11).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[12]; $(this.api().cell(row, 12).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[13]; $(this.api().cell(row, 13).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[14]; $(this.api().cell(row, 14).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[3]; $(this.api().cell(row, 3).node()).css({'text-align':'right'});\nvar value=data[0]; $(this.api().cell(row, 0).node()).css({'border-right':'2px solid #d3d3d3'});\nvar value=data[1]; $(this.api().cell(row, 1).node()).css({'border-right':'2px solid #d3d3d3'});\nvar value=data[3]; $(this.api().cell(row, 3).node()).css({'border-right':'2px solid #d3d3d3'});\nvar value=data[4]; $(this.api().cell(row, 4).node()).css({'border-right':'2px solid #d3d3d3'});\nvar value=data[7]; $(this.api().cell(row, 7).node()).css({'border-right':'2px solid #d3d3d3'});\nvar value=data[10]; $(this.api().cell(row, 10).node()).css({'border-right':'2px solid #d3d3d3'});\nvar value=data[11]; $(this.api().cell(row, 11).node()).css({'border-right':'2px solid #d3d3d3'});\n}","columnDefs":[{"targets":8,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 2, 3, \",\", \".\", null);\n  }"},{"targets":9,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 2, 3, \",\", \".\", null);\n  }"},{"targets":10,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 2, 3, \",\", \".\", null);\n  }"},{"targets":12,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 2, 3, \",\", \".\", null);\n  }"},{"targets":13,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 2, 3, \",\", \".\", null);\n  }"},{"targets":14,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 2, 3, \",\", \".\", null);\n  }"},{"targets":11,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatPercentage(data, 0, 3, \",\", \".\", null);\n  }"},{"className":"dt-right","targets":[2,4,5,6,7,8,9,10,11,12,13,14]}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":["options.rowCallback","options.columnDefs.0.render","options.columnDefs.1.render","options.columnDefs.2.render","options.columnDefs.3.render","options.columnDefs.4.render","options.columnDefs.5.render","options.columnDefs.6.render"],"jsHooks":[]}</script>
+<hr>
+</div>
+<div id="players" class="section level2">
+<h2>Players</h2>
+<div id="htmlwidget-13efe39127828e8ce467" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-13efe39127828e8ce467">{"x":{"filter":"none","vertical":false,"data":[["<a href = \"../players/jordan-davidsen.html\">Jordan Davidsen<\/a>","<a href = \"../players/oliver-zhou.html\">Oliver Zhou<\/a>","<a href = \"../players/jeya-iyadurai.html\">Jeya Iyadurai<\/a>","<a href = \"../players/dillon-george.html\">Dillon George<\/a>","<a href = \"../players/zane-kierzyk.html\">Zane Kierzyk<\/a>","<a href = \"../players/aidan-heinze.html\">Aidan Heinze<\/a>","<a href = \"../players/alex-winfield.html\">Alex Winfield<\/a>","<a href = \"../players/patrick-daigle.html\">Patrick Daigle<\/a>","<a href = \"../players/alex-king.html\">Alex King<\/a>","<a href = \"../players/francis-berhardt.html\">Francis Berhardt<\/a>","<a href = \"../players/casey-watkins.html\">Casey Watkins<\/a>","<a href = \"../players/richard-niu.html\">Richard Niu<\/a>","<a href = \"../players/cole-franklin.html\">Cole Franklin<\/a>","<a href = \"../players/sam-durdin.html\">Sam Durdin<\/a>","<a href = \"../players/stephen-heritage.html\">Stephen Heritage<\/a>","<a href = \"../players/hayden-prather.html\">Hayden Prather<\/a>","<a href = \"../players/mo-elfayoumi.html\">Mo Elfayoumi<\/a>","<a href = \"../players/albert-li.html\">Albert Li<\/a>","<a href = \"../players/denis-selyuzhistky.html\">Denis Selyuzhistky<\/a>","<a href = \"../players/spencer-green.html\">Spencer Green<\/a>","<a href = \"../players/shom-chandra.html\">Shom Chandra<\/a>","<a href = \"../players/rj-barnes.html\">RJ Barnes<\/a>","<a href = \"../players/sam-smith.html\">Sam Smith<\/a>","<a href = \"../players/lara-miskevich.html\">Lara Miskevich<\/a>","<a href = \"../players/charlie-jones.html\">Charlie Jones<\/a>","<a href = \"../players/luke-miceli.html\">Luke Miceli<\/a>","<a href = \"../players/eylon-caplan.html\">Eylon Caplan<\/a>","<a href = \"../players/elena-bai.html\">Elena Bai<\/a>","<a href = \"../players/francis-hanf.html\">Francis Hanf<\/a>","<a href = \"../players/yichen-wang.html\">Yichen Wang<\/a>","<a href = \"../players/ryan-farrell.html\">Ryan Farrell<\/a>","<a href = \"../players/jake-swery.html\">Jake Swery<\/a>","<a href = \"../players/visvam-srinivasan.html\">Visvam Srinivasan<\/a>","<a href = \"../players/cole-hammans.html\">Cole Hammans<\/a>","<a href = \"../players/michael-zhou.html\">Michael Zhou<\/a>","<a href = \"../players/jackson-arnold.html\">Jackson Arnold<\/a>","<a href = \"../players/robert-szot.html\">Robert Szot<\/a>","<a href = \"../players/will-hoover.html\">Will Hoover<\/a>","<a href = \"../players/aidan-casdin.html\">Aidan Casdin<\/a>","<a href = \"../players/joe-talley.html\">Joe Talley<\/a>","<a href = \"../players/skyler-swyers.html\">Skyler Swyers<\/a>","<a href = \"../players/robert-merriman.html\">Robert Merriman<\/a>","<a href = \"../players/mike-ross.html\">Mike Ross<\/a>","<a href = \"../players/jack-auletta.html\">Jack Auletta<\/a>","<a href = \"../players/gavin-dooley.html\">Gavin Dooley<\/a>","<a href = \"../players/anh-khoa-tran.html\">Anh Khoa Tran<\/a>","<a href = \"../players/isaac-dickess.html\">Isaac Dickess<\/a>","<a href = \"../players/dana-kullgren.html\">Dana Kullgren<\/a>","<a href = \"../players/jon-vaysman.html\">Jon Vaysman<\/a>","<a href = \"../players/gabrielle-mcmahon-csaki.html\">Gabrielle McMahon-Csaki<\/a>","<a href = \"../players/matt-rubin.html\">Matt Rubin<\/a>","<a href = \"../players/john-hayes.html\">John Hayes<\/a>","<a href = \"../players/ben-shi.html\">Ben Shi<\/a>","<a href = \"../players/ryan-ravitz.html\">Ryan Ravitz<\/a>","<a href = \"../players/aadarsh-balireddy.html\">Aadarsh Balireddy<\/a>","<a href = \"../players/sasha-rabeno.html\">Sasha Rabeno<\/a>","<a href = \"../players/ethan-newman.html\">Ethan Newman<\/a>","<a href = \"../players/ahmad-elrakhawi.html\">Ahmad Elrakhawi<\/a>","<a href = \"../players/nathan-neequaye.html\">Nathan Neequaye<\/a>","<a href = \"../players/kailey-degeorge.html\">Kailey DeGeorge<\/a>","<a href = \"../players/jennifer-webb.html\">Jennifer Webb<\/a>","<a href = \"../players/nicholas-marini.html\">Nicholas Marini<\/a>","<a href = \"../players/sarah-kennedy.html\">Sarah Kennedy<\/a>","<a href = \"../players/grace-wang.html\">Grace Wang<\/a>","<a href = \"../players/audrey-anderson.html\">Audrey Anderson<\/a>","<a href = \"../players/alyx-reckahn.html\">Alyx Reckahn<\/a>","<a href = \"../players/kaira-hagen.html\">Kaira Hagen<\/a>","<a href = \"../players/laurel-johannson.html\">Laurel Johannson<\/a>","<a href = \"../players/jud-bailey.html\">Jud Bailey<\/a>","<a href = \"../players/paul-seuder.html\">Paul Seuder<\/a>","<a href = \"../players/samay-gupta.html\">Samay Gupta<\/a>","<a href = \"../players/kevin-wang.html\">Kevin Wang<\/a>","<a href = \"../players/henry-keating.html\">Henry Keating<\/a>","<a href = \"../players/cooper-hendrix.html\">Cooper Hendrix<\/a>","<a href = \"../players/tadeusz-horomanski.html\">Tadeusz Horomanski<\/a>","<a href = \"../players/jesse-ward-bond.html\">Jesse Ward-Bond<\/a>","<a href = \"../players/victoria-ryan.html\">Victoria Ryan<\/a>","<a href = \"../players/nick-chiu.html\">Nick Chiu<\/a>","<a href = \"../players/sarah-reuben.html\">Sarah Reuben<\/a>","<a href = \"../players/anders-lamb.html\">Anders Lamb<\/a>","<a href = \"../players/ben-bross.html\">Ben Bross<\/a>","<a href = \"../players/gabriel-konar-steenberg.html\">Gabriel Konar-Steenberg<\/a>","<a href = \"../players/maggie-shaheen.html\">Maggie Shaheen<\/a>","<a href = \"../players/kyle-freeburg.html\">Kyle Freeburg<\/a>","<a href = \"../players/robbie-dreasher.html\">Robbie Dreasher<\/a>","<a href = \"../players/rahul-sahu.html\">Rahul Sahu<\/a>","<a href = \"../players/jason-hawkins.html\">Jason Hawkins<\/a>","<a href = \"../players/tom-scheri.html\">Tom Scheri<\/a>","<a href = \"../players/tiffany-leung.html\">Tiffany Leung<\/a>","<a href = \"../players/lili-omilian.html\">Lili Omilian<\/a>","<a href = \"../players/colby-lowry.html\">Colby Lowry<\/a>","<a href = \"../players/ian-irushalmi.html\">Ian Irushalmi<\/a>","<a href = \"../players/emily-yi.html\">Emily Yi<\/a>","<a href = \"../players/samsara-boots.html\">Samsara Boots<\/a>","<a href = \"../players/samuel-stella.html\">Samuel Stella<\/a>","<a href = \"../players/elijah-odunade.html\">Elijah Odunade<\/a>","<a href = \"../players/leo-smith.html\">Leo Smith<\/a>","<a href = \"../players/mustafa-ali.html\">Mustafa Ali<\/a>","<a href = \"../players/anthony-lovegreen.html\">Anthony Lovegreen<\/a>","<a href = \"../players/luke-schaarschuch.html\">Luke Schaarschuch<\/a>","<a href = \"../players/bryan-fok.html\">Bryan Fok<\/a>","<a href = \"../players/caryn-xie.html\">Caryn Xie<\/a>","<a href = \"../players/brendan-baumer.html\">Brendan Baumer<\/a>","<a href = \"../players/joey-sun.html\">Joey Sun<\/a>","<a href = \"../players/john-slater.html\">John Slater<\/a>","<a href = \"../players/joanna-mcgill.html\">Joanna McGill<\/a>","<a href = \"../players/francis-dinh.html\">Francis Dinh<\/a>","<a href = \"../players/shelby-solem.html\">Shelby Solem<\/a>","<a href = \"../players/tanner-ziwicki.html\">Tanner Ziwicki<\/a>","<a href = \"../players/thomas-kleeb.html\">Thomas Kleeb<\/a>","<a href = \"../players/jordyn-guse.html\">Jordyn Guse<\/a>","<a href = \"../players/leo-tao.html\">Leo Tao<\/a>","<a href = \"../players/andrew-heller.html\">Andrew Heller<\/a>","<a href = \"../players/luke-langham.html\">Luke Langham<\/a>","<a href = \"../players/raifton-bartling.html\">Raifton Bartling<\/a>","<a href = \"../players/chris-carpenter.html\">Chris Carpenter<\/a>","<a href = \"../players/andy-pompura.html\">Andy Pompura<\/a>","<a href = \"../players/nick-schmucker.html\">Nick Schmucker<\/a>","<a href = \"../players/sophie-torres.html\">Sophie Torres<\/a>","<a href = \"../players/jack-rankin.html\">Jack Rankin<\/a>","<a href = \"../players/jason-dirusso.html\">Jason Dirusso<\/a>","<a href = \"../players/hugo-yu.html\">Hugo Yu<\/a>","<a href = \"../players/nneka-omoma.html\">Nneka Omoma<\/a>","<a href = \"../players/johnathan-kazelskis.html\">Johnathan Kazelskis<\/a>","<a href = \"../players/sarah-koch.html\">Sarah Koch<\/a>","<a href = \"../players/connor-mcclelland.html\">Connor McClelland<\/a>","<a href = \"../players/michael-durrant.html\">Michael Durrant<\/a>","<a href = \"../players/zack-buerger.html\">Zack Buerger<\/a>","<a href = \"../players/marina-george.html\">Marina George<\/a>","<a href = \"../players/kenny-zhang.html\">Kenny Zhang<\/a>","<a href = \"../players/morgan-usselman.html\">Morgan Usselman<\/a>","<a href = \"../players/josh-dornak.html\">Josh Dornak<\/a>","<a href = \"../players/chris-scheri.html\">Chris Scheri<\/a>","<a href = \"../players/dominic-levenseller-wattland.html\">Dominic Levenseller-Wattland<\/a>","<a href = \"../players/conner-hollenbeck.html\">Conner Hollenbeck<\/a>","<a href = \"../players/calvin-rieder.html\">Calvin Rieder<\/a>","<a href = \"../players/aaron-dino.html\">Aaron Dino<\/a>","<a href = \"../players/charlotte-bailey.html\">Charlotte Bailey<\/a>","<a href = \"../players/renee-doser.html\">Renee Doser<\/a>","<a href = \"../players/ben-justice.html\">Ben Justice<\/a>","<a href = \"../players/lauren-dodson.html\">Lauren Dodson<\/a>","<a href = \"../players/zion-szot.html\">Zion Szot<\/a>","<a href = \"../players/trevor-hart.html\">Trevor Hart<\/a>","<a href = \"../players/alexandria-ritz.html\">Alexandria Ritz<\/a>","<a href = \"../players/charlie-schmelzer.html\">Charlie Schmelzer<\/a>","<a href = \"../players/sam-merritt.html\">Sam Merritt<\/a>","<a href = \"../players/duncan-brickner.html\">Duncan Brickner<\/a>","<a href = \"../players/jack-carson.html\">Jack Carson<\/a>","<a href = \"../players/dung-pham.html\">Dung Pham<\/a>","<a href = \"../players/anh-keisling.html\">Anh Keisling<\/a>","<a href = \"../players/julienne-ho.html\">Julienne Ho<\/a>","<a href = \"../players/marietta-sisca.html\">Marietta Sisca<\/a>","<a href = \"../players/luke-serraglio.html\">Luke Serraglio<\/a>","<a href = \"../players/valerie-ogonor.html\">Valerie Ogonor<\/a>","<a href = \"../players/shawdee-bakhtiari.html\">Shawdee Bakhtiari<\/a>","<a href = \"../players/olivia-berding.html\">Olivia Berding<\/a>","<a href = \"../players/felix-mo.html\">Felix Mo<\/a>","<a href = \"../players/benjamin-escobedo.html\">Benjamin Escobedo<\/a>","<a href = \"../players/logan-hargrove.html\">Logan Hargrove<\/a>","<a href = \"../players/sophie-reed.html\">Sophie Reed<\/a>","<a href = \"../players/andy-zheng.html\">Andy Zheng<\/a>","<a href = \"../players/sam-zlotnikov.html\">Sam Zlotnikov<\/a>","<a href = \"../players/edith-cambell.html\">Edith Cambell<\/a>","<a href = \"../players/emma-peterson.html\">Emma Peterson<\/a>","<a href = \"../players/william-romanyk.html\">William Romanyk<\/a>","<a href = \"../players/sydney-snyder.html\">Sydney Snyder<\/a>","<a href = \"../players/matt-mason.html\">Matt Mason<\/a>","<a href = \"../players/caleb-roden.html\">Caleb Roden<\/a>","<a href = \"../players/evan-steirman.html\">Evan Steirman<\/a>","<a href = \"../players/ashley-broome.html\">Ashley Broome<\/a>","<a href = \"../players/michael-halick.html\">Michael Halick<\/a>","<a href = \"../players/kel-raphael.html\">Kel Raphael<\/a>","<a href = \"../players/eric-lovine.html\">Eric Lovine<\/a>","<a href = \"../players/kayla-johnson.html\">Kayla Johnson<\/a>","<a href = \"../players/ethan-scott.html\">Ethan Scott<\/a>","<a href = \"../players/sudeep-gadde.html\">Sudeep Gadde<\/a>","<a href = \"../players/eric-ames.html\">Eric Ames<\/a>","<a href = \"../players/katie-hilbert.html\">Katie Hilbert<\/a>","<a href = \"../players/laurel-wallace.html\">Laurel Wallace<\/a>","<a href = \"../players/jen-chalom.html\">Jen Chalom<\/a>","<a href = \"../players/rex-asabor.html\">Rex Asabor<\/a>","<a href = \"../players/emi-knape.html\">Emi Knape<\/a>","<a href = \"../players/shejuti-wahed.html\">Shejuti Wahed<\/a>","<a href = \"../players/jillian-beilke.html\">Jillian Beilke<\/a>","<a href = \"../players/malea-floyd.html\">Malea Floyd<\/a>","<a href = \"../players/michael-scaggs.html\">Michael Scaggs<\/a>","<a href = \"../players/aldrin-feliciano.html\">Aldrin Feliciano<\/a>","<a href = \"../players/nicholas-todd.html\">Nicholas Todd<\/a>","<a href = \"../players/andre-mas.html\">Andre Mas<\/a>","<a href = \"../players/alex-mccaw.html\">Alex McCaw<\/a>","<a href = \"../players/mohamadou-ndiaye.html\">Mohamadou Ndiaye<\/a>","<a href = \"../players/samir-tripathy.html\">Samir Tripathy<\/a>","<a href = \"../players/melody-haak.html\">Melody Haak<\/a>","<a href = \"../players/rebecca-landry.html\">Rebecca Landry<\/a>","<a href = \"../players/daisha-poulnot.html\">Daisha Poulnot<\/a>","<a href = \"../players/caleb-rosenman.html\">Caleb Rosenman<\/a>","<a href = \"../players/callie-zeron.html\">Callie Zeron<\/a>","<a href = \"../players/garrett-farrell.html\">Garrett Farrell<\/a>","<a href = \"../players/joe-kearney.html\">Joe Kearney<\/a>","<a href = \"../players/noah-pope.html\">Noah Pope<\/a>","<a href = \"../players/yusuf-khan.html\">Yusuf Khan<\/a>","<a href = \"../players/brian-king.html\">Brian King<\/a>"],["<a href = \"../tournaments/21-22-boilermaker-spring-novice-florida#yale-a\">Yale A<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-ubc#uc-berkeley-a\">UC Berkeley A<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-florida#florida-a\">Florida A<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-james-madison#catholic-b\">Catholic B<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-purdue#indiana-a\">Indiana A<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-georgia#georgia-2\">Georgia 2<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-ubc#arizona-state-a\">Arizona State A<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-james-madison#catholic-a\">Catholic A<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-georgia#georgia-1\">Georgia 1<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-ohio-state#miami-ohio-a\">Miami-Ohio A<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-ohio-state#kenyon-a\">Kenyon A<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-rit#cornell-a\">Cornell A<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-toronto#toronto-white\">Toronto White<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-ubc#iowa-a\">Iowa A<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-purdue#notre-dame-a\">Notre Dame A<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-florida#florida-b\">Florida B<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-james-madison#pitt-a\">Pitt A<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-toronto#toronto-blue\">Toronto Blue<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-ohio-state#michigan-state-a\">Michigan State A<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-ohio-state#case-western-a\">Case Western A<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-georgia#georgia-tech-a\">Georgia Tech A<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-ubc#claremont-colleges-a\">Claremont Colleges A<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-james-madison#centre-a\">Centre A<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-ohio-state#wayne-state-a\">Wayne State A<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-james-madison#james-madison-c\">James Madison C<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-ohio-state#ohio-state-a\">Ohio State A<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-purdue#nebraska-a\">Nebraska A<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-toronto#mcgill-a\">McGill A<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-ohio-state#kenyon-a\">Kenyon A<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-ohio-state#michigan-a\">Michigan A<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-florida#north-florida-a\">North Florida A<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-james-madison#william-&-mary-a\">William & Mary A<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-ohio-state#ohio-state-a\">Ohio State A<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-purdue#nebraska-b\">Nebraska B<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-georgia#georgia-tech-a\">Georgia Tech A<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-james-madison#centre-b\">Centre B<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-florida#florida-state-a\">Florida State A<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-rit#rit-a\">RIT A<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-james-madison#james-madison-a\">James Madison A<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-james-madison#virginia-a\">Virginia A<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-florida#north-florida-a\">North Florida A<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-james-madison#vcu-a\">VCU A<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-toronto#queens-a\">Queens A<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-ohio-state#case-western-a\">Case Western A<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-purdue#notre-dame-b\">Notre Dame B<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-florida#central-florida-a\">Central Florida A<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-ohio-state#ohio-state-b\">Ohio State B<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-james-madison#delaware-a\">Delaware A<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-ohio-state#michigan-a\">Michigan A<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-james-madison#centre-d\">Centre D<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-james-madison#william-&-mary-a\">William & Mary A<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-rit#rit-a\">RIT A<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-ubc#washington-a\">Washington A<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-james-madison#carnegie-mellon-a\">Carnegie Mellon A<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-rit#cornell-a\">Cornell A<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-james-madison#lehigh-a\">Lehigh A<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-ohio-state#michigan-state-a\">Michigan State A<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-rit#rit-a\">RIT A<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-james-madison#carnegie-mellon-a\">Carnegie Mellon A<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-james-madison#delaware-a\">Delaware A<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-ohio-state#michigan-b\">Michigan B<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-florida#florida-state-b\">Florida State B<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-james-madison#william-&-mary-a\">William & Mary A<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-ubc#uc-san-diego-a\">UC San Diego A<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-purdue#nebraska-b\">Nebraska B<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-florida#central-florida-b\">Central Florida B<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-ubc#uc-san-diego-a\">UC San Diego A<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-toronto#mcgill-a\">McGill A<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-georgia#auburn-a\">Auburn A<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-purdue#nebraska-a\">Nebraska A<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-rit#colgate-a\">Colgate A<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-toronto#queens-a\">Queens A<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-florida#central-florida-b\">Central Florida B<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-james-madison#centre-a\">Centre A<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-florida#florida-state-a\">Florida State A<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-toronto#toronto-blue\">Toronto Blue<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-purdue#notre-dame-b\">Notre Dame B<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-james-madison#lehigh-a\">Lehigh A<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-ubc#washington-a\">Washington A<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-purdue#notre-dame-a\">Notre Dame A<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-ohio-state#miami-ohio-a\">Miami-Ohio A<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-ubc#claremont-colleges-a\">Claremont Colleges A<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-james-madison#pitt-a\">Pitt A<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-ubc#south-dakota-mines-a\">South Dakota Mines A<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-florida#florida-b\">Florida B<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-ubc#south-carolina-a\">South Carolina A<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-georgia#georgia-1\">Georgia 1<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-rit#rit-b\">RIT B<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-florida#florida-state-b\">Florida State B<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-ohio-state#michigan-a\">Michigan A<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-james-madison#james-madison-a\">James Madison A<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-james-madison#virginia-a\">Virginia A<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-rit#cornell-a\">Cornell A<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-toronto#queens-a\">Queens A<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-florida#florida-state-a\">Florida State A<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-georgia#georgia-2\">Georgia 2<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-ohio-state#ohio-state-b\">Ohio State B<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-ohio-state#michigan-c\">Michigan C<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-florida#central-florida-b\">Central Florida B<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-james-madison#virginia-a\">Virginia A<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-purdue#notre-dame-a\">Notre Dame A<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-toronto#queens-a\">Queens A<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-florida#central-florida-a\">Central Florida A<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-toronto#toronto-white\">Toronto White<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-rit#colgate-a\">Colgate A<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-james-madison#centre-c\">Centre C<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-toronto#mcgill-a\">McGill A<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-ubc#south-dakota-mines-a\">South Dakota Mines A<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-ubc#south-dakota-mines-a\">South Dakota Mines A<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-james-madison#james-madison-b\">James Madison B<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-purdue#nebraska-a\">Nebraska A<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-ohio-state#michigan-a\">Michigan A<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-rit#cornell-a\">Cornell A<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-ubc#south-carolina-a\">South Carolina A<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-ohio-state#michigan-state-a\">Michigan State A<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-purdue#nebraska-a\">Nebraska A<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-florida#central-florida-a\">Central Florida A<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-ohio-state#michigan-state-a\">Michigan State A<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-florida#florida-a\">Florida A<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-purdue#nebraska-b\">Nebraska B<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-ubc#south-carolina-a\">South Carolina A<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-ubc#washington-a\">Washington A<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-georgia#georgia-1\">Georgia 1<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-ohio-state#michigan-c\">Michigan C<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-james-madison#centre-a\">Centre A<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-ohio-state#miami-ohio-a\">Miami-Ohio A<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-purdue#notre-dame-a\">Notre Dame A<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-rit#rit-b\">RIT B<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-james-madison#james-madison-c\">James Madison C<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-james-madison#virginia-a\">Virginia A<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-rit#colgate-a\">Colgate A<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-james-madison#james-madison-b\">James Madison B<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-rit#rit-a\">RIT A<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-ubc#washington-a\">Washington A<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-rit#rit-b\">RIT B<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-toronto#toronto-blue\">Toronto Blue<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-georgia#georgia-2\">Georgia 2<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-james-madison#vcu-a\">VCU A<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-james-madison#centre-b\">Centre B<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-james-madison#centre-d\">Centre D<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-james-madison#centre-d\">Centre D<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-florida#florida-a\">Florida A<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-georgia#auburn-a\">Auburn A<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-ohio-state#wayne-state-a\">Wayne State A<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-ubc#iowa-a\">Iowa A<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-james-madison#centre-c\">Centre C<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-rit#rit-a\">RIT A<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-ohio-state#ohio-state-b\">Ohio State B<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-ubc#south-carolina-a\">South Carolina A<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-florida#north-florida-a\">North Florida A<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-ubc#claremont-colleges-a\">Claremont Colleges A<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-james-madison#lehigh-a\">Lehigh A<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-ohio-state#ohio-state-a\">Ohio State A<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-georgia#georgia-tech-a\">Georgia Tech A<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-james-madison#james-madison-c\">James Madison C<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-ohio-state#michigan-b\">Michigan B<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-rit#colgate-a\">Colgate A<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-ubc#south-carolina-a\">South Carolina A<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-florida#north-florida-a\">North Florida A<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-ohio-state#michigan-b\">Michigan B<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-toronto#toronto-white\">Toronto White<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-james-madison#pitt-a\">Pitt A<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-purdue#nebraska-b\">Nebraska B<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-james-madison#centre-e\">Centre E<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-ohio-state#michigan-state-a\">Michigan State A<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-james-madison#centre-b\">Centre B<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-james-madison#pitt-a\">Pitt A<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-james-madison#james-madison-b\">James Madison B<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-ohio-state#case-western-a\">Case Western A<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-florida#central-florida-a\">Central Florida A<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-james-madison#catholic-b\">Catholic B<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-james-madison#vcu-a\">VCU A<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-florida#florida-state-b\">Florida State B<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-ohio-state#michigan-c\">Michigan C<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-james-madison#centre-c\">Centre C<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-james-madison#centre-e\">Centre E<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-ubc#south-dakota-mines-a\">South Dakota Mines A<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-florida#central-florida-b\">Central Florida B<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-james-madison#centre-a\">Centre A<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-ohio-state#wayne-state-a\">Wayne State A<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-ubc#claremont-colleges-a\">Claremont Colleges A<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-rit#rit-b\">RIT B<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-ohio-state#case-western-a\">Case Western A<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-purdue#notre-dame-b\">Notre Dame B<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-purdue#indiana-a\">Indiana A<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-purdue#indiana-a\">Indiana A<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-ubc#claremont-colleges-a\">Claremont Colleges A<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-purdue#nebraska-b\">Nebraska B<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-james-madison#james-madison-a\">James Madison A<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-james-madison#james-madison-a\">James Madison A<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-ohio-state#michigan-b\">Michigan B<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-ohio-state#michigan-c\">Michigan C<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-james-madison#james-madison-b\">James Madison B<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-rit#colgate-a\">Colgate A<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-florida#north-florida-a\">North Florida A<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-james-madison#gettysburg-a\">Gettysburg A<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-james-madison#centre-e\">Centre E<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-james-madison#catholic-a\">Catholic A<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-james-madison#vcu-a\">VCU A<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-james-madison#james-madison-c\">James Madison C<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-james-madison#catholic-a\">Catholic A<\/a>","<a href = \"../tournaments/21-22-boilermaker-spring-novice-ubc#uc-san-diego-a\">UC San Diego A<\/a>"],["<a href = \"../tournaments/21-22-Boilermaker Spring Novice-florida\">Florida<\/a>","<a href = \"../tournaments/21-22-Boilermaker Spring Novice-ubc\">UBC<\/a>","<a href = \"../tournaments/21-22-Boilermaker Spring Novice-florida\">Florida<\/a>","<a href = \"../tournaments/21-22-Boilermaker Spring Novice-james-madison\">James Madison<\/a>","<a href = \"../tournaments/21-22-Boilermaker Spring Novice-purdue\">Purdue<\/a>","<a href = \"../tournaments/21-22-Boilermaker Spring Novice-georgia\">Georgia<\/a>","<a href = \"../tournaments/21-22-Boilermaker Spring Novice-ubc\">UBC<\/a>","<a href = \"../tournaments/21-22-Boilermaker Spring Novice-james-madison\">James Madison<\/a>","<a href = \"../tournaments/21-22-Boilermaker Spring Novice-georgia\">Georgia<\/a>","<a href = \"../tournaments/21-22-Boilermaker Spring Novice-ohio-state\">Ohio State<\/a>","<a href = \"../tournaments/21-22-Boilermaker Spring Novice-ohio-state\">Ohio State<\/a>","<a href = \"../tournaments/21-22-Boilermaker Spring Novice-rit\">RIT<\/a>","<a href = \"../tournaments/21-22-Boilermaker Spring Novice-toronto\">Toronto<\/a>","<a href = \"../tournaments/21-22-Boilermaker Spring Novice-ubc\">UBC<\/a>","<a href = \"../tournaments/21-22-Boilermaker Spring Novice-purdue\">Purdue<\/a>","<a href = \"../tournaments/21-22-Boilermaker Spring Novice-florida\">Florida<\/a>","<a href = \"../tournaments/21-22-Boilermaker Spring Novice-james-madison\">James Madison<\/a>","<a href = \"../tournaments/21-22-Boilermaker Spring Novice-toronto\">Toronto<\/a>","<a href = \"../tournaments/21-22-Boilermaker Spring Novice-ohio-state\">Ohio State<\/a>","<a href = \"../tournaments/21-22-Boilermaker Spring Novice-ohio-state\">Ohio State<\/a>","<a href = \"../tournaments/21-22-Boilermaker Spring Novice-georgia\">Georgia<\/a>","<a href = \"../tournaments/21-22-Boilermaker Spring Novice-ubc\">UBC<\/a>","<a href = \"../tournaments/21-22-Boilermaker Spring Novice-james-madison\">James Madison<\/a>","<a href = \"../tournaments/21-22-Boilermaker Spring Novice-ohio-state\">Ohio State<\/a>","<a href = \"../tournaments/21-22-Boilermaker Spring Novice-james-madison\">James Madison<\/a>","<a href = \"../tournaments/21-22-Boilermaker Spring Novice-ohio-state\">Ohio State<\/a>","<a href = \"../tournaments/21-22-Boilermaker Spring Novice-purdue\">Purdue<\/a>","<a href = \"../tournaments/21-22-Boilermaker Spring Novice-toronto\">Toronto<\/a>","<a href = \"../tournaments/21-22-Boilermaker Spring Novice-ohio-state\">Ohio State<\/a>","<a href = \"../tournaments/21-22-Boilermaker Spring Novice-ohio-state\">Ohio State<\/a>","<a href = \"../tournaments/21-22-Boilermaker Spring Novice-florida\">Florida<\/a>","<a href = \"../tournaments/21-22-Boilermaker Spring Novice-james-madison\">James Madison<\/a>","<a href = \"../tournaments/21-22-Boilermaker Spring Novice-ohio-state\">Ohio State<\/a>","<a href = \"../tournaments/21-22-Boilermaker Spring Novice-purdue\">Purdue<\/a>","<a href = \"../tournaments/21-22-Boilermaker Spring Novice-georgia\">Georgia<\/a>","<a href = \"../tournaments/21-22-Boilermaker Spring Novice-james-madison\">James Madison<\/a>","<a href = \"../tournaments/21-22-Boilermaker Spring Novice-florida\">Florida<\/a>","<a href = \"../tournaments/21-22-Boilermaker Spring Novice-rit\">RIT<\/a>","<a href = \"../tournaments/21-22-Boilermaker Spring Novice-james-madison\">James Madison<\/a>","<a href = \"../tournaments/21-22-Boilermaker Spring Novice-james-madison\">James Madison<\/a>","<a href = \"../tournaments/21-22-Boilermaker Spring Novice-florida\">Florida<\/a>","<a href = \"../tournaments/21-22-Boilermaker Spring Novice-james-madison\">James Madison<\/a>","<a href = \"../tournaments/21-22-Boilermaker Spring Novice-toronto\">Toronto<\/a>","<a href = \"../tournaments/21-22-Boilermaker Spring Novice-ohio-state\">Ohio State<\/a>","<a href = \"../tournaments/21-22-Boilermaker Spring Novice-purdue\">Purdue<\/a>","<a href = \"../tournaments/21-22-Boilermaker Spring Novice-florida\">Florida<\/a>","<a href = \"../tournaments/21-22-Boilermaker Spring Novice-ohio-state\">Ohio State<\/a>","<a href = \"../tournaments/21-22-Boilermaker Spring Novice-james-madison\">James Madison<\/a>","<a href = \"../tournaments/21-22-Boilermaker Spring Novice-ohio-state\">Ohio State<\/a>","<a href = \"../tournaments/21-22-Boilermaker Spring Novice-james-madison\">James Madison<\/a>","<a href = \"../tournaments/21-22-Boilermaker Spring Novice-james-madison\">James Madison<\/a>","<a href = \"../tournaments/21-22-Boilermaker Spring Novice-rit\">RIT<\/a>","<a href = \"../tournaments/21-22-Boilermaker Spring Novice-ubc\">UBC<\/a>","<a href = \"../tournaments/21-22-Boilermaker Spring Novice-james-madison\">James Madison<\/a>","<a href = \"../tournaments/21-22-Boilermaker Spring Novice-rit\">RIT<\/a>","<a href = \"../tournaments/21-22-Boilermaker Spring Novice-james-madison\">James Madison<\/a>","<a href = \"../tournaments/21-22-Boilermaker Spring Novice-ohio-state\">Ohio State<\/a>","<a href = \"../tournaments/21-22-Boilermaker Spring Novice-rit\">RIT<\/a>","<a href = \"../tournaments/21-22-Boilermaker Spring Novice-james-madison\">James Madison<\/a>","<a href = \"../tournaments/21-22-Boilermaker Spring Novice-james-madison\">James Madison<\/a>","<a href = \"../tournaments/21-22-Boilermaker Spring Novice-ohio-state\">Ohio State<\/a>","<a href = \"../tournaments/21-22-Boilermaker Spring Novice-florida\">Florida<\/a>","<a href = \"../tournaments/21-22-Boilermaker Spring Novice-james-madison\">James Madison<\/a>","<a href = \"../tournaments/21-22-Boilermaker Spring Novice-ubc\">UBC<\/a>","<a href = \"../tournaments/21-22-Boilermaker Spring Novice-purdue\">Purdue<\/a>","<a href = \"../tournaments/21-22-Boilermaker Spring Novice-florida\">Florida<\/a>","<a href = \"../tournaments/21-22-Boilermaker Spring Novice-ubc\">UBC<\/a>","<a href = \"../tournaments/21-22-Boilermaker Spring Novice-toronto\">Toronto<\/a>","<a href = \"../tournaments/21-22-Boilermaker Spring Novice-georgia\">Georgia<\/a>","<a href = \"../tournaments/21-22-Boilermaker Spring Novice-purdue\">Purdue<\/a>","<a href = \"../tournaments/21-22-Boilermaker Spring Novice-rit\">RIT<\/a>","<a href = \"../tournaments/21-22-Boilermaker Spring Novice-toronto\">Toronto<\/a>","<a href = \"../tournaments/21-22-Boilermaker Spring Novice-florida\">Florida<\/a>","<a href = \"../tournaments/21-22-Boilermaker Spring Novice-james-madison\">James Madison<\/a>","<a href = \"../tournaments/21-22-Boilermaker Spring Novice-florida\">Florida<\/a>","<a href = \"../tournaments/21-22-Boilermaker Spring Novice-toronto\">Toronto<\/a>","<a href = \"../tournaments/21-22-Boilermaker Spring Novice-purdue\">Purdue<\/a>","<a href = \"../tournaments/21-22-Boilermaker Spring Novice-james-madison\">James Madison<\/a>","<a href = \"../tournaments/21-22-Boilermaker Spring Novice-ubc\">UBC<\/a>","<a href = \"../tournaments/21-22-Boilermaker Spring Novice-purdue\">Purdue<\/a>","<a href = \"../tournaments/21-22-Boilermaker Spring Novice-ohio-state\">Ohio State<\/a>","<a href = \"../tournaments/21-22-Boilermaker Spring Novice-ubc\">UBC<\/a>","<a href = \"../tournaments/21-22-Boilermaker Spring Novice-james-madison\">James Madison<\/a>","<a href = \"../tournaments/21-22-Boilermaker Spring Novice-ubc\">UBC<\/a>","<a href = \"../tournaments/21-22-Boilermaker Spring Novice-florida\">Florida<\/a>","<a href = \"../tournaments/21-22-Boilermaker Spring Novice-ubc\">UBC<\/a>","<a href = \"../tournaments/21-22-Boilermaker Spring Novice-georgia\">Georgia<\/a>","<a href = \"../tournaments/21-22-Boilermaker Spring Novice-rit\">RIT<\/a>","<a href = \"../tournaments/21-22-Boilermaker Spring Novice-florida\">Florida<\/a>","<a href = \"../tournaments/21-22-Boilermaker Spring Novice-ohio-state\">Ohio State<\/a>","<a href = \"../tournaments/21-22-Boilermaker Spring Novice-james-madison\">James Madison<\/a>","<a href = \"../tournaments/21-22-Boilermaker Spring Novice-james-madison\">James Madison<\/a>","<a href = \"../tournaments/21-22-Boilermaker Spring Novice-rit\">RIT<\/a>","<a href = \"../tournaments/21-22-Boilermaker Spring Novice-toronto\">Toronto<\/a>","<a href = \"../tournaments/21-22-Boilermaker Spring Novice-florida\">Florida<\/a>","<a href = \"../tournaments/21-22-Boilermaker Spring Novice-georgia\">Georgia<\/a>","<a href = \"../tournaments/21-22-Boilermaker Spring Novice-ohio-state\">Ohio State<\/a>","<a href = \"../tournaments/21-22-Boilermaker Spring Novice-ohio-state\">Ohio State<\/a>","<a href = \"../tournaments/21-22-Boilermaker Spring Novice-florida\">Florida<\/a>","<a href = \"../tournaments/21-22-Boilermaker Spring Novice-james-madison\">James Madison<\/a>","<a href = \"../tournaments/21-22-Boilermaker Spring Novice-purdue\">Purdue<\/a>","<a href = \"../tournaments/21-22-Boilermaker Spring Novice-toronto\">Toronto<\/a>","<a href = \"../tournaments/21-22-Boilermaker Spring Novice-florida\">Florida<\/a>","<a href = \"../tournaments/21-22-Boilermaker Spring Novice-toronto\">Toronto<\/a>","<a href = \"../tournaments/21-22-Boilermaker Spring Novice-rit\">RIT<\/a>","<a href = \"../tournaments/21-22-Boilermaker Spring Novice-james-madison\">James Madison<\/a>","<a href = \"../tournaments/21-22-Boilermaker Spring Novice-toronto\">Toronto<\/a>","<a href = \"../tournaments/21-22-Boilermaker Spring Novice-ubc\">UBC<\/a>","<a href = \"../tournaments/21-22-Boilermaker Spring Novice-ubc\">UBC<\/a>","<a href = \"../tournaments/21-22-Boilermaker Spring Novice-james-madison\">James Madison<\/a>","<a href = \"../tournaments/21-22-Boilermaker Spring Novice-purdue\">Purdue<\/a>","<a href = \"../tournaments/21-22-Boilermaker Spring Novice-ohio-state\">Ohio State<\/a>","<a href = \"../tournaments/21-22-Boilermaker Spring Novice-rit\">RIT<\/a>","<a href = \"../tournaments/21-22-Boilermaker Spring Novice-ubc\">UBC<\/a>","<a href = \"../tournaments/21-22-Boilermaker Spring Novice-ohio-state\">Ohio State<\/a>","<a href = \"../tournaments/21-22-Boilermaker Spring Novice-purdue\">Purdue<\/a>","<a href = \"../tournaments/21-22-Boilermaker Spring Novice-florida\">Florida<\/a>","<a href = \"../tournaments/21-22-Boilermaker Spring Novice-ohio-state\">Ohio State<\/a>","<a href = \"../tournaments/21-22-Boilermaker Spring Novice-florida\">Florida<\/a>","<a href = \"../tournaments/21-22-Boilermaker Spring Novice-purdue\">Purdue<\/a>","<a href = \"../tournaments/21-22-Boilermaker Spring Novice-ubc\">UBC<\/a>","<a href = \"../tournaments/21-22-Boilermaker Spring Novice-ubc\">UBC<\/a>","<a href = \"../tournaments/21-22-Boilermaker Spring Novice-georgia\">Georgia<\/a>","<a href = \"../tournaments/21-22-Boilermaker Spring Novice-ohio-state\">Ohio State<\/a>","<a href = \"../tournaments/21-22-Boilermaker Spring Novice-james-madison\">James Madison<\/a>","<a href = \"../tournaments/21-22-Boilermaker Spring Novice-ohio-state\">Ohio State<\/a>","<a href = \"../tournaments/21-22-Boilermaker Spring Novice-purdue\">Purdue<\/a>","<a href = \"../tournaments/21-22-Boilermaker Spring Novice-rit\">RIT<\/a>","<a href = \"../tournaments/21-22-Boilermaker Spring Novice-james-madison\">James Madison<\/a>","<a href = \"../tournaments/21-22-Boilermaker Spring Novice-james-madison\">James Madison<\/a>","<a href = \"../tournaments/21-22-Boilermaker Spring Novice-rit\">RIT<\/a>","<a href = \"../tournaments/21-22-Boilermaker Spring Novice-james-madison\">James Madison<\/a>","<a href = \"../tournaments/21-22-Boilermaker Spring Novice-rit\">RIT<\/a>","<a href = \"../tournaments/21-22-Boilermaker Spring Novice-ubc\">UBC<\/a>","<a href = \"../tournaments/21-22-Boilermaker Spring Novice-rit\">RIT<\/a>","<a href = \"../tournaments/21-22-Boilermaker Spring Novice-toronto\">Toronto<\/a>","<a href = \"../tournaments/21-22-Boilermaker Spring Novice-georgia\">Georgia<\/a>","<a href = \"../tournaments/21-22-Boilermaker Spring Novice-james-madison\">James Madison<\/a>","<a href = \"../tournaments/21-22-Boilermaker Spring Novice-james-madison\">James Madison<\/a>","<a href = \"../tournaments/21-22-Boilermaker Spring Novice-james-madison\">James Madison<\/a>","<a href = \"../tournaments/21-22-Boilermaker Spring Novice-james-madison\">James Madison<\/a>","<a href = \"../tournaments/21-22-Boilermaker Spring Novice-florida\">Florida<\/a>","<a href = \"../tournaments/21-22-Boilermaker Spring Novice-georgia\">Georgia<\/a>","<a href = \"../tournaments/21-22-Boilermaker Spring Novice-ohio-state\">Ohio State<\/a>","<a href = \"../tournaments/21-22-Boilermaker Spring Novice-ubc\">UBC<\/a>","<a href = \"../tournaments/21-22-Boilermaker Spring Novice-james-madison\">James Madison<\/a>","<a href = \"../tournaments/21-22-Boilermaker Spring Novice-rit\">RIT<\/a>","<a href = \"../tournaments/21-22-Boilermaker Spring Novice-ohio-state\">Ohio State<\/a>","<a href = \"../tournaments/21-22-Boilermaker Spring Novice-ubc\">UBC<\/a>","<a href = \"../tournaments/21-22-Boilermaker Spring Novice-florida\">Florida<\/a>","<a href = \"../tournaments/21-22-Boilermaker Spring Novice-ubc\">UBC<\/a>","<a href = \"../tournaments/21-22-Boilermaker Spring Novice-james-madison\">James Madison<\/a>","<a href = \"../tournaments/21-22-Boilermaker Spring Novice-ohio-state\">Ohio State<\/a>","<a href = \"../tournaments/21-22-Boilermaker Spring Novice-georgia\">Georgia<\/a>","<a href = \"../tournaments/21-22-Boilermaker Spring Novice-james-madison\">James Madison<\/a>","<a href = \"../tournaments/21-22-Boilermaker Spring Novice-ohio-state\">Ohio State<\/a>","<a href = \"../tournaments/21-22-Boilermaker Spring Novice-rit\">RIT<\/a>","<a href = \"../tournaments/21-22-Boilermaker Spring Novice-ubc\">UBC<\/a>","<a href = \"../tournaments/21-22-Boilermaker Spring Novice-florida\">Florida<\/a>","<a href = \"../tournaments/21-22-Boilermaker Spring Novice-ohio-state\">Ohio State<\/a>","<a href = \"../tournaments/21-22-Boilermaker Spring Novice-toronto\">Toronto<\/a>","<a href = \"../tournaments/21-22-Boilermaker Spring Novice-james-madison\">James Madison<\/a>","<a href = \"../tournaments/21-22-Boilermaker Spring Novice-purdue\">Purdue<\/a>","<a href = \"../tournaments/21-22-Boilermaker Spring Novice-james-madison\">James Madison<\/a>","<a href = \"../tournaments/21-22-Boilermaker Spring Novice-ohio-state\">Ohio State<\/a>","<a href = \"../tournaments/21-22-Boilermaker Spring Novice-james-madison\">James Madison<\/a>","<a href = \"../tournaments/21-22-Boilermaker Spring Novice-james-madison\">James Madison<\/a>","<a href = \"../tournaments/21-22-Boilermaker Spring Novice-james-madison\">James Madison<\/a>","<a href = \"../tournaments/21-22-Boilermaker Spring Novice-ohio-state\">Ohio State<\/a>","<a href = \"../tournaments/21-22-Boilermaker Spring Novice-florida\">Florida<\/a>","<a href = \"../tournaments/21-22-Boilermaker Spring Novice-james-madison\">James Madison<\/a>","<a href = \"../tournaments/21-22-Boilermaker Spring Novice-james-madison\">James Madison<\/a>","<a href = \"../tournaments/21-22-Boilermaker Spring Novice-florida\">Florida<\/a>","<a href = \"../tournaments/21-22-Boilermaker Spring Novice-ohio-state\">Ohio State<\/a>","<a href = \"../tournaments/21-22-Boilermaker Spring Novice-james-madison\">James Madison<\/a>","<a href = \"../tournaments/21-22-Boilermaker Spring Novice-james-madison\">James Madison<\/a>","<a href = \"../tournaments/21-22-Boilermaker Spring Novice-ubc\">UBC<\/a>","<a href = \"../tournaments/21-22-Boilermaker Spring Novice-florida\">Florida<\/a>","<a href = \"../tournaments/21-22-Boilermaker Spring Novice-james-madison\">James Madison<\/a>","<a href = \"../tournaments/21-22-Boilermaker Spring Novice-ohio-state\">Ohio State<\/a>","<a href = \"../tournaments/21-22-Boilermaker Spring Novice-ubc\">UBC<\/a>","<a href = \"../tournaments/21-22-Boilermaker Spring Novice-rit\">RIT<\/a>","<a href = \"../tournaments/21-22-Boilermaker Spring Novice-ohio-state\">Ohio State<\/a>","<a href = \"../tournaments/21-22-Boilermaker Spring Novice-purdue\">Purdue<\/a>","<a href = \"../tournaments/21-22-Boilermaker Spring Novice-purdue\">Purdue<\/a>","<a href = \"../tournaments/21-22-Boilermaker Spring Novice-purdue\">Purdue<\/a>","<a href = \"../tournaments/21-22-Boilermaker Spring Novice-ubc\">UBC<\/a>","<a href = \"../tournaments/21-22-Boilermaker Spring Novice-purdue\">Purdue<\/a>","<a href = \"../tournaments/21-22-Boilermaker Spring Novice-james-madison\">James Madison<\/a>","<a href = \"../tournaments/21-22-Boilermaker Spring Novice-james-madison\">James Madison<\/a>","<a href = \"../tournaments/21-22-Boilermaker Spring Novice-ohio-state\">Ohio State<\/a>","<a href = \"../tournaments/21-22-Boilermaker Spring Novice-ohio-state\">Ohio State<\/a>","<a href = \"../tournaments/21-22-Boilermaker Spring Novice-james-madison\">James Madison<\/a>","<a href = \"../tournaments/21-22-Boilermaker Spring Novice-rit\">RIT<\/a>","<a href = \"../tournaments/21-22-Boilermaker Spring Novice-florida\">Florida<\/a>","<a href = \"../tournaments/21-22-Boilermaker Spring Novice-james-madison\">James Madison<\/a>","<a href = \"../tournaments/21-22-Boilermaker Spring Novice-james-madison\">James Madison<\/a>","<a href = \"../tournaments/21-22-Boilermaker Spring Novice-james-madison\">James Madison<\/a>","<a href = \"../tournaments/21-22-Boilermaker Spring Novice-james-madison\">James Madison<\/a>","<a href = \"../tournaments/21-22-Boilermaker Spring Novice-james-madison\">James Madison<\/a>","<a href = \"../tournaments/21-22-Boilermaker Spring Novice-james-madison\">James Madison<\/a>","<a href = \"../tournaments/21-22-Boilermaker Spring Novice-ubc\">UBC<\/a>"],[10,10,10,8,8,11,10,9,9,11,10,9,9,10,9,10,10,9,7,9,11,11,8,9,6,9,9,9,10,10,7,10,9,8,11,9,10,8,9,9,10,9,9,9,8,10,9,9,10,7,10,5,11,9,9,9,8,7,9,9,9,10,10,10,8,10,10,9,9,9,9,9,10,8,10,9,8,9,11,9,11,11,10,5,10,5,9,9,10,10,9,9,9,9,10,11,9,9,10,9,9,7,10,9,9,8,9,10,10,6,9,10,9,8,7,9,10,7,10,5,9,11,9,9,8,11,9,9,7,9,9,8,8,11,7,7,11,9,9,7,7,10,9,9,10,8,8,9,9,10,8,9,9,11,5,9,9,9,7,9,8,10,6,8,7,9,10,8,9,10,8,7,10,9,6,8,10,10,8,9,3,8,9,8,8,8,6,5,7,9,9,9,6,9,7,2,1,2,6,2,2,1],[240,240,240,192,192,264,240,216,216,264,240,216,216,240,216,240,240,216,168,216,264,264,192,216,144,216,216,216,240,240,168,240,216,192,264,216,240,192,216,216,240,216,216,216,192,240,216,216,240,168,240,120,264,216,216,216,192,168,216,216,216,240,240,240,192,240,240,216,216,216,216,216,240,192,240,216,192,216,264,216,264,264,240,120,240,120,216,216,240,240,216,216,216,216,240,264,216,216,240,216,216,168,240,216,216,192,216,240,240,144,216,240,216,192,168,216,240,168,240,120,216,264,216,216,192,264,216,216,168,216,216,192,192,264,168,168,264,216,216,168,168,240,216,216,240,192,192,216,216,240,192,216,216,264,120,216,216,216,168,216,192,240,144,192,168,216,240,192,216,240,192,168,240,216,144,192,240,240,192,216,72,192,216,192,192,192,144,120,168,216,216,216,144,216,168,48,24,48,144,48,48,24],[43,33,40,18,29,35,32,11,28,26,20,42,24,19,16,20,17,29,19,16,24,16,18,20,10,11,20,15,17,22,9,11,19,12,18,7,13,8,11,18,14,5,17,10,10,17,15,7,19,4,24,9,19,3,20,13,16,7,6,5,8,11,12,6,5,7,9,13,9,11,8,10,14,6,8,13,5,10,11,14,12,10,9,7,12,8,7,13,6,4,5,9,8,9,14,7,9,8,6,11,10,6,6,9,4,4,10,4,5,3,8,8,9,3,7,6,1,3,8,1,5,8,9,4,7,2,6,4,0,4,2,4,7,4,2,6,4,1,6,1,3,3,6,5,5,2,5,1,0,4,6,3,1,1,2,4,4,3,2,5,3,4,2,1,2,1,5,2,5,5,2,1,3,1,0,3,1,3,1,2,1,2,1,0,2,0,0,1,0,0,6,0,0,0,0,0,0,0,0,0,0,0],[85,71,51,57,37,56,52,68,38,58,57,12,35,51,51,55,54,32,26,45,47,54,30,40,25,41,29,33,35,28,32,40,24,27,37,44,34,33,34,24,34,39,21,31,28,29,26,34,23,27,11,12,25,40,17,24,14,24,33,31,30,32,25,33,28,31,31,18,30,24,25,20,22,24,28,22,22,21,28,11,23,25,21,11,21,8,21,17,26,26,23,16,16,16,12,24,17,18,23,13,12,12,24,16,21,16,18,22,21,12,12,15,9,16,6,12,22,14,11,10,13,12,8,13,7,19,10,16,15,12,14,14,10,17,10,5,16,14,14,13,9,13,14,10,15,13,8,14,15,10,6,13,14,18,6,9,8,9,8,7,7,10,5,10,6,11,5,7,4,9,6,7,6,7,6,12,7,3,6,4,1,2,3,4,1,5,2,0,3,2,5,4,1,1,0,0,0,0,0,0,0,0],[38,18,19,8,14,20,27,18,10,11,9,10,3,6,14,19,11,19,10,11,12,8,7,20,4,1,9,7,7,9,12,3,8,4,11,14,3,8,9,10,9,3,3,4,8,12,10,5,11,2,4,6,9,9,14,8,7,9,7,2,9,14,3,1,5,1,7,2,16,11,4,0,9,5,4,15,0,6,10,1,6,4,1,9,11,7,5,16,7,1,6,4,1,4,5,2,7,7,6,7,2,2,9,8,4,0,17,3,5,3,3,5,2,4,1,1,2,6,2,1,2,1,5,1,3,0,3,9,3,2,0,10,11,6,1,3,6,0,15,5,3,1,16,5,12,6,5,2,1,0,5,7,3,6,3,3,1,1,2,4,1,5,0,2,0,2,0,1,2,10,0,2,1,0,1,20,1,0,3,2,1,1,0,0,0,2,0,0,2,0,24,4,0,0,0,0,0,0,0,0,0,0],[4.3,3.3,4,2.25,3.63,3.18,3.2,1.22,3.11,2.36,2,4.67,2.67,1.9,1.78,2,1.7,3.22,2.71,1.78,2.18,1.45,2.25,2.22,1.67,1.22,2.22,1.67,1.7,2.2,1.29,1.1,2.11,1.5,1.64,0.78,1.3,1,1.22,2,1.4,0.56,1.89,1.11,1.25,1.7,1.67,0.78,1.9,0.57,2.4,1.8,1.73,0.33,2.22,1.44,2,1,0.67,0.56,0.89,1.1,1.2,0.6,0.63,0.7,0.9,1.44,1,1.22,0.89,1.11,1.4,0.75,0.8,1.44,0.63,1.11,1,1.56,1.09,0.91,0.9,1.4,1.2,1.6,0.78,1.44,0.6,0.4,0.56,1,0.89,1,1.4,0.64,1,0.89,0.6,1.22,1.11,0.86,0.6,1,0.44,0.5,1.11,0.4,0.5,0.5,0.89,0.8,1,0.38,1,0.67,0.1,0.43,0.8,0.2,0.56,0.73,1,0.44,0.88,0.18,0.67,0.44,0,0.44,0.22,0.5,0.88,0.36,0.29,0.86,0.36,0.11,0.67,0.14,0.43,0.3,0.67,0.56,0.5,0.25,0.63,0.11,0,0.4,0.75,0.33,0.11,0.09,0.4,0.44,0.44,0.33,0.29,0.56,0.38,0.4,0.33,0.13,0.29,0.11,0.5,0.25,0.56,0.5,0.25,0.14,0.3,0.11,0,0.38,0.1,0.3,0.13,0.22,0.33,0.25,0.11,0,0.25,0,0,0.2,0,0,0.67,0,0,0,0,0,0,0,0,0,0,0],[8.5,7.1,5.1,7.13,4.63,5.09,5.2,7.56,4.22,5.27,5.7,1.33,3.89,5.1,5.67,5.5,5.4,3.56,3.71,5,4.27,4.91,3.75,4.44,4.17,4.56,3.22,3.67,3.5,2.8,4.57,4,2.67,3.38,3.36,4.89,3.4,4.13,3.78,2.67,3.4,4.33,2.33,3.44,3.5,2.9,2.89,3.78,2.3,3.86,1.1,2.4,2.27,4.44,1.89,2.67,1.75,3.43,3.67,3.44,3.33,3.2,2.5,3.3,3.5,3.1,3.1,2,3.33,2.67,2.78,2.22,2.2,3,2.8,2.44,2.75,2.33,2.55,1.22,2.09,2.27,2.1,2.2,2.1,1.6,2.33,1.89,2.6,2.6,2.56,1.78,1.78,1.78,1.2,2.18,1.89,2,2.3,1.44,1.33,1.71,2.4,1.78,2.33,2,2,2.2,2.1,2,1.33,1.5,1,2,0.86,1.33,2.2,2,1.1,2,1.44,1.09,0.89,1.44,0.88,1.73,1.11,1.78,2.14,1.33,1.56,1.75,1.25,1.55,1.43,0.71,1.45,1.56,1.56,1.86,1.29,1.3,1.56,1.11,1.5,1.63,1,1.56,1.67,1,0.75,1.44,1.56,1.64,1.2,1,0.89,1,1.14,0.78,0.88,1,0.83,1.25,0.86,1.22,0.5,0.88,0.44,0.9,0.75,1,0.6,0.78,1,1.5,0.7,0.3,0.75,0.44,0.33,0.25,0.33,0.5,0.13,0.63,0.33,0,0.43,0.22,0.56,0.44,0.17,0.11,0,0,0,0,0,0,0,0],[3.8,1.8,1.9,1,1.75,1.82,2.7,2,1.11,1,0.9,1.11,0.33,0.6,1.56,1.9,1.1,2.11,1.43,1.22,1.09,0.73,0.88,2.22,0.67,0.11,1,0.78,0.7,0.9,1.71,0.3,0.89,0.5,1,1.56,0.3,1,1,1.11,0.9,0.33,0.33,0.44,1,1.2,1.11,0.56,1.1,0.29,0.4,1.2,0.82,1,1.56,0.89,0.88,1.29,0.78,0.22,1,1.4,0.3,0.1,0.63,0.1,0.7,0.22,1.78,1.22,0.44,0,0.9,0.63,0.4,1.67,0,0.67,0.91,0.11,0.55,0.36,0.1,1.8,1.1,1.4,0.56,1.78,0.7,0.1,0.67,0.44,0.11,0.44,0.5,0.18,0.78,0.78,0.6,0.78,0.22,0.29,0.9,0.89,0.44,0,1.89,0.3,0.5,0.5,0.33,0.5,0.22,0.5,0.14,0.11,0.2,0.86,0.2,0.2,0.22,0.09,0.56,0.11,0.38,0,0.33,1,0.43,0.22,0,1.25,1.38,0.55,0.14,0.43,0.55,0,1.67,0.71,0.43,0.1,1.78,0.56,1.2,0.75,0.63,0.22,0.11,0,0.63,0.78,0.33,0.55,0.6,0.33,0.11,0.11,0.29,0.44,0.13,0.5,0,0.25,0,0.22,0,0.13,0.22,1,0,0.29,0.1,0,0.17,2.5,0.1,0,0.38,0.22,0.33,0.13,0,0,0,0.25,0,0,0.29,0,2.67,0.44,0,0,0,0,0,0,0,0,0,0],[1.13,1.83,2.11,2.25,2.07,1.75,1.19,0.61,2.8,2.36,2.22,4.2,8,3.17,1.14,1.05,1.55,1.53,1.9,1.45,2,2,2.57,1,2.5,11,2.22,2.14,2.43,2.44,0.75,3.67,2.38,3,1.64,0.5,4.33,1,1.22,1.8,1.56,1.67,5.67,2.5,1.25,1.42,1.5,1.4,1.73,2,6,1.5,2.11,0.33,1.43,1.63,2.29,0.78,0.86,2.5,0.89,0.79,4,6,1,7,1.29,6.5,0.56,1,2,null,1.56,1.2,2,0.87,null,1.67,1.1,14,2,2.5,9,0.78,1.09,1.14,1.4,0.81,0.86,4,0.83,2.25,8,2.25,2.8,3.5,1.29,1.14,1,1.57,5,3,0.67,1.13,1,null,0.59,1.33,1,1,2.67,1.6,4.5,0.75,7,6,0.5,0.5,4,1,2.5,8,1.8,4,2.33,null,2,0.44,0,2,null,0.4,0.64,0.67,2,2,0.67,null,0.4,0.2,1,3,0.38,1,0.42,0.33,1,0.5,0,null,1.2,0.43,0.33,0.17,0.67,1.33,4,3,1,1.25,3,0.8,null,0.5,null,0.5,null,2,2.5,0.5,null,0.5,3,null,0,0.15,1,null,0.33,1,1,2,null,null,null,0,null,null,0,null,0.25,0,null,null,null,null,null,null,null,null,null,null],[3.37,5.78,4.79,9.38,4.71,4.55,3.11,4.39,6.6,7.64,8.56,5.4,19.67,11.67,4.79,3.95,6.45,3.21,4.5,5.55,5.92,8.75,6.86,3,8.75,52,5.44,6.86,7.43,5.56,3.42,17,5.38,9.75,5,3.64,15.67,5.13,5,4.2,5.33,14.67,12.67,10.25,4.75,3.83,4.1,8.2,3.82,15.5,8.75,3.5,4.89,4.78,2.64,4.63,4.29,3.44,5.57,18,4.22,3.07,12.33,39,6.6,38,5.71,15.5,2.44,3.18,8.25,null,4,6,9,2.33,null,5.17,3.9,25,5.83,8.75,30,2,3,2.29,5.6,1.88,4.57,30,4.67,6.25,24,6.25,5.2,15.5,3.71,3.71,4.83,3.43,11,9,3.33,3.13,6.25,null,1.65,8.67,5.2,5,6.67,4.6,9,4.75,13,18,11.5,2.83,9.5,11,9,20,3.4,17,4.67,null,5.33,2.22,5,8,null,1.8,1.55,3.5,12,3.67,3.33,null,1.33,2.8,4,16,1.25,3,1.67,2.5,2.6,7.5,15,null,2.4,2.29,5,3.17,2.67,4.33,12,12,5,3,10,2.8,null,5.5,null,6,null,9,4.5,1.4,null,4,9,null,6,0.75,8,null,2.33,3,2,4,null,null,null,2.5,null,null,1.5,null,0.46,1,null,null,null,null,null,null,null,null,null,null],[130.5,111.5,101.5,100,91.88,89.55,86.5,83.89,83.33,83.18,82.5,77.78,77.22,76.5,75.56,75.5,74,73.33,70.71,70.56,70,67.27,66.88,66.67,63.33,63.33,60.56,57.78,57,56.5,56.43,55,53.89,53.75,53.18,52.78,52,51.25,51.11,51.11,50.5,50,50,48.89,48.75,48.5,48.33,46.67,46,45.71,45,45,44.55,44.44,44.44,43.89,43.13,42.86,42.78,41.67,41.67,41.5,41.5,41.5,41.25,41,41,40.56,39.44,38.89,38.89,38.89,38.5,38.13,38,37.78,36.88,36.67,35.91,35,34.55,34.55,34,34,33.5,33,32.22,31.67,31.5,31.5,30.56,30.56,30.56,30.56,30.5,30.45,30,29.44,29,28.89,28.89,28.57,28.5,28.33,27.78,27.5,27.22,26.5,26,25,25,24.5,23.89,23.13,22.86,22.78,22.5,22.14,22,22,21.67,21.36,21.11,20.56,20,20,19.44,19.44,19.29,18.89,18.89,18.75,18.75,18.18,17.86,17.86,17.27,17.22,17.22,17.14,17.14,17,16.67,16.67,16.5,16.25,16.25,16.11,16.11,16,15.63,15.56,15.56,15,15,15,15,14.44,14.29,13.89,13.75,13.5,13.33,13.13,12.86,12.78,12.5,11.88,11.67,11.5,11.25,10.71,10,9.44,9.17,8.13,8,7.5,7.5,6.67,6.67,5.63,5,5,5,5,3.33,3,2.86,2.22,2.22,2.22,1.67,1.11,0,0,0,0,0,0,0,0]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>Player<\/th>\n      <th>Team<\/th>\n      <th>Site<\/th>\n      <th>GP<\/th>\n      <th>TUH<\/th>\n      <th>15<\/th>\n      <th>10<\/th>\n      <th>-5<\/th>\n      <th>15/G<\/th>\n      <th>10/G<\/th>\n      <th>-5/G<\/th>\n      <th>P/N<\/th>\n      <th>G/N<\/th>\n      <th>PPG<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"dom":"tp","rowCallback":"function(row, data){\n  for(var i=0; i<data.length; i++){\n    if(data[i] === null){\n      $('td:eq('+(i)+')', row).html('-')\n        .css({'font-style': 'italic', 'text-align': 'center'});\n    }\n  }\nvar value=data[3]; $(this.api().cell(row, 3).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[4]; $(this.api().cell(row, 4).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[5]; $(this.api().cell(row, 5).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[6]; $(this.api().cell(row, 6).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[7]; $(this.api().cell(row, 7).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[8]; $(this.api().cell(row, 8).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[9]; $(this.api().cell(row, 9).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[10]; $(this.api().cell(row, 10).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[11]; $(this.api().cell(row, 11).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[12]; $(this.api().cell(row, 12).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[13]; $(this.api().cell(row, 13).node()).css({'font-family':'var(--table-font)','text-align':'right','font-size':'110%'});\nvar value=data[0]; $(this.api().cell(row, 0).node()).css({'border-right':'2px solid #d3d3d3'});\nvar value=data[1]; $(this.api().cell(row, 1).node()).css({'border-right':'2px solid #d3d3d3'});\nvar value=data[2]; $(this.api().cell(row, 2).node()).css({'border-right':'2px solid #d3d3d3'});\nvar value=data[4]; $(this.api().cell(row, 4).node()).css({'border-right':'2px solid #d3d3d3'});\nvar value=data[7]; $(this.api().cell(row, 7).node()).css({'border-right':'2px solid #d3d3d3'});\nvar value=data[10]; $(this.api().cell(row, 10).node()).css({'border-right':'2px solid #d3d3d3'});\n}","columnDefs":[{"targets":8,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 2, 3, \",\", \".\", null);\n  }"},{"targets":9,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 2, 3, \",\", \".\", null);\n  }"},{"targets":10,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 2, 3, \",\", \".\", null);\n  }"},{"targets":13,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 2, 3, \",\", \".\", null);\n  }"},{"targets":11,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 2, 3, \",\", \".\", null);\n  }"},{"targets":12,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 2, 3, \",\", \".\", null);\n  }"},{"className":"dt-right","targets":[3,4,5,6,7,8,9,10,11,12,13]}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":["options.rowCallback","options.columnDefs.0.render","options.columnDefs.1.render","options.columnDefs.2.render","options.columnDefs.3.render","options.columnDefs.4.render","options.columnDefs.5.render"],"jsHooks":[]}</script>
+</div>
+
+
+<script>
+
+var source = new Bloodhound({
+  datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
+  queryTokenizer: Bloodhound.tokenizers.whitespace,
+  prefetch: {
+    url: '../test-index.json',
+    cache: false
+  }
+});
+
+source.initialize();
+
+$('#custom-templates .typeahead').typeahead(null, {
+  name: 'matched-links',
+  displayKey: 'name',
+  source: source.ttAdapter(),
+  templates: {
+    empty: [
+      '<div class="empty-message">',
+      'unable to find any search results that match the current query',
+      '</div>'
+    ].join('\n'),
+      suggestion: Handlebars.compile('<p><a href="{{id}}">{{name}}</a></p>')
+  }
+});
+</script>
+
+<script>
+  $(function() {
+  var navSelector = '#toc';
+  var $myNav = $(navSelector);
+  Toc.init($myNav);
+  $('body').scrollspy({
+    target: navSelector
+  });
+});
+</script>
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+
+</body>
+</html>

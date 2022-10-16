@@ -1,0 +1,148 @@
+---
+params:
+  tournament_id: 1315
+output:
+  html_document:    
+    self_contained: false
+    lib_dir: libs
+    includes:
+      in_header: ../../html/font_import.html
+      before_body: ../../html/navbar.html
+      after_body: ../../html/js.html
+    css: "../../css/style.css"
+    mathjax: null
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, warning = F, message = F, cache = T)
+
+library(stringr)
+library(tidyr)
+library(dplyr)
+library(knitr)
+library(gtExtras)
+library(htmltools)
+library(DT)
+
+source('../../utils.R')
+
+con <- dbConnect(RSQLite::SQLite(), "../../../demo-stats.db")
+```
+<div class = 'main-flex'>
+<div class="toc-div col-sm-2">
+<nav class = "side-nav" id="toc"></nav>
+</div>
+```{r get-meta}
+meta <- dbGetQuery(con, 
+           glue::glue("SELECT 
+           date,  \"set\" || ' at ' || site as tournament_name
+           from tournaments 
+           LEFT JOIN sets on tournaments.set_id = sets.set_id
+           LEFT JOIN sites on tournaments.site_id = sites.site_id
+           WHERE tournaments.tournament_id = {params$tournament_id}"))
+
+```
+
+<div class = 'main-content col-sm-10'>
+
+<p class = 'page-title'>`r pluck(meta$tournament_name, 1)`</p>
+<p class = 'page-subtitle'>`r pluck(meta$date, 1)`</p>
+
+<hr>
+
+```{r games-setup, results='asis'}
+team_game_tbls <- dbGetQuery(con,
+glue::glue("SELECT
+ game_id,
+ team,
+ round, total_pts, bonus_pts, bonuses_heard, opp_pts
+ from team_games
+ LEFT JOIN teams on team_games.team_id = teams.team_id
+ where tournament_id = {params$tournament_id}")) %>%
+  group_by(game_id) %>%
+  group_split() %>%
+  map(~split(., .$team))
+
+player_game_tbls <- dbGetQuery(con,
+glue::glue("SELECT
+ game_id,
+ team, 
+ coalesce(fname|| ' ' || lname, player_games.player) as Player, 
+ ifnull(tuh, 20) as TUH,
+ powers as \"15\", tens as \"10\", negs as \"-5\", pts as Pts
+ from player_games
+ LEFT JOIN teams on player_games.team_id = teams.team_id
+  LEFT JOIN players on player_games.player_id = players.player_id
+  LEFT JOIN people on players.person_id = people.person_id
+ where tournament_id = {params$tournament_id}")) %>%
+  group_by(game_id) %>%
+  group_split() %>%
+  map(~split(., .$team))
+
+team1_html <- map(player_game_tbls,
+                  function(player_df){
+                    player_df %>%
+                      pluck(1) %>%
+                      mutate(Player = glue::glue('<a href = "./#{slug(team)}-{slug(Player)}">{Player}</a>')) %>%
+                      select(-team)
+                  })
+
+team2_html <- map(player_game_tbls,
+                  function(player_df){
+                    player_df %>%
+                      pluck(2) %>%
+                      mutate(Player = glue::glue('<a href = "./#{slug(team)}-{slug(Player)}">{Player}</a>')) %>%
+                      select(-team)
+                  })
+
+```
+
+## Games
+```{r games, results='asis'}
+for(j in seq_len(length(player_game_tbls))){
+  team1_team <- pluck(team_game_tbls, j, 1)
+  team2_team <- pluck(team_game_tbls, j, 2)
+  if(pluck(pull(team1_team, total_pts), 1) > pluck(pull(team1_team, opp_pts), 1)) {
+    cat(glue::glue('<h3 id="game-id-{pluck(pull(team1_team, game_id), 1)}" class = "anchor"> {ifelse(is.na(pluck(pull(team1_team, round), 1)), "", paste0(pluck(pull(team1_team, round), 1), ": "))}{pluck(pull(team1_team, team), 1)} {pluck(pull(team1_team, total_pts), 1)}, {pluck(pull(team2_team, team), 1)} {pluck(pull(team2_team, total_pts), 1)}</h4>'))
+  }
+  else{
+    cat(glue::glue('<h3 id="game-id-{pluck(pull(team1_team, game_id), 1)}" class = "anchor"> {ifelse(is.na(pluck(pull(team1_team, round), 1)), "", paste0(pluck(pull(team1_team, round), 1), ": "))}{pluck(pull(team2_team, team), 1)} {pluck(pull(team2_team, total_pts), 1)}, {pluck(pull(team1_team, team), 1)} {pluck(pull(team1_team, total_pts), 1)}</h4>'))
+  }
+
+  cat('<div style="display:flex;justify-content:space-evenly"><div>')
+
+  team1_html[[j]] %>%
+    select(-game_id) %>% 
+    gt_table(sticky = F) %>%
+    tab_header(title = html(glue::glue('<a href = "./#{slug(pluck(pull(team1_team, team), 1))}">{pluck(pull(team1_team, team), 1)}</a> ({pluck(pull(team1_team, total_pts))})'))) %>%
+    tab_source_note(source_note = glue::glue('Bonuses: {pluck(pull(team1_team, bonus_pts), 1)} points on {pluck(pull(team1_team, bonuses_heard), 1)} bonuses heard, for {round(pluck(pull(team1_team, bonus_pts), 1)/pluck(pull(team1_team, bonuses_heard), 1), 2)} PPB.')) %>%
+    cols_align(columns = Player, "left") %>%
+    fmt_passthrough(Player, escape = F) %>%
+    sub_missing(columns = c(`15`), missing_text = '-') %>%
+    htmltools::tagList() %>%
+    print()
+
+  cat('</div><div>')
+
+  team2_html[[j]] %>%
+    select(-game_id) %>%
+    gt_table(sticky = F) %>%
+    tab_header(html(glue::glue('<a href = "./#{slug(pluck(pull(team2_team, team), 1))}">{pluck(pull(team2_team, team), 1)}</a> ({pluck(pull(team2_team, total_pts))})'))) %>%
+    tab_source_note(source_note = glue::glue('Bonuses: {pluck(pull(team2_team, bonus_pts), 1)} points on {pluck(pull(team2_team, bonuses_heard), 1)} bonuses heard, for {round(pluck(pull(team2_team, bonus_pts), 1)/pluck(pull(team2_team, bonuses_heard), 1), 2)} PPB.')) %>%
+    cols_align(columns = Player, "left") %>%
+    fmt_passthrough(Player, escape = F) %>%
+    sub_missing(columns = c(`15`), missing_text = '-') %>%
+    htmltools::tagList() %>%
+    print()
+
+  cat('</div></div><hr>')
+}
+
+```
+</div>
+</div>
+
+```{r db-dis}
+dbDisconnect(con)
+```
+
