@@ -668,7 +668,8 @@ $('#custom-templates .typeahead').typeahead(null, {
   var $myNav = $(navSelector);
   Toc.init($myNav);
   $('body').scrollspy({
-    target: navSelector
+    target: navSelector,
+    offset: 200
   });
 });
 </script>
