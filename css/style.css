@@ -438,4 +438,8 @@ div.row div.col-sm-4 {
   font-style: italic;
 }
 
+table.dataTable tbody td {
+  vertical-align: middle;
+}
+
 
